@@ -32,7 +32,8 @@
       localStorage.setItem(k, JSON.stringify(v)); return true;
     } catch (e) { saveFail = true; return v === undefined ? null : false; }
   }
-  var PREFS = ls('h2.prefs.v1') || { owned_keepsakes: [], grasp_cap: 10, left_hand: false, show_score: true, last_weapon: 'staff', last_aspect: 'staff_melinoe' };
+  var PREFS = ls('h2.prefs.v1') || {};
+  PREFS = Object.assign({ owned_keepsakes: [], grasp_cap: 10, left_hand: false, show_score: true, font_scale: 1, last_weapon: 'staff', last_aspect: 'staff_melinoe' }, PREFS);
   var UI = ls('h2.ui.v1') || { screen: null, god_tab: null };
   var RUN = ls('h2.run.v1');
   var savePrefs = function () { ls('h2.prefs.v1', PREFS); };
@@ -69,6 +70,21 @@
     return '<span class="badge b-' + esc(key) + '">' + esc(b) + '</span>';
   }
   function el(html) { var d = document.createElement('div'); d.innerHTML = html; return d.firstElementChild; }
+  function applyFontScale() { document.getElementById('app').style.setProperty('--fs', PREFS.font_scale || 1); }
+  // #rrggbb → rgba(...) (U5 테두리·글로우·틴트)
+  function rgba(hex, a) {
+    var h = String(hex).replace('#', '');
+    return 'rgba(' + parseInt(h.slice(0, 2), 16) + ',' + parseInt(h.slice(2, 4), 16) + ',' + parseInt(h.slice(4, 6), 16) + ',' + a + ')';
+  }
+  function stepper(val, min, max, onChange) {
+    var s = el('<div class="stepper"><button data-m>−</button><div class="val">' + val + '</div><button data-p>+</button></div>');
+    var m = s.querySelector('[data-m]'), p = s.querySelector('[data-p]');
+    if (val <= min) m.disabled = true;
+    if (val >= max) p.disabled = true;
+    m.onclick = function () { onChange(Math.max(min, val - 1)); };
+    p.onclick = function () { onChange(Math.min(max, val + 1)); };
+    return s;
+  }
 
   // ── 화면 전환 ──────────────────────────────────────────
   var sheet = null;
@@ -79,7 +95,7 @@
   // ── 렌더 ───────────────────────────────────────────────
   var app = document.getElementById('app');
   function render() {
-    app.innerHTML = '';
+    app.innerHTML = ''; applyFontScale();
     if (!RUN) { app.appendChild(viewStart()); return; }
     app.appendChild(viewHome());
     if (UI.screen === 'gods') app.appendChild(viewGods());
@@ -127,24 +143,55 @@
 
     var r = E.recommendRunStart(startSel.weapon, startSel.aspect, { graspCap: PREFS.grasp_cap, ownedKeepsakes: PREFS.owned_keepsakes.length ? PREFS.owned_keepsakes : null });
 
-    root.appendChild(el('<h2>아르카나 (이해도 ' + r.arcana.grasp_used + '/' + r.arcana.grasp_cap + ')</h2>'));
+    var A = r.arcana;
+    root.appendChild(el('<h2>아르카나 (사용 ' + A.grasp_used + ' / 상한 ' + A.grasp_cap +
+      (A.grasp_left > 0 ? ', 남음 ' + A.grasp_left : '') + ')</h2>'));
+    var gc = el('<div class="card tight"><div class="row"><div class="mid" style="flex:1"><div class="sm">내 이해도 상한</div><div class="xs dim">재의 제단에서 넋으로 1씩 올린다 (10~30)</div></div></div></div>');
+    gc.querySelector('.row').appendChild(stepper(PREFS.grasp_cap, 10, 30, function (v) {
+      PREFS.grasp_cap = v; savePrefs(); rerenderStart(root, asSheet);
+    }));
+    root.appendChild(gc);
+
     var ac = el('<div class="card tight"></div>');
-    r.arcana.cards.forEach(function (c) {
-      ac.appendChild(el('<div class="row" style="padding:6px 0"><span class="slotchip">' + c.grasp + '</span><div class="mid" style="flex:1;min-width:0"><div class="ell">' + esc(c.name_ko) + '</div><div class="xs dim ell">' + esc(c.effect) + '</div></div></div>'));
+    var arow = function (c, cls, tag) {
+      return el('<div class="arow ' + (cls || '') + '"><span class="g">' + (c.grasp === 0 ? '0' : c.grasp) + '</span>' +
+        '<div class="mid" style="flex:1;min-width:0"><div class="ell">' + esc(c.name_ko) + '</div>' +
+        '<div class="xs dim ell">' + esc(c.effect) + '</div></div>' +
+        (tag ? '<span class="atag ' + tag[0] + '">' + esc(tag[1]) + '</span>' : '') + '</div>');
+    };
+    A.cards.forEach(function (c) {
+      var t = c.tag === '핵심' ? ['핵심', '핵심'] : c.tag === '무기 방향' ? ['무기', '무기 방향'] : ['', '보조'];
+      ac.appendChild(arow(c, '', t));
     });
+    A.awakened.forEach(function (c) { ac.appendChild(arow(c, 'free', ['각성', '각성 · 무료'])); });
+    if (!A.cards.length) ac.appendChild(el('<div class="empty">이해도를 올려 주세요</div>'));
     root.appendChild(ac);
-    if (r.arcana.free_cards.length) {
-      var det = el('<details class="card tight"><summary class="sm dim">각성 조건 충족 시 무료 (' + r.arcana.free_cards.length + '장)</summary></details>');
-      r.arcana.free_cards.forEach(function (c) {
-        det.appendChild(el('<div style="padding:6px 0"><div class="sm">' + esc(c.name_ko) + '</div><div class="xs dim">' + esc(c.awaken_condition || '') + '</div></div>'));
+
+    if (A.next_up.length) {
+      var nu = el('<details class="card tight"><summary class="sm dim">이해도를 더 올리면 (' + A.next_up.length + '장)</summary></details>');
+      A.next_up.forEach(function (c) { nu.appendChild(arow(c, '', ['', c.tag])); });
+      root.appendChild(nu);
+    }
+    if (A.free_cards.length) {
+      var det = el('<details class="card tight"><summary class="sm dim">아직 잠긴 무료 카드 (' + A.free_cards.length + '장)</summary></details>');
+      A.free_cards.forEach(function (c) {
+        det.appendChild(el('<div class="arow"><span class="g">0</span><div class="mid" style="flex:1;min-width:0"><div class="ell">' + esc(c.name_ko) + '</div><div class="xs dim">' + esc(c.awaken_condition || '') + '</div></div></div>'));
       });
       root.appendChild(det);
     }
 
     root.appendChild(el('<h2>기념품 · 비술</h2>'));
     var kc = el('<div class="card tight"></div>');
-    r.keepsakes.slice(0, 3).forEach(function (k) { kc.appendChild(el('<div style="padding:5px 0"><div class="sm">' + esc(k.name_ko) + '</div><div class="xs dim ell">' + esc(k.effect) + '</div></div>')); });
-    r.hexes.slice(0, 2).forEach(function (h) { kc.appendChild(el('<div style="padding:5px 0"><div class="sm">' + esc(h.name_ko) + ' <span class="xs dim">마력 ' + h.mana + '</span></div><div class="xs dim ell">' + esc(h.effect) + '</div></div>')); });
+    r.keepsakes.slice(0, 3).forEach(function (k) {
+      kc.appendChild(el('<div style="padding:6px 0"><div class="sm">' + esc(k.name_ko) +
+        (k.giver_ko ? ' <span class="giver">(' + esc(k.giver_ko) + '에게 넥타르)</span>' : '') +
+        '</div><div class="xs dim ell">' + esc(k.effect) + '</div></div>'));
+    });
+    r.hexes.slice(0, 2).forEach(function (h) {
+      kc.appendChild(el('<div style="padding:6px 0"><div class="sm">' + esc(h.name_ko) +
+        ' <span class="giver">(셀레네 · 밤마다 1개)</span> <span class="xs dim">마력 ' + h.mana + '</span>' +
+        '</div><div class="xs dim ell">' + esc(h.effect) + '</div></div>'));
+    });
     root.appendChild(kc);
 
     root.appendChild(el('<h2>열린 빌드 방향</h2>'));
@@ -259,8 +306,10 @@
     var btns = {};
     GOD_ORDER.forEach(function (id) {
       var seen = RUN.state.gods_seen.indexOf(id) >= 0;
-      var b = el('<button class="god" aria-pressed="false" style="border-color:' + GC[id] + '">' +
-        '<span class="dot" style="background:' + GC[id] + '"></span><span class="n">' + esc(nm(id)) + '</span>' +
+      var b = el('<button class="god" data-gc aria-pressed="false" style="--gc:' + GC[id] + '; --gcd:' + rgba(GC[id], .45) +
+        '; --gcg:' + rgba(GC[id], .3) + '; --gct:' + rgba(GC[id], .12) + '">' +
+        '<span class="ord"></span><span class="dot" style="background:' + GC[id] + '"></span>' +
+        '<span class="n">' + esc(nm(id)) + '</span>' +
         (seen ? '<span class="seen">✓ 받음</span>' : '') + '</button>');
       b.onclick = function () {
         var i = godSel.indexOf(id);
@@ -272,7 +321,12 @@
     body.appendChild(grid); body.appendChild(out);
 
     function refresh() {
-      GOD_ORDER.forEach(function (id) { btns[id].setAttribute('aria-pressed', godSel.indexOf(id) >= 0); });
+      var ORD = ['①', '②', '③', '④'];
+      GOD_ORDER.forEach(function (id) {
+        var i = godSel.indexOf(id);
+        btns[id].setAttribute('aria-pressed', i >= 0);
+        btns[id].querySelector('.ord').textContent = i >= 0 ? (ORD[i] || (i + 1)) : '';
+      });
       out.innerHTML = '';
       if (godSel.length < 2) { out.appendChild(el('<div class="empty">신을 2개 이상 골라 주세요</div>')); return; }
       E.recommendGods(RUN.state, godSel).forEach(function (r, i) {
@@ -287,14 +341,13 @@
   }
 
   // ── 4·5. 은혜 / 망치 선택 ──────────────────────────────
-  var pickSel = [], godTab = null, searchOn = false, searchQ = '';
+  var pickSel = [], godTab = null, searchOn = false, searchQ = '', trayOpen = true;
   function viewPick(kind) {
     var isBoon = kind === 'boon';
     if (isBoon && RUN.pending_god) { godTab = RUN.pending_god; RUN.pending_god = null; saveRun(); }
     if (isBoon && !godTab) godTab = UI.god_tab || RUN.state.gods_seen[RUN.state.gods_seen.length - 1] || 'zeus';
     var body = document.createElement('div');
     var listBox = el('<div class="list"></div>');
-    var recBox = el('<div></div>');
     var trayBox = el('<div class="tray"></div>');
 
     if (isBoon) {
@@ -315,7 +368,6 @@
       body.appendChild(el('<div class="wrap sm dim" style="padding:10px 14px 4px">게임에 뜬 다이달로스 망치를 2~3개 탭</div>'));
     }
     body.appendChild(listBox);
-    body.appendChild(recBox);
 
     function candidates() {
       if (!isBoon) return DATA.hammers.filter(function (h) { return h.weapon === RUN.state.weapon; });
@@ -340,7 +392,7 @@
           sb.appendChild(inp);
         }
       }
-      drawList(); drawTray(); drawRec();
+      drawList(); drawTray();
     }
     function drawList() {
       listBox.innerHTML = '';
@@ -372,8 +424,20 @@
     }
     function drawTray() {
       trayBox.innerHTML = '';
+      // 추천을 트레이 안에 넣어 목록을 스크롤하면서도 순위가 늘 보이게 한다 (U4)
+      if (pickSel.length >= 2) {
+        var hd = el('<button class="thead"><span>추천 ' + pickSel.length + '개 비교</span><span class="caret">' + (trayOpen ? '▾' : '▴') + '</span></button>');
+        hd.onclick = function () { trayOpen = !trayOpen; draw(); };
+        trayBox.appendChild(hd);
+        if (trayOpen) {
+          var box = el('<div class="recs"></div>');
+          var rows = isBoon ? E.recommendBoons(RUN.state, pickSel) : E.recommendHammers(RUN.state, pickSel.map(function (p) { return p.id; }));
+          rows.forEach(function (r, i) { box.appendChild(compactRec(r, i, isBoon)); });
+          trayBox.appendChild(box);
+        }
+      }
       var picks = el('<div class="picks"></div>');
-      if (!pickSel.length) picks.appendChild(el('<span class="sm dim">아직 고른 게 없습니다</span>'));
+      if (!pickSel.length) picks.appendChild(el('<span class="sm dim">목록에서 2개 이상 고르면 여기에 순위가 나옵니다</span>'));
       pickSel.forEach(function (p, i) {
         var fixed = p.rarity === 'duo' || p.rarity === 'legendary';
         var c = el('<span class="pick">' + esc(nm(p.id)) +
@@ -384,18 +448,24 @@
       });
       trayBox.appendChild(picks);
     }
-    function drawRec() {
-      recBox.innerHTML = '';
-      if (pickSel.length < 2) { recBox.appendChild(el('<div class="empty">2개 이상 고르면 바로 추천이 나옵니다</div>')); return; }
-      var rows = isBoon ? E.recommendBoons(RUN.state, pickSel) : E.recommendHammers(RUN.state, pickSel.map(function (p) { return p.id; }));
-      rows.forEach(function (r, i) {
-        recBox.appendChild(recCard(r, i, function () {
-          pushHistory((isBoon ? '은혜' : '망치') + ' ' + nm(r.id));
-          var rar = (pickSel.find(function (p) { return p.id === r.id; }) || {}).rarity;
-          RUN.state = E.applyChoice(RUN.state, { kind: isBoon ? 'boon' : 'hammer', id: r.id, rarity: rar });
-          pickSel = []; saveRun(); closeSheet();
-        }, '이걸로 결정'));
-      });
+    function compactRec(r, i, isBoon) {
+      var no = !isFinite(r.score);
+      var w = r.warnings || [];
+      var mainBadge = (r.badges || []).filter(function (b) { return b !== '항상'; })[0] || '';
+      var row = el('<div class="crec ' + (i === 0 && !no ? 'r1' : '') + ' ' + (no ? 'no' : '') + '">' +
+        '<span class="rk">' + (r.rank || i + 1) + '위</span>' +
+        '<div class="mid"><div class="nm">' + slotChip(ent(r.id)) + '<span class="ell">' + esc(nm(r.id)) + '</span>' +
+        (mainBadge ? '<span class="bdg">' + esc(mainBadge) + '</span>' : '') + '</div>' +
+        '<div class="rs ell">' + esc(r.reason) + '</div>' +
+        (w.length ? '<div class="wn ell">⚠ ' + esc(w[0]) + (w.length > 1 ? ' +' + (w.length - 1) : '') + '</div>' : '') +
+        '</div>' + (no ? '' : '<button class="go">결정</button>') + '</div>');
+      if (!no) row.querySelector('.go').onclick = function () {
+        pushHistory((isBoon ? '은혜' : '망치') + ' ' + nm(r.id));
+        var rar = (pickSel.find(function (p) { return p.id === r.id; }) || {}).rarity;
+        RUN.state = E.applyChoice(RUN.state, { kind: isBoon ? 'boon' : 'hammer', id: r.id, rarity: rar });
+        pickSel = []; saveRun(); closeSheet();
+      };
+      return row;
     }
     draw();
     var s = wrapSheet(isBoon ? '은혜 선택' : '망치 선택', body);
@@ -489,7 +559,10 @@
     body.appendChild(el('<h2>설정</h2>'));
     body.appendChild(seg('왼손 모드', [[false, '끔'], [true, '켬']], PREFS.left_hand, function (v) { PREFS.left_hand = v; savePrefs(); render(); }));
     body.appendChild(seg('점수 표시', [[true, '켬'], [false, '끔']], PREFS.show_score, function (v) { PREFS.show_score = v; savePrefs(); render(); }));
-    body.appendChild(seg('이해도 상한', [[10, '10'], [15, '15'], [20, '20'], [30, '30']], PREFS.grasp_cap, function (v) { PREFS.grasp_cap = v; savePrefs(); render(); }));
+    var gr = el('<div class="mrow"><div class="lb">이해도 상한<div class="xs dim">재의 제단에서 넋으로 1씩</div></div></div>');
+    gr.appendChild(stepper(PREFS.grasp_cap, 10, 30, function (v) { PREFS.grasp_cap = v; savePrefs(); render(); }));
+    body.appendChild(gr);
+    body.appendChild(seg('글자 크기', [[1, '보통'], [1.15, '크게'], [1.3, '더 크게'], [1.5, '최대']], PREFS.font_scale, function (v) { PREFS.font_scale = v; savePrefs(); render(); }));
 
     body.appendChild(el('<h2>런 내보내기 / 불러오기</h2>'));
     var ta = el('<div class="wrap"><textarea spellcheck="false">' + esc(JSON.stringify(RUN)) + '</textarea></div>');
