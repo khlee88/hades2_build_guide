@@ -1,0 +1,390 @@
+[
+ {
+  "id": "aphrodite_flutter_strike",
+  "god": "aphrodite",
+  "name_ko": "애정 일격",
+  "name_en": "Flutter Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "근접한 적에게 공격 피해 대폭 증가",
+  "rarity_scaling": "근접 피해 +80/100/120/140%",
+  "tags": [
+   "close_up",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "apollo_nova_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hera_sworn_strike",
+   "hestia_flame_strike",
+   "poseidon_wave_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_flutter_flourish",
+  "god": "aphrodite",
+  "name_ko": "애정 기예",
+  "name_en": "Flutter Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "근접한 적에게 기술 피해 대폭 증가",
+  "rarity_scaling": "근접 피해 +100/150/200/250%",
+  "tags": [
+   "close_up",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "apollo_nova_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hera_sworn_flourish",
+   "hestia_flame_flourish",
+   "poseidon_wave_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_rapture_ring",
+  "god": "aphrodite",
+  "name_ko": "황홀 고리",
+  "name_en": "Rapture Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진이 약화 부여 + 적을 중앙으로 끌어당김",
+  "rarity_scaling": "피해 10/15/20/25 (0.85초)",
+  "tags": [
+   "ring",
+   "curse_apply:weak",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "apollo_solar_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "hephaestus_anvil_ring",
+   "hera_engagement_ring",
+   "hestia_smolder_ring",
+   "poseidon_tidal_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_passion_rush",
+  "god": "aphrodite",
+  "name_ko": "열정 쇄도",
+  "name_en": "Passion Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "질주 중·정지 시 주변 피해 + 약화",
+  "rarity_scaling": "폭발 피해 20/30/40/50",
+  "tags": [
+   "sprint_damage",
+   "curse_apply:weak",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "apollo_blinding_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hera_nexus_rush",
+   "hestia_heat_rush",
+   "poseidon_breaker_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_glamour_gain",
+  "god": "aphrodite",
+  "name_ko": "매혹적 마력",
+  "name_en": "Glamour Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "근처 적 자동 약화 + 마력 서서히 회복",
+  "rarity_scaling": "마력 6/8/10/12 (1초)",
+  "tags": [
+   "mana_regen",
+   "curse_apply:weak",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "apollo_lucid_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hera_born_gain",
+   "hestia_cardio_gain",
+   "poseidon_flood_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_shameless_attitude",
+  "god": "aphrodite",
+  "name_ko": "두꺼운 상판",
+  "name_en": "Shameless Attitude",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "피해 증가, 체력 80% 이상이면 2배",
+  "rarity_scaling": "+5/7/9/11%",
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_spiritual_affirmation",
+  "god": "aphrodite",
+  "name_ko": "정신력 확증",
+  "name_en": "Spiritual Affirmation",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "이번 밤 체력·마력 획득량 증가",
+  "rarity_scaling": "+15/20/25/30%",
+  "tags": [
+   "max_hp",
+   "max_mana",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_healthy_rebound",
+  "god": "aphrodite",
+  "name_ko": "기운찬 재기",
+  "name_en": "Healthy Rebound",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "지역 탈출 시 체력 손실 적으면 완전 회복",
+  "rarity_scaling": "기준 체력 80/70/60/50%",
+  "tags": [
+   "heal",
+   "duo_key",
+   "beginner_safe"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "aphrodite_shameless_attitude"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_broken_resolve",
+  "god": "aphrodite",
+  "name_ko": "무너진 결심",
+  "name_en": "Broken Resolve",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "약화 효과 강화",
+  "rarity_scaling": "피해 감소 +10/12/14/16%",
+  "tags": [
+   "curse_scale:weak",
+   "armor"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "aphrodite_rapture_ring",
+      "aphrodite_passion_rush",
+      "aphrodite_glamour_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_sweet_surrender",
+  "god": "aphrodite",
+  "name_ko": "달콤한 항복",
+  "name_en": "Sweet Surrender",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "약화된 적이 받는 피해 증가",
+  "rarity_scaling": "+10/15/20/25%",
+  "tags": [
+   "curse_scale:weak"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "aphrodite_rapture_ring",
+      "aphrodite_passion_rush",
+      "aphrodite_glamour_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_heart_breaker",
+  "god": "aphrodite",
+  "name_ko": "실연의 아픔",
+  "name_en": "Heart Breaker",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "마력 40 사용마다 연심 생성",
+  "rarity_scaling": "연심 피해 80/100/120/140",
+  "tags": [
+   "omega",
+   "aoe",
+   "duo_key",
+   "per_hit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_secret_crush",
+  "god": "aphrodite",
+  "name_ko": "은밀한 호감",
+  "name_en": "Secret Crush",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "공격 위력 증가, 마력 20 점유",
+  "rarity_scaling": "위력 +5/7/9/11",
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_wispy_wiles",
+  "god": "aphrodite",
+  "name_ko": "무형의 운무",
+  "name_en": "Wispy Wiles",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "공기 은혜 수만큼 회피 확률",
+  "infusion_req": {
+   "element": "air",
+   "count": 2
+  },
+  "tags": [
+   "armor"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_nervous_wreck",
+  "god": "aphrodite",
+  "name_ko": "신경 쇠약",
+  "name_en": "Nervous Wreck",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "약화 부여 시 다른 신 저주 3종도 무작위 부여",
+  "tags": [
+   "curse_scale:weak",
+   "aoe"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "aphrodite_broken_resolve",
+      "aphrodite_sweet_surrender",
+      "aphrodite_shameless_attitude",
+      "aphrodite_secret_crush"
+     ]
+    },
+    {
+     "any": [
+      "aphrodite_rapture_ring",
+      "aphrodite_passion_rush",
+      "aphrodite_glamour_gain"
+     ]
+    },
+    {
+     "any": [
+      "aphrodite_flutter_strike",
+      "aphrodite_flutter_flourish"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ }
+]

@@ -1,0 +1,406 @@
+[
+ {
+  "id": "apollo_nova_strike",
+  "god": "apollo",
+  "name_ko": "광휘 일격",
+  "name_en": "Nova Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격 피해 증가 + 범위 확대",
+  "rarity_scaling": "공격 피해 +40/60/80/100%",
+  "tags": [
+   "aoe",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hera_sworn_strike",
+   "hestia_flame_strike",
+   "poseidon_wave_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_nova_flourish",
+  "god": "apollo",
+  "name_ko": "광휘 기예",
+  "name_en": "Nova Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술 피해 증가 + 범위 확대",
+  "rarity_scaling": "기술 피해 +60/80/100/120%",
+  "tags": [
+   "aoe",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hera_sworn_flourish",
+   "hestia_flame_flourish",
+   "poseidon_wave_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_solar_ring",
+  "god": "apollo",
+  "name_ko": "태양 고리",
+  "name_en": "Solar Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진이 실명 부여 + 소멸 시 폭발",
+  "rarity_scaling": "피해 80/120/160/200",
+  "tags": [
+   "ring",
+   "curse_apply:daze",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "hephaestus_anvil_ring",
+   "hera_engagement_ring",
+   "hestia_smolder_ring",
+   "poseidon_tidal_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_blinding_rush",
+  "god": "apollo",
+  "name_ko": "섬광 쇄도",
+  "name_en": "Blinding Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "질주 속도 증가 + 주변 적 실명",
+  "rarity_scaling": "질주 속도 +15/20/25/30%",
+  "tags": [
+   "curse_apply:daze",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hera_nexus_rush",
+   "hestia_heat_rush",
+   "poseidon_breaker_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_lucid_gain",
+  "god": "apollo",
+  "name_ko": "영롱한 마력",
+  "name_en": "Lucid Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "마법진 소멸 시 마력 회복",
+  "rarity_scaling": "마력 40/60/80/100",
+  "tags": [
+   "mana_regen",
+   "cast",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hera_born_gain",
+   "hestia_cardio_gain",
+   "poseidon_flood_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_light_smite",
+  "god": "apollo",
+  "name_ko": "빛살 강타",
+  "name_en": "Light Smite",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "피격 시 반격 피해 + 주변 실명",
+  "rarity_scaling": "반격 피해 50/75/100/125",
+  "tags": [
+   "retaliate",
+   "curse_apply:daze",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_perfect_image",
+  "god": "apollo",
+  "name_ko": "완벽한 매무새",
+  "name_en": "Perfect Image",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "피격 전까지 피해 증가, 15초 무피격 시 회복",
+  "rarity_scaling": "+10/15/20/25%",
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_dazzling_display",
+  "god": "apollo",
+  "name_ko": "현란한 솜씨",
+  "name_en": "Dazzling Display",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "공격이 확률적으로 실명 부여",
+  "rarity_scaling": "실명 확률 +10/15/20/25%",
+  "tags": [
+   "curse_apply:daze",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "apollo_nova_strike"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_back_burner",
+  "god": "apollo",
+  "name_ko": "빛나는 등판",
+  "name_en": "Back Burner",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "실명된 적을 후방 공격 시 추가 피해",
+  "rarity_scaling": "후방 피해 +50/75/100/125%",
+  "tags": [
+   "curse_scale:daze",
+   "backstab"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "apollo_solar_ring",
+      "apollo_blinding_rush",
+      "apollo_dazzling_display",
+      "apollo_light_smite"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_prominence_flare",
+  "god": "apollo",
+  "name_ko": "햇살 방사",
+  "name_en": "Prominence Flare",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 마법 소멸 후 2초간 그 자리 연속 피해",
+  "rarity_scaling": "피해 10/12/14/16 (0.13초)",
+  "tags": [
+   "omega_cast",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:ring"
+     ]
+    }
+   ]
+  },
+  "conflicts": [
+   "poseidon_geyser_spout"
+  ],
+  "conflict_reason": "Ω 마법 변형 - 동시 채용 불가 (위키 명시)",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_super_nova",
+  "god": "apollo",
+  "name_ko": "초신성",
+  "name_en": "Super Nova",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "마법진이 소멸까지 계속 커짐",
+  "rarity_scaling": "최대 크기 40/50/60/70%",
+  "tags": [
+   "cast_size",
+   "cast"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_extra_dose",
+  "god": "apollo",
+  "name_ko": "추가 처방",
+  "name_en": "Extra Dose",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "공격이 2회 적중할 확률",
+  "rarity_scaling": "확률 +5/8/10/13%",
+  "tags": [
+   "attack_speed",
+   "per_hit"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:strike"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_self_healing",
+  "god": "apollo",
+  "name_ko": "자가 치유",
+  "name_en": "Self Healing",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "불 3 이상 시 피격 피해의 일부 회복",
+  "infusion_req": {
+   "element": "fire",
+   "count": 2
+  },
+  "tags": [
+   "heal"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_exceptional_talent",
+  "god": "apollo",
+  "name_ko": "비상한 재능",
+  "name_en": "Exceptional Talent",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "Ω 공격/기술이 2회 발동, 마력 +20",
+  "tags": [
+   "omega_attack",
+   "omega_special",
+   "omega"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "apollo_nova_strike",
+      "apollo_nova_flourish"
+     ]
+    },
+    {
+     "any": [
+      "apollo_solar_ring",
+      "apollo_blinding_rush",
+      "apollo_lucid_gain"
+     ]
+    },
+    {
+     "any": [
+      "apollo_extra_dose",
+      "apollo_super_nova",
+      "apollo_back_burner",
+      "apollo_prominence_flare"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ }
+]

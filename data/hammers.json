@@ -1,0 +1,1420 @@
+[
+ {
+  "id": "staff_wicked_thrasher",
+  "weapon": "staff",
+  "name_ko": "위력적 강타",
+  "name_en": "Wicked Thrasher",
+  "effect": "공격 위력 +30",
+  "rank2": "공격 위력 +40",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "staff_anubis"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "staff_extending_wallop",
+  "weapon": "staff",
+  "name_ko": "내뻗는 강격",
+  "name_en": "Extending Wallop",
+  "effect": "공격 사거리 증가, 먼 적에게 피해 +100%",
+  "rank2": "먼 적 피해 +150%",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power",
+   "range"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "staff_anubis"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "staff_melting_swipe",
+  "weapon": "staff",
+  "name_ko": "녹이는 휩쓸기",
+  "name_en": "Melting Swipe",
+  "effect": "돌진 공격이 방어도에 +900 피해, 범위 확대",
+  "affects": [
+   "dash"
+  ],
+  "tags": [
+   "armor_break"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "staff_anubis"
+  ],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "staff_dual_moonshot",
+  "weapon": "staff",
+  "name_ko": "이중 월광탄",
+  "name_en": "Dual Moonshot",
+  "effect": "기술이 2발 발사, 사거리 -40%",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "special_power"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "staff_shimmering_moonshot",
+  "weapon": "staff",
+  "name_ko": "탄성 월광탄",
+  "name_en": "Shimmering Moonshot",
+  "effect": "기술이 +2회 튕기며 튕길 때마다 피해 +10%",
+  "rank2": "튕길 때마다 +20%",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "special_power",
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "staff_cross_cataclysm",
+  "weapon": "staff",
+  "name_ko": "십자 대격변",
+  "name_en": "Cross Cataclysm",
+  "effect": "Ω 공격 피해 +50%, 측면도 타격",
+  "rank2": "Ω 공격 +75%",
+  "affects": [
+   "omega_attack"
+  ],
+  "tags": [
+   "omega_attack",
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "staff_anubis"
+  ],
+  "conflicts": [
+   "staff_rapid_thrasher"
+  ],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "지팡이 주력인 Ω 공격을 직접 강화. 초보 1순위"
+ },
+ {
+  "id": "staff_rapid_thrasher",
+  "weapon": "staff",
+  "name_ko": "고속 강타",
+  "name_en": "Rapid Thrasher",
+  "effect": "공격 속도 50% 증가",
+  "rank2": "80% 증가",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [
+   "staff_mirrored_thrasher",
+   "staff_cross_cataclysm",
+   "staff_vampiric_cataclysm",
+   "demeter_weed_killer"
+  ],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "상충 대상이 많음 - Ω 공격 빌드면 십자 대격변을 우선",
+  "conflict_reason": "공격 속도 망치와 잡초 박멸은 동시 채용 불가 (위키 명시)"
+ },
+ {
+  "id": "staff_rapid_moonshot",
+  "weapon": "staff",
+  "name_ko": "고속 월광탄",
+  "name_en": "Rapid Moonshot",
+  "effect": "기술 속도 25% 증가",
+  "rank2": "35% 증가",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "staff_vampiric_cataclysm",
+  "weapon": "staff",
+  "name_ko": "흡혈 대격변",
+  "name_en": "Vampiric Cataclysm",
+  "effect": "Ω 공격으로 처치 시 체력 5 회복",
+  "rank2": "체력 8 회복",
+  "affects": [
+   "omega_attack"
+  ],
+  "tags": [
+   "heal",
+   "omega_attack"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [
+   "staff_rapid_thrasher"
+  ],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "회복 수단이 귀한 게임이라 초보 생존에 큰 도움"
+ },
+ {
+  "id": "staff_giga_moonburst",
+  "weapon": "staff",
+  "name_ko": "강력 만월탄",
+  "name_en": "Giga Moonburst",
+  "effect": "Ω 기술에 마력 +30 소모해 범위·피해 +300%",
+  "rank2": "+399%",
+  "affects": [
+   "omega_special"
+  ],
+  "tags": [
+   "omega_special",
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "staff_aetheric_moonburst",
+  "weapon": "staff",
+  "name_ko": "에테르 만월탄",
+  "name_en": "Aetheric Moonburst",
+  "effect": "Ω 기술 정조준 성공 시 피해 +50%, 마력 20 회복",
+  "rank2": "피해 +75%",
+  "affects": [
+   "omega_special",
+   "magick"
+  ],
+  "tags": [
+   "omega_special",
+   "mana_regen"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "마력 회복이 붙어 지팡이 Ω 빌드의 자원 문제를 직접 해결"
+ },
+ {
+  "id": "staff_mirrored_thrasher",
+  "weapon": "staff",
+  "name_ko": "무리한 강타",
+  "name_en": "Mirrored Thrasher",
+  "effect": "공격이 2번 나가지만 마력 5 소모",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_speed",
+   "on_hit"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "staff_anubis"
+  ],
+  "conflicts": [
+   "staff_rapid_thrasher"
+  ],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "타격 횟수 2배 - '타격마다 발동' 은혜와 시너지. 단 마력 소모"
+ },
+ {
+  "id": "staff_soulfilled_ankh",
+  "weapon": "staff",
+  "name_ko": "혼 담은 앙크",
+  "name_en": "Soulfilled Ankh",
+  "effect": "공격 범위 확대, 위력 +5",
+  "rank2": "위력 +8",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power"
+  ],
+  "aspect_only": "staff_anubis",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "staff_mirrored_ankh",
+  "weapon": "staff",
+  "name_ko": "거울 앙크",
+  "name_en": "Mirrored Ankh",
+  "effect": "Ω 공격이 전방에 피해 장판 +1개 생성",
+  "affects": [
+   "omega_attack"
+  ],
+  "tags": [
+   "omega_attack",
+   "aoe"
+  ],
+  "aspect_only": "staff_anubis",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "staff_scarab_etchings",
+  "weapon": "staff",
+  "name_ko": "딱정벌레 부각",
+  "name_en": "Scarab Etchings",
+  "effect": "쓸쓸한 혼령 피해 +50, 75% 확률 재등장",
+  "rank2": "피해 +75",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "summon"
+  ],
+  "aspect_only": "staff_anubis",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "staff_pharaoh_etchings",
+  "weapon": "staff",
+  "name_ko": "파라오 부각",
+  "name_en": "Pharaoh Etchings",
+  "effect": "쓸쓸한 혼령 피해 +50%, Ω 기술 맞은 적에게 돌진",
+  "rank2": "피해 +90%",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "summon"
+  ],
+  "aspect_only": "staff_anubis",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "blades_sweeping_ambush",
+  "weapon": "blades",
+  "name_ko": "폭발적 암습",
+  "name_en": "Sweeping Ambush",
+  "effect": "Ω 공격 범위 확대, 피해 +400%, 마력 +20 소모",
+  "rank2": "피해 +600%",
+  "affects": [
+   "omega_attack"
+  ],
+  "tags": [
+   "omega_attack",
+   "aoe",
+   "backstab"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "쌍검 Ω 공격은 적 뒤로 순간이동 → 백스탭 보너스와 중첩"
+ },
+ {
+  "id": "blades_dancing_knives",
+  "weapon": "blades",
+  "name_ko": "춤추는 단검",
+  "name_en": "Dancing Knives",
+  "effect": "기술 피해 +15%, 적 2명까지 튕김",
+  "rank2": "피해 +30%",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "special_power",
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "단검이 되돌아오지 않게 되어 백스탭 기회가 사라짐"
+ },
+ {
+  "id": "blades_sureshot_flurry",
+  "weapon": "blades",
+  "name_ko": "정밀 난사",
+  "name_en": "Sureshot Flurry",
+  "effect": "Ω 기술이 일직선 발사, 기술 사거리 +30%",
+  "rank2": "사거리 +50%",
+  "affects": [
+   "omega_special",
+   "special"
+  ],
+  "tags": [
+   "range"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "blades_rapid_onslaught",
+  "weapon": "blades",
+  "name_ko": "고속 맹습",
+  "name_en": "Rapid Onslaught",
+  "effect": "공격 속도 35% 증가",
+  "rank2": "45% 증가",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [
+   "demeter_weed_killer"
+  ],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "conflict_reason": "공격 속도 망치와 잡초 박멸은 동시 채용 불가 (위키 명시)"
+ },
+ {
+  "id": "blades_melting_sickle",
+  "weapon": "blades",
+  "name_ko": "녹이는 비수",
+  "name_en": "Melting Sickle",
+  "effect": "기술 타격마다 방어도에 +500 피해",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "armor_break"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "blades_skulking_onslaught",
+  "weapon": "blades",
+  "name_ko": "은밀한 맹습",
+  "name_en": "Skulking Onslaught",
+  "effect": "공격 배후 타격 시 피해 +150%",
+  "rank2": "+200%",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "backstab",
+   "attack_power"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "멜리노에 양상(배후 피해)과 곱연산 - 쌍검 핵심"
+ },
+ {
+  "id": "blades_reaper_knives",
+  "weapon": "blades",
+  "name_ko": "싹쓸이 단검",
+  "name_en": "Reaper Knives",
+  "effect": "기술 위력 +15, 범위 확대",
+  "rank2": "위력 +25",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "special_power",
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "blades_hidden_knives",
+  "weapon": "blades",
+  "name_ko": "감춰둔 단검",
+  "name_en": "Hidden Knives",
+  "effect": "기술 피해 +20%, Ω 기술이 단검 +3개 발사",
+  "rank2": "피해 +40%",
+  "affects": [
+   "special",
+   "omega_special"
+  ],
+  "tags": [
+   "special_power",
+   "omega_special"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "blades_final_slice",
+  "weapon": "blades",
+  "name_ko": "마무리 베기",
+  "name_en": "Final Slice",
+  "effect": "공격 마지막 타 범위 확대, 피해 +300%",
+  "rank2": "+400%",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power",
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "4연타 마지막이 원래 가장 셈 - 콤보 유지만 하면 큰 이득"
+ },
+ {
+  "id": "blades_wicked_onslaught",
+  "weapon": "blades",
+  "name_ko": "위력적 맹습",
+  "name_en": "Wicked Onslaught",
+  "effect": "공격 위력 +20",
+  "rank2": "위력 +30",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "blades_sudden_flurry",
+  "weapon": "blades",
+  "name_ko": "급속 난사",
+  "name_en": "Sudden Flurry",
+  "effect": "Ω 기술 시전 속도 40% 증가",
+  "rank2": "50% 증가",
+  "affects": [
+   "omega_special"
+  ],
+  "tags": [
+   "attack_speed",
+   "omega_special"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "blades_trick_knives",
+  "weapon": "blades",
+  "name_ko": "투척 단검",
+  "name_en": "Trick Knives",
+  "effect": "돌진 공격 시 기술을 부채꼴로 3번 동시 발사",
+  "affects": [
+   "dash",
+   "special"
+  ],
+  "tags": [
+   "special_power",
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "blades_morrigan"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "헤르메스 잰 발걸음과 궁합 좋음"
+ },
+ {
+  "id": "blades_phantom_etchings",
+  "weapon": "blades",
+  "name_ko": "유령 부각",
+  "name_en": "Phantom Etchings",
+  "effect": "삼연혈참 피해 +222",
+  "rank2": "+333",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "boss_dmg"
+  ],
+  "aspect_only": "blades_morrigan",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "blades_banshee_brand",
+  "weapon": "blades",
+  "name_ko": "밴시의 낙인",
+  "name_en": "Banshee Brand",
+  "effect": "삼연혈참이 33% 확률로 한 번 더 발동",
+  "rank2": "44%",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "boss_dmg"
+  ],
+  "aspect_only": "blades_morrigan",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "blades_sinister_pinion",
+  "weapon": "blades",
+  "name_ko": "불길한 깃털",
+  "name_en": "Sinister Pinion",
+  "effect": "기술 연속 타격 속도 +100%",
+  "rank2": "+150%",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "attack_speed"
+  ],
+  "aspect_only": "blades_morrigan",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "flames_hidden_helix",
+  "weapon": "flames",
+  "name_ko": "감춰둔 위성",
+  "name_en": "Hidden Helix",
+  "effect": "기술이 불꽃 +1개 생성",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "special_power"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "flames_eos"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "flames_clean_coil",
+  "weapon": "flames",
+  "name_ko": "간결한 궤도",
+  "name_en": "Clean Coil",
+  "effect": "Ω 기술 시전 20% 빨라지고 마력 -10 소모",
+  "affects": [
+   "omega_special",
+   "magick"
+  ],
+  "tags": [
+   "mana_cost_down",
+   "omega_special"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "횃불 최대 약점인 마력 부족을 직접 완화 (25 → 15)"
+ },
+ {
+  "id": "flames_furious_blaze",
+  "weapon": "flames",
+  "name_ko": "거센 불빛",
+  "name_en": "Furious Blaze",
+  "effect": "공격 시전 중 이동·발사 20% 빨라짐",
+  "rank2": "30%",
+  "affects": [
+   "attack",
+   "omega_attack"
+  ],
+  "tags": [
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "flames_supay"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "flames_melting_helix",
+  "weapon": "flames",
+  "name_ko": "녹이는 위성",
+  "name_en": "Melting Helix",
+  "effect": "기술이 방어도에 +100 피해",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "armor_break"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "flames_enduring_coil",
+  "weapon": "flames",
+  "name_ko": "안정적 궤도",
+  "name_en": "Enduring Coil",
+  "effect": "Ω 기술 지속시간 +2초",
+  "rank2": "+3초",
+  "affects": [
+   "omega_special"
+  ],
+  "tags": [
+   "omega_special",
+   "dot"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "5초 → 7초. 마력 대비 효율이 크게 오름"
+ },
+ {
+  "id": "flames_mega_blaze",
+  "weapon": "flames",
+  "name_ko": "가공할 불빛",
+  "name_en": "Mega Blaze",
+  "effect": "공격 사거리 +20%, 피해 +30%",
+  "rank2": "피해 +45%",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power",
+   "range"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "flames_dividing_blaze",
+  "weapon": "flames",
+  "name_ko": "나뉘는 불빛",
+  "name_en": "Dividing Blaze",
+  "effect": "공격이 적 첫 명중 시 2발로 분열",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "aoe",
+   "on_hit"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "flames_supay"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "flames_inverted_blaze",
+  "weapon": "flames",
+  "name_ko": "되돌이 불빛",
+  "name_en": "Inverted Blaze",
+  "effect": "공격이 +2초 잔류, 돌진 시 내게 돌아옴",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "flames_sudden_burst",
+  "weapon": "flames",
+  "name_ko": "급속 연발",
+  "name_en": "Sudden Burst",
+  "effect": "Ω 공격 시전 50% 빨라지고 마력 -1 소모",
+  "affects": [
+   "omega_attack",
+   "magick"
+  ],
+  "tags": [
+   "mana_cost_down",
+   "omega_attack",
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "flames_supay"
+  ],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "Ω 공격 5 → 4 마력. 'Ω 사용 시 발동' 은혜의 발동 횟수가 크게 늘어남"
+ },
+ {
+  "id": "flames_rising_helix",
+  "weapon": "flames",
+  "name_ko": "커지는 위성",
+  "name_en": "Rising Helix",
+  "effect": "기술이 시간에 비례해 커지고 피해 최대 +25%",
+  "rank2": "최대 +35%",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "special_power",
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "flames_supay"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "flames_whirling_helix",
+  "weapon": "flames",
+  "name_ko": "맴돌이 위성",
+  "name_en": "Whirling Helix",
+  "effect": "기술 불꽃이 20% 빠르게 공전",
+  "rank2": "30%",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "flames_leaden_blaze",
+  "weapon": "flames",
+  "name_ko": "납탄 불빛",
+  "name_en": "Leaden Blaze",
+  "effect": "공격이 적을 밀쳐내고 위력 +10",
+  "rank2": "위력 +15",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power",
+   "knockback"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "넉백이 붙어 원거리 무기의 생존에 도움"
+ },
+ {
+  "id": "flames_demonic_cell",
+  "weapon": "flames",
+  "name_ko": "악마의 동력",
+  "name_en": "Demonic Cell",
+  "effect": "질주 중 공격·기술 위력 +5",
+  "rank2": "위력 +8",
+  "affects": [
+   "attack",
+   "special"
+  ],
+  "tags": [
+   "sprint_damage",
+   "attack_power"
+  ],
+  "aspect_only": "flames_supay",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "axe_furious_whirlwind",
+  "weapon": "axe",
+  "name_ko": "거센 소용돌이",
+  "name_en": "Furious Whirlwind",
+  "effect": "Ω 공격 시전 빨라지고 사용 중 이동 50% 빨라짐",
+  "rank2": "이동 60%",
+  "affects": [
+   "omega_attack"
+  ],
+  "tags": [
+   "omega_attack",
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "axe_sudden_cleaver",
+  "weapon": "axe",
+  "name_ko": "급속 쪼개기",
+  "name_en": "Sudden Cleaver",
+  "effect": "Ω 기술 시전 25% 빨라짐",
+  "rank2": "30%",
+  "affects": [
+   "omega_special"
+  ],
+  "tags": [
+   "attack_speed",
+   "omega_special"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "axe_rapid_slash",
+  "weapon": "axe",
+  "name_ko": "고속 참격",
+  "name_en": "Rapid Slash",
+  "effect": "공격 속도 30% 증가",
+  "rank2": "40% 증가",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [
+   "demeter_weed_killer"
+  ],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "도끼의 최대 약점인 선딜을 완화 - 초보에게 특히 체감 큼",
+  "conflict_reason": "공격 속도 망치와 잡초 박멸은 동시 채용 불가 (위키 명시)"
+ },
+ {
+  "id": "axe_executioners_chop",
+  "weapon": "axe",
+  "name_ko": "처형인의 도끼",
+  "name_en": "Executioner's Chop",
+  "effect": "공격 마지막 타가 2번 나가지만 마력 20 소모",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "axe_nergal"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "axe_hell_splitter",
+  "weapon": "axe",
+  "name_ko": "지옥 가르기",
+  "name_en": "Hell Splitter",
+  "effect": "공격 위력 +300, 단 3연타가 내려찍기 하나로 축소",
+  "rank2": "위력 +400",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "axe_nergal"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "무브셋이 바뀜. 단발 피해 증폭 은혜(헤파이스토스)와 궁합, 타격 횟수 은혜와는 상극"
+ },
+ {
+  "id": "axe_seething_marauder",
+  "weapon": "axe",
+  "name_ko": "휩쓰는 맹공",
+  "name_en": "Seething Marauder",
+  "effect": "모든 공격이 주변에 +60 피해",
+  "rank2": "+80 피해",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "axe_psychic_whirlwind",
+  "weapon": "axe",
+  "name_ko": "심령 소용돌이",
+  "name_en": "Psychic Whirlwind",
+  "effect": "Ω 공격 중에 공격·기술을 자유롭게 사용 가능",
+  "affects": [
+   "omega_attack"
+  ],
+  "tags": [
+   "omega_attack",
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "회오리 도는 동안 무방비였던 문제를 해결 - 도끼 체감 1위급"
+ },
+ {
+  "id": "axe_melting_shredder",
+  "weapon": "axe",
+  "name_ko": "녹이는 분쇄",
+  "name_en": "Melting Shredder",
+  "effect": "기술 타격마다 방어도에 +300 피해",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "armor_break"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "axe_siege_shredder",
+  "weapon": "axe",
+  "name_ko": "공성 분쇄",
+  "name_en": "Siege Shredder",
+  "effect": "기술이 더 멀리 타격, 피해 +150%",
+  "rank2": "+200%",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "special_power",
+   "range"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "axe_giga_cleaver",
+  "weapon": "axe",
+  "name_ko": "강력 쪼개기",
+  "name_en": "Giga Cleaver",
+  "effect": "Ω 기술이 2번 연속 발동, 마력 +15 소모",
+  "affects": [
+   "omega_special"
+  ],
+  "tags": [
+   "omega_special",
+   "boss_dmg"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "Ω 기술 140x3이 2회 → 보스전 폭딜"
+ },
+ {
+  "id": "axe_dashing_heave",
+  "weapon": "axe",
+  "name_ko": "돌진 올려베기",
+  "name_en": "Dashing Heave",
+  "effect": "돌진 공격이 주변을 2번 타격",
+  "affects": [
+   "dash"
+  ],
+  "tags": [
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "axe_colossus_slash",
+  "weapon": "axe",
+  "name_ko": "굳건한 참격",
+  "name_en": "Colossus Slash",
+  "effect": "공격 위력 +10, 공격 중 받는 피해 -20%",
+  "rank2": "위력 +15",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power",
+   "armor"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "느린 무기의 피격 리스크를 직접 줄임 - 초보 생존 1순위"
+ },
+ {
+  "id": "axe_iron_core",
+  "weapon": "axe",
+  "name_ko": "강철 심지",
+  "name_en": "Iron Core",
+  "effect": "광포화 +2초 지속, 타격한 적 하나당 체력 +1 회복",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "heal"
+  ],
+  "aspect_only": "axe_nergal",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "axe_heaven_splitter",
+  "weapon": "axe",
+  "name_ko": "천상 가르기",
+  "name_en": "Heaven Splitter",
+  "effect": "공격이 2번 나가지만 5연타가 첫 동작만 남음",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power"
+  ],
+  "aspect_only": "axe_nergal",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ }
+]

@@ -1,0 +1,4057 @@
+[
+ {
+  "id": "zeus_heaven_strike",
+  "god": "zeus",
+  "name_ko": "천상 일격",
+  "name_en": "Heaven Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격이 암운 부여",
+  "rarity_scaling": "암운 피해 80/120/160/200",
+  "tags": [
+   "curse_apply:blitz",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "apollo_nova_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hera_sworn_strike",
+   "hestia_flame_strike",
+   "poseidon_wave_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_heaven_flourish",
+  "god": "zeus",
+  "name_ko": "천상 기예",
+  "name_en": "Heaven Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술이 암운 부여",
+  "rarity_scaling": "암운 피해 100/130/160/190",
+  "tags": [
+   "curse_apply:blitz",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "apollo_nova_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hera_sworn_flourish",
+   "hestia_flame_flourish",
+   "poseidon_wave_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_storm_ring",
+  "god": "zeus",
+  "name_ko": "폭풍 고리",
+  "name_en": "Storm Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진 안 적에게 번개 반복 낙뢰",
+  "rarity_scaling": "낙뢰 피해 25/30/35/40 (0.35초)",
+  "tags": [
+   "ring",
+   "aoe",
+   "dot"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "apollo_solar_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "hephaestus_anvil_ring",
+   "hera_engagement_ring",
+   "hestia_smolder_ring",
+   "poseidon_tidal_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_thunder_rush",
+  "god": "zeus",
+  "name_ko": "천둥 쇄도",
+  "name_en": "Thunder Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "질주/돌진 시 주변 적에 낙뢰",
+  "rarity_scaling": "낙뢰 피해 20/25/30/35 (0.35초)",
+  "tags": [
+   "sprint_damage"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "apollo_blinding_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hera_nexus_rush",
+   "hestia_heat_rush",
+   "poseidon_breaker_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_ionic_gain",
+  "god": "zeus",
+  "name_ko": "대전된 마력",
+  "name_en": "Ionic Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "방마다 마력 완전 회복 샘 등장",
+  "rarity_scaling": "재등장 10/9/8/7초",
+  "tags": [
+   "mana_regen",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "apollo_lucid_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hera_born_gain",
+   "hestia_cardio_gain",
+   "poseidon_flood_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_power_surge",
+  "god": "zeus",
+  "name_ko": "전압 급증",
+  "name_en": "Power Surge",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 동작 사용 시 무작위 적에 낙뢰",
+  "rarity_scaling": "낙뢰 피해 30/40/50/60",
+  "tags": [
+   "omega",
+   "per_hit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_divine_vengeance",
+  "god": "zeus",
+  "name_ko": "신성한 복수",
+  "name_en": "Divine Vengeance",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "피격 시 가해자에 낙뢰 반격",
+  "rarity_scaling": "피해 100 (최대 2/3/4/5회)",
+  "tags": [
+   "retaliate",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_lightning_lance",
+  "god": "zeus",
+  "name_ko": "번개 투창",
+  "name_en": "Lightning Lance",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "마법진 위치 조준, 범위 내 낙뢰",
+  "rarity_scaling": "낙뢰 피해 50/70/90/110",
+  "tags": [
+   "cast",
+   "ranged_cast",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:ring"
+     ]
+    }
+   ]
+  },
+  "conflicts": [
+   "hestia_glowing_coal",
+   "demeter_local_climate",
+   "duo_demeter_ares"
+  ],
+  "conflict_reason": "마법 변형 계열 - 동시 채용 불가 (위키 명시)",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_static_shock",
+  "god": "zeus",
+  "name_ko": "정전기 충격",
+  "name_en": "Static Shock",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "타격 시 4회 튕기는 연쇄 번개, 마력 50 점유",
+  "rarity_scaling": "연쇄 피해 10/15/20/25",
+  "tags": [
+   "chain",
+   "aoe",
+   "duo_key",
+   "per_hit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_double_strike",
+  "god": "zeus",
+  "name_ko": "후속 낙뢰",
+  "name_en": "Double Strike",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "낙뢰가 2회 발생할 확률",
+  "rarity_scaling": "추가 확률 +10/15/20/25%",
+  "tags": [],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish",
+      "zeus_storm_ring",
+      "zeus_thunder_rush",
+      "zeus_power_surge",
+      "zeus_divine_vengeance",
+      "zeus_lightning_lance"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_arc_flash",
+  "god": "zeus",
+  "name_ko": "전기 구이",
+  "name_en": "Arc Flash",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 피해가 암운 즉시 발동+강화",
+  "rarity_scaling": "Ω 암운 추가 피해 +30/40/50/60%",
+  "tags": [
+   "omega",
+   "curse_scale:blitz"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_electric_overload",
+  "god": "zeus",
+  "name_ko": "전력 과부하",
+  "name_en": "Electric Overload",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "연쇄 번개 피해 증가, 3회 더 튕김",
+  "rarity_scaling": "연쇄 피해 +20/30/40/50%",
+  "tags": [
+   "chain",
+   "aoe"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "zeus_static_shock"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_air_quality",
+  "god": "zeus",
+  "name_ko": "청정한 대기",
+  "name_en": "Air Quality",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "공기 5 이상이면 최소 피해 50 보장",
+  "infusion_req": {
+   "element": "air",
+   "count": 3
+  },
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_shocking_loss",
+  "god": "zeus",
+  "name_ko": "청천벽력",
+  "name_en": "Shocking Loss",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "첫 피해 시 25% 확률로 적 즉사",
+  "tags": [
+   "boss_dmg"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish",
+      "zeus_storm_ring",
+      "zeus_thunder_rush",
+      "zeus_ionic_gain"
+     ]
+    },
+    {
+     "any": [
+      "zeus_static_shock",
+      "zeus_power_surge",
+      "zeus_lightning_lance",
+      "zeus_divine_vengeance"
+     ]
+    },
+    {
+     "any": [
+      "zeus_arc_flash",
+      "zeus_double_strike",
+      "zeus_electric_overload"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_flame_strike",
+  "god": "hestia",
+  "name_ko": "화염 일격",
+  "name_en": "Flame Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격이 잔불 부여",
+  "rarity_scaling": "잔불 피해 30/45/60/75",
+  "tags": [
+   "curse_apply:scorch",
+   "dot",
+   "beginner_safe",
+   "per_hit"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "apollo_nova_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hera_sworn_strike",
+   "poseidon_wave_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_flame_flourish",
+  "god": "hestia",
+  "name_ko": "화염 기예",
+  "name_en": "Flame Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술이 잔불 부여",
+  "rarity_scaling": "잔불 피해 35/53/70/88",
+  "tags": [
+   "curse_apply:scorch",
+   "dot",
+   "beginner_safe",
+   "per_hit"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "apollo_nova_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hera_sworn_flourish",
+   "poseidon_wave_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_smolder_ring",
+  "god": "hestia",
+  "name_ko": "염화 고리",
+  "name_en": "Smolder Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진 안 적에 잔불 반복 부여",
+  "rarity_scaling": "잔불 피해 40/60/80/100 (1초)",
+  "tags": [
+   "ring",
+   "curse_apply:scorch",
+   "dot",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "apollo_solar_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "hephaestus_anvil_ring",
+   "hera_engagement_ring",
+   "poseidon_tidal_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_heat_rush",
+  "god": "hestia",
+  "name_ko": "열기 쇄도",
+  "name_en": "Heat Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "질주 시 불씨 자국, 잔불 피해 1로 감소",
+  "rarity_scaling": "자국 피해 10/15/20/25 (0.25초)",
+  "tags": [
+   "sprint_damage",
+   "armor"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "apollo_blinding_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hera_nexus_rush",
+   "poseidon_breaker_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_cardio_gain",
+  "god": "hestia",
+  "name_ko": "따스한 마력",
+  "name_en": "Cardio Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "공격/기술 명중 시 마력 회복",
+  "rarity_scaling": "마력 4/6/8/10",
+  "tags": [
+   "mana_regen",
+   "beginner_safe",
+   "per_hit"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "apollo_lucid_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hera_born_gain",
+   "poseidon_flood_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_highly_flammable",
+  "god": "hestia",
+  "name_ko": "불쏘시개",
+  "name_en": "Highly Flammable",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "첫 잔불 부여 시 추가 잔불",
+  "rarity_scaling": "+80/120/160/200",
+  "tags": [
+   "curse_scale:scorch",
+   "dot",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hestia_flame_strike",
+      "hestia_flame_flourish",
+      "hestia_smolder_ring"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_glowing_coal",
+  "god": "hestia",
+  "name_ko": "달아오른 숯",
+  "name_en": "Glowing Coal",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "마법 조준 화염구, 착탄점에 마법진",
+  "rarity_scaling": "폭발 피해 60/90/120/150",
+  "tags": [
+   "cast",
+   "ranged_cast",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:ring"
+     ]
+    }
+   ]
+  },
+  "conflicts": [
+   "zeus_lightning_lance",
+   "demeter_local_climate",
+   "duo_demeter_ares"
+  ],
+  "conflict_reason": "마법 변형 계열 - 동시 채용 불가 (위키 명시)",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "위키 전제조건 칸 비어있음. 링 은혜 필요로 추정 - 검증 필요"
+ },
+ {
+  "id": "hestia_controlled_burn",
+  "god": "hestia",
+  "name_ko": "화력 보강",
+  "name_en": "Controlled Burn",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 기술이 화염구 발사, 마력 +10 소모",
+  "rarity_scaling": "폭발 피해 100/150/200/250",
+  "tags": [
+   "omega_special",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_flash_fry",
+  "god": "hestia",
+  "name_ko": "천연가스",
+  "name_en": "Flash Fry",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "적 처치 시 폭발로 주변 피해",
+  "rarity_scaling": "폭발 피해 60/90/120/150",
+  "tags": [
+   "aoe",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_hot_pot",
+  "god": "hestia",
+  "name_ko": "끓는 냄비",
+  "name_en": "Hot Pot",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "회피 확률, 잔불 적 상대로 2배",
+  "rarity_scaling": "회피 +4/5/6/7%",
+  "tags": [
+   "armor",
+   "curse_scale:scorch"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hestia_flame_strike",
+      "hestia_flame_flourish",
+      "hestia_smolder_ring"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_pyro_technique",
+  "god": "hestia",
+  "name_ko": "완전 연소",
+  "name_en": "Pyro Technique",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "잔불 피해 속도 증가",
+  "rarity_scaling": "+50/75/100/125%",
+  "tags": [
+   "curse_scale:scorch",
+   "dot"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hestia_flame_strike",
+      "hestia_flame_flourish",
+      "hestia_smolder_ring"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_snuffed_candle",
+  "god": "hestia",
+  "name_ko": "꺼진 촛불",
+  "name_en": "Snuffed Candle",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "고립된 적에게 추가 피해",
+  "rarity_scaling": "+15/18/21/24%",
+  "tags": [
+   "boss_dmg"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_slow_cooker",
+  "god": "hestia",
+  "name_ko": "솥단지 예열",
+  "name_en": "Slow Cooker",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "불 은혜 수만큼 공격/기술 위력 증가",
+  "infusion_req": {
+   "element": "fire",
+   "count": 2
+  },
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_fire_away",
+  "god": "hestia",
+  "name_ko": "불길 장벽",
+  "name_en": "Fire Away",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "마법진이 적 원거리탄 파괴+잔불 부여",
+  "rarity_scaling": "잔불 400 (3초)",
+  "tags": [
+   "curse_apply:scorch",
+   "armor"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hestia_smolder_ring",
+      "hestia_flame_strike",
+      "hestia_flame_flourish"
+     ]
+    },
+    {
+     "any": [
+      "hestia_flash_fry",
+      "hestia_hot_pot",
+      "hestia_pyro_technique",
+      "hestia_highly_flammable"
+     ]
+    },
+    {
+     "any": [
+      "hestia_glowing_coal",
+      "hestia_controlled_burn"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_wave_strike",
+  "god": "poseidon",
+  "name_ko": "파도 일격",
+  "name_en": "Wave Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격이 물보라로 적을 밀쳐냄",
+  "rarity_scaling": "물보라 피해 20/25/30/35",
+  "tags": [
+   "splash",
+   "knockback",
+   "beginner_safe",
+   "per_hit"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "apollo_nova_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hera_sworn_strike",
+   "hestia_flame_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_wave_flourish",
+  "god": "poseidon",
+  "name_ko": "파도 기예",
+  "name_en": "Wave Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술이 물보라로 적을 밀쳐냄",
+  "rarity_scaling": "물보라 피해 25/30/35/40",
+  "tags": [
+   "splash",
+   "knockback",
+   "beginner_safe",
+   "per_hit"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "apollo_nova_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hera_sworn_flourish",
+   "hestia_flame_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_tidal_ring",
+  "god": "poseidon",
+  "name_ko": "물결 고리",
+  "name_en": "Tidal Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진이 즉시 강한 물보라+침수 부여",
+  "rarity_scaling": "물보라 피해 60/90/120/150",
+  "tags": [
+   "ring",
+   "splash",
+   "curse_apply:froth",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "apollo_solar_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "demeter_local_climate",
+   "duo_demeter_ares",
+   "hephaestus_anvil_ring",
+   "hera_engagement_ring",
+   "hestia_smolder_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_breaker_rush",
+  "god": "poseidon",
+  "name_ko": "격랑 쇄도",
+  "name_en": "Breaker Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "질주 중 첫 충돌 적에게 폭발+넉백",
+  "rarity_scaling": "충격 피해 80/100/120/140",
+  "tags": [
+   "sprint_damage",
+   "knockback"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "apollo_blinding_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hera_nexus_rush",
+   "hestia_heat_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_flood_gain",
+  "god": "poseidon",
+  "name_ko": "넘치는 마력",
+  "name_en": "Flood Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "Ω 동작 후 잠시 쓴 마력이 전부 회복",
+  "rarity_scaling": "지속 4/5/6/7초 (8초 재사용)",
+  "tags": [
+   "mana_regen",
+   "omega"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "apollo_lucid_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hera_born_gain",
+   "hestia_cardio_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_hydraulic_might",
+  "god": "poseidon",
+  "name_ko": "세찬 물줄기",
+  "name_en": "Hydraulic Might",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "전투 시작 10초간 공격/기술 강화",
+  "rarity_scaling": "+100/133/166/200%",
+  "tags": [
+   "boss_dmg"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_buried_treasure",
+  "god": "poseidon",
+  "name_ko": "바다의 보배",
+  "name_en": "Buried Treasure",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "소소한 발견물 가치 상승, 즉시 자원 획득",
+  "rarity_scaling": "보상 +50/75/100/125%",
+  "tags": [
+   "meta",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_high_surf",
+  "god": "poseidon",
+  "name_ko": "거친 풍랑",
+  "name_en": "High Surf",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "적이 공격 시작할 때 물보라 반격, 마력 30 점유",
+  "rarity_scaling": "물보라 피해 40/60/80/100",
+  "tags": [
+   "splash",
+   "retaliate",
+   "aoe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_sea_star",
+  "god": "poseidon",
+  "name_ko": "물밑 보답",
+  "name_en": "Sea Star",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "은혜 외 보상 획득 시 복제 확률",
+  "rarity_scaling": "복제 확률 25/30/35/40%",
+  "tags": [
+   "meta",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_slippery_slope",
+  "god": "poseidon",
+  "name_ko": "미끄러운 경사",
+  "name_en": "Slippery Slope",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "물보라가 침수 부여, 침수 피해 증가",
+  "rarity_scaling": "침수 피해 +20/50/80/110%",
+  "tags": [
+   "curse_apply:froth",
+   "curse_scale:froth",
+   "splash",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "poseidon_wave_strike",
+      "poseidon_wave_flourish"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_geyser_spout",
+  "god": "poseidon",
+  "name_ko": "지하수 분출",
+  "name_en": "Geyser Spout",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 마법 위력 증가 + 넉백",
+  "rarity_scaling": "Ω 마법 위력 +150/200/250/300",
+  "tags": [
+   "omega_cast",
+   "knockback"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:ring"
+     ]
+    }
+   ]
+  },
+  "conflicts": [
+   "apollo_prominence_flare",
+   "ares_meat_grinder"
+  ],
+  "conflict_reason": "Ω 마법 변형 - 동시 채용 불가 (위키 명시)",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_ocean_swell",
+  "god": "poseidon",
+  "name_ko": "바다 너울",
+  "name_en": "Ocean Swell",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 동작이 전방 광역 파도 발사, 마력 +5",
+  "rarity_scaling": "파도 피해 40/60/80/100",
+  "tags": [
+   "omega",
+   "aoe",
+   "knockback",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_water_fitness",
+  "god": "poseidon",
+  "name_ko": "흐르는 활력",
+  "name_en": "Water Fitness",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "물 은혜 수만큼 최대 체력 증가",
+  "infusion_req": {
+   "element": "water",
+   "count": 2
+  },
+  "tags": [
+   "max_hp"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_king_tide",
+  "god": "poseidon",
+  "name_ko": "지진 해일",
+  "name_en": "King Tide",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "물보라 범위 확대, 수호자에 큰 추가 피해",
+  "rarity_scaling": "수호자 대상 +200%",
+  "tags": [
+   "splash",
+   "boss_dmg"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "poseidon_wave_strike",
+      "poseidon_wave_flourish"
+     ]
+    },
+    {
+     "any": [
+      "poseidon_breaker_rush",
+      "poseidon_flood_gain",
+      "poseidon_geyser_spout"
+     ]
+    },
+    {
+     "any": [
+      "poseidon_hydraulic_might",
+      "poseidon_ocean_swell",
+      "poseidon_slippery_slope",
+      "poseidon_high_surf"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "demeter_ice_strike",
+  "god": "demeter",
+  "name_ko": "얼음 일격",
+  "name_en": "Ice Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격 피해 증가 + 동결 부여",
+  "rarity_scaling": "공격 피해 +30/45/60/75%",
+  "tags": [
+   "curse_apply:freeze",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "apollo_nova_strike",
+   "ares_vicious_strike",
+   "hephaestus_volcanic_strike",
+   "hera_sworn_strike",
+   "hestia_flame_strike",
+   "poseidon_wave_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "demeter_ice_flourish",
+  "god": "demeter",
+  "name_ko": "얼음 기예",
+  "name_en": "Ice Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술 피해 증가 + 동결 부여",
+  "rarity_scaling": "기술 피해 +40/60/80/100%",
+  "tags": [
+   "curse_apply:freeze",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "apollo_nova_flourish",
+   "ares_vicious_flourish",
+   "hephaestus_volcanic_flourish",
+   "hera_sworn_flourish",
+   "hestia_flame_flourish",
+   "poseidon_wave_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "demeter_arctic_ring",
+  "god": "demeter",
+  "name_ko": "설한 고리",
+  "name_en": "Arctic Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진이 동결 부여 + 반복 피해",
+  "rarity_scaling": "피해 10/15/20/25 (0.5초)",
+  "tags": [
+   "ring",
+   "curse_apply:freeze",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "apollo_solar_ring",
+   "ares_sword_ring",
+   "hephaestus_anvil_ring",
+   "hera_engagement_ring",
+   "hestia_smolder_ring",
+   "poseidon_tidal_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "demeter_frigid_rush",
+  "god": "demeter",
+  "name_ko": "한풍 쇄도",
+  "name_en": "Frigid Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "질주 시 선풍 생성, 멈춰도 지속",
+  "rarity_scaling": "선풍 피해 4/6/8/10 (0.25초)",
+  "tags": [
+   "sprint_damage",
+   "curse_apply:gust",
+   "aoe",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "apollo_blinding_rush",
+   "ares_stabbing_rush",
+   "hephaestus_smithy_rush",
+   "hera_nexus_rush",
+   "hestia_heat_rush",
+   "poseidon_breaker_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "demeter_tranquil_gain",
+  "god": "demeter",
+  "name_ko": "차분한 마력",
+  "name_en": "Tranquil Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "0.5초 정지 시 마력 급속 회복",
+  "rarity_scaling": "마력 50/75/100/125% (1초)",
+  "tags": [
+   "mana_regen"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "apollo_lucid_gain",
+   "ares_grisly_gain",
+   "hephaestus_tough_gain",
+   "hera_born_gain",
+   "hestia_cardio_gain",
+   "poseidon_flood_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "demeter_arctic_gale",
+  "god": "demeter",
+  "name_ko": "혹한 강풍",
+  "name_en": "Arctic Gale",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "마법진 위치에 선풍 생성",
+  "rarity_scaling": "선풍 피해 4/8/12/16 (0.25초)",
+  "tags": [
+   "cast",
+   "curse_apply:gust",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "demeter_plentiful_forage",
+  "god": "demeter",
+  "name_ko": "풍족한 채집",
+  "name_en": "Plentiful Forage",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "자원 채집 시 체력 회복",
+  "rarity_scaling": "체력 10/12/14/16%",
+  "tags": [
+   "heal",
+   "duo_key",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "demeter_steady_growth",
+  "god": "demeter",
+  "name_ko": "꾸준한 성장",
+  "name_en": "Steady Growth",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "일정 방 클리어마다 은혜 희귀도 상승",
+  "rarity_scaling": "6/5/4/3방마다",
+  "tags": [
+   "duo_key",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "전제조건: 영웅 등급이 아닌 은혜 1개 이상 보유"
+ },
+ {
+  "id": "demeter_snow_queen",
+  "god": "demeter",
+  "name_ko": "방한 외투",
+  "name_en": "Snow Queen",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "지역마다 피해 1회 차단 보호막, 마력 점유",
+  "rarity_scaling": "마력 점유 25/20/15/10",
+  "tags": [
+   "armor"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "demeter_weed_killer",
+  "god": "demeter",
+  "name_ko": "잡초 박멸",
+  "name_en": "Weed Killer",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 공격 피해 증가, 마력 +10 소모",
+  "rarity_scaling": "Ω 공격 +50/75/100/125%",
+  "tags": [
+   "omega_attack"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:strike"
+     ]
+    }
+   ]
+  },
+  "conflicts": [
+   "staff_rapid_thrasher",
+   "blades_rapid_onslaught",
+   "axe_rapid_slash"
+  ],
+  "conflict_reason": "공격 속도 망치와 잡초 박멸은 동시 채용 불가 (위키 명시)",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "demeter_local_climate",
+  "god": "demeter",
+  "name_ko": "현지 기후",
+  "name_en": "Local Climate",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 마법 피해 증가, 진 안에 있으면 2배",
+  "rarity_scaling": "Ω 마법 +20/30/40/50%",
+  "tags": [
+   "omega_cast"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:ring"
+     ]
+    }
+   ]
+  },
+  "conflicts": [
+   "zeus_lightning_lance",
+   "hestia_glowing_coal",
+   "duo_demeter_ares",
+   "poseidon_tidal_ring"
+  ],
+  "conflict_reason": "마법 변형 계열 - 동시 채용 불가 (위키 명시)",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "조수 고리(Tidal Ring) 제외"
+ },
+ {
+  "id": "demeter_cold_storage",
+  "god": "demeter",
+  "name_ko": "냉장 보관",
+  "name_en": "Cold Storage",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "동결 지속시간 증가",
+  "rarity_scaling": "+2/3/4/5초",
+  "tags": [
+   "curse_scale:freeze"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "demeter_ice_strike",
+      "demeter_ice_flourish",
+      "demeter_arctic_ring"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "demeter_frosty_veneer",
+  "god": "demeter",
+  "name_ko": "쌀쌀맞은 외관",
+  "name_en": "Frosty Veneer",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "물 6 이상 시 20 이상 피해를 감소",
+  "infusion_req": {
+   "element": "water",
+   "count": 4
+  },
+  "tags": [
+   "armor"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "demeter_winter_harvest",
+  "god": "demeter",
+  "name_ko": "겨울 추수",
+  "name_en": "Winter Harvest",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "동결 적이 체력 10%에서 산산조각, 광역 피해",
+  "rarity_scaling": "파열 피해 100",
+  "tags": [
+   "curse_scale:freeze",
+   "aoe",
+   "boss_dmg"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "demeter_ice_strike",
+      "demeter_ice_flourish",
+      "demeter_arctic_ring"
+     ]
+    },
+    {
+     "any": [
+      "demeter_plentiful_forage",
+      "demeter_snow_queen",
+      "demeter_steady_growth"
+     ]
+    },
+    {
+     "any": [
+      "demeter_weed_killer",
+      "demeter_cold_storage",
+      "demeter_local_climate"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_nova_strike",
+  "god": "apollo",
+  "name_ko": "광휘 일격",
+  "name_en": "Nova Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격 피해 증가 + 범위 확대",
+  "rarity_scaling": "공격 피해 +40/60/80/100%",
+  "tags": [
+   "aoe",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hera_sworn_strike",
+   "hestia_flame_strike",
+   "poseidon_wave_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_nova_flourish",
+  "god": "apollo",
+  "name_ko": "광휘 기예",
+  "name_en": "Nova Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술 피해 증가 + 범위 확대",
+  "rarity_scaling": "기술 피해 +60/80/100/120%",
+  "tags": [
+   "aoe",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hera_sworn_flourish",
+   "hestia_flame_flourish",
+   "poseidon_wave_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_solar_ring",
+  "god": "apollo",
+  "name_ko": "태양 고리",
+  "name_en": "Solar Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진이 실명 부여 + 소멸 시 폭발",
+  "rarity_scaling": "피해 80/120/160/200",
+  "tags": [
+   "ring",
+   "curse_apply:daze",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "hephaestus_anvil_ring",
+   "hera_engagement_ring",
+   "hestia_smolder_ring",
+   "poseidon_tidal_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_blinding_rush",
+  "god": "apollo",
+  "name_ko": "섬광 쇄도",
+  "name_en": "Blinding Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "질주 속도 증가 + 주변 적 실명",
+  "rarity_scaling": "질주 속도 +15/20/25/30%",
+  "tags": [
+   "curse_apply:daze",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hera_nexus_rush",
+   "hestia_heat_rush",
+   "poseidon_breaker_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_lucid_gain",
+  "god": "apollo",
+  "name_ko": "영롱한 마력",
+  "name_en": "Lucid Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "마법진 소멸 시 마력 회복",
+  "rarity_scaling": "마력 40/60/80/100",
+  "tags": [
+   "mana_regen",
+   "cast",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hera_born_gain",
+   "hestia_cardio_gain",
+   "poseidon_flood_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_light_smite",
+  "god": "apollo",
+  "name_ko": "빛살 강타",
+  "name_en": "Light Smite",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "피격 시 반격 피해 + 주변 실명",
+  "rarity_scaling": "반격 피해 50/75/100/125",
+  "tags": [
+   "retaliate",
+   "curse_apply:daze",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_perfect_image",
+  "god": "apollo",
+  "name_ko": "완벽한 매무새",
+  "name_en": "Perfect Image",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "피격 전까지 피해 증가, 15초 무피격 시 회복",
+  "rarity_scaling": "+10/15/20/25%",
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_dazzling_display",
+  "god": "apollo",
+  "name_ko": "현란한 솜씨",
+  "name_en": "Dazzling Display",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "공격이 확률적으로 실명 부여",
+  "rarity_scaling": "실명 확률 +10/15/20/25%",
+  "tags": [
+   "curse_apply:daze",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "apollo_nova_strike"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_back_burner",
+  "god": "apollo",
+  "name_ko": "빛나는 등판",
+  "name_en": "Back Burner",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "실명된 적을 후방 공격 시 추가 피해",
+  "rarity_scaling": "후방 피해 +50/75/100/125%",
+  "tags": [
+   "curse_scale:daze",
+   "backstab"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "apollo_solar_ring",
+      "apollo_blinding_rush",
+      "apollo_dazzling_display",
+      "apollo_light_smite"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_prominence_flare",
+  "god": "apollo",
+  "name_ko": "햇살 방사",
+  "name_en": "Prominence Flare",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 마법 소멸 후 2초간 그 자리 연속 피해",
+  "rarity_scaling": "피해 10/12/14/16 (0.13초)",
+  "tags": [
+   "omega_cast",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:ring"
+     ]
+    }
+   ]
+  },
+  "conflicts": [
+   "poseidon_geyser_spout"
+  ],
+  "conflict_reason": "Ω 마법 변형 - 동시 채용 불가 (위키 명시)",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_super_nova",
+  "god": "apollo",
+  "name_ko": "초신성",
+  "name_en": "Super Nova",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "마법진이 소멸까지 계속 커짐",
+  "rarity_scaling": "최대 크기 40/50/60/70%",
+  "tags": [
+   "cast_size",
+   "cast"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_extra_dose",
+  "god": "apollo",
+  "name_ko": "추가 처방",
+  "name_en": "Extra Dose",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "공격이 2회 적중할 확률",
+  "rarity_scaling": "확률 +5/8/10/13%",
+  "tags": [
+   "attack_speed",
+   "per_hit"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:strike"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_self_healing",
+  "god": "apollo",
+  "name_ko": "자가 치유",
+  "name_en": "Self Healing",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "불 3 이상 시 피격 피해의 일부 회복",
+  "infusion_req": {
+   "element": "fire",
+   "count": 2
+  },
+  "tags": [
+   "heal"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "apollo_exceptional_talent",
+  "god": "apollo",
+  "name_ko": "비상한 재능",
+  "name_en": "Exceptional Talent",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "Ω 공격/기술이 2회 발동, 마력 +20",
+  "tags": [
+   "omega_attack",
+   "omega_special",
+   "omega"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "apollo_nova_strike",
+      "apollo_nova_flourish"
+     ]
+    },
+    {
+     "any": [
+      "apollo_solar_ring",
+      "apollo_blinding_rush",
+      "apollo_lucid_gain"
+     ]
+    },
+    {
+     "any": [
+      "apollo_extra_dose",
+      "apollo_super_nova",
+      "apollo_back_burner",
+      "apollo_prominence_flare"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_flutter_strike",
+  "god": "aphrodite",
+  "name_ko": "애정 일격",
+  "name_en": "Flutter Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "근접한 적에게 공격 피해 대폭 증가",
+  "rarity_scaling": "근접 피해 +80/100/120/140%",
+  "tags": [
+   "close_up",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "apollo_nova_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hera_sworn_strike",
+   "hestia_flame_strike",
+   "poseidon_wave_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_flutter_flourish",
+  "god": "aphrodite",
+  "name_ko": "애정 기예",
+  "name_en": "Flutter Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "근접한 적에게 기술 피해 대폭 증가",
+  "rarity_scaling": "근접 피해 +100/150/200/250%",
+  "tags": [
+   "close_up",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "apollo_nova_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hera_sworn_flourish",
+   "hestia_flame_flourish",
+   "poseidon_wave_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_rapture_ring",
+  "god": "aphrodite",
+  "name_ko": "황홀 고리",
+  "name_en": "Rapture Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진이 약화 부여 + 적을 중앙으로 끌어당김",
+  "rarity_scaling": "피해 10/15/20/25 (0.85초)",
+  "tags": [
+   "ring",
+   "curse_apply:weak",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "apollo_solar_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "hephaestus_anvil_ring",
+   "hera_engagement_ring",
+   "hestia_smolder_ring",
+   "poseidon_tidal_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_passion_rush",
+  "god": "aphrodite",
+  "name_ko": "열정 쇄도",
+  "name_en": "Passion Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "질주 중·정지 시 주변 피해 + 약화",
+  "rarity_scaling": "폭발 피해 20/30/40/50",
+  "tags": [
+   "sprint_damage",
+   "curse_apply:weak",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "apollo_blinding_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hera_nexus_rush",
+   "hestia_heat_rush",
+   "poseidon_breaker_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_glamour_gain",
+  "god": "aphrodite",
+  "name_ko": "매혹적 마력",
+  "name_en": "Glamour Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "근처 적 자동 약화 + 마력 서서히 회복",
+  "rarity_scaling": "마력 6/8/10/12 (1초)",
+  "tags": [
+   "mana_regen",
+   "curse_apply:weak",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "apollo_lucid_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hera_born_gain",
+   "hestia_cardio_gain",
+   "poseidon_flood_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_shameless_attitude",
+  "god": "aphrodite",
+  "name_ko": "두꺼운 상판",
+  "name_en": "Shameless Attitude",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "피해 증가, 체력 80% 이상이면 2배",
+  "rarity_scaling": "+5/7/9/11%",
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_spiritual_affirmation",
+  "god": "aphrodite",
+  "name_ko": "정신력 확증",
+  "name_en": "Spiritual Affirmation",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "이번 밤 체력·마력 획득량 증가",
+  "rarity_scaling": "+15/20/25/30%",
+  "tags": [
+   "max_hp",
+   "max_mana",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_healthy_rebound",
+  "god": "aphrodite",
+  "name_ko": "기운찬 재기",
+  "name_en": "Healthy Rebound",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "지역 탈출 시 체력 손실 적으면 완전 회복",
+  "rarity_scaling": "기준 체력 80/70/60/50%",
+  "tags": [
+   "heal",
+   "duo_key",
+   "beginner_safe"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "aphrodite_shameless_attitude"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_broken_resolve",
+  "god": "aphrodite",
+  "name_ko": "무너진 결심",
+  "name_en": "Broken Resolve",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "약화 효과 강화",
+  "rarity_scaling": "피해 감소 +10/12/14/16%",
+  "tags": [
+   "curse_scale:weak",
+   "armor"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "aphrodite_rapture_ring",
+      "aphrodite_passion_rush",
+      "aphrodite_glamour_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_sweet_surrender",
+  "god": "aphrodite",
+  "name_ko": "달콤한 항복",
+  "name_en": "Sweet Surrender",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "약화된 적이 받는 피해 증가",
+  "rarity_scaling": "+10/15/20/25%",
+  "tags": [
+   "curse_scale:weak"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "aphrodite_rapture_ring",
+      "aphrodite_passion_rush",
+      "aphrodite_glamour_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_heart_breaker",
+  "god": "aphrodite",
+  "name_ko": "실연의 아픔",
+  "name_en": "Heart Breaker",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "마력 40 사용마다 연심 생성",
+  "rarity_scaling": "연심 피해 80/100/120/140",
+  "tags": [
+   "omega",
+   "aoe",
+   "duo_key",
+   "per_hit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_secret_crush",
+  "god": "aphrodite",
+  "name_ko": "은밀한 호감",
+  "name_en": "Secret Crush",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "공격 위력 증가, 마력 20 점유",
+  "rarity_scaling": "위력 +5/7/9/11",
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_wispy_wiles",
+  "god": "aphrodite",
+  "name_ko": "무형의 운무",
+  "name_en": "Wispy Wiles",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "공기 은혜 수만큼 회피 확률",
+  "infusion_req": {
+   "element": "air",
+   "count": 2
+  },
+  "tags": [
+   "armor"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite_nervous_wreck",
+  "god": "aphrodite",
+  "name_ko": "신경 쇠약",
+  "name_en": "Nervous Wreck",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "약화 부여 시 다른 신 저주 3종도 무작위 부여",
+  "tags": [
+   "curse_scale:weak",
+   "aoe"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "aphrodite_broken_resolve",
+      "aphrodite_sweet_surrender",
+      "aphrodite_shameless_attitude",
+      "aphrodite_secret_crush"
+     ]
+    },
+    {
+     "any": [
+      "aphrodite_rapture_ring",
+      "aphrodite_passion_rush",
+      "aphrodite_glamour_gain"
+     ]
+    },
+    {
+     "any": [
+      "aphrodite_flutter_strike",
+      "aphrodite_flutter_flourish"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_volcanic_strike",
+  "god": "hephaestus",
+  "name_ko": "화산 일격",
+  "name_en": "Volcanic Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격이 주기적으로 400 광역 폭발",
+  "rarity_scaling": "재충전 12/10/8/6초",
+  "tags": [
+   "blast",
+   "aoe",
+   "beginner_safe",
+   "cooldown_burst"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "apollo_nova_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hera_sworn_strike",
+   "hestia_flame_strike",
+   "poseidon_wave_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_volcanic_flourish",
+  "god": "hephaestus",
+  "name_ko": "화산 기예",
+  "name_en": "Volcanic Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술이 주기적으로 500 광역 폭발",
+  "rarity_scaling": "재충전 15/13/11/9초",
+  "tags": [
+   "blast",
+   "aoe",
+   "beginner_safe",
+   "cooldown_burst"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "apollo_nova_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hera_sworn_flourish",
+   "hestia_flame_flourish",
+   "poseidon_wave_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_anvil_ring",
+  "god": "hephaestus",
+  "name_ko": "모루 고리",
+  "name_en": "Anvil Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진이 3회 연속 큰 피해",
+  "rarity_scaling": "피해 60/70/80/90 (1초)",
+  "tags": [
+   "ring",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "apollo_solar_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "hera_engagement_ring",
+   "hestia_smolder_ring",
+   "poseidon_tidal_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_smithy_rush",
+  "god": "hephaestus",
+  "name_ko": "단철 쇄도",
+  "name_en": "Smithy Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "돌진 후 근처 적에게 200 폭발",
+  "rarity_scaling": "재충전 10/9/8/7초",
+  "tags": [
+   "blast",
+   "sprint_damage",
+   "aoe",
+   "cooldown_burst"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "apollo_blinding_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hera_nexus_rush",
+   "hestia_heat_rush",
+   "poseidon_breaker_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_tough_gain",
+  "god": "hephaestus",
+  "name_ko": "강고한 마력",
+  "name_en": "Tough Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "피격 피해 감소 + 마력 150 회복",
+  "rarity_scaling": "피해 -1/-2/-3/-4",
+  "tags": [
+   "armor",
+   "mana_regen",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "apollo_lucid_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hera_born_gain",
+   "hestia_cardio_gain",
+   "poseidon_flood_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_grand_caldera",
+  "god": "hephaestus",
+  "name_ko": "거대 분화구",
+  "name_en": "Grand Caldera",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "폭발 피해·크기 증가 + 연쇄 폭발 다수",
+  "rarity_scaling": "추가 피해 +75/100/125/150",
+  "tags": [
+   "blast",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish",
+      "hephaestus_smithy_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_molten_touch",
+  "god": "hephaestus",
+  "name_ko": "융해의 손길",
+  "name_en": "Molten Touch",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "방어구에 추가 피해",
+  "rarity_scaling": "+40/60/80/100%",
+  "tags": [
+   "boss_dmg",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_heavy_metal",
+  "god": "hephaestus",
+  "name_ko": "중금속",
+  "name_en": "Heavy Metal",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "보유 방어도 20%만큼 무기 피해 증가",
+  "rarity_scaling": "방어도 +50/75/100/125",
+  "tags": [
+   "armor",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_trusty_shield",
+  "god": "hephaestus",
+  "name_ko": "무쇠 가죽",
+  "name_en": "Trusty Shield",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "지역 진입마다 방어도 획득, 마력 30 점유",
+  "rarity_scaling": "방어도 +10/15/20/25",
+  "tags": [
+   "armor",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_security_system",
+  "god": "hephaestus",
+  "name_ko": "방호 체계",
+  "name_en": "Security System",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "전투 시작 시 7초간 방어도",
+  "rarity_scaling": "방어도 75/100/125/150",
+  "tags": [
+   "armor",
+   "duo_key",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_uncanny_fortitude",
+  "god": "hephaestus",
+  "name_ko": "초자연적 맷집",
+  "name_en": "Uncanny Fortitude",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "최대 마력에 비례해 최대 체력 증가",
+  "rarity_scaling": "+20/30/40/50%",
+  "tags": [
+   "max_hp",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_furnace_blast",
+  "god": "hephaestus",
+  "name_ko": "용광로 폭발",
+  "name_en": "Furnace Blast",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "폭발이 발열 부여 - 적 받는 피해 증가",
+  "rarity_scaling": "발열 +15/19/25/26%",
+  "tags": [
+   "curse_apply:glow",
+   "blast",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish",
+      "hephaestus_smithy_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_martial_art",
+  "god": "hephaestus",
+  "name_ko": "굳센 무예",
+  "name_en": "Martial Art",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "대지 은혜 수만큼 공격/기술 피해 증가",
+  "infusion_req": {
+   "element": "earth",
+   "count": 2
+  },
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_premium_service",
+  "god": "hephaestus",
+  "name_ko": "맞춤 개조",
+  "name_en": "Premium Service",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "장착 양상 등급 +1",
+  "tags": [],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish",
+      "hephaestus_smithy_rush"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_heavy_metal",
+      "hephaestus_trusty_shield"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_grand_caldera",
+      "hephaestus_molten_touch",
+      "hephaestus_furnace_blast"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_sworn_strike",
+  "god": "hera",
+  "name_ko": "서약 일격",
+  "name_en": "Sworn Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격 피해 증가 + 결속 부여",
+  "rarity_scaling": "공격 피해 +50/60/70/80%",
+  "tags": [
+   "curse_apply:hitch",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "apollo_nova_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hestia_flame_strike",
+   "poseidon_wave_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_sworn_flourish",
+  "god": "hera",
+  "name_ko": "서약 기예",
+  "name_en": "Sworn Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술 피해 증가 + 결속 부여",
+  "rarity_scaling": "기술 피해 +60/70/80/90%",
+  "tags": [
+   "curse_apply:hitch",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "apollo_nova_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hestia_flame_flourish",
+   "poseidon_wave_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_engagement_ring",
+  "god": "hera",
+  "name_ko": "혼약 고리",
+  "name_en": "Engagement Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진이 결속 부여 + 적 수만큼 즉시 피해",
+  "rarity_scaling": "적당 피해 20/30/40/50",
+  "tags": [
+   "ring",
+   "curse_apply:hitch",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "apollo_solar_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "hephaestus_anvil_ring",
+   "hestia_smolder_ring",
+   "poseidon_tidal_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_nexus_rush",
+  "god": "hera",
+  "name_ko": "연분 쇄도",
+  "name_en": "Nexus Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "질주가 주변 적에 결속 부여 + 피해",
+  "rarity_scaling": "피해 60/90/120/150",
+  "tags": [
+   "sprint_damage",
+   "curse_apply:hitch"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "apollo_blinding_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hestia_heat_rush",
+   "poseidon_breaker_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_born_gain",
+  "god": "hera",
+  "name_ko": "천부적 마력",
+  "name_en": "Born Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "마력 소진 시 점유 대신 전량 회복",
+  "rarity_scaling": "마력 점유 20/18/16/14",
+  "tags": [
+   "mana_regen"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "apollo_lucid_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hestia_cardio_gain",
+   "poseidon_flood_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_extended_family",
+  "god": "hera",
+  "name_ko": "일가친척",
+  "name_en": "Extended Family",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "은혜 준 신 수만큼 올림포스 효과 피해 증가",
+  "rarity_scaling": "신당 +3/4/5/6%",
+  "tags": [
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_dying_wish",
+  "god": "hera",
+  "name_ko": "마지막 소원",
+  "name_en": "Dying Wish",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "결속 적 처치 시 다른 결속 적 전체 피해",
+  "rarity_scaling": "피해 40/60/80/100",
+  "tags": [
+   "curse_scale:hitch",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hera_sworn_strike",
+      "hera_sworn_flourish",
+      "hera_engagement_ring",
+      "hera_nexus_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_bridal_glow",
+  "god": "hera",
+  "name_ko": "신혼의 정열",
+  "name_en": "Bridal Glow",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "무작위 은혜 1개를 영웅 등급 + 위력 상승",
+  "rarity_scaling": "위력 +1/2/3/4",
+  "tags": [
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "전제조건: 영웅 등급이 아닌 은혜 1개 이상 보유"
+ },
+ {
+  "id": "hera_hereditary_bane",
+  "god": "hera",
+  "name_ko": "액운의 대물림",
+  "name_en": "Hereditary Bane",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "결속 피해 증가, 지속 +5초",
+  "rarity_scaling": "결속 피해 +10/15/20/25%",
+  "tags": [
+   "curse_scale:hitch",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hera_sworn_strike",
+      "hera_sworn_flourish",
+      "hera_engagement_ring",
+      "hera_nexus_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_rousing_reception",
+  "god": "hera",
+  "name_ko": "성대한 환영",
+  "name_en": "Rousing Reception",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "마법진이 새로 등장하는 적에게 즉시 피해",
+  "rarity_scaling": "등장 피해 60/80/100/120",
+  "tags": [
+   "cast",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:ring"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_uncommon_grace",
+  "god": "hera",
+  "name_ko": "범상찮은 기품",
+  "name_en": "Uncommon Grace",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "일반 등급 은혜가 없으면 피해 증가",
+  "rarity_scaling": "+10/15/20/25%",
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_fine_line",
+  "god": "hera",
+  "name_ko": "한 핏줄",
+  "name_en": "Fine Line",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 동작이 직선 균열 생성, 마력 +15",
+  "rarity_scaling": "균열 피해 120/150/180/210",
+  "tags": [
+   "omega",
+   "aoe",
+   "duo_key",
+   "per_hit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_proper_upbringing",
+  "god": "hera",
+  "name_ko": "올바른 양육",
+  "name_en": "Proper Upbringing",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "4원소 각 1 이상 시 일반 은혜 전부 희귀로 상승",
+  "infusion_req": {
+   "element": "all",
+   "count": 1
+  },
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_all_together",
+  "god": "hera",
+  "name_ko": "모둠 원소",
+  "name_en": "All Together",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "4원소 각 1 획득 + 원소별 주입 은혜 1개씩",
+  "tags": [],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hera_sworn_strike",
+      "hera_sworn_flourish",
+      "hera_engagement_ring",
+      "hera_nexus_rush"
+     ]
+    },
+    {
+     "any": [
+      "hera_bridal_glow",
+      "hera_uncommon_grace",
+      "hera_fine_line"
+     ]
+    },
+    {
+     "any": [
+      "hera_hereditary_bane",
+      "hera_rousing_reception"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_vicious_strike",
+  "god": "ares",
+  "name_ko": "상해 일격",
+  "name_en": "Vicious Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격 피해 증가 + 상처 부여",
+  "rarity_scaling": "공격 피해 +20/30/40/50%",
+  "tags": [
+   "curse_apply:wounds",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "apollo_nova_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hera_sworn_strike",
+   "hestia_flame_strike",
+   "poseidon_wave_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_vicious_flourish",
+  "god": "ares",
+  "name_ko": "상해 기예",
+  "name_en": "Vicious Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술 피해 증가 + 상처 부여",
+  "rarity_scaling": "기술 피해 +30/40/50/60%",
+  "tags": [
+   "curse_apply:wounds",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "apollo_nova_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hera_sworn_flourish",
+   "hestia_flame_flourish",
+   "poseidon_wave_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_sword_ring",
+  "god": "ares",
+  "name_ko": "검날 고리",
+  "name_en": "Sword Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진 안 적마다 비검 생성",
+  "rarity_scaling": "검 피해 120/160/200/240",
+  "tags": [
+   "ring",
+   "falling_blade",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "apollo_solar_ring",
+   "demeter_arctic_ring",
+   "hephaestus_anvil_ring",
+   "hera_engagement_ring",
+   "hestia_smolder_ring",
+   "poseidon_tidal_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_stabbing_rush",
+  "god": "ares",
+  "name_ko": "참격 쇄도",
+  "name_en": "Stabbing Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "돌진 경로에 비검 5개 생성",
+  "rarity_scaling": "검 피해 30/45/60/75",
+  "tags": [
+   "sprint_damage",
+   "falling_blade"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "apollo_blinding_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hera_nexus_rush",
+   "hestia_heat_rush",
+   "poseidon_breaker_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_grisly_gain",
+  "god": "ares",
+  "name_ko": "살벌한 마력",
+  "name_en": "Grisly Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "타격 시 20% 확률 혈장 생성, 마력 회복",
+  "rarity_scaling": "마력 15/20/25/30",
+  "tags": [
+   "mana_regen",
+   "plasma",
+   "per_hit"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "apollo_lucid_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hera_born_gain",
+   "hestia_cardio_gain",
+   "poseidon_flood_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_meat_grinder",
+  "god": "ares",
+  "name_ko": "고기 분쇄",
+  "name_en": "Meat Grinder",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 마법이 마법진에 칼날 소용돌이 생성",
+  "rarity_scaling": "균열 피해 30/40/50/60 (1초)",
+  "tags": [
+   "omega_cast",
+   "aoe",
+   "dot",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:ring"
+     ]
+    }
+   ]
+  },
+  "conflicts": [
+   "poseidon_geyser_spout"
+  ],
+  "conflict_reason": "Ω 마법 변형 - 동시 채용 불가 (위키 명시)",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_profuse_bleeding",
+  "god": "ares",
+  "name_ko": "과다 출혈",
+  "name_en": "Profuse Bleeding",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "상처 부여·혈장 획득 시 비검 생성",
+  "rarity_scaling": "검 피해 30/50/70/90",
+  "tags": [
+   "falling_blade",
+   "curse_scale:wounds",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "ares_vicious_strike",
+      "ares_vicious_flourish",
+      "ares_grisly_gain",
+      "ares_visceral_impact"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_grievous_blow",
+  "god": "ares",
+  "name_ko": "쓰라린 부상",
+  "name_en": "Grievous Blow",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "상처 입은 적에게 200% 피해 확률",
+  "rarity_scaling": "확률 +10/15/20/25%",
+  "tags": [
+   "curse_scale:wounds",
+   "crit"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "ares_vicious_strike",
+      "ares_vicious_flourish"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_visceral_impact",
+  "god": "ares",
+  "name_ko": "유혈 사태",
+  "name_en": "Visceral Impact",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "피격·적 처치 시 혈장 생성",
+  "rarity_scaling": "추가 확률 25/35/45/55%",
+  "tags": [
+   "plasma",
+   "retaliate",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_mutual_destruction",
+  "god": "ares",
+  "name_ko": "상호 공멸",
+  "name_en": "Mutual Destruction",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "체력 낮을수록 200% 피해 확률 상승",
+  "rarity_scaling": "잃은 체력당 0.1/0.12/0.14/0.16%",
+  "tags": [
+   "crit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_blood_spree",
+  "god": "ares",
+  "name_ko": "피투성이",
+  "name_en": "Blood Spree",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "체력 40 미만일 때 공격/기술이 체력 회복",
+  "rarity_scaling": "회복 1/2/3/4",
+  "tags": [
+   "heal"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_cut_above",
+  "god": "ares",
+  "name_ko": "확인 사살",
+  "name_en": "Cut Above",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 동작이 맞은 적마다 비검 생성, 마력 +5",
+  "rarity_scaling": "검 피해 90/120/150/180",
+  "tags": [
+   "omega",
+   "falling_blade",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_rallying_cry",
+  "god": "ares",
+  "name_ko": "집결 함성",
+  "name_en": "Rallying Cry",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "대지 8 이상 시 올림포스 효과 피해 +50%",
+  "infusion_req": {
+   "element": "earth",
+   "count": 4
+  },
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_sanguinary_savor",
+  "god": "ares",
+  "name_ko": "달콤한 피",
+  "name_en": "Sanguinary Savor",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "상처 위력 +100, 혈장 자동 흡수",
+  "tags": [
+   "curse_scale:wounds",
+   "plasma"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "ares_vicious_strike",
+      "ares_vicious_flourish",
+      "ares_sword_ring",
+      "ares_stabbing_rush"
+     ]
+    },
+    {
+     "any": [
+      "ares_grisly_gain",
+      "ares_visceral_impact",
+      "ares_profuse_bleeding"
+     ]
+    },
+    {
+     "any": [
+      "ares_meat_grinder",
+      "ares_grievous_blow",
+      "ares_mutual_destruction",
+      "ares_blood_spree",
+      "ares_cut_above"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_nimble_limbs",
+  "god": "hermes",
+  "name_ko": "기민한 동작",
+  "name_en": "Nimble Limbs",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "공격·기술·마법 속도 증가",
+  "rarity_scaling": "+10/15/20/25%",
+  "tags": [
+   "attack_speed",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_racing_thoughts",
+  "god": "hermes",
+  "name_ko": "기민한 정신",
+  "name_en": "Racing Thoughts",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 동작 충전 속도 증가",
+  "rarity_scaling": "+15/20/25/30%",
+  "tags": [
+   "omega",
+   "attack_speed",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_winners_circle",
+  "god": "hermes",
+  "name_ko": "신속 대응",
+  "name_en": "Winner's Circle",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "cast"
+  ],
+  "effect": "Ω 마법 충전·마법진 소멸이 크게 빨라짐",
+  "rarity_scaling": "+100/125/150/175%",
+  "tags": [
+   "omega_cast",
+   "cast"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_nitro_boost",
+  "god": "hermes",
+  "name_ko": "거침없는 속도",
+  "name_en": "Nitro Boost",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "sprint"
+  ],
+  "effect": "질주 15% 빨라짐 + 피해 무시 보호막",
+  "rarity_scaling": "차단 1/2/3/4회",
+  "tags": [
+   "armor",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_stutter_step",
+  "god": "hermes",
+  "name_ko": "잰 발걸음",
+  "name_en": "Stutter Step",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "sprint"
+  ],
+  "effect": "돌진 재사용 대기 감소",
+  "rarity_scaling": "+25/30/35/40%",
+  "tags": [
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_hasty_retreat",
+  "god": "hermes",
+  "name_ko": "황급한 후퇴",
+  "name_en": "Hasty Retreat",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "보유 은혜 수만큼 회피율·이속 증가",
+  "rarity_scaling": "은혜당 +0.5/0.75/1/1.25%",
+  "tags": [
+   "armor"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_hard_target",
+  "god": "hermes",
+  "name_ko": "까다로운 표적",
+  "name_en": "Hard Target",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "적 원거리 투사체 속도 감소",
+  "rarity_scaling": "-30/40/50/60%",
+  "tags": [
+   "armor",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_quick_buck",
+  "god": "hermes",
+  "name_ko": "일확천금",
+  "name_en": "Quick Buck",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "금화 획득량 증가, 즉시 100 획득",
+  "rarity_scaling": "+20/30/40/50%",
+  "tags": [
+   "meta"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_mean_streak",
+  "god": "hermes",
+  "name_ko": "연쇄 처단",
+  "name_en": "Mean Streak",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "적 처치마다 45초간 피해 증가 누적",
+  "rarity_scaling": "처치당 +1/1.5/2/2.5%",
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_travel_deal",
+  "god": "hermes",
+  "name_ko": "여행 특가",
+  "name_en": "Travel Deal",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "지역별 첫 구매 할인 + 상품 재입고",
+  "rarity_scaling": "-5/10/15/20%",
+  "tags": [
+   "meta"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_success_rate",
+  "god": "hermes",
+  "name_ko": "성공 신화",
+  "name_en": "Success Rate",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "확률 기반 효과 발동률 증가",
+  "rarity_scaling": "+30/40/50/60%",
+  "tags": [],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "poseidon_sea_star",
+      "zeus_divine_vengeance",
+      "zeus_double_strike",
+      "apollo_dazzling_display",
+      "apollo_extra_dose",
+      "ares_grisly_gain",
+      "ares_visceral_impact",
+      "ares_mutual_destruction",
+      "ares_grievous_blow",
+      "ares_profuse_bleeding"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "아르테미스 은혜와 듀오 Arterial Spray도 전제조건에 포함"
+ },
+ {
+  "id": "hermes_tall_order",
+  "god": "hermes",
+  "name_ko": "무리한 요건",
+  "name_en": "Tall Order",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "한 원소 8 이상 보유 시 모든 피해 +25%",
+  "infusion_req": {
+   "element": "any",
+   "count": 3
+  },
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_paid_dues",
+  "god": "hermes",
+  "name_ko": "생명 수당",
+  "name_en": "Paid Dues",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "피격 시 체력 대신 금화가 먼저 소모",
+  "rarity_scaling": "피해당 금화 -3",
+  "tags": [
+   "armor"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hermes_nimble_limbs",
+      "hermes_racing_thoughts",
+      "hermes_hard_target",
+      "hermes_winners_circle",
+      "hermes_stutter_step",
+      "hermes_hasty_retreat",
+      "hermes_mean_streak",
+      "hermes_nitro_boost"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "등장 확률 1%로 매우 낮음"
+ },
+ {
+  "id": "artemis_support_fire",
+  "god": "artemis",
+  "name_ko": "지원 사격",
+  "name_en": "Support Fire",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "공격/기술 명중 후 유도 화살 발사",
+  "rarity_scaling": "화살 피해 10/15/20/25",
+  "tags": [
+   "beginner_safe",
+   "per_hit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_pressure_points",
+  "god": "artemis",
+  "name_ko": "약점 공략",
+  "name_en": "Pressure Points",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "모든 피해에 치명타 확률 부여",
+  "rarity_scaling": "치명타 +3/4/5/6%",
+  "tags": [
+   "crit",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_shadow_pounce",
+  "god": "artemis",
+  "name_ko": "그림자 급습",
+  "name_en": "Shadow Pounce",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "돌진 후 2초간 Ω 동작 치명타 확률",
+  "rarity_scaling": "+8/10/12/14%",
+  "tags": [
+   "crit",
+   "omega"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_vital_sign",
+  "god": "artemis",
+  "name_ko": "성한 사냥감",
+  "name_en": "Vital Sign",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "체력·방어도 80% 이상 적에게 치명타 확률",
+  "rarity_scaling": "+15/22/30/38%",
+  "tags": [
+   "crit",
+   "boss_dmg"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_lethal_snare",
+  "god": "artemis",
+  "name_ko": "죽음의 덫",
+  "name_en": "Lethal Snare",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "마법진 안 적에게 공격이 치명타 확률",
+  "rarity_scaling": "+10/13/16/19%",
+  "tags": [
+   "crit",
+   "cast"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_easy_shot",
+  "god": "artemis",
+  "name_ko": "손쉬운 표적",
+  "name_en": "Easy Shot",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 마법에 맞은 적에게 관통 화살",
+  "rarity_scaling": "화살 피해 50/62/75/87",
+  "tags": [
+   "omega_cast"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_death_warrant",
+  "god": "artemis",
+  "name_ko": "사형 선고",
+  "name_en": "Death Warrant",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "주기적으로 무작위 적에 표식 부여",
+  "rarity_scaling": "주기 20/18/16/14초",
+  "tags": [
+   "crit",
+   "curse_apply:marked"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_killing_stroke",
+  "god": "artemis",
+  "name_ko": "일격 필살",
+  "name_en": "Killing Stroke",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "기술 치명타 확률, 마력 40 점유",
+  "rarity_scaling": "+10/12/14/16%",
+  "tags": [
+   "crit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_whispered_prayer",
+  "god": "artemis",
+  "name_ko": "나지막한 기도",
+  "name_en": "Whispered Prayer",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "비술이 치명타 피해를 줄 확률",
+  "rarity_scaling": "+30/35/40/45%",
+  "tags": [
+   "crit",
+   "hex"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "아르테미스 친밀도 5단계 + 공격형 비술 보유 필요"
+ }
+]

@@ -1,0 +1,397 @@
+[
+ {
+  "id": "poseidon_wave_strike",
+  "god": "poseidon",
+  "name_ko": "파도 일격",
+  "name_en": "Wave Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격이 물보라로 적을 밀쳐냄",
+  "rarity_scaling": "물보라 피해 20/25/30/35",
+  "tags": [
+   "splash",
+   "knockback",
+   "beginner_safe",
+   "per_hit"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "apollo_nova_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hera_sworn_strike",
+   "hestia_flame_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_wave_flourish",
+  "god": "poseidon",
+  "name_ko": "파도 기예",
+  "name_en": "Wave Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술이 물보라로 적을 밀쳐냄",
+  "rarity_scaling": "물보라 피해 25/30/35/40",
+  "tags": [
+   "splash",
+   "knockback",
+   "beginner_safe",
+   "per_hit"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "apollo_nova_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hera_sworn_flourish",
+   "hestia_flame_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_tidal_ring",
+  "god": "poseidon",
+  "name_ko": "물결 고리",
+  "name_en": "Tidal Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진이 즉시 강한 물보라+침수 부여",
+  "rarity_scaling": "물보라 피해 60/90/120/150",
+  "tags": [
+   "ring",
+   "splash",
+   "curse_apply:froth",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "apollo_solar_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "demeter_local_climate",
+   "duo_demeter_ares",
+   "hephaestus_anvil_ring",
+   "hera_engagement_ring",
+   "hestia_smolder_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_breaker_rush",
+  "god": "poseidon",
+  "name_ko": "격랑 쇄도",
+  "name_en": "Breaker Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "질주 중 첫 충돌 적에게 폭발+넉백",
+  "rarity_scaling": "충격 피해 80/100/120/140",
+  "tags": [
+   "sprint_damage",
+   "knockback"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "apollo_blinding_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hera_nexus_rush",
+   "hestia_heat_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_flood_gain",
+  "god": "poseidon",
+  "name_ko": "넘치는 마력",
+  "name_en": "Flood Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "Ω 동작 후 잠시 쓴 마력이 전부 회복",
+  "rarity_scaling": "지속 4/5/6/7초 (8초 재사용)",
+  "tags": [
+   "mana_regen",
+   "omega"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "apollo_lucid_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hera_born_gain",
+   "hestia_cardio_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_hydraulic_might",
+  "god": "poseidon",
+  "name_ko": "세찬 물줄기",
+  "name_en": "Hydraulic Might",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "전투 시작 10초간 공격/기술 강화",
+  "rarity_scaling": "+100/133/166/200%",
+  "tags": [
+   "boss_dmg"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_buried_treasure",
+  "god": "poseidon",
+  "name_ko": "바다의 보배",
+  "name_en": "Buried Treasure",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "소소한 발견물 가치 상승, 즉시 자원 획득",
+  "rarity_scaling": "보상 +50/75/100/125%",
+  "tags": [
+   "meta",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_high_surf",
+  "god": "poseidon",
+  "name_ko": "거친 풍랑",
+  "name_en": "High Surf",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "적이 공격 시작할 때 물보라 반격, 마력 30 점유",
+  "rarity_scaling": "물보라 피해 40/60/80/100",
+  "tags": [
+   "splash",
+   "retaliate",
+   "aoe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_sea_star",
+  "god": "poseidon",
+  "name_ko": "물밑 보답",
+  "name_en": "Sea Star",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "은혜 외 보상 획득 시 복제 확률",
+  "rarity_scaling": "복제 확률 25/30/35/40%",
+  "tags": [
+   "meta",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_slippery_slope",
+  "god": "poseidon",
+  "name_ko": "미끄러운 경사",
+  "name_en": "Slippery Slope",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "물보라가 침수 부여, 침수 피해 증가",
+  "rarity_scaling": "침수 피해 +20/50/80/110%",
+  "tags": [
+   "curse_apply:froth",
+   "curse_scale:froth",
+   "splash",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "poseidon_wave_strike",
+      "poseidon_wave_flourish"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_geyser_spout",
+  "god": "poseidon",
+  "name_ko": "지하수 분출",
+  "name_en": "Geyser Spout",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 마법 위력 증가 + 넉백",
+  "rarity_scaling": "Ω 마법 위력 +150/200/250/300",
+  "tags": [
+   "omega_cast",
+   "knockback"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:ring"
+     ]
+    }
+   ]
+  },
+  "conflicts": [
+   "apollo_prominence_flare",
+   "ares_meat_grinder"
+  ],
+  "conflict_reason": "Ω 마법 변형 - 동시 채용 불가 (위키 명시)",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_ocean_swell",
+  "god": "poseidon",
+  "name_ko": "바다 너울",
+  "name_en": "Ocean Swell",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 동작이 전방 광역 파도 발사, 마력 +5",
+  "rarity_scaling": "파도 피해 40/60/80/100",
+  "tags": [
+   "omega",
+   "aoe",
+   "knockback",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_water_fitness",
+  "god": "poseidon",
+  "name_ko": "흐르는 활력",
+  "name_en": "Water Fitness",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "물 은혜 수만큼 최대 체력 증가",
+  "infusion_req": {
+   "element": "water",
+   "count": 2
+  },
+  "tags": [
+   "max_hp"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon_king_tide",
+  "god": "poseidon",
+  "name_ko": "지진 해일",
+  "name_en": "King Tide",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "물보라 범위 확대, 수호자에 큰 추가 피해",
+  "rarity_scaling": "수호자 대상 +200%",
+  "tags": [
+   "splash",
+   "boss_dmg"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "poseidon_wave_strike",
+      "poseidon_wave_flourish"
+     ]
+    },
+    {
+     "any": [
+      "poseidon_breaker_rush",
+      "poseidon_flood_gain",
+      "poseidon_geyser_spout"
+     ]
+    },
+    {
+     "any": [
+      "poseidon_hydraulic_might",
+      "poseidon_ocean_swell",
+      "poseidon_slippery_slope",
+      "poseidon_high_surf"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ }
+]

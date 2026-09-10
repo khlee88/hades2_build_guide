@@ -1,0 +1,409 @@
+[
+ {
+  "id": "staff",
+  "name_ko": "마녀의 지팡이",
+  "name_en": "Witch's Staff (Descura)",
+  "unlock_order": 1,
+  "moveset": {
+   "attack": "3연타 근접 콤보 (20-25-60). Ω공격은 마력 20으로 장거리 직선 관통 폭발 160, 뒤쪽도 타격",
+   "special": "관통 볼트 40 원거리. Ω기술는 마력 10으로 목표 지점 방사형 폭발 80",
+   "cast": "기본 마법진"
+  },
+  "core_slots": [
+   "attack",
+   "magick"
+  ],
+  "style": "Ω 공격 중심. 기본 공격/기술는 약하고 Ω가 매우 강함 → 마력 회복이 빌드의 생명줄",
+  "beginner_note": "시작 무기이자 가장 무난. 마력 회복 은혜를 1개는 반드시 확보할 것",
+  "aspects": [
+   {
+    "id": "staff_melinoe",
+    "name_ko": "멜리노에 양상",
+    "name_en": "Aspect of Melinoë",
+    "unlocked_by_default": true,
+    "effect": "최대 마력 + 기술 위력 증가 (최대 +50)",
+    "favors": [
+     "max_mana",
+     "omega_special"
+    ],
+    "favored_gods": [
+     "hestia",
+     "zeus",
+     "poseidon"
+    ],
+    "beginner_rank": 1
+   },
+   {
+    "id": "staff_circe",
+    "name_ko": "키르케 양상",
+    "name_en": "Aspect of Circe",
+    "unlocked_by_default": false,
+    "effect": "마법진 사용 시 동물 친구도 함께 시전, 정신 사슬 피해",
+    "favors": [
+     "cast",
+     "cast_duration"
+    ],
+    "favored_gods": [
+     "demeter",
+     "apollo",
+     "zeus"
+    ],
+    "beginner_rank": 2
+   },
+   {
+    "id": "staff_momus",
+    "name_ko": "모모스 양상",
+    "name_en": "Aspect of Momus",
+    "unlocked_by_default": false,
+    "effect": "Ω 동작 사용 시 그 자리에서 최대 3회 반복 발동",
+    "favors": [
+     "omega",
+     "omega_attack",
+     "omega_cast"
+    ],
+    "favored_gods": [
+     "hestia",
+     "zeus",
+     "ares"
+    ],
+    "beginner_rank": 2
+   },
+   {
+    "id": "staff_anubis",
+    "name_ko": "아누비스 양상",
+    "name_en": "Aspect of Anubis",
+    "unlocked_by_default": false,
+    "hidden": true,
+    "effect": "앙크 셉터 - 공격이 장판 생성, 처치 지점에 고독한 망령 소환",
+    "favors": [
+     "omega",
+     "aoe"
+    ],
+    "favored_gods": [
+     "hera",
+     "demeter"
+    ],
+    "beginner_rank": 5
+   }
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "alias_ko": "데스쿠라"
+ },
+ {
+  "id": "blades",
+  "name_ko": "자매 쌍검",
+  "name_en": "Sister Blades (Lim & Oros)",
+  "unlock_order": 2,
+  "moveset": {
+   "attack": "빠른 4연타 (20-20-10x5-80). Ω공격은 마력 10으로 적 뒤로 순간이동 후 100 - 백스탭 유발",
+   "special": "돌아오는 투척 단검 25x2, 관통. 귀환 시 후방 타격으로 백스탭 가능. Ω기술는 마력 15까지 충전해 부채꼴 단검 30x5",
+   "cast": "기본 마법진"
+  },
+  "core_slots": [
+   "attack",
+   "special"
+  ],
+  "style": "빠른 근접 + 백스탭. 이동이 잦아 생존 은혜 비중을 높게",
+  "beginner_note": "공격 횟수가 많아 '타격마다 발동' 은혜(잔불·암운·연쇄)와 궁합 최고",
+  "aspects": [
+   {
+    "id": "blades_melinoe",
+    "name_ko": "멜리노에 양상",
+    "name_en": "Aspect of Melinoë",
+    "unlocked_by_default": true,
+    "effect": "후방 공격 시 피해 증가 (최대 +200%)",
+    "favors": [
+     "backstab",
+     "attack_speed"
+    ],
+    "favored_gods": [
+     "zeus",
+     "hestia",
+     "aphrodite"
+    ],
+    "beginner_rank": 1
+   },
+   {
+    "id": "blades_artemis",
+    "name_ko": "아르테미스 양상",
+    "name_en": "Aspect of Artemis",
+    "unlocked_by_default": false,
+    "effect": "Ω공격 충전 중 가끔 패링 후 반격, Ω공격 속도 증가",
+    "favors": [
+     "crit",
+     "omega_attack",
+     "armor"
+    ],
+    "favored_gods": [
+     "artemis",
+     "ares",
+     "apollo"
+    ],
+    "beginner_rank": 2
+   },
+   {
+    "id": "blades_pan",
+    "name_ko": "판 양상",
+    "name_en": "Aspect of Pan",
+    "unlocked_by_default": false,
+    "effect": "기술이 마법진 안 적을 추적, 오래 충전할수록 발사 수 증가",
+    "favors": [
+     "cast",
+     "omega_special"
+    ],
+    "favored_gods": [
+     "demeter",
+     "apollo",
+     "aphrodite"
+    ],
+    "beginner_rank": 3
+   },
+   {
+    "id": "blades_morrigan",
+    "name_ko": "모리안 양상",
+    "name_en": "Aspect of the Morrigan",
+    "unlocked_by_default": false,
+    "hidden": true,
+    "effect": "까마귀 절단기 - 공격 3회 타격, 공격·기술·Ω를 한 적에게 모두 맞히면 대미지 폭발",
+    "favors": [
+     "attack_speed",
+     "boss_dmg"
+    ],
+    "favored_gods": [
+     "ares",
+     "artemis"
+    ],
+    "beginner_rank": 5
+   }
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "alias_ko": "림과 오로스"
+ },
+ {
+  "id": "flames",
+  "name_ko": "그늘진 횃불",
+  "name_en": "Umbral Flames (Ygnium)",
+  "unlock_order": 3,
+  "moveset": {
+   "attack": "버튼을 눌러 화염구 연사 30 (1초 지속). 계속 누르면 Ω공격으로 전환 - 마력 5로 근거리 화염파 75",
+   "special": "반시계 방향 회전 불꽃 20 (2초, 최대 5개). Ω기술는 마력 25로 더 큰 반경의 시계방향 불꽃 2개 40 (5초)",
+   "cast": "기본 마법진"
+  },
+  "core_slots": [
+   "attack",
+   "special",
+   "magick"
+  ],
+  "style": "원거리·지속 딜. Ω공격 비용이 5로 매우 싸서 연발 가능 → 'Ω 사용 시 발동' 은혜와 폭발적 시너지",
+  "beginner_note": "마력 소모가 많아 마력 회복 은혜 필수. 헤라 가는 선, 아프로디테 하트 브레이커, 제우스 권능 급증이 특히 강함",
+  "aspects": [
+   {
+    "id": "flames_melinoe",
+    "name_ko": "멜리노에 양상",
+    "name_en": "Aspect of Melinoë",
+    "unlocked_by_default": true,
+    "effect": "공격·기술 치명타 확률 (최대 +8%)",
+    "favors": [
+     "crit"
+    ],
+    "favored_gods": [
+     "artemis",
+     "hestia",
+     "zeus"
+    ],
+    "beginner_rank": 1
+   },
+   {
+    "id": "flames_moros",
+    "name_ko": "모로스 양상",
+    "name_en": "Aspect of Moros",
+    "unlocked_by_default": false,
+    "effect": "공격이 6초간 잔류, 기술에 맞으면 폭발",
+    "favors": [
+     "aoe",
+     "omega_attack"
+    ],
+    "favored_gods": [
+     "hestia",
+     "hephaestus",
+     "zeus"
+    ],
+    "beginner_rank": 2
+   },
+   {
+    "id": "flames_eos",
+    "name_ko": "에오스 양상",
+    "name_en": "Aspect of Eos",
+    "unlocked_by_default": false,
+    "effect": "Ω공격이 데이브레이커 소환 - 2초마다 주변 광역 피해 + 기술 복제",
+    "favors": [
+     "aoe",
+     "omega_attack",
+     "summon"
+    ],
+    "favored_gods": [
+     "zeus",
+     "poseidon",
+     "hestia"
+    ],
+    "beginner_rank": 2
+   },
+   {
+    "id": "flames_supay",
+    "name_ko": "수파이 양상",
+    "name_en": "Aspect of Supay",
+    "unlocked_by_default": false,
+    "hidden": true,
+    "effect": "악마의 불꽃 - 자동 발사, Ω공격/Ω기술이 4초간 지옥불을 퍼부음. 질주 은혜 강화",
+    "favors": [
+     "sprint_damage",
+     "aoe"
+    ],
+    "favored_gods": [
+     "poseidon",
+     "demeter",
+     "ares"
+    ],
+    "beginner_rank": 5
+   }
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "alias_ko": "이그니움"
+ },
+ {
+  "id": "axe",
+  "name_ko": "월장석 도끼",
+  "name_en": "Moonstone Axe (Zorephet)",
+  "unlock_order": 4,
+  "moveset": {
+   "attack": "느리고 강한 3연타 (70-90-180), 마지막 타는 조준 가능. Ω공격은 마력 10~20으로 회오리 - 충전할수록 최대 11회 타격",
+   "special": "전방 도끼 회전 20x3. Ω기술는 마력 30으로 강력한 가르기 140x3",
+   "cast": "기본 마법진"
+  },
+  "core_slots": [
+   "attack",
+   "special"
+  ],
+  "style": "느리지만 한 방이 큼. 타격 횟수가 적어 '타격마다' 은혜보다 '단발 피해 증폭' 은혜가 유리",
+  "beginner_note": "느린 만큼 맞기 쉬움 → 방어도·회복 은혜와 헤르메스 이속을 챙길 것. 헤파이스토스와 궁합 최고",
+  "aspects": [
+   {
+    "id": "axe_melinoe",
+    "name_ko": "멜리노에 양상",
+    "name_en": "Aspect of Melinoë",
+    "unlocked_by_default": true,
+    "effect": "공격 위력 + 최대 체력 증가 (최대 +60)",
+    "favors": [
+     "max_hp"
+    ],
+    "favored_gods": [
+     "hephaestus",
+     "hestia",
+     "demeter"
+    ],
+    "beginner_rank": 1
+   },
+   {
+    "id": "axe_charon",
+    "name_ko": "카론 양상",
+    "name_en": "Aspect of Charon",
+    "unlocked_by_default": false,
+    "effect": "Ω기술로 마법진을 치면 Ω마법처럼 폭발 (분할 마법진)",
+    "favors": [
+     "omega_cast",
+     "cast"
+    ],
+    "favored_gods": [
+     "apollo",
+     "ares",
+     "poseidon"
+    ],
+    "beginner_rank": 3
+   },
+   {
+    "id": "axe_thanatos",
+    "name_ko": "타나토스 양상",
+    "name_en": "Aspect of Thanatos",
+    "unlocked_by_default": false,
+    "effect": "공격 속도 증가, 피격 전까지 타격마다 Ω 치명타 확률 누적",
+    "favors": [
+     "attack_speed",
+     "crit",
+     "omega"
+    ],
+    "favored_gods": [
+     "artemis",
+     "aphrodite",
+     "hephaestus"
+    ],
+    "beginner_rank": 2
+   },
+   {
+    "id": "axe_nergal",
+    "name_ko": "네르갈 양상",
+    "name_en": "Aspect of Nergal",
+    "unlocked_by_default": false,
+    "hidden": true,
+    "effect": "바위 사자 철퇴 - 일정 횟수 타격 시 광폭화",
+    "favors": [
+     "attack_speed"
+    ],
+    "favored_gods": [
+     "ares",
+     "hephaestus"
+    ],
+    "beginner_rank": 5
+   }
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "alias_ko": "조레페트"
+ },
+ {
+  "id": "skull",
+  "name_ko": "은백색 해골",
+  "name_en": "Argent Skull (Revaal)",
+  "unlock_order": 5,
+  "moveset": {},
+  "core_slots": [],
+  "aspects": [],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "초반 4무기 범위 밖 - 추후 확장용 예약",
+  "alias_ko": "심판관 레바알"
+ },
+ {
+  "id": "coat",
+  "name_ko": "검은빛 외투",
+  "name_en": "Black Coat (Xsanth)",
+  "unlock_order": 6,
+  "moveset": {},
+  "core_slots": [],
+  "aspects": [],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "초반 4무기 범위 밖 - 추후 확장용 예약",
+  "alias_ko": "크신스"
+ }
+]

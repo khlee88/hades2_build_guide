@@ -1,0 +1,407 @@
+[
+ {
+  "id": "zeus_heaven_strike",
+  "god": "zeus",
+  "name_ko": "천상 일격",
+  "name_en": "Heaven Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격이 암운 부여",
+  "rarity_scaling": "암운 피해 80/120/160/200",
+  "tags": [
+   "curse_apply:blitz",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "apollo_nova_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hera_sworn_strike",
+   "hestia_flame_strike",
+   "poseidon_wave_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_heaven_flourish",
+  "god": "zeus",
+  "name_ko": "천상 기예",
+  "name_en": "Heaven Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술이 암운 부여",
+  "rarity_scaling": "암운 피해 100/130/160/190",
+  "tags": [
+   "curse_apply:blitz",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "apollo_nova_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hera_sworn_flourish",
+   "hestia_flame_flourish",
+   "poseidon_wave_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_storm_ring",
+  "god": "zeus",
+  "name_ko": "폭풍 고리",
+  "name_en": "Storm Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진 안 적에게 번개 반복 낙뢰",
+  "rarity_scaling": "낙뢰 피해 25/30/35/40 (0.35초)",
+  "tags": [
+   "ring",
+   "aoe",
+   "dot"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "apollo_solar_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "hephaestus_anvil_ring",
+   "hera_engagement_ring",
+   "hestia_smolder_ring",
+   "poseidon_tidal_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_thunder_rush",
+  "god": "zeus",
+  "name_ko": "천둥 쇄도",
+  "name_en": "Thunder Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "질주/돌진 시 주변 적에 낙뢰",
+  "rarity_scaling": "낙뢰 피해 20/25/30/35 (0.35초)",
+  "tags": [
+   "sprint_damage"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "apollo_blinding_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hera_nexus_rush",
+   "hestia_heat_rush",
+   "poseidon_breaker_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_ionic_gain",
+  "god": "zeus",
+  "name_ko": "대전된 마력",
+  "name_en": "Ionic Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "방마다 마력 완전 회복 샘 등장",
+  "rarity_scaling": "재등장 10/9/8/7초",
+  "tags": [
+   "mana_regen",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "apollo_lucid_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hera_born_gain",
+   "hestia_cardio_gain",
+   "poseidon_flood_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_power_surge",
+  "god": "zeus",
+  "name_ko": "전압 급증",
+  "name_en": "Power Surge",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 동작 사용 시 무작위 적에 낙뢰",
+  "rarity_scaling": "낙뢰 피해 30/40/50/60",
+  "tags": [
+   "omega",
+   "per_hit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_divine_vengeance",
+  "god": "zeus",
+  "name_ko": "신성한 복수",
+  "name_en": "Divine Vengeance",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "피격 시 가해자에 낙뢰 반격",
+  "rarity_scaling": "피해 100 (최대 2/3/4/5회)",
+  "tags": [
+   "retaliate",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_lightning_lance",
+  "god": "zeus",
+  "name_ko": "번개 투창",
+  "name_en": "Lightning Lance",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "마법진 위치 조준, 범위 내 낙뢰",
+  "rarity_scaling": "낙뢰 피해 50/70/90/110",
+  "tags": [
+   "cast",
+   "ranged_cast",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:ring"
+     ]
+    }
+   ]
+  },
+  "conflicts": [
+   "hestia_glowing_coal",
+   "demeter_local_climate",
+   "duo_demeter_ares"
+  ],
+  "conflict_reason": "마법 변형 계열 - 동시 채용 불가 (위키 명시)",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_static_shock",
+  "god": "zeus",
+  "name_ko": "정전기 충격",
+  "name_en": "Static Shock",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "타격 시 4회 튕기는 연쇄 번개, 마력 50 점유",
+  "rarity_scaling": "연쇄 피해 10/15/20/25",
+  "tags": [
+   "chain",
+   "aoe",
+   "duo_key",
+   "per_hit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_double_strike",
+  "god": "zeus",
+  "name_ko": "후속 낙뢰",
+  "name_en": "Double Strike",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "낙뢰가 2회 발생할 확률",
+  "rarity_scaling": "추가 확률 +10/15/20/25%",
+  "tags": [],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish",
+      "zeus_storm_ring",
+      "zeus_thunder_rush",
+      "zeus_power_surge",
+      "zeus_divine_vengeance",
+      "zeus_lightning_lance"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_arc_flash",
+  "god": "zeus",
+  "name_ko": "전기 구이",
+  "name_en": "Arc Flash",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 피해가 암운 즉시 발동+강화",
+  "rarity_scaling": "Ω 암운 추가 피해 +30/40/50/60%",
+  "tags": [
+   "omega",
+   "curse_scale:blitz"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_electric_overload",
+  "god": "zeus",
+  "name_ko": "전력 과부하",
+  "name_en": "Electric Overload",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "연쇄 번개 피해 증가, 3회 더 튕김",
+  "rarity_scaling": "연쇄 피해 +20/30/40/50%",
+  "tags": [
+   "chain",
+   "aoe"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "zeus_static_shock"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_air_quality",
+  "god": "zeus",
+  "name_ko": "청정한 대기",
+  "name_en": "Air Quality",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "공기 5 이상이면 최소 피해 50 보장",
+  "infusion_req": {
+   "element": "air",
+   "count": 3
+  },
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "zeus_shocking_loss",
+  "god": "zeus",
+  "name_ko": "청천벽력",
+  "name_en": "Shocking Loss",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "첫 피해 시 25% 확률로 적 즉사",
+  "tags": [
+   "boss_dmg"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish",
+      "zeus_storm_ring",
+      "zeus_thunder_rush",
+      "zeus_ionic_gain"
+     ]
+    },
+    {
+     "any": [
+      "zeus_static_shock",
+      "zeus_power_surge",
+      "zeus_lightning_lance",
+      "zeus_divine_vengeance"
+     ]
+    },
+    {
+     "any": [
+      "zeus_arc_flash",
+      "zeus_double_strike",
+      "zeus_electric_overload"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ }
+]

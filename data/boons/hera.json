@@ -1,0 +1,389 @@
+[
+ {
+  "id": "hera_sworn_strike",
+  "god": "hera",
+  "name_ko": "서약 일격",
+  "name_en": "Sworn Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격 피해 증가 + 결속 부여",
+  "rarity_scaling": "공격 피해 +50/60/70/80%",
+  "tags": [
+   "curse_apply:hitch",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "apollo_nova_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hestia_flame_strike",
+   "poseidon_wave_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_sworn_flourish",
+  "god": "hera",
+  "name_ko": "서약 기예",
+  "name_en": "Sworn Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술 피해 증가 + 결속 부여",
+  "rarity_scaling": "기술 피해 +60/70/80/90%",
+  "tags": [
+   "curse_apply:hitch",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "apollo_nova_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hestia_flame_flourish",
+   "poseidon_wave_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_engagement_ring",
+  "god": "hera",
+  "name_ko": "혼약 고리",
+  "name_en": "Engagement Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진이 결속 부여 + 적 수만큼 즉시 피해",
+  "rarity_scaling": "적당 피해 20/30/40/50",
+  "tags": [
+   "ring",
+   "curse_apply:hitch",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "apollo_solar_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "hephaestus_anvil_ring",
+   "hestia_smolder_ring",
+   "poseidon_tidal_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_nexus_rush",
+  "god": "hera",
+  "name_ko": "연분 쇄도",
+  "name_en": "Nexus Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "질주가 주변 적에 결속 부여 + 피해",
+  "rarity_scaling": "피해 60/90/120/150",
+  "tags": [
+   "sprint_damage",
+   "curse_apply:hitch"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "apollo_blinding_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hestia_heat_rush",
+   "poseidon_breaker_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_born_gain",
+  "god": "hera",
+  "name_ko": "천부적 마력",
+  "name_en": "Born Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "마력 소진 시 점유 대신 전량 회복",
+  "rarity_scaling": "마력 점유 20/18/16/14",
+  "tags": [
+   "mana_regen"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "apollo_lucid_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hestia_cardio_gain",
+   "poseidon_flood_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_extended_family",
+  "god": "hera",
+  "name_ko": "일가친척",
+  "name_en": "Extended Family",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "은혜 준 신 수만큼 올림포스 효과 피해 증가",
+  "rarity_scaling": "신당 +3/4/5/6%",
+  "tags": [
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_dying_wish",
+  "god": "hera",
+  "name_ko": "마지막 소원",
+  "name_en": "Dying Wish",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "결속 적 처치 시 다른 결속 적 전체 피해",
+  "rarity_scaling": "피해 40/60/80/100",
+  "tags": [
+   "curse_scale:hitch",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hera_sworn_strike",
+      "hera_sworn_flourish",
+      "hera_engagement_ring",
+      "hera_nexus_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_bridal_glow",
+  "god": "hera",
+  "name_ko": "신혼의 정열",
+  "name_en": "Bridal Glow",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "무작위 은혜 1개를 영웅 등급 + 위력 상승",
+  "rarity_scaling": "위력 +1/2/3/4",
+  "tags": [
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "전제조건: 영웅 등급이 아닌 은혜 1개 이상 보유"
+ },
+ {
+  "id": "hera_hereditary_bane",
+  "god": "hera",
+  "name_ko": "액운의 대물림",
+  "name_en": "Hereditary Bane",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "결속 피해 증가, 지속 +5초",
+  "rarity_scaling": "결속 피해 +10/15/20/25%",
+  "tags": [
+   "curse_scale:hitch",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hera_sworn_strike",
+      "hera_sworn_flourish",
+      "hera_engagement_ring",
+      "hera_nexus_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_rousing_reception",
+  "god": "hera",
+  "name_ko": "성대한 환영",
+  "name_en": "Rousing Reception",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "마법진이 새로 등장하는 적에게 즉시 피해",
+  "rarity_scaling": "등장 피해 60/80/100/120",
+  "tags": [
+   "cast",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:ring"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_uncommon_grace",
+  "god": "hera",
+  "name_ko": "범상찮은 기품",
+  "name_en": "Uncommon Grace",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "일반 등급 은혜가 없으면 피해 증가",
+  "rarity_scaling": "+10/15/20/25%",
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_fine_line",
+  "god": "hera",
+  "name_ko": "한 핏줄",
+  "name_en": "Fine Line",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 동작이 직선 균열 생성, 마력 +15",
+  "rarity_scaling": "균열 피해 120/150/180/210",
+  "tags": [
+   "omega",
+   "aoe",
+   "duo_key",
+   "per_hit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_proper_upbringing",
+  "god": "hera",
+  "name_ko": "올바른 양육",
+  "name_en": "Proper Upbringing",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "4원소 각 1 이상 시 일반 은혜 전부 희귀로 상승",
+  "infusion_req": {
+   "element": "all",
+   "count": 1
+  },
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera_all_together",
+  "god": "hera",
+  "name_ko": "모둠 원소",
+  "name_en": "All Together",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "4원소 각 1 획득 + 원소별 주입 은혜 1개씩",
+  "tags": [],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hera_sworn_strike",
+      "hera_sworn_flourish",
+      "hera_engagement_ring",
+      "hera_nexus_rush"
+     ]
+    },
+    {
+     "any": [
+      "hera_bridal_glow",
+      "hera_uncommon_grace",
+      "hera_fine_line"
+     ]
+    },
+    {
+     "any": [
+      "hera_hereditary_bane",
+      "hera_rousing_reception"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ }
+]

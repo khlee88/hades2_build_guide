@@ -1,0 +1,402 @@
+[
+ {
+  "id": "ares_vicious_strike",
+  "god": "ares",
+  "name_ko": "상해 일격",
+  "name_en": "Vicious Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격 피해 증가 + 상처 부여",
+  "rarity_scaling": "공격 피해 +20/30/40/50%",
+  "tags": [
+   "curse_apply:wounds",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "apollo_nova_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hera_sworn_strike",
+   "hestia_flame_strike",
+   "poseidon_wave_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_vicious_flourish",
+  "god": "ares",
+  "name_ko": "상해 기예",
+  "name_en": "Vicious Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술 피해 증가 + 상처 부여",
+  "rarity_scaling": "기술 피해 +30/40/50/60%",
+  "tags": [
+   "curse_apply:wounds",
+   "beginner_safe",
+   "pct_dmg"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "apollo_nova_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hera_sworn_flourish",
+   "hestia_flame_flourish",
+   "poseidon_wave_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_sword_ring",
+  "god": "ares",
+  "name_ko": "검날 고리",
+  "name_en": "Sword Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진 안 적마다 비검 생성",
+  "rarity_scaling": "검 피해 120/160/200/240",
+  "tags": [
+   "ring",
+   "falling_blade",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "apollo_solar_ring",
+   "demeter_arctic_ring",
+   "hephaestus_anvil_ring",
+   "hera_engagement_ring",
+   "hestia_smolder_ring",
+   "poseidon_tidal_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_stabbing_rush",
+  "god": "ares",
+  "name_ko": "참격 쇄도",
+  "name_en": "Stabbing Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "돌진 경로에 비검 5개 생성",
+  "rarity_scaling": "검 피해 30/45/60/75",
+  "tags": [
+   "sprint_damage",
+   "falling_blade"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "apollo_blinding_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hera_nexus_rush",
+   "hestia_heat_rush",
+   "poseidon_breaker_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_grisly_gain",
+  "god": "ares",
+  "name_ko": "살벌한 마력",
+  "name_en": "Grisly Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "타격 시 20% 확률 혈장 생성, 마력 회복",
+  "rarity_scaling": "마력 15/20/25/30",
+  "tags": [
+   "mana_regen",
+   "plasma",
+   "per_hit"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "apollo_lucid_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hera_born_gain",
+   "hestia_cardio_gain",
+   "poseidon_flood_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_meat_grinder",
+  "god": "ares",
+  "name_ko": "고기 분쇄",
+  "name_en": "Meat Grinder",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 마법이 마법진에 칼날 소용돌이 생성",
+  "rarity_scaling": "균열 피해 30/40/50/60 (1초)",
+  "tags": [
+   "omega_cast",
+   "aoe",
+   "dot",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:ring"
+     ]
+    }
+   ]
+  },
+  "conflicts": [
+   "poseidon_geyser_spout"
+  ],
+  "conflict_reason": "Ω 마법 변형 - 동시 채용 불가 (위키 명시)",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_profuse_bleeding",
+  "god": "ares",
+  "name_ko": "과다 출혈",
+  "name_en": "Profuse Bleeding",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "상처 부여·혈장 획득 시 비검 생성",
+  "rarity_scaling": "검 피해 30/50/70/90",
+  "tags": [
+   "falling_blade",
+   "curse_scale:wounds",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "ares_vicious_strike",
+      "ares_vicious_flourish",
+      "ares_grisly_gain",
+      "ares_visceral_impact"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_grievous_blow",
+  "god": "ares",
+  "name_ko": "쓰라린 부상",
+  "name_en": "Grievous Blow",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "상처 입은 적에게 200% 피해 확률",
+  "rarity_scaling": "확률 +10/15/20/25%",
+  "tags": [
+   "curse_scale:wounds",
+   "crit"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "ares_vicious_strike",
+      "ares_vicious_flourish"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_visceral_impact",
+  "god": "ares",
+  "name_ko": "유혈 사태",
+  "name_en": "Visceral Impact",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "피격·적 처치 시 혈장 생성",
+  "rarity_scaling": "추가 확률 25/35/45/55%",
+  "tags": [
+   "plasma",
+   "retaliate",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_mutual_destruction",
+  "god": "ares",
+  "name_ko": "상호 공멸",
+  "name_en": "Mutual Destruction",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "체력 낮을수록 200% 피해 확률 상승",
+  "rarity_scaling": "잃은 체력당 0.1/0.12/0.14/0.16%",
+  "tags": [
+   "crit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_blood_spree",
+  "god": "ares",
+  "name_ko": "피투성이",
+  "name_en": "Blood Spree",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "체력 40 미만일 때 공격/기술이 체력 회복",
+  "rarity_scaling": "회복 1/2/3/4",
+  "tags": [
+   "heal"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_cut_above",
+  "god": "ares",
+  "name_ko": "확인 사살",
+  "name_en": "Cut Above",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 동작이 맞은 적마다 비검 생성, 마력 +5",
+  "rarity_scaling": "검 피해 90/120/150/180",
+  "tags": [
+   "omega",
+   "falling_blade",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_rallying_cry",
+  "god": "ares",
+  "name_ko": "집결 함성",
+  "name_en": "Rallying Cry",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "대지 8 이상 시 올림포스 효과 피해 +50%",
+  "infusion_req": {
+   "element": "earth",
+   "count": 4
+  },
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares_sanguinary_savor",
+  "god": "ares",
+  "name_ko": "달콤한 피",
+  "name_en": "Sanguinary Savor",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "상처 위력 +100, 혈장 자동 흡수",
+  "tags": [
+   "curse_scale:wounds",
+   "plasma"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "ares_vicious_strike",
+      "ares_vicious_flourish",
+      "ares_sword_ring",
+      "ares_stabbing_rush"
+     ]
+    },
+    {
+     "any": [
+      "ares_grisly_gain",
+      "ares_visceral_impact",
+      "ares_profuse_bleeding"
+     ]
+    },
+    {
+     "any": [
+      "ares_meat_grinder",
+      "ares_grievous_blow",
+      "ares_mutual_destruction",
+      "ares_blood_spree",
+      "ares_cut_above"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ }
+]

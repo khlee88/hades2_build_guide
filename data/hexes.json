@@ -1,0 +1,178 @@
+[
+ {
+  "id": "hex_phase_shift",
+  "name_ko": "위상 전환",
+  "name_en": "Phase Shift",
+  "effect": "4초간 나 외의 모든 것이 50% 느려짐",
+  "mana_to_charge": 130,
+  "godsent_god": "demeter",
+  "tags": [
+   "utility",
+   "armor"
+  ],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "godsent_ko": "신력"
+ },
+ {
+  "id": "hex_twilight_curse",
+  "name_ko": "황혼 저주",
+  "name_en": "Twilight Curse",
+  "effect": "유도 투사체로 적 최대 5명을 무해한 동물로 변형",
+  "mana_to_charge": 40,
+  "godsent_god": "zeus",
+  "tags": [
+   "utility",
+   "curse_apply:morph"
+  ],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "충전 비용 40으로 가장 저렴. 위기 탈출용으로 초보에게 안전",
+  "godsent_ko": "신력"
+ },
+ {
+  "id": "hex_lunar_ray",
+  "name_ko": "달빛줄기",
+  "name_en": "Lunar Ray",
+  "effect": "2초간 최대 800 피해 광선 발사",
+  "mana_to_charge": 30,
+  "godsent_god": "apollo",
+  "tags": [
+   "damage",
+   "boss_dmg"
+  ],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "충전 30으로 매우 저렴 + 단일 화력. 초보 추천",
+  "godsent_ko": "신력"
+ },
+ {
+  "id": "hex_wolf_howl",
+  "name_ko": "늑대 포효",
+  "name_en": "Wolf Howl",
+  "effect": "도약 후 목표 지점에 200 피해로 내리찍기",
+  "mana_to_charge": 50,
+  "godsent_god": "hephaestus",
+  "tags": [
+   "damage",
+   "aoe"
+  ],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "godsent_ko": "신력",
+  "notes": "기동성 좋고 충전 비용도 낮아 무적기 겸 딜링으로 초보에게 추천 (커뮤니티 선호)"
+ },
+ {
+  "id": "hex_moon_water",
+  "name_ko": "월색 담수",
+  "name_en": "Moon Water",
+  "effect": "체력 15 회복, 최대 3회 (샘 사용 시 초기화)",
+  "mana_to_charge": 70,
+  "godsent_god": "poseidon",
+  "tags": [
+   "heal"
+  ],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "생존이 어려운 초보에게 가장 안전한 선택",
+  "godsent_ko": "신력"
+ },
+ {
+  "id": "hex_night_bloom",
+  "name_ko": "밤맞이꽃",
+  "name_en": "Night Bloom",
+  "effect": "마지막에 처치한 적을 12초간 아군으로 부활",
+  "mana_to_charge": 60,
+  "godsent_god": "hera",
+  "tags": [
+   "summon"
+  ],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "godsent_ko": "신력"
+ },
+ {
+  "id": "hex_total_eclipse",
+  "name_ko": "개기일식",
+  "name_en": "Total Eclipse",
+  "effect": "4초 후 넓은 지역에 1000 피해 폭발",
+  "mana_to_charge": 90,
+  "godsent_god": "hestia",
+  "tags": [
+   "damage",
+   "aoe",
+   "boss_dmg"
+  ],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "시전 중 무방비 - 초보는 타이밍 주의",
+  "godsent_ko": "신력"
+ },
+ {
+  "id": "hex_dark_side",
+  "name_ko": "어둔 이면",
+  "name_en": "Dark Side",
+  "effect": "5초간 무적 상태의 악몽으로 변신, 전용 기술 사용",
+  "mana_to_charge": 110,
+  "godsent_god": "aphrodite",
+  "tags": [
+   "damage",
+   "armor"
+  ],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "godsent_ko": "신력"
+ },
+ {
+  "id": "hex_sky_fall",
+  "name_ko": "천상 붕괴",
+  "name_en": "Sky Fall",
+  "effect": "근처 적 하나에 달빛 조사, 50 피해 8회 반복",
+  "mana_to_charge": 60,
+  "godsent_god": "ares",
+  "tags": [
+   "damage",
+   "omega"
+  ],
+  "beginner_priority": 0,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "검은 외투의 셀레네 양상 전용 - 초반 4무기에서는 등장하지 않음",
+  "godsent_ko": "신력"
+ }
+]

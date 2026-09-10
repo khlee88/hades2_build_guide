@@ -1,0 +1,341 @@
+[
+ {
+  "id": "zeus",
+  "name_ko": "제우스",
+  "name_en": "Zeus",
+  "type": "core",
+  "curse": "blitz",
+  "curse_ko": "암운",
+  "elements": [
+   "air"
+  ],
+  "theme": "낙뢰 즉발 피해와 연쇄 번개. 암운은 적이 120 피해를 받거나 4초 후 낙뢰",
+  "beginner_note": "광역 처리가 편하고 마력 회복(이온 충전)도 좋음. 초보에게 무난",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia",
+  "name_ko": "헤스티아",
+  "name_en": "Hestia",
+  "type": "core",
+  "curse": "scorch",
+  "curse_ko": "잔불",
+  "elements": [
+   "fire"
+  ],
+  "theme": "잔불 지속 피해(1초마다 누적분 100). 단일·보스전에 강함",
+  "beginner_note": "잔불은 시간이 걸리므로 공격 속도 빠른 무기와 궁합. 잡몹 즉시 처리는 느림",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "poseidon",
+  "name_ko": "포세이돈",
+  "name_en": "Poseidon",
+  "type": "core",
+  "curse": "froth",
+  "curse_ko": "침수",
+  "elements": [
+   "water"
+  ],
+  "theme": "물보라 광역 피해 + 넉백. 보상 획득량 증가 은혜도 다수",
+  "beginner_note": "넉백으로 초반 잡몹 처리가 매우 편함. 단 근접 콤보를 끊을 수 있음",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "demeter",
+  "name_ko": "데메테르",
+  "name_en": "Demeter",
+  "type": "core",
+  "curse": "freeze",
+  "curse_ko": "동결",
+  "elements": [
+   "earth",
+   "water"
+  ],
+  "theme": "동결로 적 정지(2초) + 선풍(Gust)으로 감속. 마법진 강화 은혜 다수",
+  "beginner_note": "적을 멈춰 세워 생존에 도움. 마법 위주 빌드에서 진가",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "curse2": "gust",
+  "curse2_ko": "선풍"
+ },
+ {
+  "id": "apollo",
+  "name_ko": "아폴론",
+  "name_en": "Apollo",
+  "type": "core",
+  "curse": "daze",
+  "curse_ko": "실명",
+  "elements": [
+   "air",
+   "fire"
+  ],
+  "theme": "공격 범위 확대 + 실명(적 공격 20% 무효화)",
+  "beginner_note": "범위가 넓어져 명중이 쉬워지고 실명으로 생존도 오름. 초보 추천",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aphrodite",
+  "name_ko": "아프로디테",
+  "name_en": "Aphrodite",
+  "type": "core",
+  "curse": "weak",
+  "curse_ko": "약화",
+  "elements": [
+   "air",
+   "water"
+  ],
+  "theme": "근접 거리 피해 대폭 증가 + 약화(적 피해 30% 감소). 회복·최대 체력 은혜",
+  "beginner_note": "공격력과 생존을 동시에. 단 근접 거리에서만 피해 증가가 적용됨",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus",
+  "name_ko": "헤파이스토스",
+  "name_en": "Hephaestus",
+  "type": "core",
+  "curse": "glow",
+  "curse_ko": "발열",
+  "elements": [
+   "earth",
+   "fire"
+  ],
+  "theme": "큰 단발 광역 폭발(재충전형) + 방어도",
+  "beginner_note": "쿨타임 발동형이라 느리고 무거운 무기와 궁합. 방어도로 생존이 크게 오름",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hera",
+  "name_ko": "헤라",
+  "name_en": "Hera",
+  "type": "core",
+  "curse": "hitch",
+  "curse_ko": "결속",
+  "elements": [
+   "air",
+   "earth",
+   "fire",
+   "water"
+  ],
+  "theme": "결속으로 적끼리 피해 전이(30%). 은혜 등급 상승 은혜 보유",
+  "beginner_note": "다수 적 처리에 강력. 컨셉 이해가 필요해 초보엔 보조로 권장",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ares",
+  "name_ko": "아레스",
+  "name_en": "Ares",
+  "type": "core",
+  "curse": "wounds",
+  "curse_ko": "상처",
+  "elements": [
+   "earth"
+  ],
+  "theme": "단순 피해 증가 + 상처(타격 위력 +50) + 비검",
+  "beginner_note": "조건 없이 피해가 오르는 은혜가 많아 실수해도 손해가 적음",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes",
+  "name_ko": "헤르메스",
+  "name_en": "Hermes",
+  "type": "hermes",
+  "curse": "none",
+  "curse_ko": null,
+  "elements": [
+   "air",
+   "earth",
+   "fire",
+   "water"
+  ],
+  "theme": "속도 전반 강화(공격·Ω·돌진·이동), 적 투사체 감속",
+  "beginner_note": "듀오 은혜가 없고 대부분 조건 없이 이득. 뜨면 거의 항상 챙길 것",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis",
+  "name_ko": "아르테미스",
+  "name_en": "Artemis",
+  "type": "encounter",
+  "curse": "marked",
+  "curse_ko": "표식",
+  "elements": [
+   "earth",
+   "air"
+  ],
+  "theme": "치명타 중심. 조우형으로 등장",
+  "beginner_note": "치명타 빌드가 아니어도 무난. 뜨면 챙기기",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "selene",
+  "name_ko": "셀레네",
+  "name_en": "Selene",
+  "type": "selene",
+  "curse": "morph",
+  "curse_ko": "변형",
+  "elements": [],
+  "theme": "비술 - 마력을 소모해 충전되는 필살기. 밤마다 1개 선택",
+  "beginner_note": "마력을 많이 쓰는 빌드일수록 자주 발동",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "chaos",
+  "name_ko": "카오스",
+  "name_en": "Chaos",
+  "type": "chaos",
+  "curse": "none",
+  "curse_ko": null,
+  "elements": [],
+  "theme": "일정 시간 저주를 받는 대신 강력한 축복 획득",
+  "beginner_note": "초보는 페널티가 가벼운 것만 고를 것",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "arachne",
+  "name_ko": "아라크네",
+  "name_en": "Arachne",
+  "type": "npc",
+  "curse": "none",
+  "curse_ko": null,
+  "elements": [],
+  "theme": "의상 제작 - 최대 체력·마법진 강화 등 상시 효과",
+  "beginner_note": "체력 증가 의상이 초보에게 안전",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "icarus",
+  "name_ko": "이카로스",
+  "name_en": "Icarus",
+  "type": "npc",
+  "curse": "none",
+  "curse_ko": null,
+  "elements": [],
+  "theme": "무기 업그레이드 제공",
+  "beginner_note": "현재 빌드의 핵심 동작을 강화하는 것 선택",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "narcissus",
+  "name_ko": "나르키소스",
+  "name_en": "Narcissus",
+  "type": "npc",
+  "curse": "none",
+  "curse_ko": null,
+  "elements": [],
+  "theme": "자원·회복 제공",
+  "beginner_note": "체력 낮으면 회복 우선",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "echo",
+  "name_ko": "에코",
+  "name_en": "Echo",
+  "type": "npc",
+  "curse": "none",
+  "curse_ko": null,
+  "elements": [],
+  "theme": "보유 은혜 복제/강화",
+  "beginner_note": "핵심 은혜를 복제하면 큰 이득",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "medea",
+  "name_ko": "메데이아",
+  "name_en": "Medea",
+  "type": "npc",
+  "curse": "none",
+  "curse_ko": null,
+  "elements": [],
+  "theme": "적을 약화시키는 저주 제공",
+  "beginner_note": "적 약화는 생존에 직결",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "circe",
+  "name_ko": "키르케",
+  "name_en": "Circe",
+  "type": "npc",
+  "curse": "none",
+  "curse_ko": null,
+  "elements": [],
+  "theme": "변신·마법 관련 효과",
+  "beginner_note": "마법 빌드에서 유용",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ }
+]

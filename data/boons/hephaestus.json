@@ -1,0 +1,386 @@
+[
+ {
+  "id": "hephaestus_volcanic_strike",
+  "god": "hephaestus",
+  "name_ko": "화산 일격",
+  "name_en": "Volcanic Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격이 주기적으로 400 광역 폭발",
+  "rarity_scaling": "재충전 12/10/8/6초",
+  "tags": [
+   "blast",
+   "aoe",
+   "beginner_safe",
+   "cooldown_burst"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "apollo_nova_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hera_sworn_strike",
+   "hestia_flame_strike",
+   "poseidon_wave_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_volcanic_flourish",
+  "god": "hephaestus",
+  "name_ko": "화산 기예",
+  "name_en": "Volcanic Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술이 주기적으로 500 광역 폭발",
+  "rarity_scaling": "재충전 15/13/11/9초",
+  "tags": [
+   "blast",
+   "aoe",
+   "beginner_safe",
+   "cooldown_burst"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "apollo_nova_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hera_sworn_flourish",
+   "hestia_flame_flourish",
+   "poseidon_wave_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_anvil_ring",
+  "god": "hephaestus",
+  "name_ko": "모루 고리",
+  "name_en": "Anvil Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진이 3회 연속 큰 피해",
+  "rarity_scaling": "피해 60/70/80/90 (1초)",
+  "tags": [
+   "ring",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "apollo_solar_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "hera_engagement_ring",
+   "hestia_smolder_ring",
+   "poseidon_tidal_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_smithy_rush",
+  "god": "hephaestus",
+  "name_ko": "단철 쇄도",
+  "name_en": "Smithy Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "돌진 후 근처 적에게 200 폭발",
+  "rarity_scaling": "재충전 10/9/8/7초",
+  "tags": [
+   "blast",
+   "sprint_damage",
+   "aoe",
+   "cooldown_burst"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "apollo_blinding_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hera_nexus_rush",
+   "hestia_heat_rush",
+   "poseidon_breaker_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_tough_gain",
+  "god": "hephaestus",
+  "name_ko": "강고한 마력",
+  "name_en": "Tough Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "피격 피해 감소 + 마력 150 회복",
+  "rarity_scaling": "피해 -1/-2/-3/-4",
+  "tags": [
+   "armor",
+   "mana_regen",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "apollo_lucid_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hera_born_gain",
+   "hestia_cardio_gain",
+   "poseidon_flood_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_grand_caldera",
+  "god": "hephaestus",
+  "name_ko": "거대 분화구",
+  "name_en": "Grand Caldera",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "폭발 피해·크기 증가 + 연쇄 폭발 다수",
+  "rarity_scaling": "추가 피해 +75/100/125/150",
+  "tags": [
+   "blast",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish",
+      "hephaestus_smithy_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_molten_touch",
+  "god": "hephaestus",
+  "name_ko": "융해의 손길",
+  "name_en": "Molten Touch",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "방어구에 추가 피해",
+  "rarity_scaling": "+40/60/80/100%",
+  "tags": [
+   "boss_dmg",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_heavy_metal",
+  "god": "hephaestus",
+  "name_ko": "중금속",
+  "name_en": "Heavy Metal",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "보유 방어도 20%만큼 무기 피해 증가",
+  "rarity_scaling": "방어도 +50/75/100/125",
+  "tags": [
+   "armor",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_trusty_shield",
+  "god": "hephaestus",
+  "name_ko": "무쇠 가죽",
+  "name_en": "Trusty Shield",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "지역 진입마다 방어도 획득, 마력 30 점유",
+  "rarity_scaling": "방어도 +10/15/20/25",
+  "tags": [
+   "armor",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_security_system",
+  "god": "hephaestus",
+  "name_ko": "방호 체계",
+  "name_en": "Security System",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "전투 시작 시 7초간 방어도",
+  "rarity_scaling": "방어도 75/100/125/150",
+  "tags": [
+   "armor",
+   "duo_key",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_uncanny_fortitude",
+  "god": "hephaestus",
+  "name_ko": "초자연적 맷집",
+  "name_en": "Uncanny Fortitude",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "최대 마력에 비례해 최대 체력 증가",
+  "rarity_scaling": "+20/30/40/50%",
+  "tags": [
+   "max_hp",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_furnace_blast",
+  "god": "hephaestus",
+  "name_ko": "용광로 폭발",
+  "name_en": "Furnace Blast",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "폭발이 발열 부여 - 적 받는 피해 증가",
+  "rarity_scaling": "발열 +15/19/25/26%",
+  "tags": [
+   "curse_apply:glow",
+   "blast",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish",
+      "hephaestus_smithy_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_martial_art",
+  "god": "hephaestus",
+  "name_ko": "굳센 무예",
+  "name_en": "Martial Art",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "대지 은혜 수만큼 공격/기술 피해 증가",
+  "infusion_req": {
+   "element": "earth",
+   "count": 2
+  },
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hephaestus_premium_service",
+  "god": "hephaestus",
+  "name_ko": "맞춤 개조",
+  "name_en": "Premium Service",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "장착 양상 등급 +1",
+  "tags": [],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish",
+      "hephaestus_smithy_rush"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_heavy_metal",
+      "hephaestus_trusty_shield"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_grand_caldera",
+      "hephaestus_molten_touch",
+      "hephaestus_furnace_blast"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ }
+]

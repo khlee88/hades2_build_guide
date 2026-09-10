@@ -1,0 +1,1973 @@
+[
+ {
+  "id": "duo_zeus_hera_kings_ransom",
+  "kind": "duo",
+  "gods": [
+   "zeus",
+   "hera"
+  ],
+  "name_ko": "왕의 강권",
+  "name_en": "King's Ransom",
+  "effect": "헤라 은혜 전부 포기, 개당 제우스 은혜 위력 +4Lv",
+  "power_tier": "B",
+  "tags": [],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish",
+      "zeus_storm_ring",
+      "zeus_thunder_rush",
+      "zeus_ionic_gain"
+     ]
+    },
+    {
+     "any": [
+      "hera_engagement_ring",
+      "hera_born_gain",
+      "hera_nexus_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "conflicts": [
+   "duo_hera_zeus_queens_ransom"
+  ],
+  "conflict_reason": "서로의 은혜를 전부 파괴하는 관계"
+ },
+ {
+  "id": "duo_hera_zeus_queens_ransom",
+  "kind": "duo",
+  "gods": [
+   "hera",
+   "zeus"
+  ],
+  "name_ko": "여왕의 강권",
+  "name_en": "Queen's Ransom",
+  "effect": "제우스 은혜 전부 포기, 개당 헤라 은혜 위력 +4Lv",
+  "power_tier": "B",
+  "tags": [],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hera_sworn_strike",
+      "hera_sworn_flourish",
+      "hera_engagement_ring",
+      "hera_nexus_rush",
+      "hera_born_gain"
+     ]
+    },
+    {
+     "any": [
+      "zeus_storm_ring",
+      "zeus_ionic_gain",
+      "zeus_thunder_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "conflicts": [
+   "duo_zeus_hera_kings_ransom"
+  ],
+  "conflict_reason": "서로의 은혜를 전부 파괴하는 관계"
+ },
+ {
+  "id": "duo_zeus_poseidon",
+  "kind": "duo",
+  "gods": [
+   "zeus",
+   "poseidon"
+  ],
+  "name_ko": "감전 급류",
+  "name_en": "Killer Current",
+  "effect": "침수 걸린 적에게 번개 피해 +30%",
+  "power_tier": "A",
+  "tags": [
+   "curse_scale:froth"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish",
+      "zeus_storm_ring",
+      "zeus_thunder_rush",
+      "zeus_divine_vengeance",
+      "zeus_lightning_lance"
+     ]
+    },
+    {
+     "any": [
+      "poseidon_slippery_slope",
+      "poseidon_tidal_ring"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_zeus_demeter",
+  "kind": "duo",
+  "gods": [
+   "zeus",
+   "demeter"
+  ],
+  "name_ko": "우박 폭풍",
+  "name_en": "Hail Storm",
+  "effect": "동결된 적에게 번개 반복 낙뢰",
+  "power_tier": "S",
+  "tags": [
+   "curse_scale:freeze",
+   "aoe"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish",
+      "zeus_storm_ring",
+      "zeus_thunder_rush",
+      "zeus_ionic_gain"
+     ]
+    },
+    {
+     "any": [
+      "demeter_ice_strike",
+      "demeter_ice_flourish",
+      "demeter_arctic_ring"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_zeus_apollo",
+  "kind": "duo",
+  "gods": [
+   "zeus",
+   "apollo"
+  ],
+  "name_ko": "눈부신 참사",
+  "name_en": "Glorious Disaster",
+  "effect": "Ω 마법에 마력 +30 충전해 낙뢰 난타",
+  "power_tier": "S",
+  "tags": [
+   "omega_cast",
+   "aoe"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish",
+      "zeus_storm_ring",
+      "zeus_thunder_rush"
+     ]
+    },
+    {
+     "any": [
+      "apollo_prominence_flare"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_zeus_aphrodite",
+  "kind": "duo",
+  "gods": [
+   "zeus",
+   "aphrodite"
+  ],
+  "name_ko": "짜릿한 접촉",
+  "name_en": "Romantic Spark",
+  "effect": "암운 적에 질주 충돌 시 즉시 발동 +80%",
+  "power_tier": "A",
+  "tags": [
+   "curse_scale:blitz",
+   "sprint_damage"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish"
+     ]
+    },
+    {
+     "any": [
+      "aphrodite_flutter_strike",
+      "aphrodite_flutter_flourish",
+      "aphrodite_rapture_ring",
+      "aphrodite_passion_rush",
+      "aphrodite_glamour_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_zeus_hestia",
+  "kind": "duo",
+  "gods": [
+   "zeus",
+   "hestia"
+  ],
+  "name_ko": "불벼락",
+  "name_en": "Thermal Dynamics",
+  "effect": "암운이 피해를 줄 때 잔불도 부여",
+  "power_tier": "S",
+  "tags": [
+   "curse_apply:scorch",
+   "curse_scale:blitz",
+   "dot"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish"
+     ]
+    },
+    {
+     "any": [
+      "hestia_flame_strike",
+      "hestia_flame_flourish",
+      "hestia_smolder_ring"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_zeus_hephaestus",
+  "kind": "duo",
+  "gods": [
+   "zeus",
+   "hephaestus"
+  ],
+  "name_ko": "초전도체",
+  "name_en": "Master Conductor",
+  "effect": "연쇄 번개가 자신에게도 튕기며 피해 누적 증가",
+  "power_tier": "A",
+  "tags": [
+   "chain"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "zeus_static_shock"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish",
+      "hephaestus_anvil_ring",
+      "hephaestus_smithy_rush",
+      "hephaestus_tough_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_zeus_ares",
+  "kind": "duo",
+  "gods": [
+   "zeus",
+   "ares"
+  ],
+  "name_ko": "잔학무도",
+  "name_en": "Heinous Affront",
+  "effect": "상처 부여 시 '피격 시 발동' 효과도 발동",
+  "power_tier": "B",
+  "tags": [
+   "curse_scale:wounds",
+   "retaliate"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "ares_vicious_strike",
+      "ares_vicious_flourish"
+     ]
+    },
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish",
+      "zeus_storm_ring",
+      "zeus_thunder_rush",
+      "zeus_ionic_gain"
+     ]
+    },
+    {
+     "any": [
+      "ares_visceral_impact",
+      "apollo_light_smite",
+      "zeus_divine_vengeance"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_hestia_poseidon",
+  "kind": "duo",
+  "gods": [
+   "hestia",
+   "poseidon"
+  ],
+  "name_ko": "뜨거운 증기",
+  "name_en": "Scalding Vapor",
+  "effect": "침수 적이 헤스티아 불에 맞으면 증기 폭발",
+  "power_tier": "S",
+  "tags": [
+   "curse_scale:froth",
+   "dot",
+   "aoe"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hestia_flame_strike",
+      "hestia_flame_flourish",
+      "hestia_smolder_ring",
+      "hestia_highly_flammable",
+      "hestia_controlled_burn",
+      "hestia_glowing_coal"
+     ]
+    },
+    {
+     "any": [
+      "poseidon_tidal_ring",
+      "poseidon_slippery_slope"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_hestia_demeter",
+  "kind": "duo",
+  "gods": [
+   "hestia",
+   "demeter"
+  ],
+  "name_ko": "냉동 화상",
+  "name_en": "Freezer Burn",
+  "effect": "잔불 적을 동결 시 잔불 200% 피해로 폭발",
+  "power_tier": "S",
+  "tags": [
+   "curse_scale:scorch",
+   "curse_scale:freeze",
+   "boss_dmg"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hestia_flame_strike",
+      "hestia_flame_flourish",
+      "hestia_smolder_ring"
+     ]
+    },
+    {
+     "any": [
+      "demeter_ice_strike",
+      "demeter_ice_flourish",
+      "demeter_arctic_ring"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_hestia_apollo",
+  "kind": "duo",
+  "gods": [
+   "hestia",
+   "apollo"
+  ],
+  "name_ko": "온화한 바람",
+  "name_en": "Warm Breeze",
+  "effect": "회피·실명 빗나감마다 체력 회복",
+  "power_tier": "A",
+  "tags": [
+   "heal",
+   "beginner_safe"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hestia_flame_strike",
+      "hestia_flame_flourish",
+      "hestia_smolder_ring",
+      "hestia_heat_rush",
+      "hestia_cardio_gain"
+     ]
+    },
+    {
+     "any": [
+      "apollo_solar_ring",
+      "apollo_blinding_rush",
+      "apollo_light_smite",
+      "apollo_dazzling_display"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_hestia_aphrodite",
+  "kind": "duo",
+  "gods": [
+   "hestia",
+   "aphrodite"
+  ],
+  "name_ko": "불같은 열망",
+  "name_en": "Burning Desire",
+  "effect": "약화된 적의 잔불이 소모되지 않고 무한 지속",
+  "power_tier": "S",
+  "tags": [
+   "curse_scale:scorch",
+   "curse_scale:weak",
+   "dot"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hestia_flame_strike",
+      "hestia_flame_flourish",
+      "hestia_smolder_ring"
+     ]
+    },
+    {
+     "any": [
+      "aphrodite_rapture_ring",
+      "aphrodite_passion_rush",
+      "aphrodite_glamour_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_hestia_hephaestus",
+  "kind": "duo",
+  "gods": [
+   "hestia",
+   "hephaestus"
+  ],
+  "name_ko": "연쇄 반응",
+  "name_en": "Chain Reaction",
+  "effect": "헤파이스토스 폭발을 재충전 직후 쓰면 2회 발동",
+  "power_tier": "A",
+  "tags": [
+   "blast",
+   "aoe"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hestia_flame_strike",
+      "hestia_flame_flourish",
+      "hestia_smolder_ring",
+      "hestia_heat_rush",
+      "hestia_cardio_gain"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_hestia_hera",
+  "kind": "duo",
+  "gods": [
+   "hestia",
+   "hera"
+  ],
+  "name_ko": "존재감 작열",
+  "name_en": "Incandescent Aura",
+  "effect": "마력 회복 시 결속된 적 전체에 피해",
+  "power_tier": "S",
+  "tags": [
+   "curse_scale:hitch",
+   "aoe",
+   "mana_regen"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hestia_flame_strike",
+      "hestia_flame_flourish",
+      "hestia_smolder_ring",
+      "hestia_heat_rush",
+      "hestia_cardio_gain"
+     ]
+    },
+    {
+     "any": [
+      "hera_sworn_strike",
+      "hera_sworn_flourish",
+      "hera_engagement_ring",
+      "hera_nexus_rush",
+      "hera_born_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_hestia_ares",
+  "kind": "duo",
+  "gods": [
+   "hestia",
+   "ares"
+  ],
+  "name_ko": "사도 화상",
+  "name_en": "Fourth Degree",
+  "effect": "화염구가 더 강한 위력으로 상처 부여",
+  "power_tier": "B",
+  "tags": [
+   "curse_apply:wounds"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hestia_controlled_burn",
+      "hestia_glowing_coal"
+     ]
+    },
+    {
+     "any": [
+      "ares_vicious_strike",
+      "ares_vicious_flourish",
+      "ares_sword_ring",
+      "ares_stabbing_rush",
+      "ares_grisly_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_poseidon_hera",
+  "kind": "duo",
+  "gods": [
+   "poseidon",
+   "hera"
+  ],
+  "name_ko": "파급 효과",
+  "name_en": "Ripple Effect",
+  "effect": "가는 선·큰 너울 효과가 2회 발동할 확률",
+  "power_tier": "B",
+  "tags": [
+   "omega"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "poseidon_wave_strike",
+      "poseidon_wave_flourish",
+      "poseidon_tidal_ring",
+      "poseidon_ocean_swell"
+     ]
+    },
+    {
+     "any": [
+      "hera_sworn_strike",
+      "hera_sworn_flourish",
+      "hera_engagement_ring",
+      "hera_fine_line"
+     ]
+    },
+    {
+     "any": [
+      "hera_fine_line",
+      "poseidon_ocean_swell"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_poseidon_demeter",
+  "kind": "duo",
+  "gods": [
+   "poseidon",
+   "demeter"
+  ],
+  "name_ko": "자연 선택",
+  "name_en": "Natural Selection",
+  "effect": "가장 왼쪽 열 은혜에 총 +8Lv 분배",
+  "power_tier": "A",
+  "tags": [],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "poseidon_wave_strike",
+      "poseidon_wave_flourish",
+      "poseidon_tidal_ring",
+      "poseidon_breaker_rush",
+      "poseidon_flood_gain"
+     ]
+    },
+    {
+     "any": [
+      "demeter_ice_strike",
+      "demeter_ice_flourish",
+      "demeter_arctic_ring",
+      "demeter_frigid_rush",
+      "demeter_tranquil_gain"
+     ]
+    },
+    {
+     "any": [
+      "poseidon_buried_treasure",
+      "poseidon_sea_star",
+      "demeter_steady_growth",
+      "demeter_plentiful_forage"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_poseidon_apollo",
+  "kind": "duo",
+  "gods": [
+   "poseidon",
+   "apollo"
+  ],
+  "name_ko": "물 폭탄",
+  "name_en": "Beach Ball",
+  "effect": "질주 시 물의 구체 생성, 멈추면 전방으로 돌진",
+  "power_tier": "A",
+  "tags": [
+   "sprint_damage",
+   "aoe"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "poseidon_breaker_rush",
+      "apollo_blinding_rush"
+     ]
+    },
+    {
+     "any": [
+      "poseidon_wave_strike",
+      "poseidon_wave_flourish",
+      "poseidon_tidal_ring",
+      "poseidon_flood_gain",
+      "poseidon_breaker_rush"
+     ]
+    },
+    {
+     "any": [
+      "apollo_nova_strike",
+      "apollo_nova_flourish",
+      "apollo_solar_ring",
+      "apollo_lucid_gain",
+      "apollo_blinding_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "아폴론/포세이돈 페이지 전제조건 표기 상이 - ISSUES 참조"
+ },
+ {
+  "id": "duo_poseidon_aphrodite",
+  "kind": "duo",
+  "gods": [
+   "poseidon",
+   "aphrodite"
+  ],
+  "name_ko": "섬 휴양지",
+  "name_en": "Island Getaway",
+  "effect": "근처 적 피해 감소 + 아프로디테 은혜가 모든 적을 근접 취급",
+  "power_tier": "S",
+  "tags": [
+   "armor",
+   "close_up"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "poseidon_wave_strike",
+      "poseidon_wave_flourish",
+      "poseidon_tidal_ring",
+      "poseidon_breaker_rush",
+      "poseidon_flood_gain"
+     ]
+    },
+    {
+     "any": [
+      "aphrodite_flutter_strike",
+      "aphrodite_flutter_flourish"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_poseidon_hephaestus",
+  "kind": "duo",
+  "gods": [
+   "poseidon",
+   "hephaestus"
+  ],
+  "name_ko": "수력 구동",
+  "name_en": "Seismic Servo",
+  "effect": "재충전형 은혜 효과의 충전 속도 +35%",
+  "power_tier": "A",
+  "tags": [
+   "blast"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "poseidon_wave_strike",
+      "poseidon_wave_flourish",
+      "poseidon_tidal_ring",
+      "poseidon_breaker_rush",
+      "poseidon_flood_gain"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish",
+      "hephaestus_smithy_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_poseidon_ares",
+  "kind": "duo",
+  "gods": [
+   "poseidon",
+   "ares"
+  ],
+  "name_ko": "피바다",
+  "name_en": "Arterial Spray",
+  "effect": "포세이돈 물보라가 2회 적중할 확률 25%",
+  "power_tier": "A",
+  "tags": [
+   "splash"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "poseidon_wave_strike",
+      "poseidon_wave_flourish"
+     ]
+    },
+    {
+     "any": [
+      "ares_vicious_strike",
+      "ares_vicious_flourish",
+      "ares_sword_ring",
+      "ares_stabbing_rush",
+      "ares_grisly_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_demeter_hera",
+  "kind": "duo",
+  "gods": [
+   "demeter",
+   "hera"
+  ],
+  "name_ko": "귀중한 가보",
+  "name_en": "Cherished Heirloom",
+  "effect": "이번 밤 기념품 등급 +1",
+  "power_tier": "B",
+  "tags": [
+   "meta"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "demeter_ice_strike",
+      "demeter_ice_flourish",
+      "demeter_arctic_ring",
+      "demeter_frigid_rush",
+      "demeter_tranquil_gain"
+     ]
+    },
+    {
+     "any": [
+      "hera_sworn_strike",
+      "hera_sworn_flourish",
+      "hera_engagement_ring",
+      "hera_nexus_rush",
+      "hera_born_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_demeter_apollo",
+  "kind": "duo",
+  "gods": [
+   "demeter",
+   "apollo"
+  ],
+  "name_ko": "남녘 태풍",
+  "name_en": "Tropical Cyclone",
+  "effect": "선풍 안에 있으면 자동으로 강풍 발사",
+  "power_tier": "S",
+  "tags": [
+   "curse_scale:gust",
+   "aoe"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "demeter_frigid_rush",
+      "demeter_arctic_gale"
+     ]
+    },
+    {
+     "any": [
+      "apollo_nova_strike",
+      "apollo_nova_flourish",
+      "apollo_solar_ring",
+      "apollo_blinding_rush",
+      "apollo_lucid_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_demeter_aphrodite",
+  "kind": "duo",
+  "gods": [
+   "demeter",
+   "aphrodite"
+  ],
+  "name_ko": "원기 왕성",
+  "name_en": "Hearty Appetite",
+  "effect": "최대 체력이 높을수록 피해 증가",
+  "power_tier": "A",
+  "tags": [
+   "max_hp"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "demeter_ice_strike",
+      "demeter_ice_flourish",
+      "demeter_tranquil_gain",
+      "demeter_frigid_rush",
+      "demeter_plentiful_forage"
+     ]
+    },
+    {
+     "any": [
+      "aphrodite_flutter_strike",
+      "aphrodite_flutter_flourish",
+      "aphrodite_glamour_gain",
+      "aphrodite_passion_rush",
+      "aphrodite_healthy_rebound"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_demeter_hephaestus",
+  "kind": "duo",
+  "gods": [
+   "demeter",
+   "hephaestus"
+  ],
+  "name_ko": "동결 분쇄",
+  "name_en": "Cryo Pounder",
+  "effect": "동결된 적에게 폭발 피해 +50%",
+  "power_tier": "A",
+  "tags": [
+   "curse_scale:freeze",
+   "blast"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "demeter_ice_strike",
+      "demeter_ice_flourish",
+      "demeter_arctic_ring"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish",
+      "hephaestus_smithy_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_demeter_ares",
+  "kind": "duo",
+  "gods": [
+   "demeter",
+   "ares"
+  ],
+  "name_ko": "위험 지대",
+  "name_en": "Hostile Environment",
+  "effect": "Ω 마법 피해 +100% + 마법진이 나를 따라다님",
+  "power_tier": "S",
+  "tags": [
+   "omega_cast"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "demeter_ice_strike",
+      "demeter_ice_flourish",
+      "demeter_arctic_ring",
+      "demeter_frigid_rush",
+      "demeter_tranquil_gain"
+     ]
+    },
+    {
+     "any": [
+      "ares_sword_ring",
+      "ares_meat_grinder"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "conflicts": [
+   "zeus_lightning_lance",
+   "hestia_glowing_coal",
+   "demeter_local_climate",
+   "poseidon_tidal_ring"
+  ],
+  "conflict_reason": "마법 변형 계열 - 동시 채용 불가 (위키 명시)"
+ },
+ {
+  "id": "duo_apollo_hera",
+  "kind": "duo",
+  "gods": [
+   "apollo",
+   "hera"
+  ],
+  "name_ko": "태양 숭배",
+  "name_en": "Sun Worshiper",
+  "effect": "전투마다 첫 처치한 적이 아군으로 부활",
+  "power_tier": "B",
+  "tags": [
+   "summon"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "apollo_solar_ring",
+      "apollo_blinding_rush",
+      "apollo_lucid_gain"
+     ]
+    },
+    {
+     "any": [
+      "hera_engagement_ring",
+      "hera_nexus_rush",
+      "hera_born_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_apollo_aphrodite",
+  "kind": "duo",
+  "gods": [
+   "apollo",
+   "aphrodite"
+  ],
+  "name_ko": "명랑한 기질",
+  "name_en": "Sunny Disposition",
+  "effect": "연심 생성 시 +2개 추가 생성",
+  "power_tier": "A",
+  "tags": [
+   "aoe"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "aphrodite_heart_breaker"
+     ]
+    },
+    {
+     "any": [
+      "apollo_nova_strike",
+      "apollo_nova_flourish",
+      "apollo_solar_ring",
+      "apollo_blinding_rush",
+      "apollo_lucid_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_apollo_hephaestus",
+  "kind": "duo",
+  "gods": [
+   "apollo",
+   "hephaestus"
+  ],
+  "name_ko": "강제 기상",
+  "name_en": "Rude Awakening",
+  "effect": "폭발이 실명을 해제하며 추가 피해 300",
+  "power_tier": "A",
+  "tags": [
+   "curse_scale:daze",
+   "blast"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "apollo_solar_ring",
+      "apollo_blinding_rush",
+      "apollo_light_smite",
+      "apollo_dazzling_display"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish",
+      "hephaestus_smithy_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_apollo_ares",
+  "kind": "duo",
+  "gods": [
+   "apollo",
+   "ares"
+  ],
+  "name_ko": "날 선 기세",
+  "name_en": "Cutting Edge",
+  "effect": "비검이 1회 더 떨어지고 범위 +50%",
+  "power_tier": "A",
+  "tags": [
+   "falling_blade",
+   "aoe"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "ares_sword_ring",
+      "ares_stabbing_rush",
+      "ares_cut_above"
+     ]
+    },
+    {
+     "any": [
+      "apollo_nova_strike",
+      "apollo_nova_flourish",
+      "apollo_solar_ring",
+      "apollo_blinding_rush",
+      "apollo_lucid_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_aphrodite_hera",
+  "kind": "duo",
+  "gods": [
+   "aphrodite",
+   "hera"
+  ],
+  "name_ko": "광적인 집착",
+  "name_en": "Ecstatic Obsession",
+  "effect": "적이 2명 이상이면 1명을 자동 매혹시켜 아군화",
+  "power_tier": "S",
+  "tags": [
+   "curse_apply:charm"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "aphrodite_rapture_ring",
+      "aphrodite_passion_rush",
+      "aphrodite_glamour_gain"
+     ]
+    },
+    {
+     "any": [
+      "hera_sworn_strike",
+      "hera_sworn_flourish",
+      "hera_engagement_ring",
+      "hera_nexus_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_aphrodite_hephaestus",
+  "kind": "duo",
+  "gods": [
+   "aphrodite",
+   "hephaestus"
+  ],
+  "name_ko": "설렘 폭발",
+  "name_en": "Love Handles",
+  "effect": "헤파이스토스 폭발이 연심도 생성",
+  "power_tier": "A",
+  "tags": [
+   "blast",
+   "aoe"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "aphrodite_flutter_strike",
+      "aphrodite_flutter_flourish",
+      "aphrodite_rapture_ring",
+      "aphrodite_passion_rush",
+      "aphrodite_glamour_gain"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish",
+      "hephaestus_smithy_rush"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_aphrodite_ares",
+  "kind": "duo",
+  "gods": [
+   "aphrodite",
+   "ares"
+  ],
+  "name_ko": "핏빛 사랑",
+  "name_en": "Carnal Pleasure",
+  "effect": "혈장 획득 시 확률적으로 연심 생성",
+  "power_tier": "B",
+  "tags": [
+   "plasma",
+   "aoe"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "aphrodite_flutter_strike",
+      "aphrodite_flutter_flourish",
+      "aphrodite_rapture_ring",
+      "aphrodite_passion_rush",
+      "aphrodite_glamour_gain"
+     ]
+    },
+    {
+     "any": [
+      "ares_grisly_gain",
+      "ares_visceral_impact",
+      "ares_profuse_bleeding"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_hera_hephaestus",
+  "kind": "duo",
+  "gods": [
+   "hera",
+   "hephaestus"
+  ],
+  "name_ko": "태연한 얼굴",
+  "name_en": "Brave Face",
+  "effect": "모든 피해의 30%를 마력으로 자동 방어",
+  "power_tier": "S",
+  "tags": [
+   "armor",
+   "beginner_safe"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hera_extended_family",
+      "hera_dying_wish",
+      "hera_hereditary_bane",
+      "hera_rousing_reception",
+      "hera_fine_line"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_grand_caldera",
+      "hephaestus_molten_touch",
+      "hephaestus_heavy_metal",
+      "hephaestus_trusty_shield",
+      "hephaestus_security_system",
+      "hephaestus_uncanny_fortitude",
+      "hephaestus_furnace_blast"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_hera_ares",
+  "kind": "duo",
+  "gods": [
+   "hera",
+   "ares"
+  ],
+  "name_ko": "혈기 충만",
+  "name_en": "Universal Donor",
+  "effect": "지역 이동 시 혈장 속도 보너스 일부 유지",
+  "power_tier": "B",
+  "tags": [
+   "plasma",
+   "attack_speed"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hera_sworn_strike",
+      "hera_sworn_flourish",
+      "hera_engagement_ring",
+      "hera_nexus_rush",
+      "hera_born_gain"
+     ]
+    },
+    {
+     "any": [
+      "ares_grisly_gain",
+      "ares_visceral_impact",
+      "ares_profuse_bleeding"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "duo_hephaestus_ares",
+  "kind": "duo",
+  "gods": [
+   "hephaestus",
+   "ares"
+  ],
+  "name_ko": "관짝에 못",
+  "name_en": "Coffin Nail",
+  "effect": "비검이 즉시 떨어지고 피해 증가",
+  "power_tier": "A",
+  "tags": [
+   "falling_blade"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "ares_sword_ring",
+      "ares_stabbing_rush",
+      "ares_cut_above"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish",
+      "hephaestus_anvil_ring",
+      "hephaestus_smithy_rush",
+      "hephaestus_tough_gain"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "leg_zeus",
+  "kind": "legendary",
+  "gods": [
+   "zeus"
+  ],
+  "name_ko": "청천벽력",
+  "name_en": "Shocking Loss",
+  "effect": "첫 피해 시 25% 확률로 적 즉사",
+  "power_tier": "S",
+  "tags": [
+   "boss_dmg"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "zeus_heaven_strike",
+      "zeus_heaven_flourish",
+      "zeus_storm_ring",
+      "zeus_thunder_rush",
+      "zeus_ionic_gain"
+     ]
+    },
+    {
+     "any": [
+      "zeus_static_shock",
+      "zeus_power_surge",
+      "zeus_lightning_lance",
+      "zeus_divine_vengeance"
+     ]
+    },
+    {
+     "any": [
+      "zeus_arc_flash",
+      "zeus_double_strike",
+      "zeus_electric_overload"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "leg_hestia",
+  "kind": "legendary",
+  "gods": [
+   "hestia"
+  ],
+  "name_ko": "불길 장벽",
+  "name_en": "Fire Away",
+  "effect": "마법진이 적 원거리탄 파괴 + 잔불 부여",
+  "power_tier": "A",
+  "tags": [
+   "curse_apply:scorch",
+   "armor"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hestia_smolder_ring",
+      "hestia_flame_strike",
+      "hestia_flame_flourish"
+     ]
+    },
+    {
+     "any": [
+      "hestia_flash_fry",
+      "hestia_hot_pot",
+      "hestia_pyro_technique",
+      "hestia_highly_flammable"
+     ]
+    },
+    {
+     "any": [
+      "hestia_glowing_coal",
+      "hestia_controlled_burn"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "leg_poseidon",
+  "kind": "legendary",
+  "gods": [
+   "poseidon"
+  ],
+  "name_ko": "지진 해일",
+  "name_en": "King Tide",
+  "effect": "물보라 범위 확대, 수호자에 +200% 피해",
+  "power_tier": "A",
+  "tags": [
+   "splash",
+   "boss_dmg"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "poseidon_wave_strike",
+      "poseidon_wave_flourish"
+     ]
+    },
+    {
+     "any": [
+      "poseidon_breaker_rush",
+      "poseidon_flood_gain",
+      "poseidon_geyser_spout"
+     ]
+    },
+    {
+     "any": [
+      "poseidon_hydraulic_might",
+      "poseidon_ocean_swell",
+      "poseidon_slippery_slope",
+      "poseidon_high_surf"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "leg_demeter",
+  "kind": "legendary",
+  "gods": [
+   "demeter"
+  ],
+  "name_ko": "겨울 추수",
+  "name_en": "Winter Harvest",
+  "effect": "동결 적이 체력 10%에서 산산조각, 광역 피해",
+  "power_tier": "S",
+  "tags": [
+   "curse_scale:freeze",
+   "aoe",
+   "boss_dmg"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "demeter_ice_strike",
+      "demeter_ice_flourish",
+      "demeter_arctic_ring"
+     ]
+    },
+    {
+     "any": [
+      "demeter_plentiful_forage",
+      "demeter_snow_queen",
+      "demeter_steady_growth"
+     ]
+    },
+    {
+     "any": [
+      "demeter_weed_killer",
+      "demeter_cold_storage",
+      "demeter_local_climate"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "leg_apollo",
+  "kind": "legendary",
+  "gods": [
+   "apollo"
+  ],
+  "name_ko": "비상한 재능",
+  "name_en": "Exceptional Talent",
+  "effect": "Ω 공격/기술이 2회 발동, 마력 +20 소모",
+  "power_tier": "S",
+  "tags": [
+   "omega_attack",
+   "omega_special",
+   "omega"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "apollo_nova_strike",
+      "apollo_nova_flourish"
+     ]
+    },
+    {
+     "any": [
+      "apollo_solar_ring",
+      "apollo_blinding_rush",
+      "apollo_lucid_gain"
+     ]
+    },
+    {
+     "any": [
+      "apollo_extra_dose",
+      "apollo_super_nova",
+      "apollo_back_burner",
+      "apollo_prominence_flare"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "leg_aphrodite",
+  "kind": "legendary",
+  "gods": [
+   "aphrodite"
+  ],
+  "name_ko": "신경 쇠약",
+  "name_en": "Nervous Wreck",
+  "effect": "약화 부여 시 다른 신 저주 3종도 무작위 부여",
+  "power_tier": "S",
+  "tags": [
+   "curse_scale:weak",
+   "aoe"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "aphrodite_broken_resolve",
+      "aphrodite_sweet_surrender",
+      "aphrodite_shameless_attitude",
+      "aphrodite_secret_crush"
+     ]
+    },
+    {
+     "any": [
+      "aphrodite_rapture_ring",
+      "aphrodite_passion_rush",
+      "aphrodite_glamour_gain"
+     ]
+    },
+    {
+     "any": [
+      "aphrodite_flutter_strike",
+      "aphrodite_flutter_flourish"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "leg_hephaestus",
+  "kind": "legendary",
+  "gods": [
+   "hephaestus"
+  ],
+  "name_ko": "맞춤 개조",
+  "name_en": "Premium Service",
+  "effect": "장착한 양상 등급 +1",
+  "power_tier": "A",
+  "tags": [],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hephaestus_volcanic_strike",
+      "hephaestus_volcanic_flourish",
+      "hephaestus_smithy_rush"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_heavy_metal",
+      "hephaestus_trusty_shield"
+     ]
+    },
+    {
+     "any": [
+      "hephaestus_grand_caldera",
+      "hephaestus_molten_touch",
+      "hephaestus_furnace_blast"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "leg_hera",
+  "kind": "legendary",
+  "gods": [
+   "hera"
+  ],
+  "name_ko": "모둠 원소",
+  "name_en": "All Together",
+  "effect": "4원소 각 1 획득 + 원소별 주입 은혜 1개씩",
+  "power_tier": "A",
+  "tags": [],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hera_sworn_strike",
+      "hera_sworn_flourish",
+      "hera_engagement_ring",
+      "hera_nexus_rush"
+     ]
+    },
+    {
+     "any": [
+      "hera_bridal_glow",
+      "hera_uncommon_grace",
+      "hera_fine_line"
+     ]
+    },
+    {
+     "any": [
+      "hera_hereditary_bane",
+      "hera_rousing_reception"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "leg_ares",
+  "kind": "legendary",
+  "gods": [
+   "ares"
+  ],
+  "name_ko": "달콤한 피",
+  "name_en": "Sanguinary Savor",
+  "effect": "상처 위력 +100, 혈장 자동 흡수",
+  "power_tier": "A",
+  "tags": [
+   "curse_scale:wounds",
+   "plasma"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "ares_vicious_strike",
+      "ares_vicious_flourish",
+      "ares_sword_ring",
+      "ares_stabbing_rush"
+     ]
+    },
+    {
+     "any": [
+      "ares_grisly_gain",
+      "ares_visceral_impact",
+      "ares_profuse_bleeding"
+     ]
+    },
+    {
+     "any": [
+      "ares_meat_grinder",
+      "ares_grievous_blow",
+      "ares_mutual_destruction",
+      "ares_blood_spree",
+      "ares_cut_above"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "leg_hermes",
+  "kind": "legendary",
+  "gods": [
+   "hermes"
+  ],
+  "name_ko": "생명 수당",
+  "name_en": "Paid Dues",
+  "effect": "피격 시 체력 대신 금화가 먼저 소모",
+  "power_tier": "B",
+  "tags": [
+   "armor"
+  ],
+  "requires": {
+   "all": [
+    {
+     "any": [
+      "hermes_nimble_limbs",
+      "hermes_racing_thoughts",
+      "hermes_hard_target",
+      "hermes_winners_circle",
+      "hermes_stutter_step",
+      "hermes_hasty_retreat",
+      "hermes_mean_streak",
+      "hermes_nitro_boost"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "등장 확률 1%"
+ }
+]

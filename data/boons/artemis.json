@@ -1,0 +1,181 @@
+[
+ {
+  "id": "artemis_support_fire",
+  "god": "artemis",
+  "name_ko": "지원 사격",
+  "name_en": "Support Fire",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "공격/기술 명중 후 유도 화살 발사",
+  "rarity_scaling": "화살 피해 10/15/20/25",
+  "tags": [
+   "beginner_safe",
+   "per_hit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_pressure_points",
+  "god": "artemis",
+  "name_ko": "약점 공략",
+  "name_en": "Pressure Points",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "모든 피해에 치명타 확률 부여",
+  "rarity_scaling": "치명타 +3/4/5/6%",
+  "tags": [
+   "crit",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_shadow_pounce",
+  "god": "artemis",
+  "name_ko": "그림자 급습",
+  "name_en": "Shadow Pounce",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "돌진 후 2초간 Ω 동작 치명타 확률",
+  "rarity_scaling": "+8/10/12/14%",
+  "tags": [
+   "crit",
+   "omega"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_vital_sign",
+  "god": "artemis",
+  "name_ko": "성한 사냥감",
+  "name_en": "Vital Sign",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "체력·방어도 80% 이상 적에게 치명타 확률",
+  "rarity_scaling": "+15/22/30/38%",
+  "tags": [
+   "crit",
+   "boss_dmg"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_lethal_snare",
+  "god": "artemis",
+  "name_ko": "죽음의 덫",
+  "name_en": "Lethal Snare",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "마법진 안 적에게 공격이 치명타 확률",
+  "rarity_scaling": "+10/13/16/19%",
+  "tags": [
+   "crit",
+   "cast"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_easy_shot",
+  "god": "artemis",
+  "name_ko": "손쉬운 표적",
+  "name_en": "Easy Shot",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 마법에 맞은 적에게 관통 화살",
+  "rarity_scaling": "화살 피해 50/62/75/87",
+  "tags": [
+   "omega_cast"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_death_warrant",
+  "god": "artemis",
+  "name_ko": "사형 선고",
+  "name_en": "Death Warrant",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "주기적으로 무작위 적에 표식 부여",
+  "rarity_scaling": "주기 20/18/16/14초",
+  "tags": [
+   "crit",
+   "curse_apply:marked"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_killing_stroke",
+  "god": "artemis",
+  "name_ko": "일격 필살",
+  "name_en": "Killing Stroke",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "기술 치명타 확률, 마력 40 점유",
+  "rarity_scaling": "+10/12/14/16%",
+  "tags": [
+   "crit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "artemis_whispered_prayer",
+  "god": "artemis",
+  "name_ko": "나지막한 기도",
+  "name_en": "Whispered Prayer",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "비술이 치명타 피해를 줄 확률",
+  "rarity_scaling": "+30/35/40/45%",
+  "tags": [
+   "crit",
+   "hex"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "아르테미스 친밀도 5단계 + 공격형 비술 보유 필요"
+ }
+]

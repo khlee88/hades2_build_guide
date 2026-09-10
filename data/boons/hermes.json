@@ -1,0 +1,295 @@
+[
+ {
+  "id": "hermes_nimble_limbs",
+  "god": "hermes",
+  "name_ko": "기민한 동작",
+  "name_en": "Nimble Limbs",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "공격·기술·마법 속도 증가",
+  "rarity_scaling": "+10/15/20/25%",
+  "tags": [
+   "attack_speed",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_racing_thoughts",
+  "god": "hermes",
+  "name_ko": "기민한 정신",
+  "name_en": "Racing Thoughts",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 동작 충전 속도 증가",
+  "rarity_scaling": "+15/20/25/30%",
+  "tags": [
+   "omega",
+   "attack_speed",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_winners_circle",
+  "god": "hermes",
+  "name_ko": "신속 대응",
+  "name_en": "Winner's Circle",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "cast"
+  ],
+  "effect": "Ω 마법 충전·마법진 소멸이 크게 빨라짐",
+  "rarity_scaling": "+100/125/150/175%",
+  "tags": [
+   "omega_cast",
+   "cast"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_nitro_boost",
+  "god": "hermes",
+  "name_ko": "거침없는 속도",
+  "name_en": "Nitro Boost",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "sprint"
+  ],
+  "effect": "질주 15% 빨라짐 + 피해 무시 보호막",
+  "rarity_scaling": "차단 1/2/3/4회",
+  "tags": [
+   "armor",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_stutter_step",
+  "god": "hermes",
+  "name_ko": "잰 발걸음",
+  "name_en": "Stutter Step",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "sprint"
+  ],
+  "effect": "돌진 재사용 대기 감소",
+  "rarity_scaling": "+25/30/35/40%",
+  "tags": [
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_hasty_retreat",
+  "god": "hermes",
+  "name_ko": "황급한 후퇴",
+  "name_en": "Hasty Retreat",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "보유 은혜 수만큼 회피율·이속 증가",
+  "rarity_scaling": "은혜당 +0.5/0.75/1/1.25%",
+  "tags": [
+   "armor"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_hard_target",
+  "god": "hermes",
+  "name_ko": "까다로운 표적",
+  "name_en": "Hard Target",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "적 원거리 투사체 속도 감소",
+  "rarity_scaling": "-30/40/50/60%",
+  "tags": [
+   "armor",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_quick_buck",
+  "god": "hermes",
+  "name_ko": "일확천금",
+  "name_en": "Quick Buck",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "금화 획득량 증가, 즉시 100 획득",
+  "rarity_scaling": "+20/30/40/50%",
+  "tags": [
+   "meta"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_mean_streak",
+  "god": "hermes",
+  "name_ko": "연쇄 처단",
+  "name_en": "Mean Streak",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "적 처치마다 45초간 피해 증가 누적",
+  "rarity_scaling": "처치당 +1/1.5/2/2.5%",
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_travel_deal",
+  "god": "hermes",
+  "name_ko": "여행 특가",
+  "name_en": "Travel Deal",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "지역별 첫 구매 할인 + 상품 재입고",
+  "rarity_scaling": "-5/10/15/20%",
+  "tags": [
+   "meta"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_success_rate",
+  "god": "hermes",
+  "name_ko": "성공 신화",
+  "name_en": "Success Rate",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "확률 기반 효과 발동률 증가",
+  "rarity_scaling": "+30/40/50/60%",
+  "tags": [],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "poseidon_sea_star",
+      "zeus_divine_vengeance",
+      "zeus_double_strike",
+      "apollo_dazzling_display",
+      "apollo_extra_dose",
+      "ares_grisly_gain",
+      "ares_visceral_impact",
+      "ares_mutual_destruction",
+      "ares_grievous_blow",
+      "ares_profuse_bleeding"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "아르테미스 은혜와 듀오 Arterial Spray도 전제조건에 포함"
+ },
+ {
+  "id": "hermes_tall_order",
+  "god": "hermes",
+  "name_ko": "무리한 요건",
+  "name_en": "Tall Order",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "한 원소 8 이상 보유 시 모든 피해 +25%",
+  "infusion_req": {
+   "element": "any",
+   "count": 3
+  },
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hermes_paid_dues",
+  "god": "hermes",
+  "name_ko": "생명 수당",
+  "name_en": "Paid Dues",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "피격 시 체력 대신 금화가 먼저 소모",
+  "rarity_scaling": "피해당 금화 -3",
+  "tags": [
+   "armor"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hermes_nimble_limbs",
+      "hermes_racing_thoughts",
+      "hermes_hard_target",
+      "hermes_winners_circle",
+      "hermes_stutter_step",
+      "hermes_hasty_retreat",
+      "hermes_mean_streak",
+      "hermes_nitro_boost"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "등장 확률 1%로 매우 낮음"
+ }
+]

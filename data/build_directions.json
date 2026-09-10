@@ -1,0 +1,304 @@
+{
+ "_doc": "1-C 페이블 확정. 무기별 빌드 방향. 엔진은 이 파일을 그대로 로드한다. 설명은 BUILD_DIRECTIONS.md",
+ "principles": [
+  "방향은 신을 고정하지 않는다. 핵심 슬롯 + 그 슬롯을 채울 신 후보 순위 + 노리는 융합으로 정의한다",
+  "런 시작 시 무기의 모든 방향을 열어두고, 첫 신이 뜨면 first_god_map으로 상위 2~3개를 제시한다",
+  "선택이 누적되면 방향 점수가 수렴한다. 상위 1개를 메인, 1개를 보험으로 유지한다",
+  "초보 우선순위: 생존 ≥ 핵심 슬롯 채우기 > 융합 접근 > 나머지 슬롯 > 패시브 수치업",
+  "칸 교체 추천은 항상 '기존 OO을 버림'을 표시하고, 진행 중 융합 조건 손실을 감점한다"
+ ],
+ "always_take": {
+  "_doc": "칸을 차지하지 않고 조건 없이 이득 - 어떤 방향이든 상위 추천",
+  "boons": ["hermes_nimble_limbs", "hermes_racing_thoughts", "hermes_nitro_boost", "hermes_stutter_step", "hermes_hard_target", "artemis_support_fire", "artemis_pressure_points", "hera_bridal_glow", "demeter_steady_growth", "aphrodite_spiritual_affirmation"]
+ },
+ "survival_kit": {
+  "_doc": "체력이 낮거나 2지역 진입 전까지 방어/회복 은혜가 0개면 가중치 상향. 무기 공통",
+  "passive": ["hephaestus_security_system", "aphrodite_healthy_rebound", "demeter_snow_queen", "hephaestus_trusty_shield", "hestia_hot_pot", "demeter_plentiful_forage", "hermes_hasty_retreat", "apollo_light_smite"],
+  "slot": {
+   "sprint": ["apollo_blinding_rush", "demeter_frigid_rush", "hera_nexus_rush"],
+   "cast": ["aphrodite_rapture_ring", "demeter_arctic_ring", "apollo_solar_ring"],
+   "magick": ["hephaestus_tough_gain", "aphrodite_glamour_gain"]
+  },
+  "duos": ["duo_hera_hephaestus", "duo_poseidon_aphrodite", "duo_hestia_apollo"]
+ },
+ "magick_rule": {
+  "_doc": "Ω 동작에 의존하는 방향(omega_dependent=true)은 2지역 전까지 마력 슬롯이 비어 있으면 마력 은혜를 1순위로 올린다"
+ },
+ "weapons": {
+  "staff": {
+   "first_god_map": {
+    "zeus": ["staff_omega_attack", "staff_special"],
+    "hestia": ["staff_special", "staff_omega_attack"],
+    "poseidon": ["staff_omega_attack", "staff_special"],
+    "demeter": ["staff_cast", "staff_omega_attack"],
+    "apollo": ["staff_omega_attack", "staff_cast"],
+    "aphrodite": ["staff_omega_attack", "staff_special"],
+    "hephaestus": ["staff_omega_attack"],
+    "hera": ["staff_omega_attack", "staff_cast"],
+    "ares": ["staff_omega_attack", "staff_special"]
+   },
+   "directions": [
+    {
+     "id": "staff_omega_attack", "name_ko": "Ω 공격 화력", "difficulty": 1, "omega_dependent": true,
+     "summary": "지팡이의 본체는 마력 20짜리 Ω 공격(160, 장거리 관통). 공격 칸에 % 피해 증가를 넣고 마력 회복을 확보하면 끝. 가장 무난한 초보 빌드",
+     "core_slots": ["attack", "magick"],
+     "slot_prefs": {
+      "attack": ["hera_sworn_strike", "apollo_nova_strike", "demeter_ice_strike", "zeus_heaven_strike", "ares_vicious_strike"],
+      "magick": ["poseidon_flood_gain", "zeus_ionic_gain", "apollo_lucid_gain", "aphrodite_glamour_gain"],
+      "special": ["zeus_heaven_flourish", "hestia_flame_flourish", "poseidon_wave_flourish"],
+      "cast": ["apollo_solar_ring", "hera_engagement_ring", "demeter_arctic_ring"],
+      "sprint": ["apollo_blinding_rush", "demeter_frigid_rush", "hera_nexus_rush"]
+     },
+     "support_boons": ["demeter_weed_killer", "hera_fine_line", "zeus_arc_flash", "artemis_shadow_pounce", "hestia_snuffed_candle", "aphrodite_heart_breaker", "hera_uncommon_grace"],
+     "avoid_boons": ["hestia_cardio_gain"],
+     "avoid_reason": "따스한 마력은 일반 공격·기술 명중에만 반응해 Ω 위주 빌드에서 마력이 안 찬다",
+     "target_duos": ["duo_zeus_hestia", "duo_poseidon_hera", "duo_hera_hephaestus", "duo_zeus_aphrodite"],
+     "hammers": ["staff_cross_cataclysm", "staff_vampiric_cataclysm", "staff_aetheric_moonburst", "staff_wicked_thrasher", "staff_extending_wallop"],
+     "arcana": ["the_sorceress", "eternity", "night", "the_unseen"],
+     "aspects": ["staff_melinoe", "staff_momus"]
+    },
+    {
+     "id": "staff_cast", "name_ko": "마법진 빌드", "difficulty": 2, "omega_dependent": true,
+     "summary": "마법진에 피해를 붙이고 퓨리 자매 아르카나(+30%)와 마법 관련 패시브를 쌓는다. 키르케 양상이면 동물 친구가 같이 시전해 가치가 배가 됨",
+     "core_slots": ["cast", "magick"],
+     "slot_prefs": {
+      "cast": ["demeter_arctic_ring", "hera_engagement_ring", "apollo_solar_ring", "zeus_storm_ring", "ares_sword_ring"],
+      "magick": ["apollo_lucid_gain", "demeter_tranquil_gain", "zeus_ionic_gain", "poseidon_flood_gain"],
+      "attack": ["apollo_nova_strike", "demeter_ice_strike", "hera_sworn_strike"],
+      "sprint": ["demeter_frigid_rush", "apollo_blinding_rush"]
+     },
+     "support_boons": ["apollo_super_nova", "demeter_local_climate", "apollo_prominence_flare", "poseidon_geyser_spout", "demeter_arctic_gale", "artemis_lethal_snare", "hera_rousing_reception", "hermes_winners_circle", "artemis_easy_shot"],
+     "avoid_boons": [],
+     "avoid_reason": "",
+     "target_duos": ["duo_zeus_apollo", "duo_demeter_ares", "duo_demeter_apollo", "duo_zeus_demeter"],
+     "hammers": ["staff_aetheric_moonburst", "staff_giga_moonburst", "staff_wicked_thrasher", "staff_vampiric_cataclysm"],
+     "arcana": ["the_furies", "the_messenger", "the_sorceress"],
+     "aspects": ["staff_circe"]
+    },
+    {
+     "id": "staff_special", "name_ko": "기술 투사체", "difficulty": 2, "omega_dependent": false,
+     "summary": "관통 볼트(기술)에 암운·잔불을 실어 원거리에서 저주를 뿌린다. 멜리노에 양상의 기술 위력 보너스가 그대로 붙음. Ω 기술 방사 폭발은 만월탄 망치로 강화",
+     "core_slots": ["special", "magick"],
+     "slot_prefs": {
+      "special": ["zeus_heaven_flourish", "hestia_flame_flourish", "poseidon_wave_flourish", "apollo_nova_flourish", "demeter_ice_flourish"],
+      "magick": ["hestia_cardio_gain", "zeus_ionic_gain", "poseidon_flood_gain"],
+      "attack": ["hera_sworn_strike", "demeter_ice_strike"],
+      "sprint": ["apollo_blinding_rush", "demeter_frigid_rush"]
+     },
+     "support_boons": ["zeus_double_strike", "hestia_controlled_burn", "hestia_pyro_technique", "hestia_highly_flammable", "zeus_static_shock", "artemis_killing_stroke"],
+     "avoid_boons": [],
+     "avoid_reason": "",
+     "target_duos": ["duo_zeus_hestia", "duo_hestia_poseidon", "duo_zeus_poseidon"],
+     "hammers": ["staff_giga_moonburst", "staff_aetheric_moonburst", "staff_shimmering_moonshot", "staff_dual_moonshot", "staff_rapid_moonshot"],
+     "arcana": ["the_huntress", "the_sorceress"],
+     "aspects": ["staff_melinoe"]
+    }
+   ]
+  },
+  "blades": {
+   "first_god_map": {
+    "zeus": ["blades_special_knives", "blades_backstab_attack"],
+    "hestia": ["blades_backstab_attack", "blades_special_knives"],
+    "poseidon": ["blades_special_knives"],
+    "demeter": ["blades_special_knives", "blades_backstab_attack"],
+    "apollo": ["blades_backstab_attack", "blades_omega_ambush"],
+    "aphrodite": ["blades_backstab_attack", "blades_omega_ambush"],
+    "hephaestus": ["blades_backstab_attack"],
+    "hera": ["blades_backstab_attack", "blades_omega_ambush"],
+    "ares": ["blades_backstab_attack", "blades_omega_ambush"]
+   },
+   "directions": [
+    {
+     "id": "blades_backstab_attack", "name_ko": "공격 백스탭", "difficulty": 1, "omega_dependent": false,
+     "summary": "4연타(10x5 포함)로 타격 횟수가 압도적. '타격마다 발동'(잔불·정전기 충격)을 공격에 얹고 뒤에서 친다. 멜리노에 양상 배후 보너스 + 은밀한 맹습 망치가 곱연산",
+     "core_slots": ["attack", "magick"],
+     "slot_prefs": {
+      "attack": ["hestia_flame_strike", "aphrodite_flutter_strike", "hera_sworn_strike", "zeus_heaven_strike", "ares_vicious_strike"],
+      "magick": ["hestia_cardio_gain", "aphrodite_glamour_gain", "zeus_ionic_gain"],
+      "special": ["zeus_heaven_flourish", "hestia_flame_flourish"],
+      "sprint": ["apollo_blinding_rush", "hera_nexus_rush", "aphrodite_passion_rush"],
+      "cast": ["aphrodite_rapture_ring", "demeter_arctic_ring"]
+     },
+     "support_boons": ["zeus_static_shock", "hestia_pyro_technique", "hestia_highly_flammable", "apollo_back_burner", "artemis_pressure_points", "apollo_extra_dose", "aphrodite_sweet_surrender", "zeus_electric_overload"],
+     "avoid_boons": ["poseidon_wave_strike", "hephaestus_volcanic_strike"],
+     "avoid_reason": "물보라 넉백이 콤보와 배후 위치를 끊음. 화산 폭발은 쿨타임형이라 연타 무기에서 효율 낮음",
+     "target_duos": ["duo_zeus_hestia", "duo_hestia_aphrodite", "duo_poseidon_aphrodite", "duo_hestia_apollo", "duo_zeus_hephaestus"],
+     "hammers": ["blades_skulking_onslaught", "blades_final_slice", "blades_rapid_onslaught", "blades_wicked_onslaught", "blades_trick_knives"],
+     "arcana": ["the_huntress", "night", "the_swift_runner"],
+     "aspects": ["blades_melinoe"]
+    },
+    {
+     "id": "blades_special_knives", "name_ko": "기술 단검", "difficulty": 2, "omega_dependent": false,
+     "summary": "던진 단검이 관통 후 돌아와 2회 타격. 암운·잔불을 실으면 원거리에서 저주 누적. 감춰둔 단검 망치로 Ω 기술 부채꼴을 키우면 판 양상과 특히 궁합",
+     "core_slots": ["special", "magick"],
+     "slot_prefs": {
+      "special": ["zeus_heaven_flourish", "hestia_flame_flourish", "demeter_ice_flourish", "apollo_nova_flourish", "poseidon_wave_flourish"],
+      "magick": ["hestia_cardio_gain", "zeus_ionic_gain", "aphrodite_glamour_gain"],
+      "attack": ["aphrodite_flutter_strike", "hera_sworn_strike"],
+      "sprint": ["apollo_blinding_rush", "demeter_frigid_rush"]
+     },
+     "support_boons": ["zeus_double_strike", "zeus_static_shock", "artemis_killing_stroke", "hestia_pyro_technique", "hestia_controlled_burn"],
+     "avoid_boons": [],
+     "avoid_reason": "",
+     "target_duos": ["duo_zeus_hestia", "duo_zeus_demeter", "duo_hestia_demeter"],
+     "hammers": ["blades_hidden_knives", "blades_dancing_knives", "blades_reaper_knives", "blades_sudden_flurry", "blades_melting_sickle"],
+     "arcana": ["the_huntress", "the_sorceress"],
+     "aspects": ["blades_pan", "blades_melinoe"]
+    },
+    {
+     "id": "blades_omega_ambush", "name_ko": "Ω 공격 암습", "difficulty": 2, "omega_dependent": true,
+     "summary": "Ω 공격(마력 10)이 적 뒤로 순간이동해 백스탭. 폭발적 암습 망치(+400%)를 얻으면 이 방향으로 전환. 아르테미스 양상의 패링·반격과도 맞물림",
+     "core_slots": ["attack", "magick"],
+     "slot_prefs": {
+      "attack": ["hera_sworn_strike", "apollo_nova_strike", "aphrodite_flutter_strike", "demeter_ice_strike"],
+      "magick": ["poseidon_flood_gain", "zeus_ionic_gain", "aphrodite_glamour_gain"],
+      "sprint": ["apollo_blinding_rush", "hera_nexus_rush"]
+     },
+     "support_boons": ["demeter_weed_killer", "artemis_shadow_pounce", "zeus_arc_flash", "apollo_back_burner", "ares_cut_above"],
+     "avoid_boons": ["hestia_cardio_gain"],
+     "avoid_reason": "Ω 위주면 따스한 마력이 안 찬다",
+     "target_duos": ["duo_zeus_aphrodite", "duo_poseidon_aphrodite", "duo_hera_hephaestus"],
+     "hammers": ["blades_sweeping_ambush", "blades_skulking_onslaught", "blades_wicked_onslaught"],
+     "requires_hammer": "blades_sweeping_ambush",
+     "arcana": ["the_sorceress", "night", "eternity"],
+     "aspects": ["blades_artemis", "blades_melinoe"]
+    }
+   ]
+  },
+  "flames": {
+   "first_god_map": {
+    "zeus": ["flames_omega_attack_spam", "flames_omega_special_orbit"],
+    "hestia": ["flames_omega_special_orbit", "flames_omega_attack_spam"],
+    "poseidon": ["flames_omega_attack_spam", "flames_omega_special_orbit"],
+    "demeter": ["flames_omega_special_orbit", "flames_omega_attack_spam"],
+    "apollo": ["flames_omega_attack_spam"],
+    "aphrodite": ["flames_omega_attack_spam"],
+    "hephaestus": ["flames_omega_attack_spam"],
+    "hera": ["flames_omega_attack_spam"],
+    "ares": ["flames_omega_attack_spam"]
+   },
+   "directions": [
+    {
+     "id": "flames_omega_attack_spam", "name_ko": "Ω 공격 연발", "difficulty": 1, "omega_dependent": true,
+     "summary": "Ω 공격이 마력 5로 가장 싸다. 'Ω 사용 시 발동' 패시브(한 핏줄·전압 급증·실연의 아픔)를 쌓으면 5마력마다 균열·낙뢰·연심이 터진다. 급속 연발 망치로 4마력까지 낮추면 완성",
+     "core_slots": ["attack", "magick"],
+     "slot_prefs": {
+      "attack": ["hestia_flame_strike", "zeus_heaven_strike", "apollo_nova_strike", "hera_sworn_strike"],
+      "magick": ["poseidon_flood_gain", "zeus_ionic_gain", "aphrodite_glamour_gain", "hera_born_gain"],
+      "special": ["hestia_flame_flourish", "zeus_heaven_flourish"],
+      "sprint": ["apollo_blinding_rush", "demeter_frigid_rush"],
+      "cast": ["aphrodite_rapture_ring", "apollo_solar_ring"]
+     },
+     "support_boons": ["hera_fine_line", "zeus_power_surge", "aphrodite_heart_breaker", "zeus_arc_flash", "ares_cut_above", "hestia_pyro_technique", "hermes_racing_thoughts"],
+     "avoid_boons": ["demeter_weed_killer"],
+     "avoid_reason": "잡초 박멸은 Ω 공격 마력을 +10 올려 5→15로 3배가 됨. 연발 컨셉이 죽는다",
+     "target_duos": ["duo_poseidon_hera", "duo_apollo_aphrodite", "duo_zeus_hestia", "duo_zeus_aphrodite"],
+     "hammers": ["flames_sudden_burst", "flames_mega_blaze", "flames_leaden_blaze", "flames_furious_blaze", "flames_dividing_blaze"],
+     "arcana": ["the_sorceress", "the_huntress", "the_unseen"],
+     "aspects": ["flames_melinoe", "flames_eos"]
+    },
+    {
+     "id": "flames_omega_special_orbit", "name_ko": "Ω 기술 회전 불꽃", "difficulty": 2, "omega_dependent": true,
+     "summary": "Ω 기술(마력 25)로 큰 반경의 불꽃 2개를 5초간 공전시킨다. 타격 횟수가 많아 잔불·암운이 계속 쌓임. 간결한 궤도(마력 -10)와 안정적 궤도(+2초) 망치가 효율을 배로 올림. 모로스 양상의 폭발과 궁합",
+     "core_slots": ["special", "magick"],
+     "slot_prefs": {
+      "special": ["hestia_flame_flourish", "zeus_heaven_flourish", "demeter_ice_flourish", "poseidon_wave_flourish"],
+      "magick": ["zeus_ionic_gain", "poseidon_flood_gain", "demeter_tranquil_gain", "hestia_cardio_gain"],
+      "attack": ["apollo_nova_strike", "hestia_flame_strike"],
+      "sprint": ["apollo_blinding_rush", "demeter_frigid_rush"]
+     },
+     "support_boons": ["hestia_pyro_technique", "hestia_highly_flammable", "zeus_double_strike", "hestia_controlled_burn", "zeus_static_shock"],
+     "avoid_boons": [],
+     "avoid_reason": "",
+     "target_duos": ["duo_zeus_hestia", "duo_hestia_demeter", "duo_hestia_poseidon"],
+     "hammers": ["flames_clean_coil", "flames_enduring_coil", "flames_hidden_helix", "flames_rising_helix", "flames_whirling_helix"],
+     "arcana": ["the_sorceress", "eternity"],
+     "aspects": ["flames_moros", "flames_melinoe"]
+    }
+   ]
+  },
+  "axe": {
+   "first_god_map": {
+    "zeus": ["axe_omega_whirlwind", "axe_heavy_attack"],
+    "hestia": ["axe_omega_whirlwind", "axe_heavy_attack"],
+    "poseidon": ["axe_heavy_attack", "axe_omega_cleave"],
+    "demeter": ["axe_heavy_attack", "axe_omega_whirlwind"],
+    "apollo": ["axe_heavy_attack", "axe_omega_cleave"],
+    "aphrodite": ["axe_heavy_attack"],
+    "hephaestus": ["axe_heavy_attack", "axe_omega_cleave"],
+    "hera": ["axe_heavy_attack", "axe_omega_whirlwind"],
+    "ares": ["axe_heavy_attack", "axe_omega_cleave"]
+   },
+   "directions": [
+    {
+     "id": "axe_heavy_attack", "name_ko": "공격 단발 증폭", "difficulty": 1, "omega_dependent": false,
+     "summary": "3연타(70-90-180)가 느리고 굵다. % 피해 증가(광휘·서약·상해)와 쿨타임형 폭발(화산)이 타격 수가 적어도 손해가 없다. 방어도 은혜로 선딜 중 피격을 버틴다",
+     "core_slots": ["attack", "special"],
+     "slot_prefs": {
+      "attack": ["apollo_nova_strike", "hera_sworn_strike", "hephaestus_volcanic_strike", "demeter_ice_strike", "aphrodite_flutter_strike"],
+      "special": ["hephaestus_volcanic_flourish", "ares_vicious_flourish", "apollo_nova_flourish"],
+      "magick": ["hephaestus_tough_gain", "zeus_ionic_gain", "hestia_cardio_gain", "poseidon_flood_gain"],
+      "sprint": ["hephaestus_smithy_rush", "apollo_blinding_rush", "hera_nexus_rush"],
+      "cast": ["hera_engagement_ring", "apollo_solar_ring"]
+     },
+     "support_boons": ["artemis_pressure_points", "hephaestus_grand_caldera", "hephaestus_furnace_blast", "apollo_back_burner", "hera_dying_wish", "artemis_vital_sign", "hephaestus_security_system", "hephaestus_heavy_metal"],
+     "avoid_boons": ["zeus_static_shock", "poseidon_wave_strike"],
+     "avoid_reason": "타격 수가 적어 정전기 충격 효율이 낮고, 물보라 넉백은 3타째를 빗나가게 한다",
+     "target_duos": ["duo_hera_hephaestus", "duo_apollo_hephaestus", "duo_demeter_hephaestus", "duo_hestia_hephaestus", "duo_aphrodite_hephaestus"],
+     "hammers": ["axe_rapid_slash", "axe_colossus_slash", "axe_seething_marauder", "axe_hell_splitter", "axe_dashing_heave"],
+     "arcana": ["the_huntress", "persistence", "the_lovers"],
+     "aspects": ["axe_melinoe", "axe_thanatos"]
+    },
+    {
+     "id": "axe_omega_whirlwind", "name_ko": "Ω 공격 회오리", "difficulty": 2, "omega_dependent": true,
+     "summary": "Ω 공격 회오리는 최대 11회 타격 - 도끼인데 연타 무기처럼 '타격마다 발동'이 폭발한다. 잔불 11스택, 정전기 충격 11회. 심령 소용돌이 망치로 회오리 중 무방비를 없애면 안정적",
+     "core_slots": ["attack", "magick"],
+     "slot_prefs": {
+      "attack": ["hestia_flame_strike", "zeus_heaven_strike", "demeter_ice_strike", "hera_sworn_strike"],
+      "magick": ["zeus_ionic_gain", "hestia_cardio_gain", "poseidon_flood_gain", "hephaestus_tough_gain"],
+      "special": ["hephaestus_volcanic_flourish", "apollo_nova_flourish"],
+      "sprint": ["apollo_blinding_rush", "hephaestus_smithy_rush"]
+     },
+     "support_boons": ["demeter_weed_killer", "zeus_static_shock", "hestia_pyro_technique", "artemis_shadow_pounce", "zeus_arc_flash", "zeus_electric_overload"],
+     "avoid_boons": [],
+     "avoid_reason": "",
+     "target_duos": ["duo_zeus_hestia", "duo_zeus_hephaestus", "duo_hestia_hephaestus"],
+     "hammers": ["axe_psychic_whirlwind", "axe_furious_whirlwind", "axe_rapid_slash", "axe_colossus_slash"],
+     "arcana": ["the_sorceress", "eternity", "night"],
+     "aspects": ["axe_melinoe", "axe_thanatos"]
+    },
+    {
+     "id": "axe_omega_cleave", "name_ko": "Ω 기술 가르기 (카론)", "difficulty": 3, "omega_dependent": true,
+     "summary": "Ω 기술(마력 30) 140x3 가르기. 카론 양상이면 마법진을 가르기로 터뜨려 Ω 마법 효과(햇살 방사·지하수 분출·고기 분쇄)를 마력 없이 발동. 강력 쪼개기로 2연발. 조작 요구가 있어 초보 후순위",
+     "core_slots": ["special", "cast"],
+     "slot_prefs": {
+      "special": ["hephaestus_volcanic_flourish", "apollo_nova_flourish", "ares_vicious_flourish", "hera_sworn_flourish"],
+      "cast": ["apollo_solar_ring", "poseidon_tidal_ring", "ares_sword_ring", "hera_engagement_ring"],
+      "magick": ["zeus_ionic_gain", "poseidon_flood_gain", "apollo_lucid_gain"],
+      "attack": ["apollo_nova_strike", "hera_sworn_strike"]
+     },
+     "support_boons": ["apollo_prominence_flare", "poseidon_geyser_spout", "ares_meat_grinder", "artemis_easy_shot", "apollo_super_nova"],
+     "avoid_boons": [],
+     "avoid_reason": "",
+     "target_duos": ["duo_zeus_apollo", "duo_demeter_ares", "duo_hephaestus_ares"],
+     "hammers": ["axe_giga_cleaver", "axe_sudden_cleaver", "axe_siege_shredder", "axe_melting_shredder"],
+     "arcana": ["the_furies", "the_sorceress", "the_messenger"],
+     "aspects": ["axe_charon"]
+    }
+   ]
+  }
+ },
+ "arcana_beginner_set": {
+  "_doc": "초기 이해도 10 기준. 죽음(4)+퓨리 자매(2)+불굴(2)+마법사(1)+고집 센 아들(1)",
+  "grasp": 10,
+  "cards": ["death", "the_furies", "persistence", "the_sorceress", "the_wayward_son"],
+  "upgrade_path": ["the_messenger", "the_swift_runner", "the_lovers", "the_champions", "the_moon"],
+  "never_with": [["strength", "death"]]
+ },
+ "keepsake_plan": {
+  "region1": ["luckier_tooth", "silver_wheel", "ghost_onion", "concave_stone"],
+  "region2_plus": "현재 메인 방향의 target_duos 중 조건이 1개 남은 융합이 있으면 그 신의 god_favor 기념품. 없으면 slot_prefs 1순위 신의 기념품",
+  "boss_region": ["knuckle_bones"]
+ },
+ "hex_beginner": ["hex_lunar_ray", "hex_wolf_howl", "hex_moon_water", "hex_twilight_curse"]
+}

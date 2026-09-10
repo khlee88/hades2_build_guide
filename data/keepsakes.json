@@ -1,0 +1,537 @@
+[
+ {
+  "id": "silver_wheel",
+  "name_ko": "은빛 바퀴",
+  "name_en": "Silver Wheel",
+  "giver_ko": "헤카테",
+  "giver_en": "Hecate",
+  "effect": "이번 밤 최대 마력 +50/75/100/150",
+  "kind": "utility",
+  "god": null,
+  "beginner_priority": 1,
+  "region_note": "1지역에 장착해 마력 확보 후 2지역부터 신 기념품로 교체",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "knuckle_bones",
+  "name_ko": "손마디 뼈",
+  "name_en": "Knuckle Bones",
+  "giver_ko": "오디세우스",
+  "giver_en": "Odysseus",
+  "effect": "다음 수호자 체력 -5~25%, 수호자 피해 -10%",
+  "kind": "defense",
+  "god": null,
+  "beginner_priority": 1,
+  "region_note": "보스 직전 지역에 장착",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "luckier_tooth",
+  "name_ko": "새 행운의 이빨",
+  "name_en": "Luckier Tooth",
+  "giver_ko": "스켈레메우스",
+  "giver_en": "Schelemeus",
+  "effect": "체력 0이 되면 자동으로 51~151 회복 (밤당 1회)",
+  "kind": "defense",
+  "god": null,
+  "beginner_priority": 1,
+  "region_note": "사실상 목숨 1개 추가 - 초보 최우선",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "ghost_onion",
+  "name_ko": "유령 양파",
+  "name_en": "Ghost Onion",
+  "giver_ko": "도라",
+  "giver_en": "Dora",
+  "effect": "지역 탈출 시 체력 완전 회복 (이번 밤 총 50~150까지)",
+  "kind": "defense",
+  "god": null,
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "evil_eye",
+  "name_ko": "악의에 찬 눈",
+  "name_en": "Evil Eye",
+  "giver_ko": "네메시스",
+  "giver_en": "Nemesis",
+  "effect": "나를 마지막으로 쓰러뜨린 적에게 피해 +20~40%",
+  "kind": "offense",
+  "god": null,
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "gold_purse",
+  "name_ko": "금화 주머니",
+  "name_en": "Gold Purse",
+  "giver_ko": "카론",
+  "giver_en": "Charon",
+  "effect": "이번 밤 금화 +100~200",
+  "kind": "meta",
+  "god": null,
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "engraved_pin",
+  "name_ko": "각인된 압정",
+  "name_en": "Engraved Pin",
+  "giver_ko": "모로스",
+  "giver_en": "Moros",
+  "effect": "체력 0이 되면 파멸 상태, 제한 시간 내 해제하면 30~90 회복",
+  "kind": "defense",
+  "god": null,
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "discordant_bell",
+  "name_ko": "불협화음 종",
+  "name_en": "Discordant Bell",
+  "giver_ko": "에리스",
+  "giver_en": "Eris",
+  "effect": "전투마다 주는 피해와 받는 피해가 함께 증가",
+  "kind": "offense",
+  "god": null,
+  "beginner_priority": 0,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "받는 피해도 늘어 초보에게 위험"
+ },
+ {
+  "id": "metallic_droplet",
+  "name_ko": "금속성 방울",
+  "name_en": "Metallic Droplet",
+  "giver_ko": "헤르메스",
+  "giver_en": "Hermes",
+  "effect": "200~400초간 이동·공격·충전 속도 +20%",
+  "kind": "utility",
+  "god": null,
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "white_antler",
+  "name_ko": "순백 사슴뿔",
+  "name_en": "White Antler",
+  "giver_ko": "아르테미스",
+  "giver_en": "Artemis",
+  "effect": "다음 지역 치명타 확률 +20~50%, 단 최대 체력 30 제한",
+  "kind": "offense",
+  "god": null,
+  "beginner_priority": 0,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "최대 체력 30 제한이 초보에게 치명적"
+ },
+ {
+  "id": "moon_beam",
+  "name_ko": "달빛보라",
+  "name_en": "Moon Beam",
+  "giver_ko": "셀레네",
+  "giver_en": "Selene",
+  "effect": "셀레네 등장 확률 상승, 다음 별의 길에 업그레이드 +3~7",
+  "kind": "god_favor",
+  "god": "selene",
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "cloud_bangle",
+  "name_ko": "구름 팔찌",
+  "name_en": "Cloud Bangle",
+  "giver_ko": "제우스",
+  "giver_en": "Zeus",
+  "effect": "제우스 은혜 등장 확률 상승 + 등급 상승 1회",
+  "kind": "god_favor",
+  "god": "zeus",
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "iridescent_fan",
+  "name_ko": "무지갯빛 부채",
+  "name_en": "Iridescent Fan",
+  "giver_ko": "헤라",
+  "giver_en": "Hera",
+  "effect": "헤라 은혜 등장 확률 상승 + 등급 상승 1회",
+  "kind": "god_favor",
+  "god": "hera",
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "vivid_sea",
+  "name_ko": "영롱한 바다",
+  "name_en": "Vivid Sea",
+  "giver_ko": "포세이돈",
+  "giver_en": "Poseidon",
+  "effect": "포세이돈 은혜 등장 확률 상승 + 등급 상승 1회",
+  "kind": "god_favor",
+  "god": "poseidon",
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "barley_sheaf",
+  "name_ko": "보리 다발",
+  "name_en": "Barley Sheaf",
+  "giver_ko": "데메테르",
+  "giver_en": "Demeter",
+  "effect": "데메테르 은혜 등장 확률 상승 + 등급 상승 1회",
+  "kind": "god_favor",
+  "god": "demeter",
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "harmonic_photon",
+  "name_ko": "조화로운 햇빛",
+  "name_en": "Harmonic Photon",
+  "giver_ko": "아폴론",
+  "giver_en": "Apollo",
+  "effect": "아폴론 은혜 등장 확률 상승 + 등급 상승 1회",
+  "kind": "god_favor",
+  "god": "apollo",
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "beautiful_mirror",
+  "name_ko": "아름다운 거울",
+  "name_en": "Beautiful Mirror",
+  "giver_ko": "아프로디테",
+  "giver_en": "Aphrodite",
+  "effect": "아프로디테 은혜 등장 확률 상승 + 등급 상승 1회",
+  "kind": "god_favor",
+  "god": "aphrodite",
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "adamant_shard",
+  "name_ko": "금강석 파편",
+  "name_en": "Adamant Shard",
+  "giver_ko": "헤파이스토스",
+  "giver_en": "Hephaestus",
+  "effect": "헤파이스토스 은혜 등장 확률 상승 + 등급 상승 1회",
+  "kind": "god_favor",
+  "god": "hephaestus",
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "everlasting_ember",
+  "name_ko": "영원한 불씨",
+  "name_en": "Everlasting Ember",
+  "giver_ko": "헤스티아",
+  "giver_en": "Hestia",
+  "effect": "헤스티아 은혜 등장 확률 상승 + 등급 상승 1회",
+  "kind": "god_favor",
+  "god": "hestia",
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "sword_hilt",
+  "name_ko": "동검 자루",
+  "name_en": "Sword Hilt",
+  "giver_ko": "아레스",
+  "giver_en": "Ares",
+  "effect": "아레스 은혜 등장 확률 상승 + 등급 상승 1회",
+  "kind": "god_favor",
+  "god": "ares",
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "gorgon_amulet",
+  "name_ko": "고르곤 아뮬렛",
+  "name_en": "Gorgon Amulet",
+  "giver_ko": "아테나",
+  "giver_en": "Athena",
+  "effect": "방어도가 없을 때 아테나가 등장할 수 있음",
+  "kind": "god_favor",
+  "god": "athena",
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "fig_leaf",
+  "name_ko": "무화과 잎",
+  "name_en": "Fig Leaf",
+  "giver_ko": "디오니소스",
+  "giver_en": "Dionysus",
+  "effect": "지역별 전투 1개가 적 없이 지나갈 수 있음",
+  "kind": "utility",
+  "god": null,
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "silken_sash",
+  "name_ko": "비단 허리띠",
+  "name_en": "Silken Sash",
+  "giver_ko": "아라크네",
+  "giver_en": "Arachne",
+  "effect": "방어도 +30, 방어도 보유 시 지역마다 +2~6",
+  "kind": "defense",
+  "god": null,
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "aromatic_phial",
+  "name_ko": "향기로운 약병",
+  "name_en": "Aromatic Phial",
+  "giver_ko": "나르키소스",
+  "giver_en": "Narcissus",
+  "effect": "샘 회복량 +20%, 다음 샘이 일반 은혜 1개를 등급 상승",
+  "kind": "utility",
+  "god": null,
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "concave_stone",
+  "name_ko": "우묵한 돌",
+  "name_en": "Concave Stone",
+  "giver_ko": "에코",
+  "giver_en": "Echo",
+  "effect": "은혜 선택 후 확률적으로 1개 더 획득 (밤당 1회)",
+  "kind": "utility",
+  "god": null,
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "은혜를 하나 더 받는 셈 - 초보에게 매우 유리"
+ },
+ {
+  "id": "lion_fang",
+  "name_ko": "사자 송곳니",
+  "name_en": "Lion Fang",
+  "giver_ko": "헤라클레스",
+  "giver_en": "Heracles",
+  "effect": "피해 +30~70%, 전투마다 보너스 5%씩 감소",
+  "kind": "offense",
+  "god": null,
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "blackened_fleece",
+  "name_ko": "검어진 양모",
+  "name_en": "Blackened Fleece",
+  "giver_ko": "메데이아",
+  "giver_en": "Medea",
+  "effect": "누적 250 피해를 받으면 Ω 동작 피해 +20~60%",
+  "kind": "offense",
+  "god": null,
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "crystal_figurine",
+  "name_ko": "수정 조각상",
+  "name_en": "Crystal Figurine",
+  "giver_ko": "키르케",
+  "giver_en": "Circe",
+  "effect": "다음 수호자 처치 후 비활성 아르카나 2장 무작위 활성화",
+  "kind": "meta",
+  "god": null,
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "experimental_hammer",
+  "name_ko": "실험적 망치",
+  "name_en": "Experimental Hammer",
+  "giver_ko": "이카로스",
+  "giver_en": "Icarus",
+  "effect": "무작위 무기 업그레이드 1개 획득 (10~30 전투 지속)",
+  "kind": "offense",
+  "god": null,
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "jeweled_pom",
+  "name_ko": "보석 석류",
+  "name_en": "Jeweled Pom",
+  "giver_ko": "하데스 & 페르세포네",
+  "giver_en": "Hades & Persephone",
+  "effect": "운명의 변덕 상태에서 하데스 축복 + 은혜 위력 +1~4Lv",
+  "kind": "meta",
+  "god": null,
+  "beginner_priority": 0,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "운명의 변덕(고난도) 조건 - 초보 대상 아님"
+ },
+ {
+  "id": "calling_card",
+  "name_ko": "연락용 명함",
+  "name_en": "Calling Card",
+  "giver_ko": "자그레우스",
+  "giver_en": "Zagreus",
+  "effect": "운명의 변덕 상태에서 은혜 등급 상승 2~8회",
+  "kind": "meta",
+  "god": null,
+  "beginner_priority": 0,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "time_piece",
+  "name_ko": "시간 장치",
+  "name_en": "Time Piece",
+  "giver_ko": "크로노스",
+  "giver_en": "Chronos",
+  "effect": "운명의 변덕 상태에서 보상 정화 2~5회",
+  "kind": "meta",
+  "god": null,
+  "beginner_priority": 0,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "transcendent_embryo",
+  "name_ko": "초월적 배아",
+  "name_en": "Transcendent Embryo",
+  "giver_ko": "카오스",
+  "giver_en": "Chaos",
+  "effect": "무작위 카오스 축복 획득, 8전투마다 교체",
+  "kind": "utility",
+  "god": "chaos",
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ }
+]

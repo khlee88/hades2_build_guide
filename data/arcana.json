@@ -1,0 +1,578 @@
+[
+ {
+  "id": "the_sorceress",
+  "num": "I",
+  "name_ko": "마법사",
+  "name_en": "The Sorceress",
+  "grasp": 1,
+  "effect": "Ω 동작 속도 +20/25/30/35%",
+  "awaken_condition": null,
+  "tags": [
+   "omega",
+   "attack_speed"
+  ],
+  "beginner_priority": 1,
+  "grid_position": [
+   1,
+   1
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "the_wayward_son",
+  "num": "II",
+  "name_ko": "고집 센 아들",
+  "name_en": "The Wayward Son",
+  "grasp": 1,
+  "effect": "지역 탈출 시 체력 3/4/5/6 회복",
+  "awaken_condition": null,
+  "tags": [
+   "heal"
+  ],
+  "beginner_priority": 1,
+  "grid_position": [
+   1,
+   2
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "the_huntress",
+  "num": "III",
+  "name_ko": "사냥꾼",
+  "name_en": "The Huntress",
+  "grasp": 2,
+  "effect": "마력 100% 미만일 때 공격/기술 피해 +30~60%",
+  "awaken_condition": null,
+  "tags": [],
+  "beginner_priority": 2,
+  "grid_position": [
+   1,
+   3
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "eternity",
+  "num": "IV",
+  "name_ko": "영겁",
+  "name_en": "Eternity",
+  "grasp": 3,
+  "effect": "Ω 충전 중 주변이 0.8~1.5초간 느려짐",
+  "awaken_condition": null,
+  "tags": [
+   "omega",
+   "armor"
+  ],
+  "beginner_priority": 2,
+  "grid_position": [
+   1,
+   4
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "the_moon",
+  "num": "V",
+  "name_ko": "달",
+  "name_en": "The Moon",
+  "grasp": 0,
+  "effect": "비술가 초당 마력 1~4 사용한 것처럼 자동 충전",
+  "awaken_condition": "주변 카드 아무거나 활성화",
+  "tags": [
+   "hex"
+  ],
+  "beginner_priority": 1,
+  "grid_position": [
+   1,
+   5
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "각성 시 소모 0 - 매우 효율적"
+ },
+ {
+  "id": "the_furies",
+  "num": "VI",
+  "name_ko": "퓨리 자매",
+  "name_en": "The Furies",
+  "grasp": 2,
+  "effect": "마법진 안 적에게 피해 +20~35%",
+  "awaken_condition": null,
+  "tags": [
+   "cast"
+  ],
+  "beginner_priority": 1,
+  "grid_position": [
+   2,
+   1
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "persistence",
+  "num": "VII",
+  "name_ko": "불굴",
+  "name_en": "Persistence",
+  "grasp": 2,
+  "effect": "최대 체력 +20~50, 최대 마력 +20~50",
+  "awaken_condition": null,
+  "tags": [
+   "max_hp",
+   "max_mana"
+  ],
+  "beginner_priority": 1,
+  "grid_position": [
+   2,
+   2
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "the_messenger",
+  "num": "VIII",
+  "name_ko": "전령",
+  "name_en": "The Messenger",
+  "grasp": 1,
+  "effect": "마법진 시전 시 잠시 무적 + 이동 속도 +50~80%",
+  "awaken_condition": null,
+  "tags": [
+   "armor",
+   "cast"
+  ],
+  "beginner_priority": 1,
+  "grid_position": [
+   2,
+   3
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "마법진을 회피기로 쓸 수 있어 초보 생존에 큰 도움"
+ },
+ {
+  "id": "the_unseen",
+  "num": "IX",
+  "name_ko": "밤그림자",
+  "name_en": "The Unseen",
+  "grasp": 5,
+  "effect": "초당 마력 6/8/10/12 회복",
+  "awaken_condition": null,
+  "tags": [
+   "mana_regen"
+  ],
+  "beginner_priority": 3,
+  "grid_position": [
+   2,
+   4
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "소모 5로 비싸지만 Ω 빌드의 핵심"
+ },
+ {
+  "id": "night",
+  "num": "X",
+  "name_ko": "밤",
+  "name_en": "Night",
+  "grasp": 2,
+  "effect": "Ω 콤보 중 각 동작에 치명타 확률 +9~18%",
+  "awaken_condition": null,
+  "tags": [
+   "crit",
+   "omega"
+  ],
+  "beginner_priority": 3,
+  "grid_position": [
+   2,
+   5
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "the_swift_runner",
+  "num": "XI",
+  "name_ko": "날랜 주자",
+  "name_en": "The Swift Runner",
+  "grasp": 1,
+  "effect": "질주 +5~13% 빨라지고 대부분의 위험을 통과",
+  "awaken_condition": null,
+  "tags": [
+   "armor"
+  ],
+  "beginner_priority": 1,
+  "grid_position": [
+   3,
+   1
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "death",
+  "num": "XII",
+  "name_ko": "죽음",
+  "name_en": "Death",
+  "grasp": 4,
+  "effect": "죽음 회피 +1/2/3/4회",
+  "awaken_condition": null,
+  "tags": [
+   "heal",
+   "armor"
+  ],
+  "beginner_priority": 1,
+  "grid_position": [
+   3,
+   2
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "초보 최우선. 사실상 목숨 추가",
+  "conflicts": [
+   "strength"
+  ],
+  "conflict_reason": "용력은 죽음 저항이 있으면 효과 없음 - 함께 켜면 낭비"
+ },
+ {
+  "id": "the_centaur",
+  "num": "XIII",
+  "name_ko": "켄타우로스",
+  "name_en": "The Centaur",
+  "grasp": 0,
+  "effect": "5개 지역 통과마다 최대 체력·마력 +3~6",
+  "awaken_condition": "소모 1~5인 카드들을 활성화",
+  "tags": [
+   "max_hp",
+   "max_mana"
+  ],
+  "beginner_priority": 2,
+  "grid_position": [
+   3,
+   3
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "origination",
+  "num": "XIV",
+  "name_ko": "시초",
+  "name_en": "Origination",
+  "grasp": 5,
+  "effect": "서로 다른 신의 저주 2개 이상 걸린 적에게 피해 +25~63%",
+  "awaken_condition": null,
+  "tags": [
+   "curse_scale"
+  ],
+  "beginner_priority": 3,
+  "grid_position": [
+   3,
+   4
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "저주 2종 이상 빌드에서만 유효"
+ },
+ {
+  "id": "the_lovers",
+  "num": "XV",
+  "name_ko": "연인",
+  "name_en": "The Lovers",
+  "grasp": 3,
+  "effect": "수호자 전투에서 처음 1~4회 피격 시 피해 0",
+  "awaken_condition": null,
+  "tags": [
+   "armor",
+   "boss_dmg"
+  ],
+  "beginner_priority": 1,
+  "grid_position": [
+   3,
+   5
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "보스전에서 실수를 용서해줌 - 초보 강력 추천"
+ },
+ {
+  "id": "the_enchantress",
+  "num": "XVI",
+  "name_ko": "요술사",
+  "name_en": "The Enchantress",
+  "grasp": 3,
+  "effect": "지역 보상 변경 횟수 +1~4",
+  "awaken_condition": null,
+  "tags": [
+   "meta"
+  ],
+  "beginner_priority": 2,
+  "grid_position": [
+   4,
+   1
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "원하는 신을 만나기 쉬워짐"
+ },
+ {
+  "id": "the_boatman",
+  "num": "XVII",
+  "name_ko": "뱃사공",
+  "name_en": "The Boatman",
+  "grasp": 5,
+  "effect": "금화 +200~350",
+  "awaken_condition": null,
+  "tags": [
+   "meta"
+  ],
+  "beginner_priority": 3,
+  "grid_position": [
+   4,
+   2
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "the_artificer",
+  "num": "XVIII",
+  "name_ko": "숙련공",
+  "name_en": "The Artificer",
+  "grasp": 3,
+  "effect": "소소한 발견물을 주요 발견물로 전환 1~4회",
+  "awaken_condition": null,
+  "tags": [
+   "meta"
+  ],
+  "beginner_priority": 3,
+  "grid_position": [
+   4,
+   3
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "excellence",
+  "num": "XIX",
+  "name_ko": "발군",
+  "name_en": "Excellence",
+  "grasp": 5,
+  "effect": "은혜에 전설/희귀 이상 등급 포함 확률 +30~60%",
+  "awaken_condition": null,
+  "tags": [
+   "meta"
+  ],
+  "beginner_priority": 2,
+  "grid_position": [
+   4,
+   4
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "the_queen",
+  "num": "XX",
+  "name_ko": "왕비",
+  "name_en": "The Queen",
+  "grasp": 0,
+  "effect": "은혜에 듀오 축복 포함 확률 +6~12%",
+  "awaken_condition": "같은 소모값 카드를 2개 이하로만 활성화",
+  "tags": [
+   "meta",
+   "duo"
+  ],
+  "beginner_priority": 2,
+  "grid_position": [
+   4,
+   5
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "듀오 노리는 빌드에 유용, 각성 조건이 카드 구성을 제약"
+ },
+ {
+  "id": "the_fates",
+  "num": "XXI",
+  "name_ko": "운명",
+  "name_en": "The Fates",
+  "grasp": 0,
+  "effect": "보상 재선택 +2~5회",
+  "awaken_condition": "주변 카드 전부 활성화",
+  "tags": [
+   "meta"
+  ],
+  "beginner_priority": 2,
+  "grid_position": [
+   5,
+   1
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "the_champions",
+  "num": "XXII",
+  "name_ko": "투사들",
+  "name_en": "The Champions",
+  "grasp": 4,
+  "effect": "은혜 등 선택지 변경 횟수 +1~4",
+  "awaken_condition": null,
+  "tags": [
+   "meta"
+  ],
+  "beginner_priority": 2,
+  "grid_position": [
+   5,
+   2
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "원하는 은혜를 뽑을 확률을 크게 올림"
+ },
+ {
+  "id": "strength",
+  "num": "XXIII",
+  "name_ko": "용력",
+  "name_en": "Strength",
+  "grasp": 4,
+  "effect": "죽음 회피가 없을 때 받는 피해 -30~45%, 피해 +20%",
+  "awaken_condition": null,
+  "tags": [
+   "armor"
+  ],
+  "beginner_priority": 3,
+  "grid_position": [
+   5,
+   3
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "죽음 카드와 상충 - 같이 쓰면 효과 없음",
+  "conflicts": [
+   "death"
+  ],
+  "conflict_reason": "용력은 죽음 저항이 있으면 효과 없음 - 함께 켜면 낭비"
+ },
+ {
+  "id": "divinity",
+  "num": "XXIV",
+  "name_ko": "신성",
+  "name_en": "Divinity",
+  "grasp": 0,
+  "effect": "은혜에 특별 등급 포함 확률 +10~25%",
+  "awaken_condition": "다른 행 또는 열 5장 전부 활성화",
+  "tags": [
+   "meta"
+  ],
+  "beginner_priority": 3,
+  "grid_position": [
+   5,
+   4
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "judgement",
+  "num": "XXV",
+  "name_ko": "심판",
+  "name_en": "Judgement",
+  "grasp": 0,
+  "effect": "수호자 처치 시 비활성 카드 3~6장 무작위 활성화",
+  "awaken_condition": "총 3장 이하만 활성화",
+  "tags": [
+   "meta"
+  ],
+  "beginner_priority": 0,
+  "grid_position": [
+   5,
+   5
+  ],
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "카드 3장만 켜야 해서 초보에게 부적합"
+ }
+]

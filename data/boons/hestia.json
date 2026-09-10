@@ -1,0 +1,416 @@
+[
+ {
+  "id": "hestia_flame_strike",
+  "god": "hestia",
+  "name_ko": "화염 일격",
+  "name_en": "Flame Strike",
+  "slot": "attack",
+  "occupies_slot": true,
+  "effect": "공격이 잔불 부여",
+  "rarity_scaling": "잔불 피해 30/45/60/75",
+  "tags": [
+   "curse_apply:scorch",
+   "dot",
+   "beginner_safe",
+   "per_hit"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_strike",
+   "apollo_nova_strike",
+   "ares_vicious_strike",
+   "demeter_ice_strike",
+   "hephaestus_volcanic_strike",
+   "hera_sworn_strike",
+   "poseidon_wave_strike",
+   "zeus_heaven_strike"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_flame_flourish",
+  "god": "hestia",
+  "name_ko": "화염 기예",
+  "name_en": "Flame Flourish",
+  "slot": "special",
+  "occupies_slot": true,
+  "effect": "기술이 잔불 부여",
+  "rarity_scaling": "잔불 피해 35/53/70/88",
+  "tags": [
+   "curse_apply:scorch",
+   "dot",
+   "beginner_safe",
+   "per_hit"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_flutter_flourish",
+   "apollo_nova_flourish",
+   "ares_vicious_flourish",
+   "demeter_ice_flourish",
+   "hephaestus_volcanic_flourish",
+   "hera_sworn_flourish",
+   "poseidon_wave_flourish",
+   "zeus_heaven_flourish"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_smolder_ring",
+  "god": "hestia",
+  "name_ko": "염화 고리",
+  "name_en": "Smolder Ring",
+  "slot": "cast",
+  "occupies_slot": true,
+  "effect": "마법진 안 적에 잔불 반복 부여",
+  "rarity_scaling": "잔불 피해 40/60/80/100 (1초)",
+  "tags": [
+   "ring",
+   "curse_apply:scorch",
+   "dot",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_rapture_ring",
+   "apollo_solar_ring",
+   "ares_sword_ring",
+   "demeter_arctic_ring",
+   "hephaestus_anvil_ring",
+   "hera_engagement_ring",
+   "poseidon_tidal_ring",
+   "zeus_storm_ring"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_heat_rush",
+  "god": "hestia",
+  "name_ko": "열기 쇄도",
+  "name_en": "Heat Rush",
+  "slot": "sprint",
+  "occupies_slot": true,
+  "effect": "질주 시 불씨 자국, 잔불 피해 1로 감소",
+  "rarity_scaling": "자국 피해 10/15/20/25 (0.25초)",
+  "tags": [
+   "sprint_damage",
+   "armor"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_passion_rush",
+   "apollo_blinding_rush",
+   "ares_stabbing_rush",
+   "demeter_frigid_rush",
+   "hephaestus_smithy_rush",
+   "hera_nexus_rush",
+   "poseidon_breaker_rush",
+   "zeus_thunder_rush"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_cardio_gain",
+  "god": "hestia",
+  "name_ko": "따스한 마력",
+  "name_en": "Cardio Gain",
+  "slot": "magick",
+  "occupies_slot": true,
+  "effect": "공격/기술 명중 시 마력 회복",
+  "rarity_scaling": "마력 4/6/8/10",
+  "tags": [
+   "mana_regen",
+   "beginner_safe",
+   "per_hit"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "aphrodite_glamour_gain",
+   "apollo_lucid_gain",
+   "ares_grisly_gain",
+   "demeter_tranquil_gain",
+   "hephaestus_tough_gain",
+   "hera_born_gain",
+   "poseidon_flood_gain",
+   "zeus_ionic_gain"
+  ],
+  "conflict_reason": "슬롯 배타 - 같은 칸에는 신 1명만 장착 가능",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_highly_flammable",
+  "god": "hestia",
+  "name_ko": "불쏘시개",
+  "name_en": "Highly Flammable",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "첫 잔불 부여 시 추가 잔불",
+  "rarity_scaling": "+80/120/160/200",
+  "tags": [
+   "curse_scale:scorch",
+   "dot",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hestia_flame_strike",
+      "hestia_flame_flourish",
+      "hestia_smolder_ring"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_glowing_coal",
+  "god": "hestia",
+  "name_ko": "달아오른 숯",
+  "name_en": "Glowing Coal",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "마법 조준 화염구, 착탄점에 마법진",
+  "rarity_scaling": "폭발 피해 60/90/120/150",
+  "tags": [
+   "cast",
+   "ranged_cast",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "cat:ring"
+     ]
+    }
+   ]
+  },
+  "conflicts": [
+   "zeus_lightning_lance",
+   "demeter_local_climate",
+   "duo_demeter_ares"
+  ],
+  "conflict_reason": "마법 변형 계열 - 동시 채용 불가 (위키 명시)",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "위키 전제조건 칸 비어있음. 링 은혜 필요로 추정 - 검증 필요"
+ },
+ {
+  "id": "hestia_controlled_burn",
+  "god": "hestia",
+  "name_ko": "화력 보강",
+  "name_en": "Controlled Burn",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "Ω 기술이 화염구 발사, 마력 +10 소모",
+  "rarity_scaling": "폭발 피해 100/150/200/250",
+  "tags": [
+   "omega_special",
+   "aoe",
+   "duo_key"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_flash_fry",
+  "god": "hestia",
+  "name_ko": "천연가스",
+  "name_en": "Flash Fry",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "적 처치 시 폭발로 주변 피해",
+  "rarity_scaling": "폭발 피해 60/90/120/150",
+  "tags": [
+   "aoe",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_hot_pot",
+  "god": "hestia",
+  "name_ko": "끓는 냄비",
+  "name_en": "Hot Pot",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "회피 확률, 잔불 적 상대로 2배",
+  "rarity_scaling": "회피 +4/5/6/7%",
+  "tags": [
+   "armor",
+   "curse_scale:scorch"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hestia_flame_strike",
+      "hestia_flame_flourish",
+      "hestia_smolder_ring"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_pyro_technique",
+  "god": "hestia",
+  "name_ko": "완전 연소",
+  "name_en": "Pyro Technique",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "잔불 피해 속도 증가",
+  "rarity_scaling": "+50/75/100/125%",
+  "tags": [
+   "curse_scale:scorch",
+   "dot"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hestia_flame_strike",
+      "hestia_flame_flourish",
+      "hestia_smolder_ring"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_snuffed_candle",
+  "god": "hestia",
+  "name_ko": "꺼진 촛불",
+  "name_en": "Snuffed Candle",
+  "slot": "passive",
+  "occupies_slot": false,
+  "effect": "고립된 적에게 추가 피해",
+  "rarity_scaling": "+15/18/21/24%",
+  "tags": [
+   "boss_dmg"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_slow_cooker",
+  "god": "hestia",
+  "name_ko": "솥단지 예열",
+  "name_en": "Slow Cooker",
+  "slot": "infusion",
+  "occupies_slot": false,
+  "effect": "불 은혜 수만큼 공격/기술 위력 증가",
+  "infusion_req": {
+   "element": "fire",
+   "count": 2
+  },
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "hestia_fire_away",
+  "god": "hestia",
+  "name_ko": "불길 장벽",
+  "name_en": "Fire Away",
+  "slot": "legendary",
+  "occupies_slot": false,
+  "effect": "마법진이 적 원거리탄 파괴+잔불 부여",
+  "rarity_scaling": "잔불 400 (3초)",
+  "tags": [
+   "curse_apply:scorch",
+   "armor"
+  ],
+  "prereq": {
+   "all": [
+    {
+     "any": [
+      "hestia_smolder_ring",
+      "hestia_flame_strike",
+      "hestia_flame_flourish"
+     ]
+    },
+    {
+     "any": [
+      "hestia_flash_fry",
+      "hestia_hot_pot",
+      "hestia_pyro_technique",
+      "hestia_highly_flammable"
+     ]
+    },
+    {
+     "any": [
+      "hestia_glowing_coal",
+      "hestia_controlled_burn"
+     ]
+    }
+   ]
+  },
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ }
+]
