@@ -234,6 +234,12 @@ for (const b of boons) if ((b.tags || []).includes('duo_gateway')) err(`[태그]
   }
 }
 
+// 6-g. 아르카나: 0 이해도 카드는 구조화된 awaken 조건 필수, grid_position 필수
+for (const a of arcana) {
+  if (!Array.isArray(a.grid_position) || a.grid_position.length !== 2) err(`[arcana] grid_position 없음: ${a.id}`);
+  if (a.grasp === 0 && !(a.awaken && a.awaken.type)) err(`[arcana] 0 이해도 카드에 awaken 없음: ${a.id}`);
+}
+
 // 7. verified 통계
 const all = [...gods, ...boons, ...duos, ...weapons, ...arcana, ...keepsakes, ...hexes, ...hammers];
 const unverified = all.filter((o) => o.verified === false).length;

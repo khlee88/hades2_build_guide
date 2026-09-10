@@ -75,6 +75,16 @@ const WEIGHTS = {
     CHAOS: 2,
   },
 
+  // ── §14 아르카나 (4-A) ───────────────────────────────
+  ARCANA: {
+    CORE_BASE: 1000,                  // 핵심 목록(arcana_beginner_set.cards→upgrade_path) 1위 가치. 기하급수라 '죽음 > 나머지 전부'
+    CORE_DECAY: 0.5,                  // 핵심 순위마다 ×0.5
+    PRIORITY: { 1: 6, 2: 3, 3: 1 },   // beginner_priority → 기본 점수. 0(비추천)은 후보 제외
+    DIRECTION_HIT: 2,                 // 무기 방향의 arcana 힌트에 있으면 가산 (방향 순위 가중 곱)
+    DIR_WEIGHTS: [1, 0.6, 0.4],       // 방향 1·2·3위 가중
+    AWAKEN_LOOKAHEAD: 1.5,            // 이 카드를 켜면 0 이해도 카드가 각성될 때 가산
+  },
+
   // ── §5 신 풀 ─────────────────────────────────────────
   GOD_POOL_CAP: 4,              // 미확인. ISSUES.md [P2] 참조. 5번째 신이 정상 등장하면 5로 올릴 것
 

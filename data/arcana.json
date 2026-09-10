@@ -108,7 +108,10 @@
    "wiki",
    "namu"
   ],
-  "notes": "각성 시 소모 0 - 매우 효율적"
+  "notes": "각성 시 소모 0 - 매우 효율적",
+  "awaken": {
+   "type": "adjacent_any"
+  }
  },
  {
   "id": "the_furies",
@@ -296,7 +299,17 @@
   "source": [
    "wiki",
    "namu"
-  ]
+  ],
+  "awaken": {
+   "type": "one_each_cost",
+   "costs": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  }
  },
  {
   "id": "origination",
@@ -456,7 +469,11 @@
    "wiki",
    "namu"
   ],
-  "notes": "듀오 노리는 빌드에 유용, 각성 조건이 카드 구성을 제약"
+  "notes": "듀오 노리는 빌드에 유용, 각성 조건이 카드 구성을 제약",
+  "awaken": {
+   "type": "max_same_cost",
+   "max": 2
+  }
  },
  {
   "id": "the_fates",
@@ -478,7 +495,10 @@
   "source": [
    "wiki",
    "namu"
-  ]
+  ],
+  "awaken": {
+   "type": "adjacent_all"
+  }
  },
  {
   "id": "the_champions",
@@ -550,7 +570,10 @@
   "source": [
    "wiki",
    "namu"
-  ]
+  ],
+  "awaken": {
+   "type": "full_other_line"
+  }
  },
  {
   "id": "judgement",
@@ -573,6 +596,10 @@
    "wiki",
    "namu"
   ],
-  "notes": "카드 3장만 켜야 해서 초보에게 부적합"
+  "notes": "카드 3장만 켜야 해서 초보에게 부적합",
+  "awaken": {
+   "type": "max_total",
+   "max": 3
+  }
  }
 ]

@@ -320,6 +320,37 @@ sc('S22', '조사·완성 대표 융합 — 쌍검 헤르메스 상황', () => {
   ] };
 });
 
+
+// ── 4-A 추가: 아르카나 ───────────────────────────────────
+sc('S23', '아르카나 — 이해도 10은 기존 초보 세트와 동일', () => {
+  const r = E.recommendArcana('staff', 'staff_melinoe', 10);
+  const ids = r.cards.map((c) => c.id).sort();
+  return { rows: r.cards.map((c, i) => ({ id: c.id, rank: i + 1, score: c.grasp, reason: c.tag, warnings: [], badges: [] })),
+    extra: `사용 ${r.grasp_used}/${r.grasp_cap} · 각성 ${r.awakened.map((c) => c.name_ko).join(',') || '없음'} · 다음: ${r.next_up.map((c) => c.name_ko).join(', ')}`,
+    checks: [
+      check('핵심 5장 포함', ['death', 'the_furies', 'persistence', 'the_sorceress', 'the_wayward_son'].every((x) => ids.includes(x)), ids.join(',')),
+      check('이해도 초과 없음', r.grasp_used <= 10, String(r.grasp_used)),
+      check('0 이해도 카드는 직접 선택 안 함', r.cards.every((c) => c.grasp > 0), 'ok'),
+      check('용력·죽음 동시 없음', !(ids.includes('strength') && ids.includes('death')), ids.join(',')),
+    ] };
+});
+
+sc('S24', '아르카나 — 이해도 20이면 무기별로 달라지고 각성 카드가 붙는다', () => {
+  const rs = E.recommendArcana('staff', 'staff_melinoe', 20);
+  const rb = E.recommendArcana('blades', 'blades_melinoe', 20);
+  const ra = E.recommendArcana('axe', 'axe_melinoe', 20);
+  const ids = (r) => r.cards.map((c) => c.id).sort().join(',');
+  const anyAwaken = [rs, rb, ra].some((r) => r.awakened.length > 0);
+  return { rows: rs.cards.map((c, i) => ({ id: c.id, rank: i + 1, score: c.grasp, reason: c.tag, warnings: [], badges: [] })),
+    extra: `지팡이 ${rs.grasp_used}/20 [${rs.cards.map((c) => c.name_ko).join(', ')}] 각성[${rs.awakened.map((c) => c.name_ko)}]\n쌍검 ${rb.grasp_used}/20 [${rb.cards.map((c) => c.name_ko).join(', ')}]\n도끼 ${ra.grasp_used}/20 [${ra.cards.map((c) => c.name_ko).join(', ')}]`,
+    checks: [
+      check('이해도 20 중 18 이상 사용', rs.grasp_used >= 18 && rb.grasp_used >= 18 && ra.grasp_used >= 18, `${rs.grasp_used}/${rb.grasp_used}/${ra.grasp_used}`),
+      check('무기별 세트가 전부 같지는 않음', !(ids(rs) === ids(rb) && ids(rb) === ids(ra)), ids(rs) === ids(rb) ? '지팡이=쌍검' : '다름'),
+      check('어느 무기든 각성 카드 1장 이상 (0 이해도 활용)', anyAwaken, [rs, rb, ra].map((r) => r.awakened.length).join('/')),
+      check('비추천(priority 0) 카드 없음', [rs, rb, ra].every((r) => r.cards.every((c) => (data.arcana.find((a) => a.id === c.id) || {}).beginner_priority !== 0)), 'ok'),
+    ] };
+});
+
 // ── 실행 ────────────────────────────────────────────────
 const out = [];
 let pass = 0, fail = 0;

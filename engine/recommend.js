@@ -496,30 +496,124 @@ function createEngine(data, W) {
     return ranked(list);
   }
 
+  // ── §14 아르카나 (4-A 재설계) ─────────────────────────
+  // 격자 5×5. 인접 = 8방향. 각성 조건은 arcana[].awaken 구조체로 판정한다.
+  const ARC_W = W.ARCANA || { CORE_BASE: 1000, CORE_DECAY: 0.5, PRIORITY: { 1: 6, 2: 3, 3: 1 }, DIRECTION_HIT: 2, DIR_WEIGHTS: [1, 0.6, 0.4], AWAKEN_LOOKAHEAD: 1.5 };
+  const arcPos = (c) => (c.grid_position || [0, 0]);
+  const arcAdjacent = (c) => {
+    const [r, col] = arcPos(c);
+    return arcana.filter((o) => { const [r2, c2] = arcPos(o); return o.id !== c.id && Math.abs(r2 - r) <= 1 && Math.abs(c2 - col) <= 1; });
+  };
+  function awakenMet(c, activeSet) {
+    const a = c.awaken; if (!a) return false;
+    const act = arcana.filter((o) => activeSet.has(o.id));
+    if (a.type === 'adjacent_any') return arcAdjacent(c).some((o) => activeSet.has(o.id));
+    if (a.type === 'adjacent_all') return arcAdjacent(c).every((o) => activeSet.has(o.id));
+    if (a.type === 'one_each_cost') return (a.costs || []).every((k) => act.some((o) => o.grasp === k));
+    if (a.type === 'max_same_cost') { const cnt = {}; for (const o of act) if (o.grasp > 0) cnt[o.grasp] = (cnt[o.grasp] || 0) + 1; return Object.values(cnt).every((n) => n <= a.max) && act.length > 0; }
+    if (a.type === 'max_total') return act.length > 0 && act.length <= a.max;
+    if (a.type === 'full_other_line') {
+      const [r, col] = arcPos(c);
+      for (let i = 1; i <= 5; i++) {
+        if (i !== r && arcana.filter((o) => arcPos(o)[0] === i).every((o) => activeSet.has(o.id))) return true;
+        if (i !== col && arcana.filter((o) => arcPos(o)[1] === i).every((o) => activeSet.has(o.id))) return true;
+      }
+      return false;
+    }
+    return false;
+  }
+  // 활성 집합에서 각성되는 0 이해도 카드를 고정점까지 추가
+  function awakenClosure(activeSet) {
+    const out = new Set(activeSet); let changed = true;
+    while (changed) {
+      changed = false;
+      for (const c of arcana) if (c.grasp === 0 && !out.has(c.id) && awakenMet(c, out)) { out.add(c.id); changed = true; }
+    }
+    return out;
+  }
+  function recommendArcana(weapon, aspect, graspCap) {
+    const cap = Math.max(0, graspCap ?? builds.arcana_beginner_set.grasp);
+    const state = { weapon, aspect, region: 1, boons: [], hammers: [], gods_seen: [], hp_state: 'mid' };
+    const { all } = directionWeights(state);
+    const dirs = all.filter((x) => Number.isFinite(x.F)).map((x) => x.d);
+    const set = builds.arcana_beginner_set;
+    const core = set.cards || [], path = set.upgrade_path || [], never = set.never_with || [];
+
+    // 카드 가치. 핵심 목록은 기하급수(1000, 500, 250…)라 '죽음 1장 > 나머지 전부'가 보장된다.
+    // 그 외는 초보 우선순위 + 무기 방향 힌트 + 각성 이웃 보너스.
+    const value = (c) => {
+      if (c.grasp === 0) return -Infinity;                       // 0 이해도는 각성으로만 켜진다
+      const ci = core.indexOf(c.id), pi = path.indexOf(c.id);
+      let v;
+      if (ci >= 0) v = ARC_W.CORE_BASE * Math.pow(ARC_W.CORE_DECAY, ci);
+      else if (pi >= 0) v = ARC_W.CORE_BASE * Math.pow(ARC_W.CORE_DECAY, core.length + pi);
+      else { const pr = ARC_W.PRIORITY[c.beginner_priority]; if (pr === undefined) return -Infinity; v = pr; }
+      dirs.forEach((d, i) => { if ((d.arcana || []).includes(c.id)) v += ARC_W.DIRECTION_HIT * ARC_W.DIR_WEIGHTS[Math.min(i, ARC_W.DIR_WEIGHTS.length - 1)]; });
+      // 이 카드가 '둘러싼 카드 중 하나' 조건의 0 이해도 카드 이웃이면 소폭 가산 (달 등)
+      if (arcana.some((z) => z.grasp === 0 && z.awaken && z.awaken.type === 'adjacent_any' && arcAdjacent(z).some((n) => n.id === c.id))) v += ARC_W.AWAKEN_LOOKAHEAD;
+      return v;
+    };
+
+    // 0/1 배낭: 후보 ≤ 25장, 상한 ≤ 30 → 즉시. 값이 같으면 이해도를 덜 쓰는 쪽.
+    function knapsack(cands) {
+      const n = cands.length;
+      const best = Array.from({ length: n + 1 }, () => new Array(cap + 1).fill(0));
+      for (let i = 1; i <= n; i++) {
+        const c = cands[i - 1], w = c.grasp, v = c.v;
+        for (let g = 0; g <= cap; g++) {
+          best[i][g] = best[i - 1][g];
+          if (w <= g && best[i - 1][g - w] + v > best[i][g]) best[i][g] = best[i - 1][g - w] + v;
+        }
+      }
+      let g = 0; for (let k = 1; k <= cap; k++) if (best[n][k] > best[n][g]) g = k;
+      const out = [];
+      for (let i = n; i >= 1; i--) if (best[i][g] !== best[i - 1][g]) { out.push(cands[i - 1]); g -= cands[i - 1].grasp; }
+      return out.reverse();
+    }
+    let cands = arcana.map((c) => ({ ...c, v: value(c) })).filter((c) => Number.isFinite(c.v) && c.grasp > 0 && c.grasp <= cap);
+    let chosen = knapsack(cands);
+    // never_with: 둘 다 뽑혔으면 가치 낮은 쪽을 제외하고 다시
+    for (const pair of never) {
+      const inSet = pair.filter((id) => chosen.some((c) => c.id === id));
+      if (inSet.length === pair.length) {
+        const drop = inSet.map((id) => chosen.find((c) => c.id === id)).sort((a, b) => a.v - b.v)[0].id;
+        cands = cands.filter((c) => c.id !== drop); chosen = knapsack(cands);
+      }
+    }
+    // 핵심 순 → 그 외 가치 순으로 정렬해 보여준다
+    chosen.sort((a, b) => b.v - a.v);
+    const picked = chosen.map((c) => c.id);
+    const spent = chosen.reduce((a, c) => a + c.grasp, 0);
+    const active = awakenClosure(new Set(picked));
+    const awakened = [...active].filter((id) => !picked.includes(id));
+    const inDir = (id) => dirs.some((d) => (d.arcana || []).includes(id));
+    const tag = (c) => core.includes(c.id) ? '핵심' : path.includes(c.id) ? '핵심' : (inDir(c.id) ? '무기 방향' : '보조');
+    const card = (c, t) => ({ id: c.id, name_ko: c.name_ko, grasp: c.grasp, effect: c.effect, tag: t });
+    const lockedFree = arcana.filter((c) => c.grasp === 0 && !active.has(c.id))
+      .map((c) => ({ id: c.id, name_ko: c.name_ko, effect: c.effect, awaken_condition: c.awaken_condition }));
+    const nextUp = cands.filter((c) => !picked.includes(c.id)).sort((a, b) => b.v - a.v).slice(0, 2)
+      .map((c) => card(c, '이해도 +' + c.grasp + ' 필요'));
+    return {
+      grasp_used: spent, grasp_cap: cap, grasp_left: cap - spent,
+      cards: chosen.map((c) => card(c, tag(c))),
+      awakened: awakened.map((id) => card(arcanaById.get(id), '각성 — 무료')),
+      free_cards: lockedFree,
+      next_up: nextUp,
+    };
+  }
+
   function recommendRunStart(weapon, aspect, opts) {
     const o = opts || {};
     const graspCap = o.graspCap ?? builds.arcana_beginner_set.grasp;
     const owned = o.ownedKeepsakes || null;
-    const set = builds.arcana_beginner_set;
-    const picked = [], free = [], never = set.never_with || [];
-    let spent = 0;
-    for (const id of [...(set.cards || []), ...(set.upgrade_path || [])]) {
-      const c = arcanaById.get(id); if (!c) continue;
-      if (picked.includes(id) || free.some((f) => f.id === id)) continue;
-      if (never.some((p) => p.includes(id) && p.some((q) => q !== id && picked.includes(q)))) continue;
-      // 이해도 0 카드는 각성 조건을 충족해야 활성화된다. 조건 판정을 일반화할 수 없으므로
-      // 자동 선택에 넣지 않고 "조건 충족 시 무료"로 따로 안내한다.
-      if (c.grasp === 0) { free.push({ id, name_ko: c.name_ko, effect: c.effect, awaken_condition: c.awaken_condition }); continue; }
-      if (spent + c.grasp > graspCap) continue;
-      picked.push(id); spent += c.grasp;
-    }
+    const arc = recommendArcana(weapon, aspect, graspCap);
     const state = { weapon, aspect, region: 1, boons: [], hammers: [], gods_seen: [], hp_state: 'mid' };
     const { all } = directionWeights(state);
     return {
       weapon, aspect,
-      arcana: { grasp_used: spent, grasp_cap: graspCap, cards: picked.map((id) => ({ id, name_ko: nameOf(id), grasp: arcanaById.get(id).grasp, effect: arcanaById.get(id).effect })), free_cards: free },
-      keepsakes: (builds.keepsake_plan.region1 || []).filter((k) => !owned || owned.includes(k)).map((id) => ({ id, name_ko: nameOf(id), effect: keepsakeById.get(id).effect })),
-      hexes: (builds.hex_beginner || []).map((id) => ({ id, name_ko: nameOf(id), effect: hexById.get(id).effect, mana: hexById.get(id).mana_to_charge })),
+      arcana: arc,
+      keepsakes: (builds.keepsake_plan.region1 || []).filter((k) => !owned || owned.includes(k)).map((id) => { const k = keepsakeById.get(id); return { id, name_ko: k.name_ko, effect: k.effect, giver_ko: k.giver_ko }; }),
+      hexes: (builds.hex_beginner || []).map((id) => ({ id, name_ko: nameOf(id), effect: hexById.get(id).effect, mana: hexById.get(id).mana_to_charge, giver_ko: '셀레네' })),
       directions: all.filter((x) => Number.isFinite(x.F)).map((x) => ({
         id: x.d.id, name_ko: x.d.name_ko, difficulty: x.d.difficulty, F: round(x.F), summary: x.d.summary,
         core_slots: (x.d.core_slots || []).map((s) => SLOT_KO[s]),
@@ -617,7 +711,7 @@ function createEngine(data, W) {
     return out;
   }
 
-  return { recommendRunStart, recommendGods, recommendBoons, recommendHammers, recommendKeepsake, directionScores, applyChoice, validateState, _internal: { directionWeights, derive } };
+  return { recommendRunStart, recommendArcana, recommendGods, recommendBoons, recommendHammers, recommendKeepsake, directionScores, applyChoice, validateState, _internal: { directionWeights, derive } };
 }
 
 if (typeof module !== 'undefined' && module.exports) module.exports = { createEngine };
