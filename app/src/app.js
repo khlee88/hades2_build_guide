@@ -21,6 +21,20 @@
   var SKO = W.SLOT_KO;
   var GC = { zeus: '#f2d16b', hestia: '#ff8a3d', poseidon: '#4aa3ff', demeter: '#7ed491', apollo: '#ffd166', aphrodite: '#ff7eb6', hephaestus: '#c97b4a', hera: '#b58cff', ares: '#e05252', hermes: '#c0c7d1', artemis: '#5fbf8a', selene: '#a9c4ff', chaos: '#c76bd9' };
   var GOD_ORDER = ['zeus', 'hestia', 'poseidon', 'demeter', 'apollo', 'aphrodite', 'hephaestus', 'hera', 'ares', 'hermes', 'artemis', 'selene', 'chaos'];
+  // 1·2위 점수차가 이 값 미만이면 엔진이 사실상 구분 못 한 것으로 보고 '취향' 표시.
+  // 근거: 시나리오 20개 점수차 분포가 0~2.5와 8 이상으로 갈리고 그 사이가 비어 있다.
+  var CLOSE_GAP = 2;
+  function closeSet(rows) {
+    var s = {};
+    var fin = rows.filter(function (r) { return isFinite(r.score); });
+    if (fin.length < 2) return s;
+    var top = fin[0].score;
+    var near = fin.filter(function (r) { return top - r.score < CLOSE_GAP; });
+    if (near.length >= 2) near.forEach(function (r) { s[r.id] = true; });
+    return s;
+  }
+  var CLOSE_CHIP = '<span class="close">비슷함 · 취향</span>';
+
   var RAR = ['common', 'rare', 'epic', 'heroic'];
   var RAR_KO = { common: '일반', rare: '희귀', epic: '특별', heroic: '영웅' };
 
@@ -329,11 +343,13 @@
       });
       out.innerHTML = '';
       if (godSel.length < 2) { out.appendChild(el('<div class="empty">신을 2개 이상 골라 주세요</div>')); return; }
-      E.recommendGods(RUN.state, godSel).forEach(function (r, i) {
+      var grows = E.recommendGods(RUN.state, godSel);
+      var gcs = closeSet(grows);
+      grows.forEach(function (r, i) {
         out.appendChild(recCard(r, i, function () {
           RUN.pending_god = r.id; pickSel = []; godTab = r.id;
           UI.screen = 'boons'; saveUI(); saveRun(); render();
-        }, '이 문으로'));
+        }, '이 문으로', gcs[r.id]));
       });
     }
     refresh();
@@ -432,7 +448,8 @@
         if (trayOpen) {
           var box = el('<div class="recs"></div>');
           var rows = isBoon ? E.recommendBoons(RUN.state, pickSel) : E.recommendHammers(RUN.state, pickSel.map(function (p) { return p.id; }));
-          rows.forEach(function (r, i) { box.appendChild(compactRec(r, i, isBoon)); });
+          var cs = closeSet(rows);
+          rows.forEach(function (r, i) { box.appendChild(compactRec(r, i, isBoon, cs[r.id])); });
           trayBox.appendChild(box);
         }
       }
@@ -448,14 +465,15 @@
       });
       trayBox.appendChild(picks);
     }
-    function compactRec(r, i, isBoon) {
+    function compactRec(r, i, isBoon, isClose) {
       var no = !isFinite(r.score);
       var w = r.warnings || [];
       var mainBadge = (r.badges || []).filter(function (b) { return b !== '항상'; })[0] || '';
       var row = el('<div class="crec ' + (i === 0 && !no ? 'r1' : '') + ' ' + (no ? 'no' : '') + '">' +
         '<span class="rk">' + (r.rank || i + 1) + '위</span>' +
         '<div class="mid"><div class="nm">' + slotChip(ent(r.id)) + '<span class="ell">' + esc(nm(r.id)) + '</span>' +
-        (mainBadge ? '<span class="bdg">' + esc(mainBadge) + '</span>' : '') + '</div>' +
+        (mainBadge ? '<span class="bdg">' + esc(mainBadge) + '</span>' : '') +
+        (isClose ? CLOSE_CHIP : '') + '</div>' +
         '<div class="rs ell">' + esc(r.reason) + '</div>' +
         (w.length ? '<div class="wn ell">⚠ ' + esc(w[0]) + (w.length > 1 ? ' +' + (w.length - 1) : '') + '</div>' : '') +
         '</div>' + (no ? '' : '<button class="go">결정</button>') + '</div>');
@@ -473,12 +491,13 @@
     return s;
   }
 
-  function recCard(r, i, onDecide, label) {
+  function recCard(r, i, onDecide, label, isClose) {
     var no = !isFinite(r.score);
     var c = el('<div class="rec ' + (i === 0 && !no ? 'r1' : '') + ' ' + (no ? 'no' : '') + '">' +
       '<div class="hd"><span class="rk">' + (r.rank || i + 1) + '위</span>' +
       (PREFS.show_score && !no ? '<span class="sc">' + r.score + '</span>' : '') + '</div>' +
-      '<div class="nm">' + slotChip(ent(r.id)) + '<span class="ell">' + esc(nm(r.id)) + '</span></div>' +
+      '<div class="nm">' + slotChip(ent(r.id)) + '<span class="ell">' + esc(nm(r.id)) + '</span>' +
+      (isClose ? CLOSE_CHIP : '') + '</div>' +
       '<div class="rs">' + esc(r.reason) + '</div>' +
       ((r.badges && r.badges.length) ? '<div class="bg">' + r.badges.map(badgeHtml).join('') + '</div>' : '') +
       ((r.warnings && r.warnings.length) ? '<div class="warns">' + r.warnings.map(function (w) { return '<div>⚠ ' + esc(w) + '</div>'; }).join('') + '</div>' : '') +
