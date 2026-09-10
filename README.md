@@ -4,43 +4,37 @@
 
 ## 앱 실행
 
-`app/index.html` **한 파일이 전부다.** 데이터·추천 엔진·UI가 모두 인라인돼 있고 외부 요청이 하나도 없다.
-서버도 빌드도 필요 없이 브라우저로 열면 바로 돌아간다.
+### GitHub Pages (폰에서 쓰기 제일 편함)
 
-폰에서 쓰려면:
-- Claude Artifact로 올리거나 (본인 계정에서 `app/index.html`을 그대로 배포)
-- 아무 정적 호스팅에 올리거나
-- 같은 WiFi에서 `python -m http.server 8777` 후 폰으로 `http://<PC주소>:8777/app/preview.html`
+저장소 **Settings → Pages → Source: Deploy from a branch → Branch: `main` / 폴더 `/docs` → Save**
 
-**홈 화면에 추가**하면 앱처럼 쓸 수 있다. 진행 상황은 브라우저에 저장되므로 화면이 꺼져도 유지된다.
-
-## 쓰는 법
-
-1. **런 시작** — 무기·양상 선택 → 아르카나 초보 세트, 기념품, 비술, 열린 빌드 방향 확인
-2. **신 선택** — 문 위에 뜬 신을 2개 이상 탭 → 어느 문으로 갈지
-3. **은혜 선택** — 뜬 은혜를 2~3개 탭 → 1·2·3위와 이유. 칸을 바꾸게 되면 빨간 경고가 뜬다
-4. **망치 선택** — 다이달로스 망치도 동일
-5. **관리** — 체력·지역·기념품·비술·방향 고정, 잘못 누른 것 수정, 되돌리기
-
-## 구조
+몇 분 뒤 아래 주소로 열린다. 폰 브라우저로 열고 **홈 화면에 추가**하면 앱처럼 쓸 수 있다.
 
 ```
-data/      게임 데이터 (은혜 148 · 융합/전설 47 · 망치 58 · 아르카나 25 · 기념품 33 · 비술 9)
-           node data/validate.js   검증 13종
-engine/    추천 엔진 (순수 함수, AI 호출 없음)
-           node engine/test.js     시나리오 22개
-app/       폰 UI. node app/build.js → app/index.html 단일 파일 생성
-ui/        화면 명세
-HANDOFF.md 단계별 작업 기록
+https://khlee88.github.io/hades2_build_guide/
 ```
 
-데이터나 엔진을 고쳤으면 `node app/build.js`로 다시 만들고 재배포한다.
+### 그 밖의 방법
 
-## 알아둘 것
+- **로컬** — `python -m http.server 8777` 후 `http://localhost:8777/docs/`
+  같은 WiFi의 폰에서는 `http://<PC의 IP>:8777/docs/`
+- **Claude Artifact** — `app/index.html`을 그대로 배포 (Artifact 규약상 `<html>`·`<body>`가 없는 조각이다)
+- 어느 쪽이든 **외부 요청이 0**이라 한 번 열면 오프라인에서도 돌아간다. 진행 상황은 브라우저에 저장된다.
 
-- 기준 버전: 하데스 2 정식판(2025-09) 이후. 밸런스 패치로 메타가 바뀌면 `data/`를 갱신해야 한다
-- 명칭은 한글판 인게임 표기 기준 (나무위키 대조). 용어 대조표는 `data/SCHEMA.md`
-- 미확인 항목은 `data/ISSUES.md`에 정리돼 있다 (신 풀 상한, 헤르메스 칸 점유 여부 등)
+## 빌드
+
+```
+node app/build.js
+```
+
+`data/*.json` + `engine/*.js` + `app/src/*` 를 묶어 두 파일을 만든다.
+
+| 산출물 | 용도 |
+|---|---|
+| `docs/index.html` | **단독 실행용 완전한 문서.** GitHub Pages·로컬·파일 열기 전부 이것 |
+| `app/index.html` | Claude Artifact 전용 (`<html>`/`<body>` 없는 조각) |
+
+데이터나 엔진을 고치면 다시 실행해 커밋한다. 검증은 `node data/validate.js`, `node engine/test.js`.
 
 ## 출처
 

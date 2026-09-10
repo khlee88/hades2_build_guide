@@ -45,14 +45,27 @@ ${js}
 
 fs.writeFileSync(path.join(ROOT, 'app', 'index.html'), body, 'utf8');
 
-// 로컬 검증용 래퍼 (배포에는 쓰지 않음)
-fs.writeFileSync(path.join(ROOT, 'app', 'preview.html'),
-  `<!doctype html><html lang="ko"><head><meta charset="utf-8">
+// docs/index.html - 단독으로 열리는 완전한 문서.
+// GitHub Pages(main 브랜치 /docs)로 서비스되고 로컬 미리보기도 이 파일을 쓴다.
+// app/index.html은 Artifact 규약상 <html>/<body>가 없어 브라우저에서 단독으로 열리지 않는다.
+const full = `<!doctype html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>html,body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style>
-</head><body>\n${body}\n</body></html>`, 'utf8');
+<meta name="theme-color" content="#0f1116">
+<meta name="description" content="하데스 2 초보용 빌드 추천 - 무기·신·은혜·망치를 고르면 지금 빌드에 맞는 우선순위를 알려줍니다">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='27' font-size='27'>%F0%9F%8C%99</text></svg>">
+<style>html,body{margin:0;padding:0;background:#0f1116}img{max-width:100%}[hidden]{display:none!important}</style>
+</head><body>
+${body}
+</body></html>`;
+const docsDir = path.join(ROOT, 'docs');
+if (!fs.existsSync(docsDir)) fs.mkdirSync(docsDir);
+fs.writeFileSync(path.join(docsDir, 'index.html'), full, 'utf8');
+fs.writeFileSync(path.join(docsDir, '.nojekyll'), '', 'utf8');  // Jekyll 처리 건너뛰기
 
 const kb = (s) => (Buffer.byteLength(s, 'utf8') / 1024).toFixed(0) + 'KB';
-console.log(`app/index.html 생성: ${kb(body)}  (빌드 ${stamp})`);
+console.log(`app/index.html (Artifact용) ${kb(body)} · docs/index.html (단독·Pages용) ${kb(full)}  빌드 ${stamp}`);
 console.log(`  데이터 ${kb(JSON.stringify(data))} / 엔진 ${kb(weights + engine)} / UI ${kb(css + js)}`);
 console.log(`  항목 수: 은혜 ${data.boons.length} · 융합·전설 ${data.duos.length} · 망치 ${data.hammers.length} · 기념품 ${data.keepsakes.length}`);
