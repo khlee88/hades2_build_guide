@@ -19,8 +19,8 @@
   var SLOTS = ['attack', 'special', 'cast', 'sprint', 'magick'];
   var SK = { attack: '공', special: '기', cast: '마', sprint: '질', magick: '력' };
   var SKO = W.SLOT_KO;
-  var GC = { zeus: '#f2d16b', hestia: '#ff8a3d', poseidon: '#4aa3ff', demeter: '#7ed491', apollo: '#ffd166', aphrodite: '#ff7eb6', hephaestus: '#c97b4a', hera: '#b58cff', ares: '#e05252', hermes: '#c0c7d1', artemis: '#5fbf8a', selene: '#a9c4ff', chaos: '#c76bd9' };
-  var GOD_ORDER = ['zeus', 'hestia', 'poseidon', 'demeter', 'apollo', 'aphrodite', 'hephaestus', 'hera', 'ares', 'hermes', 'artemis', 'selene', 'chaos'];
+  var GC = { zeus: '#f2d16b', hestia: '#ff8a3d', poseidon: '#4aa3ff', demeter: '#7ed491', apollo: '#ffd166', aphrodite: '#ff7eb6', hephaestus: '#c97b4a', hera: '#b58cff', ares: '#e05252', hermes: '#c0c7d1', artemis: '#5fbf8a', athena: '#d9d2b0', dionysus: '#9b59b6', selene: '#a9c4ff', chaos: '#c76bd9' };
+  var GOD_ORDER = ['zeus', 'hestia', 'poseidon', 'demeter', 'apollo', 'aphrodite', 'hephaestus', 'hera', 'ares', 'hermes', 'artemis', 'athena', 'dionysus', 'selene', 'chaos'];
   // 1·2위 점수차가 이 값 미만이면 엔진이 사실상 구분 못 한 것으로 보고 '취향' 표시.
   // 근거: 시나리오 20개 점수차 분포가 0~2.5와 8 이상으로 갈리고 그 사이가 비어 있다.
   var CLOSE_GAP = 2;
@@ -90,16 +90,18 @@
     zeus:       { f: 'M13 2 5 14h5l-2 8 9-13h-5z' },                                     // 벼락
     hestia:     { f: 'M12 22c3.6 0 6-2.6 6-6 0-4-4-6-4-10 0 0-2.6 1.8-2.6 4.4C11.4 9 10 8 10 7c-1.8 1.8-2.6 4.4-2.6 7 0 3.4 2.4 6 4.6 6z' },  // 불꽃
     poseidon:   { s: 'M12 2v20M7 9v2a5 5 0 0 0 10 0V9M7 9V6M17 9V6' },                    // 삼지창
-    demeter:    { s: 'M12 2v20M3.5 7l17 10M20.5 7l-17 10M12 7l-3-2M12 7l3-2M12 17l-3 2M12 17l3 2' }, // 눈 결정
+    demeter:    { s: 'M12 22V3.5', f: 'M12 10.2c-2.7 0-3.8-1.9-3.8-3.8 1.9 0 3.8 1 3.8 3.8zM12 10.2c2.7 0 3.8-1.9 3.8-3.8-1.9 0-3.8 1-3.8 3.8zM12 15.4c-2.7 0-3.8-1.9-3.8-3.8 1.9 0 3.8 1 3.8 3.8zM12 15.4c2.7 0 3.8-1.9 3.8-3.8-1.9 0-3.8 1-3.8 3.8z' },  // 밀 이삭
     apollo:     { s: 'M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2.1 2.1M16.9 16.9 19 19M19 5l-2.1 2.1M7.1 16.9 5 19', c: [12, 12, 4] },  // 태양
     aphrodite:  { f: 'M12 20.5S4.5 15.6 4.5 10.6A4.1 4.1 0 0 1 12 8.2a4.1 4.1 0 0 1 7.5 2.4c0 5-7.5 9.9-7.5 9.9z' },  // 하트
-    hephaestus: { s: 'M3 21l8.5-8.5M11 4l9 9-2.8 2.8-9-9z' },                             // 망치
-    hera:       { s: 'M12 8.5 9 4.5h6zM12 22a6 6 0 1 0 0-12 6 6 0 0 0 0 12z' },           // 반지
-    ares:       { s: 'M5 19 19 5M19 19 5 5M3 17l4 4M21 17l-4 4' },                        // 교차한 검
-    hermes:     { s: 'M3 8h9M2 12h7M4 16h6M13 5c4 0 7 3 7 7s-3 7-7 7z' },                 // 날개·속도선
+    hephaestus: { s: 'M7 21.5 10.9 11.6M17 21.5 13.1 11.6M10.9 10.4 9.2 5.4M13.1 10.4l1.7-5', f: 'M9.6 2.2h4.8v3.4H9.6z', c: [12, 11, 1.5] },  // 집게로 쇳덩이를 집은 모양
+    hera:       { s: 'M6 20.5h4.2v-2a6.8 6.8 0 1 1 3.6 0v2H18' },                         // 오메가
+    ares:       { s: 'M12 21.5V5M12 5 10 8.4M12 5l2 3.4M8.4 11.2h7.2', f: 'M8.2 11.6c-2.2 1.3-2.7 3.6-1 5.2.3-1.8 1.1-2.5 2.8-3zM15.8 11.6c2.2 1.3 2.7 3.6 1 5.2-.3-1.8-1.1-2.5-2.8-3z' },  // 양옆 불꽃 검
+    hermes:     { f: 'M21.2 4.2c-6 .2-10.9 2.5-13.9 6.6-1.1 1.5-2 3.2-2.6 5.1 2-.1 3.8-.4 5.4-1-.7-.8-1.2-1.7-1.4-2.6 1.6.8 3.2 1.1 4.8 1-.7-.8-1.2-1.7-1.5-2.7 1.9.8 3.6.9 5.2.6-.8-.8-1.4-1.7-1.7-2.7 1.9.5 3.5.4 4.7-.1-.3-1.4-.4-2.8-.2-4.2z' },  // 날개
     artemis:    { s: 'M6 3a12 12 0 0 1 0 18M6 12h13M15 8l4 4-4 4' },                      // 활과 화살
     selene:     { f: 'M16.5 2.5a9.5 9.5 0 1 0 5 13.4 7.6 7.6 0 0 1-5-13.4z' },            // 초승달
     chaos:      { s: 'M12 13.5a2 2 0 1 1-1.4-3.4 5 5 0 1 1 5 5 8 8 0 1 1-8-8' },          // 소용돌이
+    athena:     { s: 'M12 2.6 4.6 5.5v5.9c0 4.6 3.1 8.6 7.4 10 4.3-1.4 7.4-5.4 7.4-10V5.5z', f: 'M12 8.4 9.5 13.2h5z' },  // 방패
+    dionysus:   { s: 'M12.4 8.6V4.4c1.7-.7 3.2-.7 4.2-.3', f: 'M9.2 9.4a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zm5.6 0a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zM12 12.9a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zm-2.5 3.6a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zm5 0a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5z' },  // 포도송이
     staff:      { s: 'M4 20 15.5 8.5M12 4l1-2 1 2 2 1-2 1-1 2-1-2-2-1z', c: [17.5, 6, 3] },// 지팡이
     blades:     { s: 'M7.5 21 4 6l5 2.5zM16.5 21 20 6l-5 2.5z' },                          // 쌍검
     flames:     { s: 'M12 17.5V22', f: 'M12 2.5c2.2 3.6 5.6 5 5.6 8.6 0 3.2-2.5 5.4-5.6 5.4s-5.6-2.2-5.6-5.4c0-1.7.6-3.1 1.5-4.3.1 1.5.9 2.3 1.8 2.3 1.1 0 1.7-.9 1.7-2.4 0-1.6.3-3 .6-4.2z' },  // 횃불
@@ -132,8 +134,13 @@
   // ── 화면 전환 ──────────────────────────────────────────
   var sheet = null;
   function openSheet(name) { UI.screen = name; saveUI(); history.pushState({ sheet: name }, ''); render(); }
-  function closeSheet() { if (UI.screen) { UI.screen = null; saveUI(); render(); } }
-  window.addEventListener('popstate', function () { if (UI.screen) { UI.screen = null; saveUI(); render(); } });
+  // X로 닫을 때도 pushState로 쌓인 이력을 되감는다. 안 그러면 열고 닫을수록 뒤로가기가 밀린다 (U8)
+  function closeSheet(fromPop) {
+    if (!UI.screen) return;
+    if (!fromPop && history.state && history.state.sheet) { history.back(); return; } // popstate가 렌더를 맡는다
+    UI.screen = null; saveUI(); render();
+  }
+  window.addEventListener('popstate', function () { closeSheet(true); });
 
   // ── 렌더 ───────────────────────────────────────────────
   var app = document.getElementById('app');
@@ -145,11 +152,13 @@
     else if (UI.screen === 'boons') app.appendChild(viewPick('boon'));
     else if (UI.screen === 'hammers') app.appendChild(viewPick('hammer'));
     else if (UI.screen === 'manage') app.appendChild(viewManage());
+    else if (String(UI.screen).indexOf('guest:') === 0) app.appendChild(guestSheet(UI.screen.slice(6)));
     else if (UI.screen === 'start') app.appendChild(wrapSheet('새 런 시작', viewStart(true)));
   }
   function wrapSheet(title, inner) {
     var s = el('<div class="sheet"><div class="top"><button class="iconbtn" data-close>✕</button><div class="t">' + esc(title) + '</div></div><div class="body"></div></div>');
-    s.querySelector('[data-close]').onclick = closeSheet;
+    // closeSheet를 그대로 넘기면 MouseEvent가 fromPop 인자로 들어가 되감기를 건너뛴다
+    s.querySelector('[data-close]').onclick = function () { closeSheet(); };
     s.querySelector('.body').appendChild(inner);
     return s;
   }
@@ -377,6 +386,7 @@
       var gcs = closeSet(grows);
       grows.forEach(function (r, i) {
         out.appendChild(recCard(r, i, function () {
+          if (GUEST_INFO[r.id]) { UI.screen = 'guest:' + r.id; saveUI(); render(); return; }
           RUN.pending_god = r.id; pickSel = []; godTab = r.id;
           UI.screen = 'boons'; saveUI(); saveRun(); render();
         }, '이 문으로', gcs[r.id]));
@@ -387,6 +397,28 @@
   }
 
   // ── 4·5. 은혜 / 망치 선택 ──────────────────────────────
+  // 은혜 목록이 없는 신 — 문을 골라도 빈 목록이 뜨던 문제 (U6)
+  var GUEST_INFO = {
+    selene: { to: 'manage', title: '셀레네는 비술을 줍니다',
+      body: '은혜가 아니라 <b>비술</b>을 하나 받습니다. 관리 화면에서 받은 비술을 눌러 두면 추천에 반영됩니다.',
+      tip: '초보 추천 순서: 달빛줄기(마력 30) → 늑대 포효(50) → 월색 담수(70)' },
+    chaos: { to: null, title: '카오스는 저주를 먼저 받습니다',
+      body: '일정 시간 <b>저주</b>를 견디면 축복을 줍니다. 지금 화면에서는 개별 축복을 추천하지 않습니다.',
+      tip: '초보는 체력·마력이 잠시 줄어드는 저주만 받는 게 안전합니다. 피해를 더 받거나 이동이 느려지는 저주는 방 클리어가 위험해집니다.' },
+  };
+  function guestSheet(id) {
+    var g = GUEST_INFO[id], body = document.createElement('div');
+    body.appendChild(el('<div class="card"><div class="row"><span class="gi" style="color:' + GC[id] + '">' + sym(id, 26) + '</span><b>' + esc(g.title) + '</b></div>' +
+      '<div class="sm" style="margin-top:8px">' + g.body + '</div>' +
+      '<div class="sm dim" style="margin-top:8px">' + esc(g.tip) + '</div></div>'));
+    if (g.to === 'manage') {
+      var b = el('<div class="cta"><button>관리에서 비술 고르기</button></div>');
+      b.querySelector('button').onclick = function () { UI.screen = 'manage'; saveUI(); render(); };
+      body.appendChild(b);
+    }
+    return wrapSheet(nm(id), body);
+  }
+
   var pickSel = [], godTab = null, searchOn = false, searchQ = '', trayOpen = true;
   function viewPick(kind) {
     var isBoon = kind === 'boon';
@@ -406,7 +438,10 @@
       GOD_ORDER.forEach(function (id) {
         var b = el('<button class="chip" aria-pressed="' + (godTab === id) + '" style="border-color:' + GC[id] + '">' +
           '<span class="gi" style="color:' + GC[id] + '">' + sym(id, 17) + '</span>' + esc(nm(id)) + '</button>');
-        b.onclick = function () { godTab = id; UI.god_tab = id; saveUI(); searchQ = ''; draw(); };
+        b.onclick = function () {
+          if (GUEST_INFO[id]) { UI.screen = 'guest:' + id; saveUI(); render(); return; }
+          godTab = id; UI.god_tab = id; saveUI(); searchQ = ''; draw();
+        };
         tabs.appendChild(b);
       });
       body.appendChild(tabs);

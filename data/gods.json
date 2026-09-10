@@ -192,6 +192,38 @@
   ]
  },
  {
+  "id": "athena",
+  "name_ko": "아테나",
+  "name_en": "Athena",
+  "type": "guest",
+  "curse": "none",
+  "curse_ko": null,
+  "elements": [],
+  "theme": "반사(적 공격 되돌리기)와 죽음 저항. 칸을 차지하지 않아 어떤 빌드에도 얹을 수 있음",
+  "beginner_note": "지상 올림포스 산에서 밤당 1회 조우. 고르곤 아뮬렛을 끼면(죽음 저항이 없을 때) 지하에서도 등장. 생존이 크게 오르니 만나면 챙길 것",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "dionysus",
+  "name_ko": "디오니소스",
+  "name_en": "Dionysus",
+  "type": "guest",
+  "curse": "hangover",
+  "curse_ko": "숙취",
+  "elements": [],
+  "theme": "숙취(지속 피해)·축제 안개·포도 주스. 이득이 큰 대신 위험도 있는 은혜가 섞여 있음",
+  "beginner_note": "지상 3지역 이벤트 방에서 조우. 천하태평·회복 탄력성은 생존에 크게 도움. 흥청망청은 무기에 따라 독이 됨",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
   "id": "artemis",
   "name_ko": "아르테미스",
   "name_en": "Artemis",

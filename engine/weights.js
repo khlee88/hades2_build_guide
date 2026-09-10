@@ -100,7 +100,7 @@ const WEIGHTS = {
 
   // ── 기타 ─────────────────────────────────────────────
   SURVIVAL_TAGS: ['armor', 'heal', 'max_hp'],
-  NON_POOL_GODS: ['hermes', 'artemis', 'selene', 'chaos'],
+  NON_POOL_GODS: ['hermes', 'artemis', 'selene', 'chaos', 'athena', 'dionysus'],
   CORE_SLOTS: ['attack', 'special', 'cast', 'sprint', 'magick'],
   SLOT_KO: { attack: '일반 공격', special: '기술', cast: '마법', sprint: '질주', magick: '마력' },
   SCORE_PRECISION: 1,

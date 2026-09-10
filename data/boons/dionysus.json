@@ -1,0 +1,185 @@
+[
+ {
+  "id": "dionysus_tipsy_shot",
+  "god": "dionysus",
+  "name_ko": "알딸딸 탄",
+  "name_en": "Tipsy Shot",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "cast"
+  ],
+  "effect": "마법 조준 대형 폭탄, 착탄점에 마법진",
+  "rarity_scaling": "폭발 피해 300/450/600/750",
+  "tags": [
+   "cast",
+   "ranged_cast",
+   "aoe"
+  ],
+  "prereq": null,
+  "conflicts": [
+   "zeus_lightning_lance",
+   "hestia_glowing_coal",
+   "demeter_local_climate",
+   "poseidon_tidal_ring",
+   "duo_demeter_ares"
+  ],
+  "conflict_reason": "마법 변형 계열 - 동시 채용 불가 (위키 명시)",
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "dionysus_worry_free",
+  "god": "dionysus",
+  "name_ko": "천하태평",
+  "name_en": "Worry Free",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [],
+  "effect": "최대 체력 대폭 증가, 단 체력 수치가 안 보임",
+  "rarity_scaling": "최대 체력 +50~80 / +70~100 / +90~120 / +110~140",
+  "tags": [
+   "max_hp"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "증가폭이 커서 평가가 좋다. 체력이 안 보이는 것은 분수 등으로 어림 가능"
+ },
+ {
+  "id": "dionysus_drunken_stupor",
+  "god": "dionysus",
+  "name_ko": "인사불성",
+  "name_en": "Drunken Stupor",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "omega_attack",
+   "omega_special"
+  ],
+  "effect": "Ω 동작이 처음 맞히는 적에 숙취 부여",
+  "rarity_scaling": "숙취 피해 50/75/100/125 (0.5초)",
+  "tags": [
+   "curse_apply:hangover",
+   "dot",
+   "omega"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "적당 1회만 적용. 재부여 안 됨"
+ },
+ {
+  "id": "dionysus_bounce_back",
+  "god": "dionysus",
+  "name_ko": "회복 탄력성",
+  "name_en": "Bounce Back",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [],
+  "effect": "교전 종료 시 그 전투에서 잃은 체력 일부 회복",
+  "rarity_scaling": "회복 50/60/70/80%",
+  "tags": [
+   "heal",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "dionysus_bottomless_drink",
+  "god": "dionysus",
+  "name_ko": "끝없는 축배",
+  "name_en": "Bottomless Drink",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [],
+  "effect": "교전마다 포도 주스 등장, 마시면 다음 행동 위력 +100",
+  "rarity_scaling": "재등장 10/9/8/7초",
+  "tags": [],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "다타 Ω(쌍검 Ω기술 등)에서 타격마다 +100이라 특히 강함"
+ },
+ {
+  "id": "dionysus_happy_haze",
+  "god": "dionysus",
+  "name_ko": "둥실둥실",
+  "name_en": "Happy Haze",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [],
+  "effect": "8초마다 축제 안개 등장, 안에서 피해 증가 + 적 기절",
+  "rarity_scaling": "안개 내 피해 +30/40/50/60%",
+  "tags": [
+   "aoe",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "dionysus_personal_loan",
+  "god": "dionysus",
+  "name_ko": "개인 융자",
+  "name_en": "Personal Loan",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [],
+  "effect": "금화 전부 잃고 다음 수호자 격파 후 이자와 함께 회수",
+  "rarity_scaling": "추가 금화 +300/400/500/600",
+  "tags": [
+   "meta"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "dionysus_reckless_abandon",
+  "god": "dionysus",
+  "name_ko": "흥청망청",
+  "name_en": "Reckless Abandon",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "attack"
+  ],
+  "effect": "공격이 정확히 5 / 55 / 555 무작위 피해",
+  "rarity_scaling": "최대 피해 확률 5/7/9/11%",
+  "tags": [
+   "per_hit"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "공격 피해가 고정으로 대체된다. 타격 수 많은 무기엔 이득, 단타 무기(도끼)엔 치명적. 디오니소스 친밀도 4단계 필요"
+ }
+]

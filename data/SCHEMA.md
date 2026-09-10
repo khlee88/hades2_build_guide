@@ -200,7 +200,7 @@ ID는 영어 snake_case(불변 키), 표시용 이름은 `name_ko`(한글판 기
     "id": "hestia",
     "name_ko": "헤스티아",
     "name_en": "Hestia",
-    "type": "core",            // core(핵심 슬롯 제공, 선택지 등장) | encounter(아르테미스 등 조우형) | hermes | selene | chaos | npc(아라크네·이카로스·나르키소스·에코·메데이아·키르케 등 비선택 소스)
+    "type": "core",            // core(핵심 슬롯 제공, 선택지 등장) | guest(아테나·디오니소스 — 지상 이벤트 조우, 칸 미점유, 융합·정기 없음, 신 풀 미포함) | encounter(아르테미스 등 조우형) | hermes | selene | chaos | npc(아라크네·이카로스·나르키소스·에코·메데이아·키르케 등 비선택 소스)
     "curse": "scorch",
     "theme": "지속 화상 피해. 보스전에 강함, 잡몹 처리 느림",
     "beginner_note": "화상은 시간이 걸리므로 공격속도 빠른 무기와 궁합"

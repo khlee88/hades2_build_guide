@@ -14,7 +14,7 @@ const hammers = load('hammers.json');
 const builds = load('build_directions.json');
 
 const SLOTS = ['attack', 'special', 'cast', 'sprint', 'dash', 'magick', 'passive', 'hex', 'infusion', 'legendary'];
-const CURSES = ['blitz', 'scorch', 'froth', 'freeze', 'gust', 'daze', 'weak', 'glow', 'hitch', 'wounds', 'marked', 'morph', 'charm', 'shine', 'none'];
+const CURSES = ['blitz', 'scorch', 'froth', 'freeze', 'gust', 'daze', 'weak', 'glow', 'hitch', 'wounds', 'marked', 'morph', 'charm', 'shine', 'hangover', 'none'];
 const CORE_GODS = ['zeus', 'hestia', 'poseidon', 'demeter', 'apollo', 'aphrodite', 'hephaestus', 'hera', 'ares'];
 const CORE_SLOTS = ['attack', 'special', 'cast', 'sprint', 'magick'];
 
@@ -127,7 +127,7 @@ for (const d of duos) for (const g of d.gods) if (!godIds.has(g)) err(`[duo_lege
 
 // keepsakes god_favor 연결 검사
 for (const k of keepsakes) {
-  if (k.kind === 'god_favor' && k.god && !godIds.has(k.god) && k.god !== 'athena') warn(`[keepsakes] gods.json에 없는 신: ${k.id} -> ${k.god}`);
+  if (k.kind === 'god_favor' && k.god && !godIds.has(k.god)) warn(`[keepsakes] gods.json에 없는 신: ${k.id} -> ${k.god}`);
 }
 // hexes godsent 연결 검사
 for (const h of hexes) if (h.godsent_god && !godIds.has(h.godsent_god)) err(`[hexes] 알 수 없는 신: ${h.id} -> ${h.godsent_god}`);

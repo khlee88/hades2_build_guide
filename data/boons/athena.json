@@ -1,0 +1,189 @@
+[
+ {
+  "id": "athena_divine_dash",
+  "god": "athena",
+  "name_ko": "신성한 돌진",
+  "name_en": "Divine Dash",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "sprint"
+  ],
+  "effect": "돌진이 경로상 적에 피해 + 잠시 반사",
+  "rarity_scaling": "돌진 피해 10/15/20/25",
+  "tags": [
+   "deflect",
+   "armor",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "반사 0.35초 + 그동안 완전 무적. 헤르메스 잰 발걸음과 궁합"
+ },
+ {
+  "id": "athena_defensive_posture",
+  "god": "athena",
+  "name_ko": "수비 태세",
+  "name_en": "Defensive Posture",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [],
+  "effect": "피격 후 2초간 무적",
+  "rarity_scaling": "재사용 13/11/9/7초",
+  "tags": [
+   "armor",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "athena_stalwart_stand",
+  "god": "athena",
+  "name_ko": "꿋꿋한 저항",
+  "name_en": "Stalwart Stand",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "magick"
+  ],
+  "effect": "지역마다 보충되는 죽음 저항 +1, 마력 집중",
+  "rarity_scaling": "마력 집중 150/125/100/75",
+  "tags": [
+   "heal",
+   "armor",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "죽음 저항 취급이라 용력(Strength) 아르카나와 상충"
+ },
+ {
+  "id": "athena_renewed_faith",
+  "god": "athena",
+  "name_ko": "되찾은 신념",
+  "name_en": "Renewed Faith",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [],
+  "effect": "소모한 죽음 저항 전부 보충 + 효과 상승",
+  "rarity_scaling": "회복량 +10/15/20/25%",
+  "tags": [
+   "heal",
+   "beginner_safe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "athena_phalanx_shot",
+  "god": "athena",
+  "name_ko": "방진 탄환",
+  "name_en": "Phalanx Shot",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "special"
+  ],
+  "effect": "기술이 반사 투사체 발사 (2초 재장전)",
+  "rarity_scaling": "투사체 피해 10/15/20/25",
+  "tags": [
+   "deflect",
+   "armor"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "athena_mental_block",
+  "god": "athena",
+  "name_ko": "정신 방벽",
+  "name_en": "Mental Block",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "cast"
+  ],
+  "effect": "마법이 범위 피해 + 잠시 반사",
+  "rarity_scaling": "피해 40/60/80/100",
+  "tags": [
+   "deflect",
+   "armor",
+   "cast",
+   "aoe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "athena_righteous_pike",
+  "god": "athena",
+  "name_ko": "정의의 창끝",
+  "name_en": "Righteous Pike",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "magick"
+  ],
+  "effect": "마력 90 사용마다 적 3체에 창 낙하",
+  "rarity_scaling": "창 피해 150/200/250/300",
+  "tags": [
+   "omega",
+   "aoe"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "Ω를 자주 쓰는 무기(횃불 Ω공격)와 시너지"
+ },
+ {
+  "id": "athena_task_force",
+  "god": "athena",
+  "name_ko": "전담 지원",
+  "name_en": "Task Force",
+  "slot": "passive",
+  "occupies_slot": false,
+  "affects": [
+   "hex"
+  ],
+  "effect": "신력 비술을 지역마다 여러 번 사용",
+  "rarity_scaling": "추가 +1/2/3/4회",
+  "tags": [
+   "hex"
+  ],
+  "prereq": null,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ],
+  "notes": "티폰 격파 후 해금. 신력 비술 보유 시에만 등장. 비술 빌드에 필수급"
+ }
+]

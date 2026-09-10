@@ -15,7 +15,8 @@ const DATA_FILES = {
 const data = {};
 for (const [k, f] of Object.entries(DATA_FILES)) data[k] = JSON.parse(rd('data', f));
 
-const stamp = new Date().toISOString().slice(0, 16).replace('T', ' ');
+// 사용자가 최신 버전인지 시각으로 확인하므로 UTC가 아니라 한국 시간으로 찍는다 (U7)
+const stamp = new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 16).replace('T', ' ') + ' KST';
 data.__build = stamp;
 
 const weights = rd('engine', 'weights.js');

@@ -26,7 +26,7 @@ for p in glob.glob(os.path.join(BASE, "boons", "*.json")):
     frags[p] = json.load(io.open(p, encoding="utf-8"))
 
 # 2) 칸을 차지하지 않는 신(헤르메스·아르테미스)의 slot을 passive로 내리고 affects로 옮김
-NON_SLOT_GODS = {"hermes", "artemis"}
+NON_SLOT_GODS = {"hermes", "artemis", "athena", "dionysus"}
 for p, arr in frags.items():
     for b in arr:
         if b["god"] in NON_SLOT_GODS and b["slot"] in CORE_SLOTS:

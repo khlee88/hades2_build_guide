@@ -219,7 +219,8 @@
   "conflicts": [
    "zeus_lightning_lance",
    "demeter_local_climate",
-   "duo_demeter_ares"
+   "duo_demeter_ares",
+   "dionysus_tipsy_shot"
   ],
   "conflict_reason": "마법 변형 계열 - 동시 채용 불가 (위키 명시)",
   "verified": true,

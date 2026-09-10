@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const dir = path.join(__dirname, 'boons');
-const order = ['zeus', 'hestia', 'poseidon', 'demeter', 'apollo', 'aphrodite', 'hephaestus', 'hera', 'ares', 'hermes', 'artemis'];
+const order = ['zeus', 'hestia', 'poseidon', 'demeter', 'apollo', 'aphrodite', 'hephaestus', 'hera', 'ares', 'hermes', 'artemis', 'athena', 'dionysus'];
 const out = [];
 
 for (const god of order) {

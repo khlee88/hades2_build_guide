@@ -299,7 +299,8 @@
    "zeus_lightning_lance",
    "hestia_glowing_coal",
    "duo_demeter_ares",
-   "poseidon_tidal_ring"
+   "poseidon_tidal_ring",
+   "dionysus_tipsy_shot"
   ],
   "conflict_reason": "마법 변형 계열 - 동시 채용 불가 (위키 명시)",
   "verified": true,
