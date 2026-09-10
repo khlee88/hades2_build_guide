@@ -66,7 +66,7 @@ const WEIGHTS = {
     DUO_PARTNER: 4,
     DUO_PARTNER_CAP: 8,
     POOL_SEEN: 2,
-    POOL_NEW_PENALTY: -4,
+    POOL_NEW_PENALTY: -4,       // 신 풀 4명 고정은 커뮤니티에서 확인됨(dc51882, 2026-09-10). 5번째 신은 기념품으로 부른 경우만 뜬다
     FIRST_EASY_DIRECTION: 2,    // 첫 신이고 1위 방향 난이도 1
     FIRST_MULTI_DIRECTION: 1,   // 첫 신이고 열리는 방향 2개 이상
     KEEPSAKE_MATCH: 1,

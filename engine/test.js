@@ -56,7 +56,7 @@ sc('S01', '런 시작 — 지팡이 / 멜리노에 양상', () => {
       check('0 이해도 카드는 자동 선택 제외 (각성 조건 필요)', r.arcana.free_cards.length > 0 && !ids.includes('the_moon'), `무료 안내: ${r.arcana.free_cards.map((c) => c.name_ko).join(',')}`),
       check('이해도 합 == 10', r.arcana.grasp_used === 10, String(r.arcana.grasp_used)),
       check('방향 3개 전부 표시', r.directions.length === 3, String(r.directions.length)),
-      check('1위 방향 == Ω 공격 화력', r.directions[0].id === 'staff_omega_attack', r.directions[0].id),
+      check('1위 방향 == 기술 월광탄 (커뮤니티 검증: 멜리노에 지팡이는 기술 주력)', r.directions[0].id === 'staff_special', r.directions[0].id),
       check('첫 신 대기 문구 있음', /고정하지 않/.test(r.note), r.note),
     ],
   };
@@ -78,8 +78,9 @@ sc('S03', '첫 은혜 — 지팡이, 제우스', () => {
   const rows = E.recommendBoons(st, ['zeus_heaven_strike', 'zeus_storm_ring', 'zeus_ionic_gain']);
   const a = A(rows);
   return { rows, checks: [
-    check(...a.setEq(['zeus_heaven_strike', 'zeus_ionic_gain'], [1, 2])),
-    check(...a.rankOf('zeus_storm_ring', 3)),
+    // 커뮤니티 검증: 기술 방향의 핵심 칸은 기술+마법 → 폭풍 고리(마법)가 대전된 마력보다 위
+    check(...a.setEq(['zeus_heaven_strike', 'zeus_storm_ring'], [1, 2])),
+    check(...a.rankOf('zeus_ionic_gain', 3)),
     check('경고 없음 (전부 빈 칸)', rows.every((r) => r.warnings.length === 0), rows.map((r) => r.warnings.length).join(',')),
   ] };
 });
@@ -131,16 +132,16 @@ sc('S06', '같은 무기, 방향에 따라 추천 반전 — 도끼 정전기 �
     ] };
 });
 
-sc('S07', '회피 은혜 표시 — 횃불 잡초 박멸', () => {
+sc('S07', '회피 해제 — 횃불 잡초 박멸은 한 핏줄 빌드의 보조', () => {
+  // 원래 '회피 표시' 시나리오였으나 커뮤니티(lee: 한 핏줄 빌드에서 잡초 박멸은 비용 증가로 창을 더 빨리 떨어뜨림)가 반대라 회피 해제.
+  // 회피 표시 자체는 S17이 검증한다.
   const st = S({ weapon: 'flames', aspect: 'flames_melinoe', region: 2, boons: ['hestia_flame_strike', 'poseidon_flood_gain', 'hera_fine_line'], gods_seen: ['hestia', 'poseidon', 'hera'] });
   const rows = E.recommendBoons(st, ['demeter_weed_killer', 'demeter_frigid_rush', 'demeter_arctic_ring']);
   const a = A(rows);
   return { rows, checks: [
-    check(...a.rankOf('demeter_weed_killer', 3)),
-    check(...a.reasonHas('demeter_weed_killer', '비추')),
-    check('잡초 박멸이 숨겨지지 않음', rows.some((r) => r.id === 'demeter_weed_killer' && Number.isFinite(r.score)), '표시됨'),
-    check(...a.rankOf('demeter_frigid_rush', 1)),
-    check(...a.rankOf('demeter_arctic_ring', 2)),
+    check("잡초 박멸 이유에 '비추' 없음", !/비추/.test(rows.find((r) => r.id === 'demeter_weed_killer').reason), rows.find((r) => r.id === 'demeter_weed_killer').reason),
+    check(...a.rankOf('demeter_arctic_ring', 1)),
+    check(...a.rankOf('demeter_frigid_rush', 2)),
     check('버리게 됨 경고 없음', rows.every((r) => !r.warnings.some((w) => w.includes('버리게'))), 'ok'),
   ] };
 });
@@ -173,7 +174,7 @@ sc('S09', '융합 은혜가 뜨면 무조건 1위', () => {
   ] };
 });
 
-sc('S10', '망치가 방향을 연다 — 쌍검 폭발적 암습', () => {
+sc('S10', '망치가 방향을 굳힌다 — 쌍검 폭발적 암습 (requires_hammer 폐지)', () => {
   const st = S({ weapon: 'blades', aspect: 'blades_artemis', boons: ['hera_sworn_strike', 'poseidon_flood_gain'], gods_seen: ['hera', 'poseidon'] });
   const rows = E.recommendHammers(st, ['blades_sweeping_ambush', 'blades_dancing_knives', 'blades_melting_sickle']);
   const a = A(rows);
@@ -181,8 +182,8 @@ sc('S10', '망치가 방향을 연다 — 쌍검 폭발적 암습', () => {
   const ds = E.directionScores(after);
   return { rows, extra: `선택 후 방향 1위 = ${ds[0].name_ko} (W=${ds[0].weight})`, checks: [
     check(...a.rankOf('blades_sweeping_ambush', 1)),
-    check(...a.hasBadge('blades_sweeping_ambush', '방향 전환')),
-    check('선택 후 방향 1위 == Ω 공격 암습', ds[0].id === 'blades_omega_ambush', ds[0].id),
+    check('선택 전에도 방향 1위 == 반격 Ω 공격 (양상 일치, 망치 불필요)', E.directionScores(st)[0].id === 'blades_omega_ambush', E.directionScores(st)[0].id),
+    check('선택 후 방향 1위 == 반격 Ω 공격', ds[0].id === 'blades_omega_ambush', ds[0].id),
   ] };
 });
 
@@ -200,12 +201,14 @@ sc('S11', '헤르메스는 경고 없이 상위', () => {
 });
 
 sc('S12', '신 풀 집중', () => {
-  const st = S({ weapon: 'staff', aspect: 'staff_melinoe', region: 3, boons: ['zeus_heaven_strike', 'hestia_smolder_ring', 'apollo_blinding_rush', 'poseidon_flood_gain'], gods_seen: ['zeus', 'hestia', 'apollo', 'poseidon'] });
-  const rows = E.recommendGods(st, ['demeter', 'zeus']);
+  // 2026-09-10 개정: 데메테르·아프로디테는 4신 풀 어디서든 S급 융합 마지막 조건을 채워 5번째 신이어도 이기는 게 맞다(커뮤니티 코어 헤스+제우스+데메).
+  // 융합 보상이 없는 새 신(헤라)과 비교해 풀 집중 항만 검사한다.
+  const st = S({ weapon: 'staff', aspect: 'staff_melinoe', region: 3, boons: ['zeus_heaven_strike', 'hestia_flame_flourish', 'apollo_solar_ring', 'poseidon_breaker_rush'], gods_seen: ['zeus', 'hestia', 'apollo', 'poseidon'] });
+  const rows = E.recommendGods(st, ['hera', 'zeus']);
   const a = A(rows);
   return { rows, checks: [
     check(...a.rankOf('zeus', 1)),
-    check('데메테르에 새 신 표시', rows.find((r) => r.id === 'demeter').badges.includes('새 신'), String(rows.find((r) => r.id === 'demeter').badges)),
+    check('헤라에 새 신 표시', rows.find((r) => r.id === 'hera').badges.includes('새 신'), String(rows.find((r) => r.id === 'hera').badges)),
   ] };
 });
 
@@ -262,9 +265,9 @@ sc('S18', '허수 융합 진전 제거 — 지팡이 첫 은혜', () => {
   const sr = rows.find((r) => r.id === 'zeus_storm_ring');
   return { rows, checks: [
     check('폭풍 고리 duo_progress ≤ 2 (허수 cap 6 아님)', (sr.breakdown.duo_progress || 0) <= 2, JSON.stringify(sr.breakdown)),
-    check(...a.setEq(['zeus_heaven_strike', 'zeus_ionic_gain'], [1, 2])),
-    check(...a.hasBadge('zeus_ionic_gain', '마력')),
-    check(...a.rankOf('zeus_storm_ring', 3)),
+    check(...a.setEq(['zeus_heaven_strike', 'zeus_storm_ring'], [1, 2])),
+    check('마력 배지 없음 — 기술 월광탄 방향은 Ω 비의존(magick_rule 미적용)', !rows.find((r) => r.id === 'zeus_ionic_gain').badges.includes('마력'), String(rows.find((r) => r.id === 'zeus_ionic_gain').badges)),
+    check(...a.rankOf('zeus_ionic_gain', 3)),
   ] };
 });
 

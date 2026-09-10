@@ -9,7 +9,7 @@
   "name_ko": "왕의 강권",
   "name_en": "King's Ransom",
   "effect": "헤라 은혜 전부 포기, 개당 제우스 은혜 위력 +4Lv",
-  "power_tier": "B",
+  "power_tier": "A",
   "tags": [],
   "requires": {
    "all": [
@@ -39,7 +39,8 @@
   "conflicts": [
    "duo_hera_zeus_queens_ransom"
   ],
-  "conflict_reason": "서로의 은혜를 전부 파괴하는 관계"
+  "conflict_reason": "서로의 은혜를 전부 파괴하는 관계",
+  "tier_note": "B→A (2026-09-10 커뮤니티): 검색: 모로스 헤라+제우스 빌드 핵심 / lee Queen's Ransom"
  },
  {
   "id": "duo_hera_zeus_queens_ransom",
@@ -212,7 +213,7 @@
   "name_ko": "짜릿한 접촉",
   "name_en": "Romantic Spark",
   "effect": "암운 적에 질주 충돌 시 즉시 발동 +80%",
-  "power_tier": "A",
+  "power_tier": "S",
   "tags": [
    "curse_scale:blitz",
    "sprint_damage"
@@ -240,7 +241,8 @@
   "source": [
    "wiki",
    "namu"
-  ]
+  ],
+  "tier_note": "A→S (2026-09-10 커뮤니티): lee Romantic Spark 반복 추천(지팡이·횃불·도끼)"
  },
  {
   "id": "duo_zeus_hestia",
@@ -291,7 +293,7 @@
   "name_ko": "초전도체",
   "name_en": "Master Conductor",
   "effect": "연쇄 번개가 자신에게도 튕기며 피해 누적 증가",
-  "power_tier": "A",
+  "power_tier": "S",
   "tags": [
    "chain"
   ],
@@ -317,7 +319,8 @@
   "source": [
    "wiki",
    "namu"
-  ]
+  ],
+  "tier_note": "A→S (2026-09-10 커뮤니티): lee Master Conductor 반복 추천(쌍검·지팡이·횃불)"
  },
  {
   "id": "duo_zeus_ares",
@@ -329,7 +332,7 @@
   "name_ko": "잔학무도",
   "name_en": "Heinous Affront",
   "effect": "상처 부여 시 '피격 시 발동' 효과도 발동",
-  "power_tier": "B",
+  "power_tier": "S",
   "tags": [
    "curse_scale:wounds",
    "retaliate"
@@ -364,7 +367,8 @@
   "source": [
    "wiki",
    "namu"
-  ]
+  ],
+  "tier_note": "B→S (2026-09-10 커뮤니티): dc51882 빌드 2 핵심 / lee Heinous Affront potent"
  },
  {
   "id": "duo_hestia_poseidon",
@@ -458,7 +462,7 @@
   "name_ko": "온화한 바람",
   "name_en": "Warm Breeze",
   "effect": "회피·실명 빗나감마다 체력 회복",
-  "power_tier": "A",
+  "power_tier": "S",
   "tags": [
    "heal",
    "beginner_safe"
@@ -488,7 +492,8 @@
   "source": [
    "wiki",
    "namu"
-  ]
+  ],
+  "tier_note": "A→S (2026-09-10 커뮤니티): dc49018 \"요즘 유행하는 온화한 바람 빌드\" ★★★★★"
  },
  {
   "id": "duo_hestia_aphrodite",
@@ -663,7 +668,7 @@
   "name_ko": "파급 효과",
   "name_en": "Ripple Effect",
   "effect": "가는 선·큰 너울 효과가 2회 발동할 확률",
-  "power_tier": "B",
+  "power_tier": "S",
   "tags": [
    "omega"
   ],
@@ -697,7 +702,8 @@
   "source": [
    "wiki",
    "namu"
-  ]
+  ],
+  "tier_note": "B→S (2026-09-10 커뮤니티): dc51882 빌드 6(파급 효과 Ω 난사) 전용 / lee Ripple Effect"
  },
  {
   "id": "duo_poseidon_demeter",
@@ -1459,7 +1465,7 @@
   "name_ko": "혈기 충만",
   "name_en": "Universal Donor",
   "effect": "지역 이동 시 혈장 속도 보너스 일부 유지",
-  "power_tier": "B",
+  "power_tier": "A",
   "tags": [
    "plasma",
    "attack_speed"
@@ -1488,7 +1494,8 @@
   "source": [
    "wiki",
    "namu"
-  ]
+  ],
+  "tier_note": "B→A (2026-09-10 커뮤니티): namu 타나토스 공속 빌드"
  },
  {
   "id": "duo_hephaestus_ares",
@@ -1631,7 +1638,7 @@
   "name_ko": "지진 해일",
   "name_en": "King Tide",
   "effect": "물보라 범위 확대, 수호자에 +200% 피해",
-  "power_tier": "A",
+  "power_tier": "S",
   "tags": [
    "splash",
    "boss_dmg"
@@ -1665,7 +1672,8 @@
   "source": [
    "wiki",
    "namu"
-  ]
+  ],
+  "tier_note": "A→S (2026-09-10 커뮤니티): lee: 판 쌍검·횃불에서 \"legendary로 보스 shred\" 반복"
  },
  {
   "id": "leg_demeter",

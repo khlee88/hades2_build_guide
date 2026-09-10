@@ -16,7 +16,7 @@
   - **이해도 0 카드(달·켄타우로스·왕비·운명·신성·심판)는 자동 선택에 넣지 않고** `free_cards`로 각성 조건과 함께 따로 안내
     > 2-B에서 발견: 0 이해도 카드는 각성 조건을 충족해야 활성화된다. 조건을 일반화해 판정할 수 없으므로
     > 자동 편성에 넣으면 "공짜니까 켜라"는 잘못된 추천이 된다 (달 카드는 주변 카드가 켜져야 활성화되는데 초보 세트엔 없음).
-  - 열린 방향 3개 전부 표시, 1위는 `staff_omega_attack` (난이도 1 + 양상 보너스)
+  - 열린 방향 3개 전부 표시, 1위는 `staff_special` 기술 월광탄 (2026-09-10 개정: 커뮤니티가 멜리노에 지팡이 = 기술 주력. 난이도 1 + 양상 보너스)
   - 어떤 신도 "확정"으로 표시되지 않음 (첫 신 대기 문구)
 
 ## S02. 첫 신 선택 — 지팡이
@@ -27,12 +27,12 @@
   - `aphrodite`는 3위
   - 각 신의 이유에 열리는 방향 이름이 포함됨
 
-## S03. 첫 은혜 — 지팡이, 제우스
+## S03. 첫 은혜 — 지팡이, 제우스 (2026-09-10 개정)
 - given: `weapon: staff, boons: [], gods_seen: [zeus]`
 - offered: `[zeus_heaven_strike, zeus_storm_ring, zeus_ionic_gain]`
 - expect:
-  - 1위 `zeus_heaven_strike` (메인 `staff_omega_attack` 공격 칸 4순위 → 하지만 빈 핵심 칸) **또는** `zeus_ionic_gain` (마력 규칙 +2, 마력 칸 2순위) — 둘 중 하나가 1위, 다른 하나가 2위
-  - `zeus_storm_ring` 3위
+  - `zeus_heaven_strike`·`zeus_storm_ring`이 1·2위 — 메인 `staff_special`의 핵심 칸이 기술+마법이라 폭풍 고리(마법 4순위)가 대전된 마력(비핵심 마력 3순위)보다 위. 커뮤니티: 마법 칸은 '국밥'
+  - `zeus_ionic_gain` 3위 (기술 방향은 Ω 비의존 → 마력 규칙 미적용)
   - 경고 없음 (전부 빈 칸)
 
 ## S04. 교체 경고 — 지팡이 3지역
@@ -65,14 +65,14 @@
   - B: `zeus_static_shock` **1위**, 이유에 `보조` (메인 `axe_omega_whirlwind`의 support 2순위 + 망치 보너스로 방향 확정)
   - B의 `directionScores` 1위가 `axe_omega_whirlwind`, A의 1위가 `axe_heavy_attack`
 
-## S07. 회피 은혜 표시 — 횃불 잡초 박멸
+## S07. 회피 해제 — 횃불 잡초 박멸은 한 핏줄 빌드의 보조 (2026-09-10 개정)
 - given: `weapon: flames, aspect: flames_melinoe, region: 2, boons: [hestia_flame_strike, poseidon_flood_gain, hera_fine_line], gods_seen: [hestia, poseidon, hera]`
 - offered: `[demeter_weed_killer, demeter_frigid_rush, demeter_arctic_ring]`
 - expect:
-  - `demeter_weed_killer` **3위**, 이유 `"비추: 잡초 박멸은 Ω 공격 마력을 +10..."` — **숨기지 않고 표시**
-  - `demeter_frigid_rush` 1위 (빈 질주 + survival_kit + beginner_safe)
-  - `demeter_arctic_ring` 2위
+  - `demeter_weed_killer` 이유에 **`비추` 없음** — 원래 "Ω 공격 마력 5→15" 이유로 회피했으나, 커뮤니티(lee)는 한 핏줄 빌드에서 잡초 박멸을 비용 증가기로 권장(균열이 더 빨리 터짐). 회피 해제
+  - `demeter_arctic_ring` 1위 (커뮤니티 '국밥' 동결 마법), `demeter_frigid_rush` 2위
   - 셋 중 어느 것도 warnings에 "버리게 됨" 없음
+- 회피 '표시' 검증은 S17(쌍검 화산 일격)이 담당
 
 ## S08. 수동 상충 — 지팡이 망치 + 잡초 박멸
 - given: `weapon: staff, boons: [hera_sworn_strike, zeus_ionic_gain], hammers: [staff_rapid_thrasher], gods_seen: [hera, zeus]`
@@ -86,12 +86,13 @@
 - offered: `[{id: duo_zeus_hestia, rarity: duo}, zeus_double_strike, zeus_arc_flash]`
 - expect: `duo_zeus_hestia` 1위, 배지 `융합`, 이유에 `"티어 S"`
 
-## S10. 망치가 방향을 연다 — 쌍검 폭발적 암습
+## S10. 망치가 방향을 굳힌다 — 쌍검 폭발적 암습 (2026-09-10 개정: requires_hammer 폐지)
 - given: `weapon: blades, aspect: blades_artemis, boons: [hera_sworn_strike, poseidon_flood_gain], gods_seen: [hera, poseidon]`
 - offered hammers: `[blades_sweeping_ambush, blades_dancing_knives, blades_melting_sickle]`
 - expect:
-  - `blades_sweeping_ambush` 1위, 배지 `방향 전환: Ω 공격 암습`
-  - `applyChoice(hammer: blades_sweeping_ambush)` 후 `directionScores` 1위가 `blades_omega_ambush` (양상 아르테미스 +2, requires_hammer +4)
+  - `blades_sweeping_ambush` 1위
+  - 선택 **전에도** `directionScores` 1위가 `blades_omega_ambush` — 나무위키·lee 모두 아르테미스 양상은 아프로디테 공격 + 공격/Ω 공격 망치면 되는 초보 추천 양상이라 망치를 요구 조건으로 걸지 않음 (양상 일치 +2)
+  - `applyChoice(hammer: blades_sweeping_ambush)` 후에도 1위 유지 (망치 보유 +2)
 
 ## S11. 헤르메스는 경고 없이 상위
 - given: `weapon: blades, boons: [hestia_flame_strike, hera_nexus_rush], gods_seen: [hestia, hera]`
@@ -100,10 +101,12 @@
   - 헤르메스 둘 다 배지 `항상`, warnings **비어 있음** (질주 칸에 연분 쇄도가 있어도 교체 경고가 없어야 함 — 칸 미점유)
   - `zeus_heaven_flourish`(빈 기술 칸, 메인 1순위 아님)와 `hermes_nimble_limbs`가 1·2위 중 어느 순서든 허용
 
-## S12. 신 풀 집중
-- given: `weapon: staff, region: 3, boons: [zeus_heaven_strike, hestia_smolder_ring, apollo_blinding_rush, poseidon_flood_gain], gods_seen: [zeus, hestia, apollo, poseidon]` (풀 4 = CAP)
-- offered gods: `[demeter, zeus]`
-- expect: `zeus` 1위, `demeter` 이유 또는 배지에 `새 신` 표시
+## S12. 신 풀 집중 (2026-09-10 개정)
+- given: `weapon: staff, region: 3, boons: [zeus_heaven_strike, hestia_flame_flourish, apollo_solar_ring, poseidon_breaker_rush], gods_seen: [zeus, hestia, apollo, poseidon]` (풀 4 = CAP, 커뮤니티 확인)
+- offered gods: `[hera, zeus]`
+- expect: `zeus` 1위 (이유 `풀 집중`), `hera` 배지 `새 신`
+- 개정 이유: 원래 비교 대상이던 데메테르는 4신 풀 어디서든 S급 융합(냉동 화상·우박 폭풍·남녘 태풍) 마지막 조건을 채워 5번째 신이어도 이기는 게 맞다 — 커뮤니티 코어가 헤스+제우스+데메다. 융합 보상이 없는 새 신(헤라)으로 바꿔 풀 집중 항만 검사
+- 발견: 융합 파트너 판정이 "교체로 사라지는 상대 조건"을 무시한다(염화 고리를 설한 고리로 바꾸면 냉동 화상의 헤스티아 조건이 없어지는데도 +4). ISSUES [P3] 기록
 
 ## S13. 기념품 — 융합 마지막 조건
 - given: `weapon: staff, region: 1(클리어 직후), boons: [hera_sworn_strike, hera_fine_line, zeus_ionic_gain], gods_seen: [hera, zeus]`
@@ -149,7 +152,7 @@
 
 ## S18. 허수 융합 진전 제거 — 지팡이 첫 은혜
 - given: S03과 동일
-- expect: `zeus_storm_ring`의 `breakdown.duo_progress`가 **없거나 0** (제우스만 등장한 상태에서 도달 불가 융합은 세지 않음); `zeus_ionic_gain` 1위 이유가 `마력`
+- expect: `zeus_storm_ring`의 `breakdown.duo_progress`가 **없거나 0** (제우스만 등장한 상태에서 도달 불가 융합은 세지 않음); `zeus_ionic_gain` 3위, `마력` 배지 없음 (기술 방향은 Ω 비의존)
 
 ## S19. 교체 손실은 도달 가능한 융합만 — S04 재검
 - given: S04와 동일
@@ -169,3 +172,8 @@
 ## S22. 조사·완성 대표 융합 — 쌍검 헤르메스 상황
 - given: S11과 동일
 - expect: `zeus_heaven_flourish` 이유에 `'불벼락'` (강권이 아님); 모든 경고·이유에 `와 동시` / `이 여기서` 같은 오조사 없음
+
+---
+
+## 2026-09-10 커뮤니티 검증 개정 요약
+`data/build_directions.json`을 나무위키·디시 뉴비 가이드 3편·Lee Reamsnyder 가이드와 대조해 방향을 고쳤다(`data/BUILD_DIRECTIONS.md` 참조). 영향받은 시나리오: S01(지팡이 1위 방향), S03/S18(제우스 첫 은혜 순위), S07(회피 해제), S10(requires_hammer 폐지), S12(상태 조정). 엔진 로직은 불변.

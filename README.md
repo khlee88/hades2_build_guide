@@ -42,6 +42,7 @@ node app/build.js
 
 - [Hades Wiki (Fandom)](https://hades.fandom.com/) — 은혜·융합·전설 효과와 전제조건, 무기·양상, 아르카나, 기념품 (CC BY-NC-SA)
 - [나무위키 Hades II](https://namu.wiki/w/Hades%20II) — 한글판 인게임 명칭 전량 대조 (CC BY-NC-SA 2.0 KR)
+- 빌드 방향 검증(2026-09-10): [나무위키 Hades II/무기](https://namu.wiki/w/Hades%20II/%EB%AC%B4%EA%B8%B0) 운용법, 디시 하데스 갤러리 뉴비 가이드 [51882](https://gall.dcinside.com/mgallery/board/view/?id=hades&no=51882)·[49018](https://gall.dcinside.com/mgallery/board/view/?id=hades&no=49018)·[38884](https://gall.dcinside.com/mgallery/board/view/?id=hades&no=38884), [Lee Reamsnyder — Hades 2 build guide](https://www.leereamsnyder.com/hades-2-build-guide). 방향별 근거는 `data/build_directions.json`의 `sources`, 요약은 `data/BUILD_DIRECTIONS.md`
 
 Hades II는 Supergiant Games의 저작물이며 이 저장소는 팬 제작 도구로 공식과 무관하다.
 빌드 방향·우선순위 판단은 커뮤니티 통념을 참고한 제작자의 해석이므로 정답이 아니다.
