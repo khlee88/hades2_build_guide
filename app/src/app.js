@@ -13,7 +13,7 @@
   });
   var ASP = {};
   DATA.weapons.forEach(function (w) { (w.aspects || []).forEach(function (a) { ASP[a.id] = a; }); });
-  var ent = function (id) { return IX.boons[id] || IX.duos[id] || IX.hammers[id] || IX.keepsakes[id] || IX.hexes[id] || IX.arcana[id] || IX.gods[id] || ASP[id] || null; };
+  var ent = function (id) { return IX.boons[id] || IX.duos[id] || IX.hammers[id] || IX.keepsakes[id] || IX.hexes[id] || IX.arcana[id] || IX.gods[id] || ASP[id] || IX.weapons[id] || null; };
   var nm = function (id) { var o = ent(id); return o ? o.name_ko : id; };
 
   var SLOTS = ['attack', 'special', 'cast', 'sprint', 'magick'];
@@ -54,8 +54,59 @@
   var saveUI = function () { ls('h2.ui.v1', UI); };
   var saveRun = function () { ls('h2.run.v1', RUN); };
 
+  // ── 선택 로그 (h2.log.v1) ────────────────────────────
+  // 매 선택마다 자동 누적. 내보내기 전까지 이 폰 안에만 있다.
+  // 새 런 시작 화면에서 직전 런을 통째로 버릴 수 있고, 관리 화면에서 런별/전체 삭제할 수 있다.
+  var LOG = ls('h2.log.v1') || [];
+  var saveLog = function () { ls('h2.log.v1', LOG); };
+  function nowKst() { return new Date(Date.now() + 9 * 36e5).toISOString().slice(0, 19).replace('T', ' '); }
+  function ridNew() {
+    var d = new Date(Date.now() + 9 * 36e5).toISOString();
+    return d.slice(2, 4) + d.slice(5, 7) + d.slice(8, 10) + '-' + d.slice(11, 13) + d.slice(14, 16) +
+      '-' + Math.random().toString(36).slice(2, 6);
+  }
+  function logPush(ev) {
+    if (!RUN || !RUN.rid) return;
+    ev.id = RUN.rid; ev.n = (RUN.seq = (RUN.seq || 0) + 1);
+    LOG.push(ev); saveLog(); saveRun();
+  }
+  function logRuns() {  // [{rid, picks, end}] 최신 순
+    var m = {}, order = [];
+    LOG.forEach(function (e) {
+      if (!m[e.id]) { m[e.id] = { rid: e.id, picks: 0, end: null, w: null, asp: null }; order.push(e.id); }
+      var r = m[e.id];
+      if (e.t === 'pick') r.picks++;
+      else if (e.t === 'end') r.end = e;
+      else if (e.t === 'run') { r.w = e.w; r.asp = e.asp; }
+    });
+    return order.map(function (id) { return m[id]; }).reverse();
+  }
+  function logDrop(rid) { LOG = LOG.filter(function (e) { return e.id !== rid; }); saveLog(); }
+  function filledSlots(st) {
+    var n = 0;
+    (st.boons || []).forEach(function (id) { var b = IX.boons[id]; if (b && b.occupies_slot) n++; });
+    return n;
+  }
+  // 제시된 것 전부를 남긴다 — 고른 것만 남기면 "3택 중 선택" 모델을 못 만든다
+  function logPick(kind, rows, chosenId) {
+    if (!RUN || !RUN.rid) return;
+    var st = RUN.state;
+    logPush({
+      t: 'pick', kind: kind, rg: st.region, hp: st.hp_state, ns: filledSlots(st),
+      dir: E.directionScores(st).slice(0, 2).map(function (d) { return [d.id, d.weight]; }),
+      off: rows.map(function (r) {
+        var o = { i: r.id, s: isFinite(r.score) ? r.score : null, k: r.rank || null, b: r.breakdown || {} };
+        var p = pickSel.find(function (x) { return x.id === r.id; });
+        if (p && p.rarity) o.r = p.rarity;
+        if (r._replacing) o.rep = 1;
+        return o;
+      }),
+      c: chosenId,
+    });
+  }
+
   function newRun(weapon, aspect) {
-    return { state: { weapon: weapon, aspect: aspect, region: 1, boons: [], hammers: [], arcana: [], keepsake: null, hex: null, gods_seen: [], hp_state: 'mid', direction_lock: null }, pending_god: null, history: [] };
+    return { rid: ridNew(), seq: 0, state: { weapon: weapon, aspect: aspect, region: 1, boons: [], hammers: [], arcana: [], keepsake: null, hex: null, gods_seen: [], hp_state: 'mid', direction_lock: null }, pending_god: null, history: [] };
   }
   function pushHistory(label) {
     RUN.history.unshift({ ts: Date.now(), label: label, snap: JSON.stringify(RUN.state) });
@@ -63,7 +114,7 @@
   }
   function undo() {
     if (!RUN.history.length) return toast('되돌릴 기록이 없습니다');
-    RUN.state = JSON.parse(RUN.history.shift().snap); saveRun(); render();
+    RUN.state = JSON.parse(RUN.history.shift().snap); saveRun(); logPush({ t: 'undo' }); render();
   }
 
   // ── 유틸 ───────────────────────────────────────────────
@@ -165,6 +216,9 @@
 
   // ── 1. 런 시작 ─────────────────────────────────────────
   var startSel = { weapon: PREFS.last_weapon, aspect: PREFS.last_aspect };
+  // 지난 런 결과. 여기서만 결과 라벨이 생긴다 — 안 넣으면 그 런은 클리어율 통계에서 빠진다
+  // (선택 기록 자체는 남으므로 가중치 학습에는 그대로 쓰인다)
+  var endSel = { route: 'under', res: 'died', upto: 1 };
   function viewStart(asSheet) {
     var root = document.createElement('div');
     if (!asSheet) root.appendChild(el('<div class="top"><div class="t">하데스2 빌드 길잡이</div></div>'));
@@ -258,11 +312,60 @@
         (d.key_hammers.length ? '<div class="xs dim">망치: ' + esc(d.key_hammers.join(', ')) + '</div>' : '') + '</div>'));
     });
 
+    // 지난 런이 있으면 결과를 먼저 받는다 (탭 두세 번)
+    var prev = (RUN && RUN.rid && RUN.state.boons.length) ? RUN : null;
+    var dropPrev = { on: false };
+    if (prev) {
+      if (!endSel._for || endSel._for !== prev.rid) { endSel._for = prev.rid; endSel.upto = prev.state.region; }
+      var pc = el('<div class="card"><div class="row"><b style="flex:1">지난 런 결과</b>' +
+        '<span class="xs dim">' + esc(nm(prev.state.weapon)) + ' · ' +
+        LOG.filter(function (e) { return e.id === prev.rid && e.t === 'pick'; }).length + '선택</span></div></div>');
+      var chipRow = function (label, opts, cur, cb) {
+        var r = el('<div style="margin-top:8px"><div class="xs dim">' + esc(label) + '</div></div>');
+        var cs = el('<div class="chips" style="margin-top:4px"></div>');
+        opts.forEach(function (o) {
+          var b = el('<button class="chip" aria-pressed="' + (cur === o[0]) + '">' + esc(o[1]) + '</button>');
+          b.onclick = function () { cb(o[0]); rerenderStart(root, asSheet); };
+          cs.appendChild(b);
+        });
+        r.appendChild(cs); return r;
+      };
+      pc.appendChild(chipRow('루트', [['under', '지하 (크로노스)'], ['surface', '지상 (티폰)']], endSel.route,
+        function (v) { endSel.route = v; }));
+      pc.appendChild(chipRow('결과', [['clear', '클리어'], ['died', '사망'], ['quit', '중단']], endSel.res,
+        function (v) { endSel.res = v; }));
+      if (endSel.res !== 'clear')
+        pc.appendChild(chipRow('어느 지역에서', [[1, '1지역'], [2, '2지역'], [3, '3지역'], [4, '4지역']], endSel.upto,
+          function (v) { endSel.upto = v; }));
+      // 탭 타겟 44px 확보 — 글자를 눌러도 체크되도록 label 전체를 키운다
+      var dp = el('<label class="row sm dim" style="margin-top:6px;gap:10px;cursor:pointer;min-height:44px;padding:8px 2px">' +
+        '<input type="checkbox" style="width:20px;height:20px;flex:none"><span>이 런은 기록하지 않기 (조작 실수 등)</span></label>');
+      dp.querySelector('input').onchange = function () { dropPrev.on = this.checked; };
+      pc.appendChild(dp);
+      root.appendChild(pc);
+    }
+
     var cta = el('<div class="cta"><button>이 무기로 시작</button></div>');
     cta.querySelector('button').onclick = function () {
-      if (RUN && RUN.state.boons.length && !confirm('진행 중인 런이 사라집니다. 새로 시작할까요?')) return;
+      if (prev) {
+        if (dropPrev.on) { logDrop(prev.rid); toast('지난 런 기록을 지웠습니다'); }
+        else {
+          // rg는 단조라 '어디까지'만으로 결정된다. 0=사망, null=중단(죽은 게 아님 — 실패로 학습하면 안 됨)
+          var rgv = [];
+          if (endSel.res === 'clear') rgv = [1, 1, 1, 1];
+          else {
+            for (var i = 1; i < endSel.upto; i++) rgv.push(1);
+            rgv.push(endSel.res === 'quit' ? null : 0);
+          }
+          logPush({ t: 'end', ts: nowKst(), route: endSel.route, res: endSel.res, rg: rgv });
+        }
+        endSel._for = null;
+      } else if (RUN && RUN.state.boons.length && !confirm('진행 중인 런이 사라집니다. 새로 시작할까요?')) return;
       PREFS.last_weapon = startSel.weapon; PREFS.last_aspect = startSel.aspect; savePrefs();
-      RUN = newRun(startSel.weapon, startSel.aspect); saveRun(); UI.screen = null; saveUI(); render();
+      RUN = newRun(startSel.weapon, startSel.aspect); saveRun();
+      logPush({ t: 'run', ts: nowKst(), w: RUN.state.weapon, asp: RUN.state.aspect, grasp: PREFS.grasp_cap,
+        arc: (r.arcana.cards || []).map(function (c) { return c.id; }), eng: DATA.__build || null, sv: 1 });
+      UI.screen = null; saveUI(); render();
     };
     root.appendChild(cta);
     return root;
@@ -346,7 +449,7 @@
   }
   function cycleHp() {
     var o = ['high', 'mid', 'low'], i = o.indexOf(RUN.state.hp_state);
-    RUN.state.hp_state = o[(i + 1) % 3]; saveRun(); render();
+    RUN.state.hp_state = o[(i + 1) % 3]; saveRun(); logPush({ t: 'hp', v: RUN.state.hp_state }); render();
   }
 
   // ── 3. 신 선택 ─────────────────────────────────────────
@@ -386,6 +489,7 @@
       var gcs = closeSet(grows);
       grows.forEach(function (r, i) {
         out.appendChild(recCard(r, i, function () {
+          logPick('god', grows, r.id);
           if (GUEST_INFO[r.id]) { UI.screen = 'guest:' + r.id; saveUI(); render(); return; }
           RUN.pending_god = r.id; pickSel = []; godTab = r.id;
           UI.screen = 'boons'; saveUI(); saveRun(); render();
@@ -504,6 +608,7 @@
       });
       if (!listBox.children.length) listBox.appendChild(el('<div class="empty">해당하는 항목이 없습니다</div>'));
     }
+    var lastRows = [];
     function drawTray() {
       trayBox.innerHTML = '';
       // 추천을 트레이 안에 넣어 목록을 스크롤하면서도 순위가 늘 보이게 한다 (U4)
@@ -514,6 +619,7 @@
         if (trayOpen) {
           var box = el('<div class="recs"></div>');
           var rows = isBoon ? E.recommendBoons(RUN.state, pickSel) : E.recommendHammers(RUN.state, pickSel.map(function (p) { return p.id; }));
+          lastRows = rows;
           var cs = closeSet(rows);
           rows.forEach(function (r, i) { box.appendChild(compactRec(r, i, isBoon, cs[r.id])); });
           trayBox.appendChild(box);
@@ -544,6 +650,7 @@
         (w.length ? '<div class="wn ell">⚠ ' + esc(w[0]) + (w.length > 1 ? ' +' + (w.length - 1) : '') + '</div>' : '') +
         '</div>' + (no ? '' : '<button class="go">결정</button>') + '</div>');
       if (!no) row.querySelector('.go').onclick = function () {
+        logPick(isBoon ? 'boon' : 'hammer', lastRows.length ? lastRows : [r], r.id);
         pushHistory((isBoon ? '은혜' : '망치') + ' ' + nm(r.id));
         var rar = (pickSel.find(function (p) { return p.id === r.id; }) || {}).rarity;
         RUN.state = E.applyChoice(RUN.state, { kind: isBoon ? 'boon' : 'hammer', id: r.id, rarity: rar });
@@ -592,13 +699,13 @@
       });
       r.appendChild(s); return r;
     }
-    body.appendChild(seg('체력', [['high', '●●●'], ['mid', '●●○'], ['low', '●○○']], st.hp_state, function (v) { st.hp_state = v; saveRun(); render(); }));
-    body.appendChild(seg('지역', [[1, '1'], [2, '2'], [3, '3'], [4, '4']], st.region, function (v) { st.region = v; saveRun(); render(); }));
+    body.appendChild(seg('체력', [['high', '●●●'], ['mid', '●●○'], ['low', '●○○']], st.hp_state, function (v) { st.hp_state = v; saveRun(); logPush({ t: 'hp', v: v }); render(); }));
+    body.appendChild(seg('지역', [[1, '1'], [2, '2'], [3, '3'], [4, '4']], st.region, function (v) { st.region = v; saveRun(); logPush({ t: 'rg', v: v }); render(); }));
 
     var k = E.recommendKeepsake(st);
     if (k && k.id) {
       var kc = el('<div class="card"><div class="xs dim">다음 지역 기념품 추천</div><div class="row" style="margin-top:4px"><b style="flex:1">' + esc(k.name_ko) + '</b><button class="tagx" data-k>이걸로</button></div><div class="sm dim" style="margin-top:4px">' + esc(k.reason) + '</div></div>');
-      kc.querySelector('[data-k]').onclick = function () { pushHistory('기념품 ' + k.name_ko); st.keepsake = k.id; saveRun(); render(); };
+      kc.querySelector('[data-k]').onclick = function () { pushHistory('기념품 ' + k.name_ko); st.keepsake = k.id; saveRun(); logPush({ t: 'keep', v: k.id }); render(); };
       body.appendChild(kc);
     }
 
@@ -606,7 +713,7 @@
     var hx = el('<div class="chips"></div>');
     DATA.hexes.forEach(function (h) {
       var b = el('<button class="chip" aria-pressed="' + (st.hex === h.id) + '">' + esc(h.name_ko) + '</button>');
-      b.onclick = function () { st.hex = st.hex === h.id ? null : h.id; saveRun(); render(); };
+      b.onclick = function () { st.hex = st.hex === h.id ? null : h.id; saveRun(); logPush({ t: 'hex', v: st.hex }); render(); };
       hx.appendChild(b);
     });
     body.appendChild(hx);
@@ -625,7 +732,7 @@
     st.boons.concat(st.hammers).forEach(function (id) {
       var r = el('<div class="item"><div class="mid"><div class="nm ell">' + esc(nm(id)) + '</div></div><button class="tagx">✕</button></div>');
       r.querySelector('button').onclick = function () {
-        pushHistory('제거 ' + nm(id));
+        pushHistory('제거 ' + nm(id)); logPush({ t: 'rm', v: id });
         st.boons = st.boons.filter(function (x) { return x !== id; });
         st.hammers = st.hammers.filter(function (x) { return x !== id; });
         saveRun(); render();
@@ -657,6 +764,65 @@
       catch (e) { toast('형식이 올바르지 않습니다'); }
     };
     body.appendChild(ta); body.appendChild(imp);
+
+    body.appendChild(el('<h2>선택 기록</h2>'));
+    var runs = logRuns(), nPick = LOG.filter(function (e) { return e.t === 'pick'; }).length;
+    var kbs = Math.round(JSON.stringify(LOG).length / 1024);
+    body.appendChild(el('<div class="wrap sm dim">' + runs.length + '런 · ' + nPick + '선택 · ' + kbs + 'KB' +
+      (kbs > 3500 ? ' <b>— 용량이 찼습니다. 내보낸 뒤 지워 주세요</b>' : '') + '</div>'));
+
+    function logText() { return LOG.map(function (e) { return JSON.stringify(e); }).join('\n'); }
+    function logName() {
+      var d = new Date(Date.now() + 9 * 36e5).toISOString();
+      return 'hades2_log_' + d.slice(0, 4) + d.slice(5, 7) + d.slice(8, 10) + '_' + d.slice(11, 13) + d.slice(14, 16) + '.jsonl';
+    }
+    var eb = el('<div class="wrap" style="display:flex;gap:8px">' +
+      '<button class="tagx" style="flex:1;padding:12px" data-dl>파일로 저장</button>' +
+      '<button class="tagx" style="flex:1;padding:12px" data-cp>복사</button></div>');
+    eb.querySelector('[data-dl]').onclick = function () {
+      if (!LOG.length) return toast('기록이 없습니다');
+      // Pages는 일반 웹페이지라 다운로드가 된다 (Artifact 샌드박스에서만 막혔던 것)
+      try {
+        var a = document.createElement('a'), u = URL.createObjectURL(new Blob([logText()], { type: 'application/json' }));
+        a.href = u; a.download = logName(); document.body.appendChild(a); a.click();
+        setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 1000);
+        toast(logName() + ' 저장');
+      } catch (e) { toast('저장 실패 — 복사를 써 주세요'); }
+    };
+    eb.querySelector('[data-cp]').onclick = function () {
+      if (!LOG.length) return toast('기록이 없습니다');
+      var t = logText();
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { toast('복사했습니다'); }, function () { toast('복사 실패'); });
+      else { var ta2 = document.createElement('textarea'); ta2.value = t; document.body.appendChild(ta2); ta2.select(); try { document.execCommand('copy'); toast('복사했습니다'); } catch (e) { toast('복사 실패'); } ta2.remove(); }
+    };
+    body.appendChild(eb);
+
+    var rl = el('<div class="list"></div>');
+    runs.forEach(function (R) {
+      var res = R.end ? ({ clear: '클리어', died: '사망', quit: '중단' }[R.end.res] || R.end.res) +
+        ' ' + (R.end.rg || []).length + '지역' : '결과 미입력';
+      var it = el('<div class="item"><div class="mid"><div class="nm ell">' + esc(R.w ? nm(R.w) : R.rid) +
+        '<span class="xs dim"> · ' + R.picks + '선택 · ' + esc(res) + '</span></div>' +
+        '<div class="ef ell">' + esc(R.rid) + '</div></div><button class="tagx">✕</button></div>');
+      it.querySelector('button').onclick = function () {
+        if (!confirm('이 런의 기록을 지울까요?')) return;
+        logDrop(R.rid); toast('지웠습니다'); render();
+      };
+      rl.appendChild(it);
+    });
+    if (!rl.children.length) rl.appendChild(el('<div class="empty">아직 없습니다</div>'));
+    body.appendChild(rl);
+
+    var cl = el('<div class="wrap"><button class="tagx" style="padding:10px 14px">기록 전체 지우기</button></div>');
+    cl.querySelector('button').onclick = function () {
+      if (!LOG.length) return toast('기록이 없습니다');
+      var noEnd = runs.filter(function (R) { return !R.end; }).length;
+      if (!confirm('기록 ' + runs.length + '런을 전부 지웁니다.' +
+        (noEnd ? '\n결과 미입력 ' + noEnd + '런이 있습니다.' : '') +
+        '\n내보내기를 먼저 했는지 확인하세요. 되돌릴 수 없습니다.')) return;
+      LOG = []; saveLog(); toast('전부 지웠습니다'); render();
+    };
+    body.appendChild(cl);
 
     var nb = el('<button class="danger">새 런 시작</button>');
     nb.onclick = function () { UI.screen = 'start'; saveUI(); render(); };

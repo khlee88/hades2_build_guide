@@ -36,6 +36,12 @@ node app/build.js
 
 데이터나 엔진을 고치면 다시 실행해 커밋한다. 검증은 `node data/validate.js`, `node engine/test.js`.
 
+## 선택 기록
+
+관리 화면 → **선택 기록**에서 지금까지의 선택을 `hades2_log_YYYYMMDD_HHMM.jsonl`로 내려받을 수 있다.
+새 런을 시작할 때 지난 런의 결과(루트·클리어/사망/중단·지역)를 입력하면 결과 라벨이 붙는다.
+스키마와 설계 근거는 [`data/RUN_LOG.md`](data/RUN_LOG.md). 저장소에는 `data/runs/history.jsonl` 한 경로에 덮어쓴다.
+
 ## 출처
 
 게임 데이터는 아래에서 수집해 한글판 표기로 대조·정리한 것이다. 원본은 모두 **CC BY-NC-SA**이며 이 저장소의 `data/`도 같은 조건을 따른다.
