@@ -101,7 +101,7 @@ button.tagx{min-height:44px; min-width:44px; padding:0 12px; font-size:.82em; bo
 .god[data-gc]{border-color:var(--gcd)}
 .god .ord{position:absolute; top:4px; right:6px; font-size:.7em; font-weight:700; color:var(--gc)}
 .god .n{font-size:.78em; line-height:1.2; word-break:keep-all; text-align:center}
-.god .dot{width:12px; height:12px; border-radius:50%}
+.god .gi{display:flex; align-items:center; justify-content:center; height:26px}
 .god[aria-pressed="true"]{border-width:3px; border-color:var(--gc); background:var(--gct);
   box-shadow:0 0 0 3px var(--gcg)}
 .god .seen{font-size:.68em; color:var(--good)}
@@ -205,3 +205,13 @@ input[type=search]{width:100%; height:44px; background:var(--panel-2); color:var
 /* 1·2위 점수차가 작을 때 (취향 구간) */
 .close{flex:0 0 auto; font-size:.66em; font-weight:600; padding:2px 7px; border-radius:999px;
   border:1px solid var(--info); color:var(--info); background:rgba(86,204,242,.1); white-space:nowrap}
+
+/* 신·무기 심볼 */
+.sym{display:block; overflow:visible}
+.gi{display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto}
+.chip .gi{margin-right:6px; vertical-align:-3px}
+.chip{display:inline-flex; align-items:center}
+.wcard .n{display:flex; align-items:center; gap:7px}
+.wi{color:var(--accent)}
+.wcard:disabled .wi{color:var(--dim)}
+.top .t{display:flex; align-items:center; gap:8px}

@@ -84,6 +84,35 @@
     return '<span class="badge b-' + esc(key) + '">' + esc(b) + '</span>';
   }
   function el(html) { var d = document.createElement('div'); d.innerHTML = html; return d.firstElementChild; }
+  // ── 신·무기 심볼 (인라인 SVG, 24x24 viewBox) ─────────
+  // f: 채움 경로 / s: 선 경로. 색은 currentColor라 신 색이 그대로 들어간다.
+  var SYM = {
+    zeus:       { f: 'M13 2 5 14h5l-2 8 9-13h-5z' },                                     // 벼락
+    hestia:     { f: 'M12 22c3.6 0 6-2.6 6-6 0-4-4-6-4-10 0 0-2.6 1.8-2.6 4.4C11.4 9 10 8 10 7c-1.8 1.8-2.6 4.4-2.6 7 0 3.4 2.4 6 4.6 6z' },  // 불꽃
+    poseidon:   { s: 'M12 2v20M7 9v2a5 5 0 0 0 10 0V9M7 9V6M17 9V6' },                    // 삼지창
+    demeter:    { s: 'M12 2v20M3.5 7l17 10M20.5 7l-17 10M12 7l-3-2M12 7l3-2M12 17l-3 2M12 17l3 2' }, // 눈 결정
+    apollo:     { s: 'M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2.1 2.1M16.9 16.9 19 19M19 5l-2.1 2.1M7.1 16.9 5 19', c: [12, 12, 4] },  // 태양
+    aphrodite:  { f: 'M12 20.5S4.5 15.6 4.5 10.6A4.1 4.1 0 0 1 12 8.2a4.1 4.1 0 0 1 7.5 2.4c0 5-7.5 9.9-7.5 9.9z' },  // 하트
+    hephaestus: { s: 'M3 21l8.5-8.5M11 4l9 9-2.8 2.8-9-9z' },                             // 망치
+    hera:       { s: 'M12 8.5 9 4.5h6zM12 22a6 6 0 1 0 0-12 6 6 0 0 0 0 12z' },           // 반지
+    ares:       { s: 'M5 19 19 5M19 19 5 5M3 17l4 4M21 17l-4 4' },                        // 교차한 검
+    hermes:     { s: 'M3 8h9M2 12h7M4 16h6M13 5c4 0 7 3 7 7s-3 7-7 7z' },                 // 날개·속도선
+    artemis:    { s: 'M6 3a12 12 0 0 1 0 18M6 12h13M15 8l4 4-4 4' },                      // 활과 화살
+    selene:     { f: 'M16.5 2.5a9.5 9.5 0 1 0 5 13.4 7.6 7.6 0 0 1-5-13.4z' },            // 초승달
+    chaos:      { s: 'M12 13.5a2 2 0 1 1-1.4-3.4 5 5 0 1 1 5 5 8 8 0 1 1-8-8' },          // 소용돌이
+    staff:      { s: 'M4 20 15.5 8.5M12 4l1-2 1 2 2 1-2 1-1 2-1-2-2-1z', c: [17.5, 6, 3] },// 지팡이
+    blades:     { s: 'M7.5 21 4 6l5 2.5zM16.5 21 20 6l-5 2.5z' },                          // 쌍검
+    flames:     { s: 'M12 17.5V22', f: 'M12 2.5c2.2 3.6 5.6 5 5.6 8.6 0 3.2-2.5 5.4-5.6 5.4s-5.6-2.2-5.6-5.4c0-1.7.6-3.1 1.5-4.3.1 1.5.9 2.3 1.8 2.3 1.1 0 1.7-.9 1.7-2.4 0-1.6.3-3 .6-4.2z' },  // 횃불
+    axe:        { s: 'M6.5 21 16 6', f: 'M11.5 5.2c4.6-2.4 9.5.4 9.5 4.6 0 2.6-1.8 4.6-4.4 5.2-.3-4-2.2-7.4-5.1-9.8z' },  // 도끼
+  };
+  function sym(id, size) {
+    var d = SYM[id]; if (!d) return '';
+    return '<svg class="sym" viewBox="0 0 24 24" width="' + size + '" height="' + size + '" fill="none" ' +
+      'stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      (d.c ? '<circle cx="' + d.c[0] + '" cy="' + d.c[1] + '" r="' + d.c[2] + '"/>' : '') +
+      (d.f ? '<path d="' + d.f + '" fill="currentColor" stroke="none"/>' : '') +
+      (d.s ? '<path d="' + d.s + '"/>' : '') + '</svg>';
+  }
   function applyFontScale() { document.getElementById('app').style.setProperty('--fs', PREFS.font_scale || 1); }
   // #rrggbb → rgba(...) (U5 테두리·글로우·틴트)
   function rgba(hex, a) {
@@ -137,7 +166,8 @@
     DATA.weapons.forEach(function (w) {
       var ready = w.unlock_order <= 4;
       var b = el('<button class="wcard" ' + (ready ? '' : 'disabled') + ' aria-pressed="' + (startSel.weapon === w.id) + '">' +
-        '<div class="n">' + esc(w.name_ko) + '</div><div class="a">' + esc(ready ? (w.alias_ko || '') : '준비 중') + '</div></button>');
+        '<div class="n"><span class="gi wi">' + sym(w.id, 20) + '</span>' + esc(w.name_ko) + '</div>' +
+        '<div class="a">' + esc(ready ? (w.alias_ko || '') : '준비 중') + '</div></button>');
       if (ready) b.onclick = function () { startSel.weapon = w.id; startSel.aspect = w.aspects[0].id; rerenderStart(root, asSheet); };
       wg.appendChild(b);
     });
@@ -238,7 +268,7 @@
     var st = RUN.state;
     var root = document.createElement('div');
     var wp = IX.weapons[st.weapon];
-    var top = el('<div class="top"><div class="t">' + esc(wp.name_ko) + '</div>' +
+    var top = el('<div class="top"><div class="t"><span class="gi wi">' + sym(wp.id, 19) + '</span>' + esc(wp.name_ko) + '</div>' +
       '<button class="iconbtn" data-undo title="되돌리기">↶</button></div>');
     top.querySelector('[data-undo]').onclick = undo;
     root.appendChild(top);
@@ -322,7 +352,7 @@
       var seen = RUN.state.gods_seen.indexOf(id) >= 0;
       var b = el('<button class="god" data-gc aria-pressed="false" style="--gc:' + GC[id] + '; --gcd:' + rgba(GC[id], .45) +
         '; --gcg:' + rgba(GC[id], .3) + '; --gct:' + rgba(GC[id], .12) + '">' +
-        '<span class="ord"></span><span class="dot" style="background:' + GC[id] + '"></span>' +
+        '<span class="ord"></span><span class="gi" style="color:' + GC[id] + '">' + sym(id, 24) + '</span>' +
         '<span class="n">' + esc(nm(id)) + '</span>' +
         (seen ? '<span class="seen">✓ 받음</span>' : '') + '</button>');
       b.onclick = function () {
@@ -374,7 +404,8 @@
       body.appendChild(sbox);
       var tabs = el('<div class="chips"></div>');
       GOD_ORDER.forEach(function (id) {
-        var b = el('<button class="chip" aria-pressed="' + (godTab === id) + '" style="border-color:' + GC[id] + '">' + esc(nm(id)) + '</button>');
+        var b = el('<button class="chip" aria-pressed="' + (godTab === id) + '" style="border-color:' + GC[id] + '">' +
+          '<span class="gi" style="color:' + GC[id] + '">' + sym(id, 17) + '</span>' + esc(nm(id)) + '</button>');
         b.onclick = function () { godTab = id; UI.god_tab = id; saveUI(); searchQ = ''; draw(); };
         tabs.appendChild(b);
       });
