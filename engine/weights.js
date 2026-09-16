@@ -70,6 +70,12 @@ const WEIGHTS = {
     FIRST_EASY_DIRECTION: 2,    // 첫 신이고 1위 방향 난이도 1
     FIRST_MULTI_DIRECTION: 1,   // 첫 신이고 열리는 방향 2개 이상
     KEEPSAKE_MATCH: 1,
+    // 5-A (2026-09-16): 등급·동급 표시용. 점수 자체는 바꾸지 않는다
+    TIE_GAP: 2,                 // 이 차이 미만이면 같은 군 — 첫 신은 상위 4~5신이 2점 이내라 순위에 변별이 없다
+    OK_TOP: 3,                  // 채울 칸도 융합도 없을 때, 상위 은혜 평균이 이 이상이면 '보통', 아니면 '패스'
+    MAIN_CORE: [4, 3, 2, 1.5],  // 방향별 '주요 신' 집계: 핵심 칸 선호 순위별
+    MAIN_OTHER: [2, 1.5, 1, 0.75],
+    MAIN_SUPPORT: [1, 0.75, 0.5, 0.5],
     SELENE_NO_HEX: 8,
     SELENE_HAS_HEX: 3,
     CHAOS: 2,

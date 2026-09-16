@@ -215,3 +215,19 @@ input[type=search]{width:100%; height:44px; background:var(--panel-2); color:var
 .wi{color:var(--accent)}
 .wcard:disabled .wi{color:var(--dim)}
 .top .t{display:flex; align-items:center; gap:8px}
+
+/* ── 5단계 (2026-09-16) ── */
+.agrid{display:grid; grid-template-columns:repeat(5,1fr); gap:4px; padding:0 14px 10px}
+.acell{min-height:52px; border:1px solid var(--line); border-radius:8px; padding:4px 2px; text-align:center; display:flex; flex-direction:column; justify-content:center; gap:2px; background:var(--panel-2); color:var(--dim)}
+.acell .n{font-size:.6em; line-height:1.15; word-break:keep-all}
+.acell .g{font-size:.58em; opacity:.75}
+.acell.sel{background:var(--panel); color:var(--text); border-color:var(--accent); border-width:2px; font-weight:700}
+.acell.free{border-style:dashed; color:var(--text)}
+.rec .roles{margin-left:6px; min-width:0; flex:1}
+.rk.grade-must{color:#7ed491} .rk.grade-good{color:var(--accent)} .rk.grade-ok{color:var(--dim)} .rk.grade-pass{color:#e05252}
+.rec.pass{opacity:.72}
+.endbtns{display:grid; grid-template-columns:repeat(5,1fr); gap:8px; padding:10px 14px}
+.endbtns button{min-height:64px; border-radius:12px; background:var(--panel-2); border:1px solid var(--line); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; font-weight:700}
+.endbtns button .big{font-size:1.4em}
+.endbtns button[aria-pressed="true"]{border-color:var(--accent); border-width:2px; background:var(--panel)}
+.endbtns button.clear{border-color:#7ed491; color:#7ed491}

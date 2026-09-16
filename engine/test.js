@@ -19,7 +19,7 @@ const nameOf = (id) => {
   }
   const g = data.gods.find((x) => x.id === id); return g ? g.name_ko : id;
 };
-const S = (o) => Object.assign({ region: 1, hp_state: 'mid', boons: [], hammers: [], arcana: [], keepsake: null, hex: null, gods_seen: [], direction_lock: null }, o);
+const S = (o) => Object.assign({ region: 1, boons: [], hammers: [], arcana: [], keepsake: null, hex: null, gods_seen: [], direction_lock: null }, o);
 
 // ── 단정 헬퍼 ────────────────────────────────────────────
 function A(rows) {
@@ -221,8 +221,8 @@ sc('S13', '기념품 — 융합 마지막 조건', () => {
   ] };
 });
 
-sc('S14', '생존 우선 — 체력 낮음', () => {
-  const st = S({ weapon: 'axe', aspect: 'axe_melinoe', region: 2, hp_state: 'low', boons: ['apollo_nova_strike', 'hephaestus_volcanic_flourish'], gods_seen: ['apollo', 'hephaestus'] });
+sc('S14', '생존 우선 — 2지역인데 방어·회복 은혜 0개 (5-B: 체력 입력 제거)', () => {
+  const st = S({ weapon: 'axe', aspect: 'axe_melinoe', region: 2, boons: ['apollo_nova_strike', 'hephaestus_volcanic_flourish'], gods_seen: ['apollo', 'hephaestus'] });
   const rows = E.recommendBoons(st, ['hephaestus_security_system', 'hephaestus_grand_caldera', 'hephaestus_anvil_ring']);
   const a = A(rows);
   return { rows, checks: [
@@ -351,6 +351,60 @@ sc('S24', '아르카나 — 이해도 20이면 무기별로 달라지고 각성 
       check('무기별 세트가 전부 같지는 않음', !(ids(rs) === ids(rb) && ids(rb) === ids(ra)), ids(rs) === ids(rb) ? '지팡이=쌍검' : '다름'),
       check('어느 무기든 각성 카드 1장 이상 (0 이해도 활용)', anyAwaken, [rs, rb, ra].map((r) => r.awakened.length).join('/')),
       check('비추천(priority 0) 카드 없음', [rs, rb, ra].every((r) => r.cards.every((c) => (data.arcana.find((a) => a.id === c.id) || {}).beginner_priority !== 0)), 'ok'),
+    ] };
+});
+
+
+// ── 5-A 신 선택: 등급·동급 (2026-09-16) ─────────────────
+sc('S25', '신 1개 go/no-go — 등급은 이유로 매긴다', () => {
+  // (a) 칸 5개가 다 찬 4신 풀에 뜬 아레스: 목표 융합은 없고 '피바다'(목표 외)만 가능 → 보통. 필수/좋음이 아니어야 한다
+  const full = S({ weapon: 'staff', aspect: 'staff_melinoe', region: 2,
+    boons: ['zeus_heaven_strike', 'apollo_lucid_gain', 'hera_engagement_ring', 'poseidon_wave_flourish', 'poseidon_breaker_rush'], gods_seen: ['zeus', 'apollo', 'hera', 'poseidon'] });
+  const r1 = E.recommendGods(full, ['ares']);
+  // (b) 채울 칸도 융합도 없는 손님 신(디오니소스) → 패스, 이유는 다른 보상으로 유도
+  const r2 = E.recommendGods(S({ weapon: 'staff', aspect: 'staff_melinoe', boons: ['zeus_heaven_strike'], gods_seen: ['zeus'] }), ['dionysus']);
+  return { rows: r1, rows2: r2, checks: [
+    check('신 1개만 넣어도 결과가 나옴', r1.length === 1 && r2.length === 1, r1.length + ',' + r2.length),
+    check("아레스 = 보통 (목표 외 융합만)", r1[0].grade === 'ok', r1[0].grade_ko + ' ' + r1[0].roles.join(',')),
+    check("아레스 역할에 '풀 밖 신'", r1[0].roles.includes('풀 밖 신'), r1[0].roles.join(',')),
+    check("디오니소스 = 패스", r2[0].grade === 'pass', r2[0].grade_ko),
+    check("패스 이유에 '석류·재화'", /석류|재화/.test(r2[0].reason), r2[0].reason),
+  ] };
+});
+
+sc('S26', '신 1개 go/no-go — 목표 융합 마지막 조건이면 필수', () => {
+  const st = S({ weapon: 'blades', aspect: 'blades_melinoe', boons: ['aphrodite_flutter_strike', 'aphrodite_glamour_gain'], gods_seen: ['aphrodite'] });
+  const rows = E.recommendGods(st, ['zeus']);
+  const r = rows[0];
+  return { rows, checks: [
+    check("등급 '필수'", r.grade === 'must', r.grade_ko),
+    check("역할에 '융합 파트너 · 짜릿한 접촉'", r.roles.some((x) => x.indexOf('융합 파트너') === 0 && /짜릿한 접촉/.test(x)), r.roles.join(',')),
+    check("이유에 '짜릿한 접촉'", /짜릿한 접촉/.test(r.reason), r.reason),
+  ] };
+});
+
+sc('S27', '첫 신은 동급으로 묶인다 — 지팡이', () => {
+  const st = S({ weapon: 'staff', aspect: 'staff_melinoe' });
+  const rows = E.recommendGods(st, ['zeus', 'hestia', 'poseidon', 'demeter', 'apollo', 'aphrodite', 'hephaestus', 'hera', 'ares']);
+  const by = (id) => rows.find((r) => r.id === id);
+  return { rows, extra: rows.map((r) => `${r.id}:${r.score}/${r.grade_ko}/군${r.tie}`).join(' '), checks: [
+    check('상위 3신이 같은 군', rows[0].tie === rows[1].tie && rows[1].tie === rows[2].tie, rows.slice(0, 3).map((r) => r.tie).join(',')),
+    check('맨 아래 신은 다른 군', rows[rows.length - 1].tie > rows[0].tie, String(rows[rows.length - 1].tie)),
+    check("헤스티아(핵심 기술 1순위) = 필수", by('hestia').grade === 'must', by('hestia').grade_ko + ' ' + by('hestia').roles.join(',')),
+    check("데메테르(핵심 마법 1순위) = 필수", by('demeter').grade === 'must', by('demeter').grade_ko),
+    check("제우스(비핵심 공격 1순위) = 좋음, 필수 아님", by('zeus').grade === 'good', by('zeus').grade_ko + ' ' + by('zeus').roles.join(',')),
+  ] };
+});
+
+sc('S28', '런 시작 — 추천 빌드마다 주요 신, 첫 기념품은 1위 빌드 주요 신의 것', () => {
+  const r = E.recommendRunStart('staff', 'staff_melinoe', { graspCap: 10 });
+  const d0 = r.directions[0];
+  return { rows: r.directions.map((d, i) => ({ id: d.id, rank: i + 1, score: d.F, reason: d.main_gods.map((g) => g.name_ko).join(' > '), warnings: [], badges: [] })),
+    extra: `첫 기념품: ${r.first_keepsake && r.first_keepsake.name_ko} (${r.first_keepsake && r.first_keepsake.god_ko})`,
+    checks: [
+      check('모든 방향에 주요 신 3명', r.directions.every((d) => d.main_gods.length === 3), r.directions.map((d) => d.main_gods.length).join(',')),
+      check("기술 월광탄 주요 신 1위 = 헤스티아", d0.main_gods[0].id === 'hestia', d0.main_gods.map((g) => g.id).join('>')),
+      check('첫 기념품 = 영원한 불씨(헤스티아)', r.first_keepsake && r.first_keepsake.id === 'everlasting_ember', String(r.first_keepsake && r.first_keepsake.id)),
     ] };
 });
 

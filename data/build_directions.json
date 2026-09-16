@@ -450,7 +450,8 @@
        "hera_engagement_ring",
        "aphrodite_rapture_ring",
        "demeter_arctic_ring",
-       "poseidon_tidal_ring"
+       "poseidon_tidal_ring",
+       "hestia_smolder_ring"
       ],
       "magick": [
        "aphrodite_glamour_gain",
@@ -507,7 +508,8 @@
      "sources": [
       "namu:멜리노에 양상 — Ω 공격으로 배후 확보, 아폴론·망치로 배후 극대화",
       "dc49018:아레스 공격+아프로 마법+아레스 전설 ★★★ / 아프로 공격+아프로 마력+아폴론 마법",
-      "lee:Trick Knives 최애, Wicked Onslaught·Reaper Knives·Final Slice, Dancing Knives 회피, Aphrodite/Apollo/Hera %, Poseidon·Hestia 고정 피해, Zeus special+Static Shock"
+      "lee:Trick Knives 최애, Wicked Onslaught·Reaper Knives·Final Slice, Dancing Knives 회피, Aphrodite/Apollo/Hera %, Poseidon·Hestia 고정 피해, Zeus special+Static Shock",
+      "log:2026-09-16 실플레이 5런 — hestia_smolder_ring 누락 보정"
      ]
     },
     {
@@ -741,7 +743,8 @@
        "apollo_lucid_gain",
        "poseidon_flood_gain",
        "hestia_cardio_gain",
-       "ares_grisly_gain"
+       "ares_grisly_gain",
+       "aphrodite_glamour_gain"
       ],
       "special": [
        "zeus_heaven_flourish",
@@ -750,7 +753,9 @@
       ],
       "cast": [
        "demeter_arctic_ring",
-       "aphrodite_rapture_ring"
+       "aphrodite_rapture_ring",
+       "hestia_smolder_ring",
+       "zeus_storm_ring"
       ],
       "sprint": [
        "apollo_blinding_rush",
@@ -801,7 +806,10 @@
       "namu:멜리노에 횃불 — 은혜·망치에 맞춰 유연하게, 마력 은혜 빠르게",
       "dc51882:멜리횃불·모로스 ★★★ (헤스+제우스+데메 / 헤라+포세 Ω 난사 / 헤파 폭발) — Ω 기술 써놓고 평타 꾹",
       "lee:Mel Flames — magick recovery 먼저(Hera Born Gain 최고), Hera attack+Zeus special, Fine Line+Righteous Pike, Poseidon special+Slippery Slope, Zeus special+Romantic Spark; Sudden Burst·Enduring Coil·Clean Coil",
-      "검색:Moros = Hera Sworn Strike + Zeus Heaven Flourish + King's Ransom"
+      "검색:Moros = Hera Sworn Strike + Zeus Heaven Flourish + King's Ransom",
+      "log:2026-09-16 실플레이 5런 — hestia_smolder_ring 누락 보정",
+      "log:2026-09-16 실플레이 5런 — zeus_storm_ring 누락 보정",
+      "log:2026-09-16 실플레이 5런 — aphrodite_glamour_gain 누락 보정"
      ]
     },
     {
@@ -828,7 +836,8 @@
        "zeus_ionic_gain",
        "poseidon_flood_gain",
        "apollo_lucid_gain",
-       "demeter_tranquil_gain"
+       "demeter_tranquil_gain",
+       "aphrodite_glamour_gain"
       ],
       "attack": [
        "hera_sworn_strike",
@@ -839,7 +848,9 @@
       ],
       "cast": [
        "demeter_arctic_ring",
-       "aphrodite_rapture_ring"
+       "aphrodite_rapture_ring",
+       "hestia_smolder_ring",
+       "zeus_storm_ring"
       ],
       "sprint": [
        "apollo_blinding_rush",
@@ -889,7 +900,10 @@
      "sources": [
       "namu:모로스 — Ω 기술 궤도로 공격 폭발, 망치는 Ω 기술 강화, 데메+헤스/데메+제우스/제우스+헤스/데메+헤파/아프로+헤스 융합 조합; 에오스 — 기술 위주, 아폴론 전설, 밤 아르카나",
       "dc51882:에오스 = 공격 암운·기술 잔불 고정, 모로스 ★★★",
-      "lee:Moros — Sudden Burst 최고, Furious/Mega/Leaden Blaze, Clean Coil·Hidden Helix; Hera attack+Zeus special 최적; Eos — Hera special, Apollo attack+legendary"
+      "lee:Moros — Sudden Burst 최고, Furious/Mega/Leaden Blaze, Clean Coil·Hidden Helix; Hera attack+Zeus special 최적; Eos — Hera special, Apollo attack+legendary",
+      "log:2026-09-16 실플레이 5런 — hestia_smolder_ring 누락 보정",
+      "log:2026-09-16 실플레이 5런 — zeus_storm_ring 누락 보정",
+      "log:2026-09-16 실플레이 5런 — aphrodite_glamour_gain 누락 보정"
      ]
     }
    ]
@@ -956,7 +970,8 @@
        "demeter_arctic_ring",
        "aphrodite_rapture_ring",
        "hera_engagement_ring",
-       "apollo_solar_ring"
+       "apollo_solar_ring",
+       "hestia_smolder_ring"
       ],
       "special": [
        "zeus_heaven_flourish",
@@ -1026,7 +1041,8 @@
      "sources": [
       "namu:근접 무기 특성상 아폴론·아프로디테 궁합 매우 좋음(실명·약화), 지옥 가르기+처형인의 도끼, 휩쓰는 맹공, 심령 소용돌이 고빈도",
       "dc51882:증뎀(헤라·아프로·아폴론)+데메 마법 필수+시초 아르카나; 타나토스 ★★★ 초반엔 평타 위주",
-      "lee:Mel Axe — Aphrodite/Apollo/Hera attack + Demeter cast, Dashing Heave \"king\", Rapid Hack, Seething Marauder, Hell Splitter 회피, Huntress arcana, Ares special+Grievous Blow, Lethal Snare"
+      "lee:Mel Axe — Aphrodite/Apollo/Hera attack + Demeter cast, Dashing Heave \"king\", Rapid Hack, Seething Marauder, Hell Splitter 회피, Huntress arcana, Ares special+Grievous Blow, Lethal Snare",
+      "log:2026-09-16 실플레이 5런 — hestia_smolder_ring 누락 보정"
      ]
     },
     {
@@ -1256,5 +1272,6 @@
  "_validated": "2026-09-10 커뮤니티 5출처 대조. 방향별 sources 참조. 출처가 없는 항목은 페이블 추론(inferred)",
  "hex_beginner_sources": [
   "lee:Twilight Curse(황혼 저주) 무강화도 유용 +50% 피해, Wolf Howl 무적 회피, Phase Shift, Dark Side"
- ]
+ ],
+ "_patch_5e": "2026-09-16 실플레이 로그 기반 누락 보정 (염화 고리·매혹적 마력·폭풍 고리)"
 }

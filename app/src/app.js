@@ -20,7 +20,7 @@
   var SK = { attack: '공', special: '기', cast: '마', sprint: '질', magick: '력' };
   var SKO = W.SLOT_KO;
   var GC = { zeus: '#f2d16b', hestia: '#ff8a3d', poseidon: '#4aa3ff', demeter: '#7ed491', apollo: '#ffd166', aphrodite: '#ff7eb6', hephaestus: '#c97b4a', hera: '#b58cff', ares: '#e05252', hermes: '#c0c7d1', artemis: '#5fbf8a', athena: '#d9d2b0', dionysus: '#9b59b6', selene: '#a9c4ff', chaos: '#c76bd9' };
-  var GOD_ORDER = ['zeus', 'hestia', 'poseidon', 'demeter', 'apollo', 'aphrodite', 'hephaestus', 'hera', 'ares', 'hermes', 'artemis', 'athena', 'dionysus', 'selene', 'chaos'];
+  var GOD_ORDER = ['zeus', 'hestia', 'poseidon', 'demeter', 'apollo', 'aphrodite', 'hephaestus', 'hera', 'ares', 'hermes', 'artemis', 'athena', 'dionysus'];  // 셀레네·카오스는 5단계에서 제외 — 빌드 필수가 아닌 옵션
   // 1·2위 점수차가 이 값 미만이면 엔진이 사실상 구분 못 한 것으로 보고 '취향' 표시.
   // 근거: 시나리오 20개 점수차 분포가 0~2.5와 8 이상으로 갈리고 그 사이가 비어 있다.
   var CLOSE_GAP = 2;
@@ -92,7 +92,7 @@
     if (!RUN || !RUN.rid) return;
     var st = RUN.state;
     logPush({
-      t: 'pick', kind: kind, rg: st.region, hp: st.hp_state, ns: filledSlots(st),
+      t: 'pick', kind: kind, rg: st.region, ns: filledSlots(st),
       dir: E.directionScores(st).slice(0, 2).map(function (d) { return [d.id, d.weight]; }),
       off: rows.map(function (r) {
         var o = { i: r.id, s: isFinite(r.score) ? r.score : null, k: r.rank || null, b: r.breakdown || {} };
@@ -106,7 +106,7 @@
   }
 
   function newRun(weapon, aspect) {
-    return { rid: ridNew(), seq: 0, state: { weapon: weapon, aspect: aspect, region: 1, boons: [], hammers: [], arcana: [], keepsake: null, hex: null, gods_seen: [], hp_state: 'mid', direction_lock: null }, pending_god: null, history: [] };
+    return { rid: ridNew(), seq: 0, state: { weapon: weapon, aspect: aspect, region: 1, boons: [], hammers: [], arcana: [], keepsake: null, hex: null, gods_seen: [], direction_lock: null }, pending_god: null, history: [] };
   }
   function pushHistory(label) {
     RUN.history.unshift({ ts: Date.now(), label: label, snap: JSON.stringify(RUN.state) });
@@ -203,7 +203,6 @@
     else if (UI.screen === 'boons') app.appendChild(viewPick('boon'));
     else if (UI.screen === 'hammers') app.appendChild(viewPick('hammer'));
     else if (UI.screen === 'manage') app.appendChild(viewManage());
-    else if (String(UI.screen).indexOf('guest:') === 0) app.appendChild(guestSheet(UI.screen.slice(6)));
     else if (UI.screen === 'start') app.appendChild(wrapSheet('새 런 시작', viewStart(true)));
   }
   function wrapSheet(title, inner) {
@@ -218,8 +217,50 @@
   var startSel = { weapon: PREFS.last_weapon, aspect: PREFS.last_aspect };
   // 지난 런 결과. 여기서만 결과 라벨이 생긴다 — 안 넣으면 그 런은 클리어율 통계에서 빠진다
   // (선택 기록 자체는 남으므로 가중치 학습에는 그대로 쓰인다)
-  var endSel = { route: 'under', res: 'died', upto: 1 };
+  var endSel = { route: PREFS.last_route || 'under', res: 'died' };
+  // 5-B: 결과 입력은 건너뛸 수 없게, 대신 1탭. 지역 버튼을 누르는 것 자체가 기록 + 다음.
+  // 기본값(1지역)으로 빠져나가는 경로가 있으면 로그가 오염된다 (실플레이 5런 중 4런).
+  function viewEnd(prev, asSheet) {
+    var root = document.createElement('div');
+    if (!asSheet) root.appendChild(el('<div class="top"><div class="t">하데스2 빌드 길잡이</div></div>'));
+    var picks = LOG.filter(function (e) { return e.id === prev.rid && e.t === 'pick' && e.kind !== 'god'; }).length;
+    var n = prev.state.boons.length + prev.state.hammers.length;
+    var est = Math.max(prev.state.region || 1, Math.min(4, 1 + Math.floor(n / 7)));   // 보상 6~8개당 1지역, 수동 지역이 더 크면 그것
+    root.appendChild(el('<h2>지난 런, 어디까지 갔나요?</h2>'));
+    root.appendChild(el('<div class="wrap sm dim">' + esc(nm(prev.state.weapon)) + ' · 은혜·망치 ' + n + '개 · 선택 ' + picks + '회 → <b>' + est + '지역</b>으로 추정</div>'));
+    var chipRow = function (opts, cur, cb) {
+      var cs = el('<div class="chips" style="padding-top:4px;padding-bottom:4px"></div>');
+      opts.forEach(function (o) {
+        var b = el('<button class="chip" aria-pressed="' + (cur === o[0]) + '">' + esc(o[1]) + '</button>');
+        b.onclick = function () { cb(o[0]); rerenderStart(root, asSheet); };
+        cs.appendChild(b);
+      });
+      return cs;
+    };
+    root.appendChild(chipRow([['under', '지하 (크로노스)'], ['surface', '지상 (티폰)']], endSel.route, function (v) { endSel.route = v; PREFS.last_route = v; savePrefs(); }));
+    root.appendChild(chipRow([['died', '죽었다'], ['quit', '죽지 않고 그만뒀다']], endSel.res, function (v) { endSel.res = v; }));
+    var finish = function (rgv, res) {
+      logPush({ t: 'end', ts: nowKst(), route: endSel.route, res: res, rg: rgv });
+      RUN.endDone = true; saveRun(); rerenderStart(root, asSheet);
+    };
+    var bt = el('<div class="endbtns"></div>');
+    [1, 2, 3, 4].forEach(function (k) {
+      var b = el('<button aria-pressed="' + (k === est) + '"><span class="big">' + k + '</span><span class="xs">지역</span></button>');
+      b.onclick = function () { var rgv = []; for (var i = 1; i < k; i++) rgv.push(1); rgv.push(endSel.res === 'quit' ? null : 0); finish(rgv, endSel.res); };
+      bt.appendChild(b);
+    });
+    var cl = el('<button class="clear"><span class="big">완주</span><span class="xs">클리어</span></button>');
+    cl.onclick = function () { finish([1, 1, 1, 1], 'clear'); };
+    bt.appendChild(cl);
+    root.appendChild(bt);
+    var skip = el('<div class="wrap" style="text-align:center;padding-top:4px"><button class="tagx" style="padding:10px 14px">이 런은 기록하지 않기 (조작 실수 등)</button></div>');
+    skip.querySelector('button').onclick = function () { logDrop(prev.rid); RUN.endDone = true; saveRun(); toast('지난 런 기록을 지웠습니다'); rerenderStart(root, asSheet); };
+    root.appendChild(skip);
+    return root;
+  }
   function viewStart(asSheet) {
+    var prevRun = (RUN && RUN.rid && RUN.state.boons.length && !RUN.endDone) ? RUN : null;
+    if (prevRun) return viewEnd(prevRun, asSheet);
     var root = document.createElement('div');
     if (!asSheet) root.appendChild(el('<div class="top"><div class="t">하데스2 빌드 길잡이</div></div>'));
     if (saveFail) root.appendChild(el('<div class="banner">저장이 안 됩니다 — 이 탭을 닫으면 사라져요</div>'));
@@ -259,10 +300,23 @@
     }));
     root.appendChild(gc);
 
+    // 5-C: 게임 화면과 같은 5×5 격자. 각성 조건("둘러싼 카드")이 격자 없이는 읽히지 않는다
+    var selIds = {}; A.cards.forEach(function (c) { selIds[c.id] = 'sel'; }); A.awakened.forEach(function (c) { selIds[c.id] = 'free'; });
+    var grid = el('<div class="agrid"></div>');
+    var cells = {};
+    DATA.arcana.forEach(function (c) { var gp = c.grid_position || [0, 0]; cells[gp[0] + ',' + gp[1]] = c; });
+    for (var rr = 1; rr <= 5; rr++) for (var cc = 1; cc <= 5; cc++) {
+      var c = cells[rr + ',' + cc];
+      var cell = el('<div class="acell ' + (c ? (selIds[c.id] || '') : '') + '">' +
+        (c ? '<span class="n">' + esc(c.name_ko) + '</span><span class="g">' + (c.grasp === 0 ? '각성' : c.grasp) + '</span>' : '') + '</div>');
+      grid.appendChild(cell);
+    }
+    root.appendChild(grid);
+    var pos = function (c) { var a = IX.arcana[c.id]; var gp = a && a.grid_position; return gp ? ' <span class="xs dim">(' + gp[0] + ',' + gp[1] + ')</span>' : ''; };
     var ac = el('<div class="card tight"></div>');
     var arow = function (c, cls, tag) {
       return el('<div class="arow ' + (cls || '') + '"><span class="g">' + (c.grasp === 0 ? '0' : c.grasp) + '</span>' +
-        '<div class="mid" style="flex:1;min-width:0"><div class="ell">' + esc(c.name_ko) + '</div>' +
+        '<div class="mid" style="flex:1;min-width:0"><div class="ell">' + esc(c.name_ko) + pos(c) + '</div>' +
         '<div class="xs dim ell">' + esc(c.effect) + '</div></div>' +
         (tag ? '<span class="atag ' + tag[0] + '">' + esc(tag[1]) + '</span>' : '') + '</div>');
     };
@@ -287,80 +341,34 @@
       root.appendChild(det);
     }
 
-    root.appendChild(el('<h2>기념품 · 비술</h2>'));
+    root.appendChild(el('<h2>첫 기념품</h2>'));
     var kc = el('<div class="card tight"></div>');
-    r.keepsakes.slice(0, 3).forEach(function (k) {
-      kc.appendChild(el('<div style="padding:6px 0"><div class="sm">' + esc(k.name_ko) +
-        (k.giver_ko ? ' <span class="giver">(' + esc(k.giver_ko) + '에게 넥타르)</span>' : '') +
-        '</div><div class="xs dim ell">' + esc(k.effect) + '</div></div>'));
-    });
-    r.hexes.slice(0, 2).forEach(function (h) {
-      kc.appendChild(el('<div style="padding:6px 0"><div class="sm">' + esc(h.name_ko) +
-        ' <span class="giver">(셀레네 · 밤마다 1개)</span> <span class="xs dim">마력 ' + h.mana + '</span>' +
-        '</div><div class="xs dim ell">' + esc(h.effect) + '</div></div>'));
+    if (r.first_keepsake) {
+      var fk = r.first_keepsake;
+      kc.appendChild(el('<div style="padding:6px 0"><div class="row"><b style="flex:1">' + esc(fk.name_ko) + '</b><span class="tagx" style="color:' + (GC[fk.god] || 'inherit') + '">' + esc(fk.god_ko) + '</span></div>' +
+        '<div class="sm" style="margin-top:4px">' + esc(fk.reason) + '</div>' +
+        (fk.giver_ko ? '<div class="xs dim">' + esc(fk.giver_ko) + '에게 넥타르로 획득</div>' : '') + '</div>'));
+    }
+    r.keepsakes.slice(0, 2).forEach(function (k) {
+      kc.appendChild(el('<div style="padding:6px 0;border-top:1px solid var(--line)"><div class="sm dim">대안 · ' + esc(k.name_ko) +
+        (k.giver_ko ? ' <span class="giver">(' + esc(k.giver_ko) + ')</span>' : '') + '</div><div class="xs dim ell">' + esc(k.effect) + '</div></div>'));
     });
     root.appendChild(kc);
 
-    root.appendChild(el('<h2>열린 빌드 방향</h2>'));
+    root.appendChild(el('<h2>추천 빌드</h2>'));
     root.appendChild(el('<div class="wrap sm dim">' + esc(r.note) + '</div>'));
     r.directions.forEach(function (d) {
       root.appendChild(el('<div class="card"><div class="row"><b>' + esc(d.name_ko) + '</b><span class="xs dim">★' + d.difficulty + '</span></div>' +
         '<div class="sm dim" style="margin-top:4px">' + esc(d.summary) + '</div>' +
-        '<div class="xs dim" style="margin-top:6px">핵심 칸: ' + esc(d.core_slots.join(' · ')) + '</div>' +
+        '<div class="sm" style="margin-top:6px">주요 신: ' + d.main_gods.map(function (g, i) { return '<span style="color:' + (GC[g.id] || 'inherit') + ';font-weight:' + (i ? 400 : 700) + '">' + esc(g.name_ko) + '</span>'; }).join(' <span class="dim">›</span> ') + '</div>' +
+        '<div class="xs dim" style="margin-top:4px">핵심 칸: ' + esc(d.core_slots.join(' · ')) + '</div>' +
         '<div class="xs dim">' + esc(d.first_picks.join(' / ')) + '</div>' +
         (d.target_duos.length ? '<div class="xs dim">노리는 융합: ' + esc(d.target_duos.join(', ')) + '</div>' : '') +
         (d.key_hammers.length ? '<div class="xs dim">망치: ' + esc(d.key_hammers.join(', ')) + '</div>' : '') + '</div>'));
     });
 
-    // 지난 런이 있으면 결과를 먼저 받는다 (탭 두세 번)
-    var prev = (RUN && RUN.rid && RUN.state.boons.length) ? RUN : null;
-    var dropPrev = { on: false };
-    if (prev) {
-      if (!endSel._for || endSel._for !== prev.rid) { endSel._for = prev.rid; endSel.upto = prev.state.region; }
-      var pc = el('<div class="card"><div class="row"><b style="flex:1">지난 런 결과</b>' +
-        '<span class="xs dim">' + esc(nm(prev.state.weapon)) + ' · ' +
-        LOG.filter(function (e) { return e.id === prev.rid && e.t === 'pick'; }).length + '선택</span></div></div>');
-      var chipRow = function (label, opts, cur, cb) {
-        var r = el('<div style="margin-top:8px"><div class="xs dim">' + esc(label) + '</div></div>');
-        var cs = el('<div class="chips" style="margin-top:4px"></div>');
-        opts.forEach(function (o) {
-          var b = el('<button class="chip" aria-pressed="' + (cur === o[0]) + '">' + esc(o[1]) + '</button>');
-          b.onclick = function () { cb(o[0]); rerenderStart(root, asSheet); };
-          cs.appendChild(b);
-        });
-        r.appendChild(cs); return r;
-      };
-      pc.appendChild(chipRow('루트', [['under', '지하 (크로노스)'], ['surface', '지상 (티폰)']], endSel.route,
-        function (v) { endSel.route = v; }));
-      pc.appendChild(chipRow('결과', [['clear', '클리어'], ['died', '사망'], ['quit', '중단']], endSel.res,
-        function (v) { endSel.res = v; }));
-      if (endSel.res !== 'clear')
-        pc.appendChild(chipRow('어느 지역에서', [[1, '1지역'], [2, '2지역'], [3, '3지역'], [4, '4지역']], endSel.upto,
-          function (v) { endSel.upto = v; }));
-      // 탭 타겟 44px 확보 — 글자를 눌러도 체크되도록 label 전체를 키운다
-      var dp = el('<label class="row sm dim" style="margin-top:6px;gap:10px;cursor:pointer;min-height:44px;padding:8px 2px">' +
-        '<input type="checkbox" style="width:20px;height:20px;flex:none"><span>이 런은 기록하지 않기 (조작 실수 등)</span></label>');
-      dp.querySelector('input').onchange = function () { dropPrev.on = this.checked; };
-      pc.appendChild(dp);
-      root.appendChild(pc);
-    }
-
     var cta = el('<div class="cta"><button>이 무기로 시작</button></div>');
     cta.querySelector('button').onclick = function () {
-      if (prev) {
-        if (dropPrev.on) { logDrop(prev.rid); toast('지난 런 기록을 지웠습니다'); }
-        else {
-          // rg는 단조라 '어디까지'만으로 결정된다. 0=사망, null=중단(죽은 게 아님 — 실패로 학습하면 안 됨)
-          var rgv = [];
-          if (endSel.res === 'clear') rgv = [1, 1, 1, 1];
-          else {
-            for (var i = 1; i < endSel.upto; i++) rgv.push(1);
-            rgv.push(endSel.res === 'quit' ? null : 0);
-          }
-          logPush({ t: 'end', ts: nowKst(), route: endSel.route, res: endSel.res, rg: rgv });
-        }
-        endSel._for = null;
-      } else if (RUN && RUN.state.boons.length && !confirm('진행 중인 런이 사라집니다. 새로 시작할까요?')) return;
       PREFS.last_weapon = startSel.weapon; PREFS.last_aspect = startSel.aspect; savePrefs();
       RUN = newRun(startSel.weapon, startSel.aspect); saveRun();
       logPush({ t: 'run', ts: nowKst(), w: RUN.state.weapon, asp: RUN.state.aspect, grasp: PREFS.grasp_cap,
@@ -391,12 +399,10 @@
 
     var ds = E.directionScores(st);
     var card = el('<div class="card"></div>');
-    var hp = { high: '●●●', mid: '●●○', low: '●○○' }[st.hp_state];
     var meta = el('<div class="row sm dim"><span>' + esc((IX.weapons[st.weapon].aspects.find(function (a) { return a.id === st.aspect; }) || {}).name_ko || '') + '</span>' +
-      '<button class="tagx" data-region>' + st.region + '지역</button><button class="tagx" data-hp>' + hp + '</button>' +
+      '<button class="tagx" data-region>' + st.region + '지역</button>' +
       (st.direction_lock ? '<span class="tagx">🔒 고정</span>' : '') + '</div>');
     meta.querySelector('[data-region]').onclick = function () { openSheet('manage'); };
-    meta.querySelector('[data-hp]').onclick = function () { cycleHp(); };
     card.appendChild(meta);
 
     if (ds.length) {
@@ -447,16 +453,12 @@
     root.appendChild(dock);
     return root;
   }
-  function cycleHp() {
-    var o = ['high', 'mid', 'low'], i = o.indexOf(RUN.state.hp_state);
-    RUN.state.hp_state = o[(i + 1) % 3]; saveRun(); logPush({ t: 'hp', v: RUN.state.hp_state }); render();
-  }
 
   // ── 3. 신 선택 ─────────────────────────────────────────
   var godSel = [];
   function viewGods() {
     var body = document.createElement('div');
-    body.appendChild(el('<div class="wrap sm dim" style="padding-top:10px">문 위에 뜬 신을 2개 이상 골라 주세요</div>'));
+    body.appendChild(el('<div class="wrap sm dim" style="padding-top:10px">문 위에 뜬 신을 골라 주세요 — 하나만 떠도 됩니다. 등급이 <b>패스</b>면 석류·재화 문이 낫습니다</div>'));
     var grid = el('<div class="gods"></div>');
     var out = el('<div></div>');
     var btns = {};
@@ -484,16 +486,16 @@
         btns[id].querySelector('.ord').textContent = i >= 0 ? (ORD[i] || (i + 1)) : '';
       });
       out.innerHTML = '';
-      if (godSel.length < 2) { out.appendChild(el('<div class="empty">신을 2개 이상 골라 주세요</div>')); return; }
+      if (!godSel.length) { out.appendChild(el('<div class="empty">문에 뜬 신을 눌러 주세요</div>')); return; }
       var grows = E.recommendGods(RUN.state, godSel);
-      var gcs = closeSet(grows);
+      // 5-A: 점수 차 2 미만은 같은 군 — 첫 신처럼 변별이 없을 때 1·2·3위 대신 '동급' 칩
+      var topTie = grows.filter(function (x) { return x.tie === grows[0].tie; }).length > 1;
       grows.forEach(function (r, i) {
         out.appendChild(recCard(r, i, function () {
           logPick('god', grows, r.id);
-          if (GUEST_INFO[r.id]) { UI.screen = 'guest:' + r.id; saveUI(); render(); return; }
           RUN.pending_god = r.id; pickSel = []; godTab = r.id;
           UI.screen = 'boons'; saveUI(); saveRun(); render();
-        }, '이 문으로', gcs[r.id]));
+        }, '이 문으로', topTie && r.tie === grows[0].tie));
       });
     }
     refresh();
@@ -501,28 +503,6 @@
   }
 
   // ── 4·5. 은혜 / 망치 선택 ──────────────────────────────
-  // 은혜 목록이 없는 신 — 문을 골라도 빈 목록이 뜨던 문제 (U6)
-  var GUEST_INFO = {
-    selene: { to: 'manage', title: '셀레네는 비술을 줍니다',
-      body: '은혜가 아니라 <b>비술</b>을 하나 받습니다. 관리 화면에서 받은 비술을 눌러 두면 추천에 반영됩니다.',
-      tip: '초보 추천 순서: 달빛줄기(마력 30) → 늑대 포효(50) → 월색 담수(70)' },
-    chaos: { to: null, title: '카오스는 저주를 먼저 받습니다',
-      body: '일정 시간 <b>저주</b>를 견디면 축복을 줍니다. 지금 화면에서는 개별 축복을 추천하지 않습니다.',
-      tip: '초보는 체력·마력이 잠시 줄어드는 저주만 받는 게 안전합니다. 피해를 더 받거나 이동이 느려지는 저주는 방 클리어가 위험해집니다.' },
-  };
-  function guestSheet(id) {
-    var g = GUEST_INFO[id], body = document.createElement('div');
-    body.appendChild(el('<div class="card"><div class="row"><span class="gi" style="color:' + GC[id] + '">' + sym(id, 26) + '</span><b>' + esc(g.title) + '</b></div>' +
-      '<div class="sm" style="margin-top:8px">' + g.body + '</div>' +
-      '<div class="sm dim" style="margin-top:8px">' + esc(g.tip) + '</div></div>'));
-    if (g.to === 'manage') {
-      var b = el('<div class="cta"><button>관리에서 비술 고르기</button></div>');
-      b.querySelector('button').onclick = function () { UI.screen = 'manage'; saveUI(); render(); };
-      body.appendChild(b);
-    }
-    return wrapSheet(nm(id), body);
-  }
-
   var pickSel = [], godTab = null, searchOn = false, searchQ = '', trayOpen = true;
   function viewPick(kind) {
     var isBoon = kind === 'boon';
@@ -543,7 +523,6 @@
         var b = el('<button class="chip" aria-pressed="' + (godTab === id) + '" style="border-color:' + GC[id] + '">' +
           '<span class="gi" style="color:' + GC[id] + '">' + sym(id, 17) + '</span>' + esc(nm(id)) + '</button>');
         b.onclick = function () {
-          if (GUEST_INFO[id]) { UI.screen = 'guest:' + id; saveUI(); render(); return; }
           godTab = id; UI.god_tab = id; saveUI(); searchQ = ''; draw();
         };
         tabs.appendChild(b);
@@ -666,8 +645,10 @@
 
   function recCard(r, i, onDecide, label, isClose) {
     var no = !isFinite(r.score);
-    var c = el('<div class="rec ' + (i === 0 && !no ? 'r1' : '') + ' ' + (no ? 'no' : '') + '">' +
-      '<div class="hd"><span class="rk">' + (r.rank || i + 1) + '위</span>' +
+    var grade = r.grade || null;
+    var c = el('<div class="rec ' + (i === 0 && !no && grade !== 'pass' ? 'r1' : '') + ' ' + (no ? 'no' : '') + (grade === 'pass' ? ' pass' : '') + '">' +
+      '<div class="hd"><span class="rk' + (grade ? ' grade-' + grade : '') + '">' + (grade ? esc(r.grade_ko) : (r.rank || i + 1) + '위') + '</span>' +
+      (r.roles && r.roles.length ? '<span class="roles xs dim ell">' + esc(r.roles.slice(0, 2).join(' · ')) + '</span>' : '') +
       (PREFS.show_score && !no ? '<span class="sc">' + r.score + '</span>' : '') + '</div>' +
       '<div class="nm">' + slotChip(ent(r.id)) + '<span class="ell">' + esc(nm(r.id)) + '</span>' +
       (isClose ? CLOSE_CHIP : '') + '</div>' +
@@ -699,7 +680,6 @@
       });
       r.appendChild(s); return r;
     }
-    body.appendChild(seg('체력', [['high', '●●●'], ['mid', '●●○'], ['low', '●○○']], st.hp_state, function (v) { st.hp_state = v; saveRun(); logPush({ t: 'hp', v: v }); render(); }));
     body.appendChild(seg('지역', [[1, '1'], [2, '2'], [3, '3'], [4, '4']], st.region, function (v) { st.region = v; saveRun(); logPush({ t: 'rg', v: v }); render(); }));
 
     var k = E.recommendKeepsake(st);
@@ -709,14 +689,6 @@
       body.appendChild(kc);
     }
 
-    body.appendChild(el('<h2>비술</h2>'));
-    var hx = el('<div class="chips"></div>');
-    DATA.hexes.forEach(function (h) {
-      var b = el('<button class="chip" aria-pressed="' + (st.hex === h.id) + '">' + esc(h.name_ko) + '</button>');
-      b.onclick = function () { st.hex = st.hex === h.id ? null : h.id; saveRun(); logPush({ t: 'hex', v: st.hex }); render(); };
-      hx.appendChild(b);
-    });
-    body.appendChild(hx);
 
     body.appendChild(el('<h2>방향 고정</h2>'));
     var dl = el('<div class="chips"></div>');

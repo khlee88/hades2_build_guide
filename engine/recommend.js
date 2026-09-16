@@ -272,7 +272,8 @@ function createEngine(data, W) {
     if ((builds.always_take.boons || []).includes(b.id)) { flat += W.FLAT.ALWAYS_TAKE; badges.push('항상'); bd.always = W.FLAT.ALWAYS_TAKE; }
 
     const hasSurvival = [...dv.owned].some((x) => { const o = boonById.get(x); return o && (o.tags || []).some((t) => W.SURVIVAL_TAGS.includes(t)); });
-    const survivalOn = state.hp_state === 'low' || ((state.region || 1) >= 2 && !hasSurvival);
+    // 5-B (2026-09-16): 체력 입력 제거. 생존 가점은 "생존 은혜가 하나도 없고 빌드가 어느 정도 찼을 때"만
+    const survivalOn = !hasSurvival && ((state.region || 1) >= 2 || dv.slotBoonCount >= 2);
     if (survivalOn) {
       const pi = (builds.survival_kit.passive || []).indexOf(b.id);
       let sv = 0;
@@ -376,10 +377,10 @@ function createEngine(data, W) {
 
     if (godId === 'selene') {
       const v = state.hex ? W.GOD.SELENE_HAS_HEX : W.GOD.SELENE_NO_HEX;
-      return { id: godId, score: round(v), reason: state.hex ? '비술 강화 (별의 길)' : '비술 확보 — 아직 없음', warnings, badges, breakdown: { fixed: v } };
+      return { id: godId, score: round(v), reason: state.hex ? '비술 강화 (별의 길)' : '비술 확보 — 아직 없음', warnings, badges, breakdown: { fixed: v }, grade: 'ok', grade_ko: '보통', roles: ['비술'] };
     }
     if (godId === 'chaos') {
-      return { id: godId, score: round(W.GOD.CHAOS), reason: '저주 내용 확인 후 결정', warnings, badges, breakdown: { fixed: W.GOD.CHAOS } };
+      return { id: godId, score: round(W.GOD.CHAOS), reason: '저주 내용 확인 후 결정', warnings, badges, breakdown: { fixed: W.GOD.CHAOS }, grade: 'ok', grade_ko: '보통', roles: ['저주 후 축복'] };
     }
 
     const pool = (boonsByGod.get(godId) || []).filter((b) => !blockReason(b, state, dv, 'boon'));
@@ -390,15 +391,23 @@ function createEngine(data, W) {
     bd.top = round(score);
 
     // 융합 마지막 조건 파트너
-    let partner = 0; let partnerDuo = null;
-    const targets = [...new Set([...((main && main.target_duos) || []), ...((backup && backup.target_duos) || [])])];
-    for (const did of targets) {
-      const D = duoById.get(did);
-      if (!D || dv.owned.has(did)) continue;
+    let partner = 0; let partnerDuo = null; let otherDuo = null;
+    const targets = new Set([...((main && main.target_duos) || []), ...((backup && backup.target_duos) || [])]);
+    // 목표 융합이면 점수+등급 '필수'. 목표가 아니어도 상대 신이 이미 풀에 있어 완성 가능한 융합이면 등급 '좋음'까지 (점수는 그대로)
+    for (const D of openDuos(dv.owned)) {
       const unmet = unmetGroups(D, dv.owned);
       if (unmet.length !== 1) continue;
-      const canFill = (unmet[0].any || []).some((t) => { const bb = boonById.get(t); return bb && bb.god === godId; });
-      if (canFill && partner < W.GOD.DUO_PARTNER_CAP) { partner += W.GOD.DUO_PARTNER; if (!partnerDuo) partnerDuo = D; }
+      // ISSUES [P3] 허수 제거: 칸을 차지하는 은혜로 채우려면 그 칸이 비어 있거나, 밀려나는 은혜가 이 융합의 다른 조건이 아니어야 한다
+      const fillOK = (bb) => {
+        if (!bb.occupies_slot) return true;
+        const cur = dv.slotMap[bb.slot];
+        if (!cur) return true;
+        return !(D.requires.all || []).some((grp) => (grp.any || []).some((tok) => tokenMet(tok, new Set([cur])) && !tokenMet(tok, new Set([...dv.owned].filter((x) => x !== cur)))));
+      };
+      const canFill = (unmet[0].any || []).some((t) => { const bb = boonById.get(t); return bb && bb.god === godId && fillOK(bb); });
+      if (!canFill) continue;
+      if (targets.has(D.id)) { if (partner < W.GOD.DUO_PARTNER_CAP) { partner += W.GOD.DUO_PARTNER; if (!partnerDuo) partnerDuo = D; } }
+      else if (!otherDuo && (D.gods || []).every((g) => g === godId || (state.gods_seen || []).includes(g))) otherDuo = D;
     }
     if (partner) { score += partner; bd.duo_partner = partner; }
 
@@ -422,8 +431,45 @@ function createEngine(data, W) {
     }
     if (state.keepsake) { const k = keepsakeById.get(state.keepsake); if (k && k.god === godId) { score += W.GOD.KEEPSAKE_MATCH; bd.keepsake = W.GOD.KEEPSAKE_MATCH; } }
 
+    // ── 5-A: 절대 등급. 실제 결정은 "이 문 하나를 갈지 / 석류·재화를 갈지"라 순위(비교)로는 답이 안 된다.
+    // 점수 구간이 아니라 이유로 매긴다 — 사용자가 '패스'를 믿고 문을 버리므로 근거가 읽혀야 한다.
+    const roles = [];
+    let bestFill = null;
+    if (main) {
+      const better = (x, y) => !y || (x.empty !== y.empty ? x.empty : x.core !== y.core ? x.core : x.rank < y.rank);
+      for (const b of pool) {
+        if (!b.occupies_slot) continue;
+        const prefs = (main.slot_prefs || {})[b.slot] || [];
+        const i = prefs.indexOf(b.id);
+        if (i < 0) continue;
+        const cand = { slot: b.slot, rank: i + 1, core: (main.core_slots || []).includes(b.slot), empty: !dv.slotMap[b.slot] };
+        if (better(cand, bestFill)) bestFill = cand;
+      }
+      const sup = pool.filter((b) => !b.occupies_slot && (main.support_boons || []).includes(b.id)).length;
+      if (sup) roles.push(`보조 ${sup}개`);
+    }
+    const hasAlways = pool.some((b) => (builds.always_take.boons || []).includes(b.id));
+    if (bestFill) roles.unshift(`${bestFill.core ? '핵심 ' : ''}${SLOT_KO[bestFill.slot]} ${bestFill.rank}순위${bestFill.empty ? '' : ' (교체)'}`);
+    if (partnerDuo) roles.unshift(`융합 파트너 · ${partnerDuo.name_ko}`);
+    else if (otherDuo) roles.unshift(`융합 가능 · ${otherDuo.name_ko}`);
+    if (hasAlways) roles.push('항상 이득');
+    const poolOver = bd.pool === W.GOD.POOL_NEW_PENALTY;
+    if (poolOver) roles.push('풀 밖 신');
+    let tier;
+    if (partnerDuo || (bestFill && bestFill.empty && bestFill.core && bestFill.rank === 1)) tier = 3;
+    else if (bestFill && bestFill.empty && ((bestFill.core && bestFill.rank <= 3) || bestFill.rank === 1)) tier = 2;
+    else if (hasAlways || otherDuo) tier = 2;
+    else if ((bestFill && bestFill.empty) || roles.some((x) => x.startsWith('보조')) || (topList.length && topList[0].score >= W.GOD.OK_TOP)) tier = 1;
+    else tier = 0;
+    if (poolOver && !partnerDuo) tier = Math.max(0, tier - 1);   // 3신 베이스 + 기념품 4번째가 정석(dc51882). 풀 밖 신은 한 단계 내린다
+    const GRADES = ['pass', 'ok', 'good', 'must'];
+    const GRADE_KO = { must: '필수', good: '좋음', ok: '보통', pass: '패스' };
+    const grade = GRADES[tier];
+
     let reason;
-    if (partnerDuo) reason = `'${partnerDuo.name_ko}' 마지막 조건을 채울 수 있음`;
+    if (grade === 'pass') reason = poolOver ? '풀 밖 신인데 채울 핵심 칸도 융합도 없음 — 석류·재화 쪽이 낫습니다' : '지금 빌드에 맞는 칸이 없음 — 석류·재화 쪽이 낫습니다';
+    else if (partnerDuo) reason = `'${partnerDuo.name_ko}' 마지막 조건을 채울 수 있음`;
+    else if (otherDuo && !(bestFill && bestFill.empty && bestFill.core)) reason = `'${otherDuo.name_ko}' 마지막 조건을 채울 수 있음 (목표 외 융합)`;
     else if (topList.length && main) {
       const t = boonById.get(topList[0].id);
       const prefs = (main.slot_prefs || {})[t && t.slot] || [];
@@ -435,12 +481,16 @@ function createEngine(data, W) {
     } else if (firstInfo) reason = `첫 신으로 무난 (${firstInfo.count}개 방향 열림: ${firstInfo.names.join(', ')})`;
     else reason = '무난함';
 
-    return { id: godId, score: round(score), reason, warnings, badges, breakdown: bd, _replacing: false };
+    return { id: godId, score: round(score), reason, warnings, badges, breakdown: bd, grade, grade_ko: GRADE_KO[grade], roles, _replacing: false };
   }
 
   function recommendGods(state, offeredGodIds) {
     const ctx = directionWeights(state);
-    return ranked((offeredGodIds || []).map((g) => scoreGodEntry(state, g, ctx)));
+    const rows = ranked((offeredGodIds || []).map((g) => scoreGodEntry(state, g, ctx)));
+    // 5-A: 점수 차 < TIE_GAP이면 같은 군(tie). 첫 신은 상위 4~5신이 2점 이내라 1·2·3위를 매기면 없는 정보를 있는 것처럼 보인다
+    let g = 0;
+    rows.forEach((x, i) => { if (i > 0 && Number.isFinite(x.score) && Number.isFinite(rows[i - 1].score) && rows[i - 1].score - x.score >= W.GOD.TIE_GAP) g++; x.tie = g; });
+    return rows;
   }
 
   function recommendHammers(state, offeredIds) {
@@ -533,7 +583,7 @@ function createEngine(data, W) {
   }
   function recommendArcana(weapon, aspect, graspCap) {
     const cap = Math.max(0, graspCap ?? builds.arcana_beginner_set.grasp);
-    const state = { weapon, aspect, region: 1, boons: [], hammers: [], gods_seen: [], hp_state: 'mid' };
+    const state = { weapon, aspect, region: 1, boons: [], hammers: [], gods_seen: [] };
     const { all } = directionWeights(state);
     const dirs = all.filter((x) => Number.isFinite(x.F)).map((x) => x.d);
     const set = builds.arcana_beginner_set;
@@ -607,21 +657,46 @@ function createEngine(data, W) {
     const graspCap = o.graspCap ?? builds.arcana_beginner_set.grasp;
     const owned = o.ownedKeepsakes || null;
     const arc = recommendArcana(weapon, aspect, graspCap);
-    const state = { weapon, aspect, region: 1, boons: [], hammers: [], gods_seen: [], hp_state: 'mid' };
+    const state = { weapon, aspect, region: 1, boons: [], hammers: [], gods_seen: [] };
     const { all } = directionWeights(state);
+    // 5-D (2026-09-16): 방향별 '주요 신' — 첫 기념품을 고르는 근거. 실플레이 5런에서 기념품 사용 0회·융합 2개가 나온 직접 원인
+    const mainGodsOf = (d) => {
+      const acc = new Map();
+      const add = (g, v) => { if (!W.NON_POOL_GODS.includes(g)) acc.set(g, (acc.get(g) || 0) + v); };
+      for (const [slot, prefs] of Object.entries(d.slot_prefs || {})) {
+        const tbl = (d.core_slots || []).includes(slot) ? W.GOD.MAIN_CORE : W.GOD.MAIN_OTHER;
+        prefs.forEach((id, i) => { const b = boonById.get(id); if (b) add(b.god, rankVal(tbl, i)); });
+      }
+      (d.support_boons || []).forEach((id, i) => { const b = boonById.get(id); if (b) add(b.god, rankVal(W.GOD.MAIN_SUPPORT, i)); });
+      return [...acc.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3).map(([g, v]) => ({ id: g, name_ko: nameOf(g), v: round(v) }));
+    };
+    const dirs = all.filter((x) => Number.isFinite(x.F));
+    let firstKeepsake = null;
+    if (dirs.length) {
+      const top = dirs[0].d;
+      for (const g of mainGodsOf(top)) {
+        const k = keepsakeByGod.get(g.id);
+        if (!k || (owned && !owned.includes(k.id))) continue;
+        firstKeepsake = { id: k.id, name_ko: k.name_ko, god: g.id, god_ko: g.name_ko, effect: k.effect, giver_ko: k.giver_ko,
+          reason: `추천 빌드 '${top.name_ko}'의 주요 신 ${g.name_ko} — 1지역부터 등장 확정` };
+        break;
+      }
+    }
     return {
       weapon, aspect,
       arcana: arc,
+      first_keepsake: firstKeepsake,
       keepsakes: (builds.keepsake_plan.region1 || []).filter((k) => !owned || owned.includes(k)).map((id) => { const k = keepsakeById.get(id); return { id, name_ko: k.name_ko, effect: k.effect, giver_ko: k.giver_ko }; }),
       hexes: (builds.hex_beginner || []).map((id) => ({ id, name_ko: nameOf(id), effect: hexById.get(id).effect, mana: hexById.get(id).mana_to_charge, giver_ko: '셀레네' })),
-      directions: all.filter((x) => Number.isFinite(x.F)).map((x) => ({
+      directions: dirs.map((x) => ({
         id: x.d.id, name_ko: x.d.name_ko, difficulty: x.d.difficulty, F: round(x.F), summary: x.d.summary,
+        main_gods: mainGodsOf(x.d),
         core_slots: (x.d.core_slots || []).map((s) => SLOT_KO[s]),
         first_picks: (x.d.core_slots || []).map((s) => { const p = ((x.d.slot_prefs || {})[s] || [])[0]; return p ? `${SLOT_KO[s]}: ${nameOf(p)}` : null; }).filter(Boolean),
         target_duos: (x.d.target_duos || []).slice(0, 2).map((id) => nameOf(id)),
         key_hammers: (x.d.hammers || []).slice(0, 2).map((id) => nameOf(id)),
       })),
-      note: '첫 신이 뜨기 전에는 방향을 고정하지 않습니다.',
+      note: '첫 신이 뜨기 전에는 빌드를 고정하지 않습니다. 주요 신의 기념품을 들면 그 빌드가 열립니다.',
     };
   }
 
@@ -653,9 +728,6 @@ function createEngine(data, W) {
     if ((state.region || 1) >= 4) {
       const k = (builds.keepsake_plan.boss_region || [])[0];
       if (k) return { id: k, name_ko: nameOf(k), reason: '보스 지역 — 수호자 대상 효과' };
-    }
-    if (state.hp_state === 'low') {
-      for (const k of ['luckier_tooth', 'ghost_onion']) if (keepsakeById.get(k)) return { id: k, name_ko: nameOf(k), reason: '체력이 낮음 — 생존 우선' };
     }
     return { id: state.keepsake || null, name_ko: state.keepsake ? nameOf(state.keepsake) : null, reason: '현재 유지' };
   }
