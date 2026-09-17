@@ -391,11 +391,13 @@ function createEngine(data, W) {
     bd.top = round(score);
 
     // 융합 마지막 조건 파트너
-    let partner = 0; let partnerDuo = null; let otherDuo = null;
+    let partner = 0; let partnerDuo = null; let otherDuo = null; const readyDuos = [];
     const targets = new Set([...((main && main.target_duos) || []), ...((backup && backup.target_duos) || [])]);
     // 목표 융합이면 점수+등급 '필수'. 목표가 아니어도 상대 신이 이미 풀에 있어 완성 가능한 융합이면 등급 '좋음'까지 (점수는 그대로)
     for (const D of openDuos(dv.owned)) {
       const unmet = unmetGroups(D, dv.owned);
+      // 5-G E: 조건이 다 찼는데 아직 안 뜬 융합은 그 두 신의 문에서만 나온다. 런6에서 제우스 문에 S·A급이 대기 중인데 '보통'이었다
+      if (unmet.length === 0) { if ((D.gods || []).includes(godId)) readyDuos.push(D); continue; }
       if (unmet.length !== 1) continue;
       // ISSUES [P3] 허수 제거: 칸을 차지하는 은혜로 채우려면 그 칸이 비어 있거나, 밀려나는 은혜가 이 융합의 다른 조건이 아니어야 한다
       const fillOK = (bb) => {
@@ -410,6 +412,16 @@ function createEngine(data, W) {
       else if (!otherDuo && (D.gods || []).every((g) => g === godId || (state.gods_seen || []).includes(g))) otherDuo = D;
     }
     if (partner) { score += partner; bd.duo_partner = partner; }
+    const TIER_ORD = { S: 3, A: 2, B: 1 };
+    readyDuos.sort((a, b) => (TIER_ORD[b.power_tier] || 0) - (TIER_ORD[a.power_tier] || 0));
+    if (readyDuos.length) { const v = W.GOD.DUO_READY + (readyDuos[0].power_tier === 'S' ? W.GOD.DUO_READY_S : 0); score += v; bd.duo_ready = v; }
+    // 5-G C: 전설 진행도. 전설도 그 신의 문에서만 뜬다
+    const legB = (boonsByGod.get(godId) || []).find((b) => b.slot === 'legendary');
+    let legMet = 0, legTotal = 0;
+    if (legB && legB.prereq && !dv.owned.has(legB.id)) { const gs = legB.prereq.all || []; legTotal = gs.length; legMet = gs.filter((g) => groupMet(g, dv.owned)).length; }
+    const legReady = legTotal > 0 && legMet === legTotal;
+    const legClose = legTotal > 0 && !legReady && legMet >= legTotal - 1 && legMet >= 1;
+    if (legReady) { score += W.GOD.LEG_READY; bd.leg_ready = W.GOD.LEG_READY; }
 
     if (!W.NON_POOL_GODS.includes(godId)) {
       if ((state.gods_seen || []).includes(godId)) { score += W.GOD.POOL_SEEN; bd.pool = W.GOD.POOL_SEEN; }
@@ -442,33 +454,44 @@ function createEngine(data, W) {
         const prefs = (main.slot_prefs || {})[b.slot] || [];
         const i = prefs.indexOf(b.id);
         if (i < 0) continue;
-        const cand = { slot: b.slot, rank: i + 1, core: (main.core_slots || []).includes(b.slot), empty: !dv.slotMap[b.slot] };
+        const cur = dv.slotMap[b.slot];
+        // 5-G B: 찬 칸은 현재 은혜보다 선호 순위가 높을 때만 '업그레이드'. 낮으면 역할·등급 어디에도 안 넣는다 (은혜 단계가 "나을 게 없음"으로 판정하는 교체)
+        if (cur) { const ci = prefs.indexOf(cur); const curRank = ci < 0 ? 99 : ci + 1; if (!(i + 1 < curRank)) continue; }
+        const cand = { slot: b.slot, rank: i + 1, core: (main.core_slots || []).includes(b.slot), empty: !cur, upgrade: !!cur, curName: cur ? nameOf(cur) : null };
         if (better(cand, bestFill)) bestFill = cand;
       }
-      const sup = pool.filter((b) => !b.occupies_slot && (main.support_boons || []).includes(b.id)).length;
+      // 5-G C: 보조는 메인뿐 아니라 보험 방향까지 — 런6 포세이돈 지하수 분출(보험 보조 2순위)이 0으로 세어져 '패스'가 됐다
+      const sup = pool.filter((b) => !b.occupies_slot && active.some((x) => ((x.d.support_boons) || []).includes(b.id))).length;
       if (sup) roles.push(`보조 ${sup}개`);
     }
     const hasAlways = pool.some((b) => (builds.always_take.boons || []).includes(b.id));
-    if (bestFill) roles.unshift(`${bestFill.core ? '핵심 ' : ''}${SLOT_KO[bestFill.slot]} ${bestFill.rank}순위${bestFill.empty ? '' : ' (교체)'}`);
+    if (bestFill) roles.unshift(bestFill.empty ? `${bestFill.core ? '핵심 ' : ''}${SLOT_KO[bestFill.slot]} ${bestFill.rank}순위`
+                                                : `${SLOT_KO[bestFill.slot]} 업그레이드 (${bestFill.curName} → ${bestFill.rank}순위)`);
+    if (legClose) roles.push(`전설 사정권 ${legMet}/${legTotal}`);
     if (partnerDuo) roles.unshift(`융합 파트너 · ${partnerDuo.name_ko}`);
     else if (otherDuo) roles.unshift(`융합 가능 · ${otherDuo.name_ko}`);
+    if (legReady) roles.unshift(`전설 대기 · ${legB.name_ko}`);
+    if (readyDuos.length) roles.unshift(`융합 대기 · ${readyDuos[0].name_ko}${readyDuos.length > 1 ? ` 외 ${readyDuos.length - 1}` : ''}`);
     if (hasAlways) roles.push('항상 이득');
     const poolOver = bd.pool === W.GOD.POOL_NEW_PENALTY;
     if (poolOver) roles.push('풀 밖 신');
     let tier;
-    if (partnerDuo || (bestFill && bestFill.empty && bestFill.core && bestFill.rank === 1)) tier = 3;
+    if (readyDuos.length || legReady || partnerDuo || (bestFill && bestFill.empty && bestFill.core && bestFill.rank === 1)) tier = 3;
     else if (bestFill && bestFill.empty && ((bestFill.core && bestFill.rank <= 3) || bestFill.rank === 1)) tier = 2;
-    else if (hasAlways || otherDuo) tier = 2;
+    else if ((bestFill && bestFill.upgrade) || legClose || hasAlways || otherDuo) tier = 2;
     else if ((bestFill && bestFill.empty) || roles.some((x) => x.startsWith('보조')) || (topList.length && topList[0].score >= W.GOD.OK_TOP)) tier = 1;
     else tier = 0;
-    if (poolOver && !partnerDuo) tier = Math.max(0, tier - 1);   // 3신 베이스 + 기념품 4번째가 정석(dc51882). 풀 밖 신은 한 단계 내린다
+    if (poolOver && !partnerDuo && !readyDuos.length && !legReady) tier = Math.max(0, tier - 1);   // 3신 베이스 + 기념품 4번째가 정석(dc51882). 풀 밖 신은 한 단계 내린다
     const GRADES = ['pass', 'ok', 'good', 'must'];
     const GRADE_KO = { must: '필수', good: '좋음', ok: '보통', pass: '패스' };
     const grade = GRADES[tier];
 
     let reason;
-    if (grade === 'pass') reason = poolOver ? '풀 밖 신인데 채울 핵심 칸도 융합도 없음 — 석류·재화 쪽이 낫습니다' : '지금 빌드에 맞는 칸이 없음 — 석류·재화 쪽이 낫습니다';
+    if (grade === 'pass') reason = (poolOver ? '풀 밖 신인데 채울 칸도 융합도 없음' : '지금 빌드에 맞는 칸이 없음') + ' — 석류·재화 문이 있으면 그쪽. 이 문뿐이면 들어가서 은혜를 보고 정한다';
+    else if (readyDuos.length) reason = `'${readyDuos[0].name_ko}'${readyDuos.length > 1 ? ` 외 ${readyDuos.length - 1}개` : ''} 조건 완성 — 이 문에서 뜰 수 있음`;
+    else if (legReady) reason = `전설 '${legB.name_ko}' 조건 완성 — 이 문에서 뜰 수 있음`;
     else if (partnerDuo) reason = `'${partnerDuo.name_ko}' 마지막 조건을 채울 수 있음`;
+    else if (legClose && !(bestFill && bestFill.empty && bestFill.core)) reason = `전설 '${legB.name_ko}' ${legMet}/${legTotal} — 이 신 은혜 하나면 사정권`;
     else if (otherDuo && !(bestFill && bestFill.empty && bestFill.core)) reason = `'${otherDuo.name_ko}' 마지막 조건을 채울 수 있음 (목표 외 융합)`;
     else if (topList.length && main) {
       const t = boonById.get(topList[0].id);
@@ -486,10 +509,14 @@ function createEngine(data, W) {
 
   function recommendGods(state, offeredGodIds) {
     const ctx = directionWeights(state);
-    const rows = ranked((offeredGodIds || []).map((g) => scoreGodEntry(state, g, ctx)));
-    // 5-A: 점수 차 < TIE_GAP이면 같은 군(tie). 첫 신은 상위 4~5신이 2점 이내라 1·2·3위를 매기면 없는 정보를 있는 것처럼 보인다
+    // 5-G A: 등급 우선, 같은 등급 안에서 점수순. 점수순이면 '필수'(위험 지대 마지막 조건, 3.3점)가 '패스'(3.6점) 아래로 내려갔다
+    const TIER_OF = { must: 3, good: 2, ok: 1, pass: 0 };
+    const list = (offeredGodIds || []).map((g) => scoreGodEntry(state, g, ctx));
+    list.sort((a, b) => ((TIER_OF[b.grade] ?? -1) - (TIER_OF[a.grade] ?? -1)) || compareEntries(a, b));
+    const rows = list.map((x, i) => ({ ...x, rank: i + 1 }));
+    // 5-A: 같은 등급이고 점수 차 < TIE_GAP이면 같은 군(tie). 등급이 바뀌면 새 군
     let g = 0;
-    rows.forEach((x, i) => { if (i > 0 && Number.isFinite(x.score) && Number.isFinite(rows[i - 1].score) && rows[i - 1].score - x.score >= W.GOD.TIE_GAP) g++; x.tie = g; });
+    rows.forEach((x, i) => { if (i > 0 && (x.grade !== rows[i - 1].grade || !(Number.isFinite(x.score) && Number.isFinite(rows[i - 1].score) && rows[i - 1].score - x.score < W.GOD.TIE_GAP))) g++; x.tie = g; });
     return rows;
   }
 

@@ -388,8 +388,9 @@ sc('S27', '첫 신은 동급으로 묶인다 — 지팡이', () => {
   const rows = E.recommendGods(st, ['zeus', 'hestia', 'poseidon', 'demeter', 'apollo', 'aphrodite', 'hephaestus', 'hera', 'ares']);
   const by = (id) => rows.find((r) => r.id === id);
   return { rows, extra: rows.map((r) => `${r.id}:${r.score}/${r.grade_ko}/군${r.tie}`).join(' '), checks: [
-    check('상위 3신이 같은 군', rows[0].tie === rows[1].tie && rows[1].tie === rows[2].tie, rows.slice(0, 3).map((r) => r.tie).join(',')),
+    check('상위 2신(필수)이 같은 군', rows[0].grade === 'must' && rows[1].grade === 'must' && rows[0].tie === rows[1].tie, rows.slice(0, 2).map((r) => r.id + ':' + r.grade + '/' + r.tie).join(',')),
     check('맨 아래 신은 다른 군', rows[rows.length - 1].tie > rows[0].tie, String(rows[rows.length - 1].tie)),
+    check('등급이 아래로 갈수록 내려가기만 한다 (등급 우선 정렬)', rows.every((r, i) => i === 0 || ({ must: 3, good: 2, ok: 1, pass: 0 })[r.grade] <= ({ must: 3, good: 2, ok: 1, pass: 0 })[rows[i - 1].grade]), rows.map((r) => r.grade).join('>')),
     check("헤스티아(핵심 기술 1순위) = 필수", by('hestia').grade === 'must', by('hestia').grade_ko + ' ' + by('hestia').roles.join(',')),
     check("데메테르(핵심 마법 1순위) = 필수", by('demeter').grade === 'must', by('demeter').grade_ko),
     check("제우스(비핵심 공격 1순위) = 좋음, 필수 아님", by('zeus').grade === 'good', by('zeus').grade_ko + ' ' + by('zeus').roles.join(',')),
@@ -406,6 +407,55 @@ sc('S28', '런 시작 — 추천 빌드마다 주요 신, 첫 기념품은 1위 
       check("기술 월광탄 주요 신 1위 = 헤스티아", d0.main_gods[0].id === 'hestia', d0.main_gods.map((g) => g.id).join('>')),
       check('첫 기념품 = 영원한 불씨(헤스티아)', r.first_keepsake && r.first_keepsake.id === 'everlasting_ember', String(r.first_keepsake && r.first_keepsake.id)),
     ] };
+});
+
+
+// ── 5-G 후반 문 선택 (2026-09-17, 런6 n=20 재현) ────────
+const RUN6 = () => S({ weapon: 'staff', aspect: 'staff_melinoe', region: 4,
+  boons: ['hestia_flame_flourish', 'demeter_frigid_rush', 'zeus_heaven_strike', 'poseidon_tidal_ring', 'demeter_steady_growth', 'hermes_nimble_limbs', 'hestia_cardio_gain', 'hermes_paid_dues'],
+  hammers: ['staff_shimmering_moonshot', 'staff_dual_moonshot'], gods_seen: ['hestia', 'demeter', 'zeus', 'poseidon', 'hermes'] });
+
+sc('S29', '조건이 다 찬 융합은 그 신의 문에서 뜬다 — 제우스·포세이돈이 필수', () => {
+  const rows = E.recommendGods(RUN6(), ['demeter', 'hermes', 'artemis', 'hestia', 'zeus', 'poseidon']);
+  const by = (id) => rows.find((r) => r.id === id);
+  return { rows, checks: [
+    check("제우스 = 필수 (불벼락 S·감전 급류 A 대기)", by('zeus').grade === 'must', by('zeus').grade_ko + ' ' + by('zeus').roles.join(',')),
+    check("제우스 역할에 '융합 대기 · 불벼락'", by('zeus').roles.some((x) => /융합 대기 · 불벼락/.test(x)), by('zeus').roles.join(',')),
+    check("제우스 이유에 '이 문에서 뜰 수 있음'", /이 문에서 뜰 수 있음/.test(by('zeus').reason), by('zeus').reason),
+    check("포세이돈 = 필수 (뜨거운 증기 S 대기) — 원래 '패스'였음", by('poseidon').grade === 'must', by('poseidon').grade_ko + ' ' + by('poseidon').roles.join(',')),
+    check("헤스티아 = 필수 (불벼락·뜨거운 증기 대기)", by('hestia').grade === 'must', by('hestia').grade_ko),
+    check('필수 3신이 헤르메스(좋음)보다 위', rows.findIndex((r) => r.id === 'hermes') > 2, rows.map((r) => r.id + ':' + r.grade_ko).join(' ')),
+  ] };
+});
+
+sc('S30', '역할 문구는 현재 칸과 비교한다 — 손해 교체는 안 보이고, 이득 교체는 업그레이드', () => {
+  const rows = E.recommendGods(RUN6(), ['zeus', 'aphrodite']);
+  const by = (id) => rows.find((r) => r.id === id);
+  return { rows, checks: [
+    check("제우스 역할에 '핵심 기술 2순위' 없음 (현재 화염 기예 1순위 → 손해)", !by('zeus').roles.some((x) => /기술/.test(x)), by('zeus').roles.join(',')),
+    check("아프로디테 역할에 '마법 업그레이드 (물결 고리 → 2순위)'", by('aphrodite').roles.some((x) => /마법 업그레이드 \(물결 고리 → 2순위\)/.test(x)), by('aphrodite').roles.join(',')),
+  ] };
+});
+
+sc('S31', '전설 진행도 — 2/3이면 사정권(좋음), 3/3이면 대기(필수)', () => {
+  const close = S({ weapon: 'staff', aspect: 'staff_melinoe', region: 3, boons: ['hestia_flame_flourish', 'hestia_pyro_technique', 'zeus_heaven_strike', 'demeter_arctic_ring', 'zeus_ionic_gain', 'apollo_blinding_rush'], gods_seen: ['hestia', 'zeus', 'demeter', 'apollo'] });
+  const r1 = E.recommendGods(close, ['hestia'])[0];
+  const ready = S({ weapon: 'staff', aspect: 'staff_melinoe', region: 3, boons: ['hestia_flame_flourish', 'hestia_pyro_technique', 'hestia_controlled_burn', 'zeus_heaven_strike', 'demeter_arctic_ring', 'zeus_ionic_gain', 'apollo_blinding_rush'], gods_seen: ['hestia', 'zeus', 'demeter', 'apollo'] });
+  const r2 = E.recommendGods(ready, ['hestia'])[0];
+  return { rows: [r1], rows2: [r2], checks: [
+    check("2/3: 역할에 '전설 사정권 2/3'", r1.roles.some((x) => /전설 사정권 2\/3/.test(x)), r1.roles.join(',')),
+    check('2/3: 등급 좋음 이상', r1.grade === 'good' || r1.grade === 'must', r1.grade_ko),
+    check("3/3: 역할에 '전설 대기 · 불길 장벽'", r2.roles.some((x) => /전설 대기 · 불길 장벽/.test(x)), r2.roles.join(',')),
+    check('3/3: 등급 필수', r2.grade === 'must', r2.grade_ko),
+  ] };
+});
+
+sc('S32', '패스 문구 — 문이 하나뿐일 때의 조언 포함', () => {
+  const r = E.recommendGods(S({ weapon: 'staff', aspect: 'staff_melinoe', boons: ['zeus_heaven_strike'], gods_seen: ['zeus'] }), ['dionysus'])[0];
+  return { rows: [r], checks: [
+    check("등급 '패스'", r.grade === 'pass', r.grade_ko),
+    check("이유에 '이 문뿐이면'", /이 문뿐이면/.test(r.reason), r.reason),
+  ] };
 });
 
 // ── 실행 ────────────────────────────────────────────────

@@ -177,3 +177,28 @@
 
 ## 2026-09-10 커뮤니티 검증 개정 요약
 `data/build_directions.json`을 나무위키·디시 뉴비 가이드 3편·Lee Reamsnyder 가이드와 대조해 방향을 고쳤다(`data/BUILD_DIRECTIONS.md` 참조). 영향받은 시나리오: S01(지팡이 1위 방향), S03/S18(제우스 첫 은혜 순위), S07(회피 해제), S10(requires_hammer 폐지), S12(상태 조정). 엔진 로직은 불변.
+
+---
+
+## 5-G 후반 문 선택 (2026-09-17) — S29~S32
+
+공통 given `RUN6`: 런6 n=20 실제 상태 — `staff_melinoe, region 4, boons [hestia_flame_flourish, demeter_frigid_rush, zeus_heaven_strike, poseidon_tidal_ring, demeter_steady_growth, hermes_nimble_limbs, hestia_cardio_gain, hermes_paid_dues], hammers [staff_shimmering_moonshot, staff_dual_moonshot], gods_seen [hestia, demeter, zeus, poseidon, hermes]` (5칸 전부 참).
+
+## S29. 조건이 다 찬 융합은 그 신의 문에서 뜬다
+- offered gods: `[demeter, hermes, artemis, hestia, zeus, poseidon]`
+- expect: 제우스·포세이돈·헤스티아 **필수**; 제우스 역할 `융합 대기 · 불벼락`, 이유 `이 문에서 뜰 수 있음`; 필수 3신이 헤르메스(좋음) 위
+- 배경: 실제 로그에서 제우스 5.6 '보통'(5위)·포세이돈 3.6 '패스'였고, 제우스 문에 들어가니 감전 급류 14점 최우선. 대기 중이던 융합 4개(불벼락 S·뜨거운 증기 S·감전 급류 A·자연 선택 A)를 신 단계가 하나도 못 봤음
+
+## S30. 역할 문구는 현재 칸과 비교한다
+- offered: `[zeus, aphrodite]` (RUN6)
+- expect: 제우스 역할에 `기술` 없음(현재 화염 기예 1순위 → 천상 기예 2순위는 손해); 아프로디테 역할 `마법 업그레이드 (물결 고리 → 2순위)`
+
+## S31. 전설 진행도
+- given-1: 헤스티아 화염 기예+완전 연소 (불길 장벽 2/3) → 역할 `전설 사정권 2/3`, 등급 좋음 이상
+- given-2: +화력 보강 (3/3) → 역할 `전설 대기 · 불길 장벽`, 등급 필수
+
+## S32. 패스 문구
+- 디오니소스 단독 제시 → 패스, 이유에 `이 문뿐이면` (문이 하나일 때 "다른 문이 낫다"는 조언이 안 되므로)
+
+## S27 개정
+- 등급 우선 정렬이므로 상위 2 = 필수(헤스티아·데메테르) 같은 군, 제우스(좋음)는 그 뒤. 등급이 아래로 갈수록 내려가기만 함
