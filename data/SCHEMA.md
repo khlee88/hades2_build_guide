@@ -305,6 +305,7 @@ ID는 영어 snake_case(불변 키), 표시용 이름은 `name_ko`(한글판 기
         "avoid_boons": [...], "avoid_reason": "...",
         "target_duos": [duo ids], "hammers": [hammer ids 순위], "requires_hammer": "id"(선택),
         "arcana": [...], "aspects": [aspect ids]
+        , "playstyle": { "loop", "key", "cast", "early", "late", "avoid", "sources" }   // 운용 가이드 6줄 (2026-09-17). cast는 "쓴다/안 쓴다/루프 어디서"를 명시
       }]
     }
   },

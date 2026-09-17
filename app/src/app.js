@@ -135,6 +135,21 @@
     return '<span class="badge b-' + esc(key) + '">' + esc(b) + '</span>';
   }
   function el(html) { var d = document.createElement('div'); d.innerHTML = html; return d.firstElementChild; }
+  // 운용 가이드. phase: 'early' | 'late' | null — 지금 단계를 강조 (홈에서 채운 칸 수로 판단)
+  var PS_ROWS = [['loop', '기본 루프'], ['key', '기억할 것'], ['cast', '마법진'], ['early', '초반 · 칸 2개 이하'], ['late', '완성 후'], ['avoid', '하지 말 것']];
+  function playstyleBox(dirId, weapon, phase, open) {
+    var d = ((DATA.builds.weapons[weapon] || {}).directions || []).find(function (x) { return x.id === dirId; });
+    var ps = d && d.playstyle; if (!ps) return null;
+    var det = el('<details class="ps"' + (open ? ' open' : '') + '><summary><span>운용법</span>' +
+      (phase ? '<span class="tagx">' + (phase === 'early' ? '지금은 초반' : '빌드 완성') + '</span>' : '') + '</summary></details>');
+    PS_ROWS.forEach(function (r) {
+      if (!ps[r[0]]) return;
+      var hot = phase && (r[0] === phase);
+      var dim = phase && ((r[0] === 'early' && phase === 'late') || (r[0] === 'late' && phase === 'early'));
+      det.appendChild(el('<div class="psrow' + (hot ? ' hot' : '') + (dim ? ' dimmed' : '') + '"><div class="lb">' + esc(r[1]) + '</div><div class="tx">' + esc(ps[r[0]]) + '</div></div>'));
+    });
+    return det;
+  }
   // ── 신·무기 심볼 (인라인 SVG, 24x24 viewBox) ─────────
   // f: 채움 경로 / s: 선 경로. 색은 currentColor라 신 색이 그대로 들어간다.
   var SYM = {
@@ -358,13 +373,16 @@
     root.appendChild(el('<h2>추천 빌드</h2>'));
     root.appendChild(el('<div class="wrap sm dim">' + esc(r.note) + '</div>'));
     r.directions.forEach(function (d) {
-      root.appendChild(el('<div class="card"><div class="row"><b>' + esc(d.name_ko) + '</b><span class="xs dim">★' + d.difficulty + '</span></div>' +
+      var dc = el('<div class="card"><div class="row"><b>' + esc(d.name_ko) + '</b><span class="xs dim">★' + d.difficulty + '</span></div>' +
         '<div class="sm dim" style="margin-top:4px">' + esc(d.summary) + '</div>' +
         '<div class="sm" style="margin-top:6px">주요 신: ' + d.main_gods.map(function (g, i) { return '<span style="color:' + (GC[g.id] || 'inherit') + ';font-weight:' + (i ? 400 : 700) + '">' + esc(g.name_ko) + '</span>'; }).join(' <span class="dim">›</span> ') + '</div>' +
         '<div class="xs dim" style="margin-top:4px">핵심 칸: ' + esc(d.core_slots.join(' · ')) + '</div>' +
         '<div class="xs dim">' + esc(d.first_picks.join(' / ')) + '</div>' +
         (d.target_duos.length ? '<div class="xs dim">노리는 융합: ' + esc(d.target_duos.join(', ')) + '</div>' : '') +
-        (d.key_hammers.length ? '<div class="xs dim">망치: ' + esc(d.key_hammers.join(', ')) + '</div>' : '') + '</div>'));
+        (d.key_hammers.length ? '<div class="xs dim">망치: ' + esc(d.key_hammers.join(', ')) + '</div>' : '') + '</div>');
+      var pb = playstyleBox(d.id, startSel.weapon, null, false);
+      if (pb) dc.appendChild(pb);
+      root.appendChild(dc);
     });
 
     var cta = el('<div class="cta"><button>이 무기로 시작</button></div>');
@@ -426,6 +444,12 @@
     });
     card.appendChild(sl);
 
+    if (ds.length) {
+      // 운용법 — 게임 중에 보는 게 진짜 용도. 채운 칸으로 초반/완성 후를 강조한다 (사용자: 초반에 완성 후 운용을 해서 죽음 저항을 다 씀)
+      var ns = filledSlots(st);
+      var psb = playstyleBox(ds[0].id, st.weapon, ns <= 2 ? 'early' : 'late', false);
+      if (psb) { psb.style.marginTop = '8px'; card.appendChild(psb); }
+    }
     if (ds.length) {
       var det = el('<details style="margin-top:8px"><summary class="sm dim">다음에 원하는 것 · 융합 진행도</summary></details>');
       var nw = ds[0].next_wants.slice(0, 3).map(function (x) { return x.slot_ko + ' ' + x.name_ko; }).join(' · ');
