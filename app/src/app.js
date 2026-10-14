@@ -299,8 +299,8 @@
     root.appendChild(el('<h2>양상</h2>'));
     var ch = el('<div class="chips"></div>');
     wp.aspects.forEach(function (a) {
-      // 6-C: 숨김 양상도 고를 수 있다 (사용자가 해금함). 표식만 남긴다
-      var b = el('<button class="chip" aria-pressed="' + (startSel.aspect === a.id) + '">' + esc(a.name_ko) + (a.hidden ? ' <span class="xs dim">★숨김</span>' : '') + '</button>');
+      // 6-C: 숨김 양상도 고를 수 있다. 표식도 두지 않는다 — 해금했으면 쓰고 안 했으면 안 쓰면 되는 것 (사용자, 2026-10-14)
+      var b = el('<button class="chip" aria-pressed="' + (startSel.aspect === a.id) + '">' + esc(a.name_ko) + '</button>');
       b.onclick = function () { startSel.aspect = a.id; rerenderStart(root, asSheet); };
       ch.appendChild(b);
     });
