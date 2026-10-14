@@ -1416,5 +1416,831 @@
    "wiki",
    "namu"
   ]
+ },
+ {
+  "id": "skull_bolstered_array",
+  "weapon": "skull",
+  "name_ko": "탄환 보충",
+  "name_en": "Bolstered Array",
+  "effect": "포환 +2발",
+  "rank2": "포환 +3발",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "skull_hel"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_fetching_array",
+  "weapon": "skull",
+  "name_ko": "탄환 회수",
+  "name_en": "Fetching Array",
+  "effect": "포환이 자동으로 100% 빠르게 돌아옴",
+  "rank2": "200% 빠르게",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "skull_hel"
+  ],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_melting_tackle",
+  "weapon": "skull",
+  "name_ko": "녹이는 돌입",
+  "name_en": "Melting Tackle",
+  "effect": "기술이 방어도에 +600 피해",
+  "rank2": null,
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "armor_break"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_wide_grin",
+  "weapon": "skull",
+  "name_ko": "일제 발사",
+  "name_en": "Wide Grin",
+  "effect": "공격 시 모든 포환을 한꺼번에 흩뿌림 (Ω 공격에도 적용 — 한 번 비용으로 전탄)",
+  "rank2": null,
+  "affects": [
+   "attack",
+   "omega_attack"
+  ],
+  "tags": [
+   "aoe",
+   "omega_attack"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "skull_hel"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_rapid_driver",
+  "weapon": "skull",
+  "name_ko": "고속 돌격",
+  "name_en": "Rapid Driver",
+  "effect": "기술 35% 빨라짐",
+  "rank2": "45%",
+  "affects": [
+   "special",
+   "omega_special"
+  ],
+  "tags": [
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_colossus_driver",
+  "weapon": "skull",
+  "name_ko": "굳건한 돌격",
+  "name_en": "Colossus Driver",
+  "effect": "기술 위력 +30%, 사용 중 받는 피해 -30%",
+  "rank2": "위력 +40%",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "special_power",
+   "armor"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_mega_driver",
+  "weapon": "skull",
+  "name_ko": "가공할 돌격",
+  "name_en": "Mega Driver",
+  "effect": "기술 피해 +50%, 돌격이 빨라짐",
+  "rank2": "+75%",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "special_power"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "skull_hel"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_twisting_crash",
+  "weapon": "skull",
+  "name_ko": "비트는 격돌",
+  "name_en": "Twisting Crash",
+  "effect": "Ω 기술 투사체가 바깥으로 날아간 뒤 안쪽으로 돌아옴",
+  "rank2": null,
+  "affects": [
+   "omega_special"
+  ],
+  "tags": [
+   "omega_special",
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_boosted_ignition",
+  "weapon": "skull",
+  "name_ko": "향상된 발화",
+  "name_en": "Boosted Ignition",
+  "effect": "돌진·기술 뒤 공격이 빨라지고 위력 +15",
+  "rank2": "+20",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power",
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "skull_hel"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_volatile_array",
+  "weapon": "skull",
+  "name_ko": "불안정 탄환",
+  "name_en": "Volatile Array",
+  "effect": "포환이 떨어지는 곳에 공격 피해의 50%",
+  "rank2": "75%",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "skull_hel"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_possessed_array",
+  "weapon": "skull",
+  "name_ko": "귀신 들린 탄환",
+  "name_en": "Possessed Array",
+  "effect": "포환을 회수하면 Ω 공격이 터지고 마력 25를 잃음",
+  "rank2": "마력 20",
+  "affects": [
+   "attack",
+   "omega_attack"
+  ],
+  "tags": [
+   "omega_attack"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "skull_hel"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_looming_ignition",
+  "weapon": "skull",
+  "name_ko": "유예된 발화",
+  "name_en": "Looming Ignition",
+  "effect": "공격이 발사 후 0.7초에 걸쳐 피해·폭발 범위 +50%",
+  "rank2": "+75%",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "aoe",
+   "attack_power"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "skull_hel"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_venerated_relic",
+  "weapon": "skull",
+  "name_ko": "숭배받는 유물",
+  "name_en": "Venerated Relic",
+  "effect": "발키리 상태 +3초 (그동안 Ω 기술 재사용 불가)",
+  "rank2": "+4초",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_speed"
+  ],
+  "aspect_only": "skull_hel",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_leering_glance",
+  "weapon": "skull",
+  "name_ko": "흘기는 눈길",
+  "name_en": "Leering Glance",
+  "effect": "공격이 +1번 튕기며 둘째 적에게 피해 +15%",
+  "rank2": "+25%",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "aoe"
+  ],
+  "aspect_only": "skull_hel",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_runic_driver",
+  "weapon": "skull",
+  "name_ko": "룬 가속",
+  "name_en": "Runic Driver",
+  "effect": "기술 탄속 증가, 맞힌 적 하나당 피해 +15%",
+  "rank2": "+25%",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "special_power"
+  ],
+  "aspect_only": "skull_hel",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_garmr_gaze",
+  "weapon": "skull",
+  "name_ko": "가름의 응시",
+  "name_en": "Garmr Gaze",
+  "effect": "공격이 25% 멀리 날아가고 피해 +25%",
+  "rank2": "+35%",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "range",
+   "attack_power"
+  ],
+  "aspect_only": "skull_hel",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "skull_helheim_charge",
+  "weapon": "skull",
+  "name_ko": "헬헤임 강습",
+  "name_en": "Helheim Charge",
+  "effect": "Ω 공격이 연속 +2번 발동",
+  "rank2": null,
+  "affects": [
+   "omega_attack"
+  ],
+  "tags": [
+   "omega_attack"
+  ],
+  "aspect_only": "skull_hel",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_melting_cross",
+  "weapon": "coat",
+  "name_ko": "녹이는 십자",
+  "name_en": "Melting Cross",
+  "effect": "공격이 방어도에 +250 피해 (돌진 공격 제외)",
+  "rank2": null,
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "armor_break"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_rapid_frame",
+  "weapon": "coat",
+  "name_ko": "고속 완갑",
+  "name_en": "Rapid Frame",
+  "effect": "공격 35% 빨라짐",
+  "rank2": "45%",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_reaper_frame",
+  "weapon": "coat",
+  "name_ko": "초토화 완갑",
+  "name_en": "Reaper Frame",
+  "effect": "공격 범위 확대, 위력 +10",
+  "rank2": "+15",
+  "affects": [
+   "attack"
+  ],
+  "tags": [
+   "attack_power",
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_siege_frame",
+  "weapon": "coat",
+  "name_ko": "공성 완갑",
+  "name_en": "Siege Frame",
+  "effect": "공격이 더 멀리 닿고 피해 +30% (Ω 공격 사거리도)",
+  "rank2": "나무위키 표기 +75% — 확인 필요",
+  "affects": [
+   "attack",
+   "omega_attack"
+  ],
+  "tags": [
+   "range"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_world_collider",
+  "weapon": "coat",
+  "name_ko": "천체 충돌",
+  "name_en": "World Collider",
+  "effect": "완전 충전한 Ω 공격 위력 +100",
+  "rank2": "+140",
+  "affects": [
+   "omega_attack"
+  ],
+  "tags": [
+   "omega_attack"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_exhaust_riser",
+  "weapon": "coat",
+  "name_ko": "분출 상승",
+  "name_en": "Exhaust Riser",
+  "effect": "돌진 공격 +3타 (총 6타)",
+  "rank2": null,
+  "affects": [
+   "dash"
+  ],
+  "tags": [
+   "on_hit"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "coat_shiva"
+  ],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_shimmering_rockets",
+  "weapon": "coat",
+  "name_ko": "탄성 로켓",
+  "name_en": "Shimmering Rockets",
+  "effect": "기술이 적에게 2번 더 튕김",
+  "rank2": "3번",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "aoe"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "coat_shiva"
+  ],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_furious_rockets",
+  "weapon": "coat",
+  "name_ko": "거센 로켓",
+  "name_en": "Furious Rockets",
+  "effect": "기술 발사·비행 80% 빨라짐",
+  "rank2": null,
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "attack_speed"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "coat_shiva"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_launcher_frame",
+  "weapon": "coat",
+  "name_ko": "발사 완갑",
+  "name_en": "Launcher Frame",
+  "effect": "공격 적중 시 25% 확률로 기술 자동 발사 (돌진 공격 포함)",
+  "rank2": "35%",
+  "affects": [
+   "attack",
+   "special"
+  ],
+  "tags": [
+   "on_hit"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "coat_shiva"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_counter_barrage",
+  "weapon": "coat",
+  "name_ko": "반격 세례",
+  "name_en": "Counter Barrage",
+  "effect": "Ω 공격으로 방어하면 기술 5발 자동 발사 (3초 재장전)",
+  "rank2": null,
+  "affects": [
+   "omega_attack",
+   "special"
+  ],
+  "tags": [
+   "omega_attack"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "coat_shiva"
+  ],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_sudden_salvo",
+  "weapon": "coat",
+  "name_ko": "급속 포화",
+  "name_en": "Sudden Salvo",
+  "effect": "Ω 기술 록온이 빨라지고 마력 -20%",
+  "rank2": "-30%",
+  "affects": [
+   "omega_special"
+  ],
+  "tags": [
+   "mana_cost_down"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "coat_shiva"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_ripper_rockets",
+  "weapon": "coat",
+  "name_ko": "작렬 로켓",
+  "name_en": "Ripper Rockets",
+  "effect": "같은 적에게 연속 적중하는 기술 5발까지 위력 +5씩",
+  "rank2": "+8씩",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "special_power",
+   "boss_dmg"
+  ],
+  "aspect_only": null,
+  "aspect_excluded": [
+   "coat_shiva"
+  ],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_elephant_rockets",
+  "weapon": "coat",
+  "name_ko": "코끼리 로켓",
+  "name_en": "Elephant Rockets",
+  "effect": "기술이 직선으로 날아가고 위력 +30",
+  "rank2": "+45",
+  "affects": [
+   "special"
+  ],
+  "tags": [
+   "special_power"
+  ],
+  "aspect_only": "coat_shiva",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_counter_supreme",
+  "weapon": "coat",
+  "name_ko": "파괴적 반격",
+  "name_en": "Counter Supreme",
+  "effect": "Ω 공격으로 방어하면 파괴력 최대 +3",
+  "rank2": "+4",
+  "affects": [
+   "omega_attack"
+  ],
+  "tags": [
+   "omega_attack"
+  ],
+  "aspect_only": "coat_shiva",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 1,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_awakened_rockets",
+  "weapon": "coat",
+  "name_ko": "각성한 로켓",
+  "name_en": "Awakened Rockets",
+  "effect": "Ω 기술 폭발을 흡수하면 기술 폭발도 일어나지만 마력 10을 잃음",
+  "rank2": "마력 6",
+  "affects": [
+   "omega_special"
+  ],
+  "tags": [
+   "aoe"
+  ],
+  "aspect_only": "coat_shiva",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_mooncrest_riser",
+  "weapon": "coat",
+  "name_ko": "달맞이 상승",
+  "name_en": "Mooncrest Riser",
+  "effect": "돌진 공격 피해 +40%, 범위 확대",
+  "rank2": "+60%",
+  "affects": [
+   "dash"
+  ],
+  "tags": [
+   "aoe"
+  ],
+  "aspect_only": "coat_shiva",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 3,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
+ },
+ {
+  "id": "coat_chakra_collider",
+  "weapon": "coat",
+  "name_ko": "차크라 충돌",
+  "name_en": "Chakra Collider",
+  "effect": "Ω 공격을 정조준할 수 있고, 성공 시 피해 +150%",
+  "rank2": "+225%",
+  "affects": [
+   "omega_attack"
+  ],
+  "tags": [
+   "omega_attack"
+  ],
+  "aspect_only": "coat_shiva",
+  "aspect_excluded": [],
+  "conflicts": [],
+  "beginner_priority": 2,
+  "verified": true,
+  "source": [
+   "wiki",
+   "namu"
+  ]
  }
 ]

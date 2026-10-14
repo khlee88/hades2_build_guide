@@ -379,31 +379,198 @@
   "name_ko": "은백색 해골",
   "name_en": "Argent Skull (Revaal)",
   "unlock_order": 5,
-  "moveset": {},
-  "core_slots": [],
-  "aspects": [],
+  "moveset": {
+   "attack": "포환 투척 40 — 첫 적에게 범위 피해. 포환 4발로 시작, 던진 포환은 기술(돌진)로 회수하거나 가까이 가서 줍는다(자동 귀환은 매우 느림). Ω 공격은 마력 10으로 지정 지점에 포환을 던져 150",
+   "special": "전방 돌진 45 + 경로의 포환 회수. **무적 없음**. Ω 기술은 마력 20으로 더 멀리 돌진하며 좌우로 투사체 100×4 — **돌진 중 무적**",
+   "cast": "기본 마법진"
+  },
+  "core_slots": [
+   "attack",
+   "special"
+  ],
+  "aspects": [
+   {
+    "id": "skull_melinoe",
+    "name_ko": "멜리노에 양상",
+    "name_en": "Aspect of Melinoë",
+    "unlocked_by_default": true,
+    "effect": "회수하지 않은 포환 하나당 공격 위력 증가 (+3~+12, 6랭크 +21)",
+    "favors": [
+     "attack",
+     "attack_power"
+    ],
+    "favored_gods": [
+     "aphrodite",
+     "apollo",
+     "hera",
+     "hephaestus"
+    ],
+    "beginner_rank": 2
+   },
+   {
+    "id": "skull_medea",
+    "name_ko": "메데이아 양상",
+    "name_en": "Aspect of Medea",
+    "unlocked_by_default": false,
+    "effect": "일반 공격이 곁에 머물다 기술 적중 또는 3초 후 크게 폭발. 일반 공격·기술 피해 +30~90% (6랭크 +135%)",
+    "favors": [
+     "attack",
+     "special",
+     "pct_dmg"
+    ],
+    "favored_gods": [
+     "zeus",
+     "ares",
+     "hephaestus",
+     "hera"
+    ],
+    "beginner_rank": 2
+   },
+   {
+    "id": "skull_persephone",
+    "name_ko": "페르세포네 양상",
+    "name_en": "Aspect of Persephone",
+    "unlocked_by_default": false,
+    "effect": "Ω 기술이 발아 — 올림포스 신의 피해 효과로 게이지가 차면 다음 Ω 기술 최대 +2초, 방향 조절 가능, 사용 중 무적. 받는 은혜 레벨 무작위 상승(최대 +2~+6, 6랭크 +9)",
+    "favors": [
+     "omega_special",
+     "boon_level"
+    ],
+    "favored_gods": [
+     "hephaestus",
+     "aphrodite",
+     "demeter",
+     "hestia"
+    ],
+    "beginner_rank": 1
+   },
+   {
+    "id": "skull_hel",
+    "name_ko": "헬 양상",
+    "name_en": "Aspect of Hel",
+    "unlocked_by_default": false,
+    "hidden": true,
+    "effect": "서리 앉은 장발 — 공격이 포환 없이 3연사, 기술이 적 추적. Ω 기술 후 3초간 발키리(공격 끊김 없는 연사, Ω 불가). 발키리 공속 +5~+35%",
+    "favors": [
+     "attack_speed",
+     "per_hit",
+     "omega_special"
+    ],
+    "favored_gods": [
+     "hestia",
+     "zeus",
+     "poseidon",
+     "hera"
+    ],
+    "beginner_rank": 3
+   }
+  ],
   "verified": true,
   "source": [
    "wiki",
-   "namu"
+   "namu",
+   "lee"
   ],
-  "notes": "초반 4무기 범위 밖 - 추후 확장용 예약",
-  "alias_ko": "심판관 레바알"
+  "alias_ko": "심판관 레바알",
+  "style": "원거리 범위 투척. 공격으로 포환을 던지고 기술(돌진)로 회수하는 루프가 전부 — 멀리서 던지기만 하면 탄이 떨어져 화력이 안 나온다. Ω 공격은 싸고(마력 10) 광역, Ω 기술은 무적 이동기",
+  "beginner_note": "기술 돌진은 무적이 없다(Ω 기술만 무적). 탄환 회수·일제 발사·귀신 들린 탄환 망치가 판을 바꾼다. 페르세포네 양상이 첫 클리어용으로 무난"
  },
  {
   "id": "coat",
   "name_ko": "검은빛 외투",
-  "name_en": "Black Coat (Xsanth)",
+  "name_en": "Black Coat (Xinth)",
   "unlock_order": 6,
-  "moveset": {},
-  "core_slots": [],
-  "aspects": [],
+  "moveset": {
+   "attack": "주먹 2연타 40-40, 넉백. 돌진 공격 15×3. Ω 공격은 마력 1~30을 충전하는 동안 **정면 방어막(투사체 삭제, 대부분의 공격 방어)** → 놓으면 30~300 폭발. 장판·확장 고리류는 못 막는다",
+   "special": "유도 미사일 2발 30×2 — 공격과 동시에 쓸 수 있다. Ω 기술은 마력 5~15로 록온해 미사일 1~6발(발당 40), 충전 중 돌진 불가. 날아가는 중에 다시 록온하면 앞 미사일이 사라진다",
+   "cast": "기본 마법진"
+  },
+  "core_slots": [
+   "attack",
+   "special"
+  ],
+  "aspects": [
+   {
+    "id": "coat_melinoe",
+    "name_ko": "멜리노에 양상",
+    "name_en": "Aspect of Melinoë",
+    "unlocked_by_default": true,
+    "effect": "공격·질주·이동 속도 증가 (+5~+20%, 6랭크 +35%)",
+    "favors": [
+     "attack_speed",
+     "per_hit"
+    ],
+    "favored_gods": [
+     "zeus",
+     "poseidon",
+     "hestia",
+     "hera"
+    ],
+    "beginner_rank": 2
+   },
+   {
+    "id": "coat_selene",
+    "name_ko": "셀레네 양상",
+    "name_en": "Aspect of Selene",
+    "unlocked_by_default": false,
+    "effect": "전용 비술 천상 붕괴 즉시 습득 — 달빛을 떨어뜨려 피해 + 8초 달빛 저주(Ω 행동 추가 피해). 비술 발동 마력 100→40",
+    "favors": [
+     "hex",
+     "omega"
+    ],
+    "favored_gods": [
+     "ares",
+     "hera",
+     "zeus"
+    ],
+    "beginner_rank": 4
+   },
+   {
+    "id": "coat_nyx",
+    "name_ko": "닉스 양상",
+    "name_en": "Aspect of Nyx",
+    "unlocked_by_default": false,
+    "effect": "Ω 추진 — 질주를 길게 눌러 마력 30, 충돌 시 범위 피해 250(150) 후 5초 잔영: 공격·기술이 2갈래로 나뉘어 추가 피해(15~75%, 6랭크 105%)",
+    "favors": [
+     "sprint",
+     "per_hit"
+    ],
+    "favored_gods": [
+     "hestia",
+     "poseidon",
+     "zeus",
+     "ares"
+    ],
+    "beginner_rank": 3
+   },
+   {
+    "id": "coat_shiva",
+    "name_ko": "시바 양상",
+    "name_en": "Aspect of Shiva",
+    "unlocked_by_default": false,
+    "hidden": true,
+    "effect": "정화의 은총 — Ω 공격이 돌격, 기술이 튕기는 수류탄. Ω 기술 폭발(3회)을 몸으로 흡수하면 파괴력 중첩(최대 2~6, 6랭크 8) → Ω 공격 시 중첩당 +50% 후 소모",
+    "favors": [
+     "omega_attack",
+     "omega_special"
+    ],
+    "favored_gods": [
+     "apollo",
+     "demeter",
+     "hera",
+     "ares"
+    ],
+    "beginner_rank": 4
+   }
+  ],
   "verified": true,
   "source": [
    "wiki",
-   "namu"
+   "namu",
+   "lee"
   ],
-  "notes": "초반 4무기 범위 밖 - 추후 확장용 예약",
-  "alias_ko": "크신스"
+  "alias_ko": "크신스",
+  "style": "근접 주먹 + 유도 미사일 혼합. 기술 → 공격 → 공격 반복 — 공격이 기술 후딜을 취소한다. Ω 공격 충전 = 정면 방어(크로노스 낫·돌진도 막는다)",
+  "beginner_note": "마력 소모가 커서 마력 회복 은혜 필수. 돌진 공격이 3타라 포세이돈·헤스티아·정전기 충격과 궁합. 양상 평가가 크게 갈린다(닉스·시바 > 멜리노에 > 셀레네)"
  }
 ]

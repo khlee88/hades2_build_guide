@@ -149,7 +149,7 @@ for (const h of hammers) {
   }
 }
 // 초반 4무기는 각각 망치가 있어야 함
-for (const w of weapons.filter((x) => x.unlock_order <= 4)) {
+for (const w of weapons.filter((x) => x.unlock_order <= 6)) {  // 6-A: 해골·외투 포함
   const n = hammers.filter((h) => h.weapon === w.id).length;
   if (n === 0) err(`[커버리지] ${w.id}에 망치 업그레이드 없음`);
   else if (n < 10) warn(`[망치 부족] ${w.id}: ${n}개`);
