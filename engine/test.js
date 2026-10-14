@@ -415,16 +415,16 @@ const RUN6 = () => S({ weapon: 'staff', aspect: 'staff_melinoe', region: 4,
   boons: ['hestia_flame_flourish', 'demeter_frigid_rush', 'zeus_heaven_strike', 'poseidon_tidal_ring', 'demeter_steady_growth', 'hermes_nimble_limbs', 'hestia_cardio_gain', 'hermes_paid_dues'],
   hammers: ['staff_shimmering_moonshot', 'staff_dual_moonshot'], gods_seen: ['hestia', 'demeter', 'zeus', 'poseidon', 'hermes'] });
 
-sc('S29', '조건이 다 찬 융합은 그 신의 문에서 뜬다 — 제우스·포세이돈이 필수', () => {
+sc('S29', '조건이 다 찬 융합은 그 신의 문에서 뜬다 — 제우스·포세이돈이 좋음 (7-A: 실측 23%라 필수 아님)', () => {
   const rows = E.recommendGods(RUN6(), ['demeter', 'hermes', 'artemis', 'hestia', 'zeus', 'poseidon']);
   const by = (id) => rows.find((r) => r.id === id);
   return { rows, checks: [
-    check("제우스 = 필수 (불벼락 S·감전 급류 A 대기)", by('zeus').grade === 'must', by('zeus').grade_ko + ' ' + by('zeus').roles.join(',')),
+    check("제우스 = 좋음 (불벼락 S·감전 급류 A 대기 — 7-A: 뜰 확률 약 1/4라 필수는 아님)", by('zeus').grade === 'good', by('zeus').grade_ko + ' ' + by('zeus').roles.join(',')),
     check("제우스 역할에 '융합 대기 · 불벼락'", by('zeus').roles.some((x) => /융합 대기 · 불벼락/.test(x)), by('zeus').roles.join(',')),
-    check("제우스 이유에 '이 문에서 뜰 수 있음'", /이 문에서 뜰 수 있음/.test(by('zeus').reason), by('zeus').reason),
-    check("포세이돈 = 필수 (뜨거운 증기 S 대기) — 원래 '패스'였음", by('poseidon').grade === 'must', by('poseidon').grade_ko + ' ' + by('poseidon').roles.join(',')),
-    check("헤스티아 = 필수 (불벼락·뜨거운 증기 대기)", by('hestia').grade === 'must', by('hestia').grade_ko),
-    check('필수 3신이 헤르메스(좋음)보다 위', rows.findIndex((r) => r.id === 'hermes') > 2, rows.map((r) => r.id + ':' + r.grade_ko).join(' ')),
+    check("제우스 이유에 '이 문에서 뜰 수 있음 (실측 약 1/4)'", /이 문에서 뜰 수 있음 \(실측 약 1\/4\)/.test(by('zeus').reason), by('zeus').reason),
+    check("포세이돈 = 좋음 (뜨거운 증기 S 대기) — 원래 '패스'였음", by('poseidon').grade === 'good', by('poseidon').grade_ko + ' ' + by('poseidon').roles.join(',')),
+    check("헤스티아 = 좋음 (불벼락·뜨거운 증기 대기)", by('hestia').grade === 'good', by('hestia').grade_ko),
+    check('대기 융합 3신(좋음)이 아르테미스(좋음·항상 이득)보다 위 — 데메테르는 파트너라 필수로 맨 위', ['hestia', 'zeus', 'poseidon'].every((g) => rows.findIndex((r) => r.id === g) < rows.findIndex((r) => r.id === 'artemis')) && rows[0].id === 'demeter', rows.map((r) => r.id + ':' + r.grade_ko).join(' ')),
   ] };
 });
 
@@ -437,7 +437,7 @@ sc('S30', '역할 문구는 현재 칸과 비교한다 — 손해 교체는 안 
   ] };
 });
 
-sc('S31', '전설 진행도 — 2/3이면 사정권(좋음), 3/3이면 대기(필수)', () => {
+sc('S31', '전설 진행도 — 2/3이면 사정권(좋음), 3/3이면 대기(좋음, 7-A)', () => {
   const close = S({ weapon: 'staff', aspect: 'staff_melinoe', region: 3, boons: ['hestia_flame_flourish', 'hestia_pyro_technique', 'zeus_heaven_strike', 'demeter_arctic_ring', 'zeus_ionic_gain', 'apollo_blinding_rush'], gods_seen: ['hestia', 'zeus', 'demeter', 'apollo'] });
   const r1 = E.recommendGods(close, ['hestia'])[0];
   const ready = S({ weapon: 'staff', aspect: 'staff_melinoe', region: 3, boons: ['hestia_flame_flourish', 'hestia_pyro_technique', 'hestia_controlled_burn', 'zeus_heaven_strike', 'demeter_arctic_ring', 'zeus_ionic_gain', 'apollo_blinding_rush'], gods_seen: ['hestia', 'zeus', 'demeter', 'apollo'] });
@@ -446,7 +446,8 @@ sc('S31', '전설 진행도 — 2/3이면 사정권(좋음), 3/3이면 대기(�
     check("2/3: 역할에 '전설 사정권 2/3'", r1.roles.some((x) => /전설 사정권 2\/3/.test(x)), r1.roles.join(',')),
     check('2/3: 등급 좋음 이상', r1.grade === 'good' || r1.grade === 'must', r1.grade_ko),
     check("3/3: 역할에 '전설 대기 · 불길 장벽'", r2.roles.some((x) => /전설 대기 · 불길 장벽/.test(x)), r2.roles.join(',')),
-    check('3/3: 등급 필수', r2.grade === 'must', r2.grade_ko),
+    check('3/3: 등급 좋음 (7-A: 전설도 그 문에서 뜰 확률일 뿐)', r2.grade === 'good', r2.grade_ko),
+    check('3/3 점수 > 2/3 점수', r2.score > r1.score, r2.score + ' vs ' + r1.score),
   ] };
 });
 
@@ -513,6 +514,47 @@ sc('S37', 'avoid_hammers — 모리안 쌍검에서 춤추는 단검은 비추 (
     check(...a.rankOf('blades_dancing_knives', 3)),
     check(...a.reasonHas('blades_dancing_knives', '비추')),
     check(...a.rankOf('blades_wicked_onslaught', 1)),
+  ] };
+});
+
+
+// ── 7단계 로그 보정 (2026-10-14) ────────────────────────
+sc('S38', '4번째 신은 풀 안 — 감점·강등 없이 역할 "마지막 새 신". 5번째만 풀 밖 (런 261013 n=11 재현)', () => {
+  const three = S({ weapon: 'flames', aspect: 'flames_melinoe', region: 2, boons: ['zeus_ionic_gain', 'aphrodite_rapture_ring', 'hephaestus_volcanic_flourish'], hammers: ['flames_sudden_burst'], gods_seen: ['zeus', 'aphrodite', 'hephaestus'] });
+  const r4 = E.recommendGods(three, ['hephaestus', 'poseidon']);
+  const p4 = r4.find((r) => r.id === 'poseidon');
+  const four = S({ ...three, boons: [...three.boons, 'poseidon_breaker_rush'], gods_seen: [...three.gods_seen, 'poseidon'] });
+  const r5 = E.recommendGods(four, ['demeter'])[0];
+  return { rows: r4, rows2: [r5], checks: [
+    check('4번째 신(포세이돈)에 풀 감점 없음', p4.breakdown.pool === undefined && !p4.badges.includes('새 신'), JSON.stringify(p4.breakdown) + ' ' + p4.badges.join(',')),
+    check("4번째 신 역할에 '마지막 새 신'", p4.roles.includes('마지막 새 신'), p4.roles.join(',')),
+    check("4번째 신 등급 '패스' 아님 (빈 공격 칸을 파도 일격으로 채움)", p4.grade !== 'pass', p4.grade_ko + ' ' + p4.roles.join(',')),
+    check("이유에 '4번째 신' 안내", /4번째 신/.test(p4.reason), p4.reason),
+    check("5번째 신(데메테르)은 -4 · '풀 밖 신'", r5.breakdown.pool === W.GOD.POOL_NEW_PENALTY && r5.roles.includes('풀 밖 신'), JSON.stringify(r5.breakdown) + ' ' + r5.roles.join(',')),
+  ] };
+});
+
+sc('S39', '태그 시너지 — 실명(섬광 쇄도) 보유 시 빛나는 등판(실명 강화)이 1점짜리 둘을 이긴다 (런 261001-2133 n=16 재현)', () => {
+  const st = S({ weapon: 'flames', aspect: 'flames_melinoe', region: 2, boons: ['hera_sworn_strike', 'zeus_ionic_gain', 'hera_bridal_glow', 'apollo_blinding_rush', 'hermes_hard_target', 'zeus_heaven_flourish'], hammers: ['flames_clean_coil'], gods_seen: ['hera', 'zeus', 'apollo', 'hermes'] });
+  const rows = E.recommendBoons(st, ['apollo_back_burner', 'apollo_extra_dose', 'apollo_light_smite']);
+  const a = A(rows);
+  return { rows, checks: [
+    check(...a.rankOf('apollo_back_burner', 1)),
+    check(...a.reasonHas('apollo_back_burner', '시너지: 실명 강화')),
+    check('빛나는 등판 점수가 2위보다 2점 이상 높음 (원래 셋 다 1점)', rows[0].score - rows[1].score >= 2, rows.map((r) => r.id + '=' + r.score).join(' ')),
+    check('breakdown.synergy 기록', rows[0].breakdown.synergy > 0, JSON.stringify(rows[0].breakdown)),
+  ] };
+});
+
+sc('S40', '태그 시너지는 수동 보조 목록을 넘지 않는다 — 결속 강화(유전된 저주)는 보조 목록의 가느다란 선 아래, 1점짜리 위 (n=45 재현)', () => {
+  const st = S({ weapon: 'flames', aspect: 'flames_melinoe', region: 4, boons: ['hera_sworn_strike', 'zeus_ionic_gain', 'hera_bridal_glow', 'apollo_blinding_rush', 'hermes_hard_target', 'zeus_heaven_flourish', 'zeus_storm_ring', 'zeus_power_surge', 'zeus_double_strike', 'demeter_arctic_gale', 'duo_demeter_apollo', 'demeter_steady_growth', 'duo_hera_zeus_queens_ransom', 'hermes_racing_thoughts', 'apollo_super_nova'], hammers: ['flames_clean_coil', 'flames_sudden_burst'], gods_seen: ['hera', 'zeus', 'apollo', 'hermes', 'demeter'] });
+  const rows = E.recommendBoons(st, ['hera_fine_line', 'hera_hereditary_bane', 'hera_proper_upbringing']);
+  const a = A(rows);
+  return { rows, checks: [
+    check(...a.rankOf('hera_fine_line', 1)),
+    check(...a.rankOf('hera_hereditary_bane', 2)),
+    check(...a.reasonHas('hera_hereditary_bane', '결속 강화')),
+    check(...a.rankOf('hera_proper_upbringing', 3)),
   ] };
 });
 

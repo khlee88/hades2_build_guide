@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """선택 로그 분석. 사용법: python data/runs/analyze.py [로그파일...]
 
-지금 표본으로 통계는 못 낸다(5런). 대신 (a) 데이터 위생 점검 (b) 런별 최종 빌드 재구성
+지금 표본으로 통계는 못 낸다(12런). 대신 (a) 데이터 위생 점검 (b) 런별 최종 빌드 재구성
 (c) 추천-선택 불일치 (d) 커버리지 구멍 실측을 한다.
 """
 import io, json, os, sys, glob
@@ -104,6 +104,29 @@ print('  최다: %s' % ', '.join('%s×%d' % (nm(i), c) for i, c in Counter(o['i'
 
 rar = Counter(o.get('r') for o in offers)
 print('희귀도 입력      : %s' % dict(rar))
+
+# ── 7단계 (2026-10-14): 가중치 보정의 근거 — 표본이 늘면 여기로 재측정 ───────────
+print()
+# (1) 대기 융합 문: breakdown에 duo_ready가 있는 신 문을 고른 뒤, 바로 다음 은혜 3택에 융합이 떴는가 → GOD.DUO_READY / DUO_OFFER_RATE
+tot = hit = 0
+for rid, es in runs.items():
+    pk = [e for e in es if e['t'] == 'pick']
+    for i, p in enumerate(pk):
+        if p['kind'] != 'god': continue
+        ch = next((o for o in p['off'] if o['i'] == p['c']), {})
+        if not ch.get('b', {}).get('duo_ready'): continue
+        nxt = pk[i + 1] if i + 1 < len(pk) else None
+        if not nxt or nxt['kind'] != 'boon': continue
+        tot += 1
+        hit += any(o['i'] in DUO and DUO[o['i']].get('kind') == 'duo' for o in nxt['off'])
+print('대기 융합 문 → 다음 3택에 융합 제시 : %d/%d = %.0f%%   (weights GOD.DUO_OFFER_RATE 근거, 2026-10-14 실측 23%%)' % (hit, tot, 100.0 * hit / max(tot, 1)))
+# (2) 칸이 다 찬 뒤(ns=5) 은혜 선택의 변별력 — 최고점 5 미만이면 앱이 사실상 할 말이 없던 것 → BOON.SYNERGY
+late = [p for p in picks if p['kind'] == 'boon' and p.get('ns') == 5]
+weak = [p for p in late if max((o['s'] or -99) for o in p['off']) < 5 and not any(o.get('r') in ('duo', 'legendary') for o in p['off'])]
+print('칸 5개 찬 뒤 은혜 선택 중 최고점 5 미만 : %d/%d = %.0f%%   (7-B 이전 로그값 — 5-G 이후 5런만 보면 56%%)' % (len(weak), len(late), 100.0 * len(weak) / max(len(late), 1)))
+# (3) 4번째 신 감점 회귀 확인 — 7-A 이후 로그에서는 5번째 신(기념품)에만 붙어야 한다
+pen = sum(1 for p in picks if p['kind'] == 'god' for o in p['off'] if o.get('b', {}).get('pool') == -4)
+print('신 선택지에 풀 감점(-4)이 붙은 횟수     : %d   (7-A 이전에는 4번째 신마다 붙었음)' % pen)
 
 # 데이터 위생
 print()

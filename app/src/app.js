@@ -35,8 +35,6 @@
   }
   var CLOSE_CHIP = '<span class="close">비슷함 · 취향</span>';
 
-  var RAR = ['common', 'rare', 'epic', 'heroic'];
-  var RAR_KO = { common: '일반', rare: '희귀', epic: '특별', heroic: '영웅' };
 
   // ── 저장 ───────────────────────────────────────────────
   var saveFail = false;
@@ -87,13 +85,20 @@
     (st.boons || []).forEach(function (id) { var b = IX.boons[id]; if (b && b.occupies_slot) n++; });
     return n;
   }
+  // 7-C: 지역은 은혜·망치 수로 추정한다 (보상 6~8개당 1지역). 12런 로그에서 진행 중 지역을 바꾼 적이 0회라 엔진이 늘 1지역으로 알았다.
+  // 수동 값(관리 화면)은 추정보다 클 때만 이긴다. 엔진·로그·홈 표시 전부 이 값을 쓴다
+  function regionEff(st) {
+    var n = (st.boons || []).length + (st.hammers || []).length;
+    return Math.max(st.region || 1, Math.min(4, 1 + Math.floor(n / 7)));
+  }
+  function engSt(st) { return Object.assign({}, st, { region: regionEff(st) }); }
   // 제시된 것 전부를 남긴다 — 고른 것만 남기면 "3택 중 선택" 모델을 못 만든다
   function logPick(kind, rows, chosenId) {
     if (!RUN || !RUN.rid) return;
     var st = RUN.state;
     logPush({
-      t: 'pick', kind: kind, rg: st.region, ns: filledSlots(st),
-      dir: E.directionScores(st).slice(0, 2).map(function (d) { return [d.id, d.weight]; }),
+      t: 'pick', kind: kind, rg: regionEff(st), ns: filledSlots(st),
+      dir: E.directionScores(engSt(st)).slice(0, 2).map(function (d) { return [d.id, d.weight]; }),
       off: rows.map(function (r) {
         var o = { i: r.id, s: isFinite(r.score) ? r.score : null, k: r.rank || null, b: r.breakdown || {} };
         if (r.grade) o.g = r.grade;   // 6-C: 등급 정확도 검증용 (ISSUES P3)
@@ -243,7 +248,7 @@
     if (!asSheet) root.appendChild(el('<div class="top"><div class="t">하데스2 빌드 길잡이</div></div>'));
     var picks = LOG.filter(function (e) { return e.id === prev.rid && e.t === 'pick' && e.kind !== 'god'; }).length;
     var n = prev.state.boons.length + prev.state.hammers.length;
-    var est = Math.max(prev.state.region || 1, Math.min(4, 1 + Math.floor(n / 7)));   // 보상 6~8개당 1지역, 수동 지역이 더 크면 그것
+    var est = regionEff(prev.state);   // 7-C: 홈·엔진과 같은 추정
     root.appendChild(el('<h2>지난 런, 어디까지 갔나요?</h2>'));
     root.appendChild(el('<div class="wrap sm dim">' + esc(nm(prev.state.weapon)) + ' · 은혜·망치 ' + n + '개 · 선택 ' + picks + '회 → <b>' + est + '지역</b>으로 추정</div>'));
     var chipRow = function (opts, cur, cb) {
@@ -434,10 +439,10 @@
     var warn = E.validateState(st);
     if (warn.length) root.appendChild(el('<div class="banner">' + esc(warn.join(' · ')) + '</div>'));
 
-    var ds = E.directionScores(st);
+    var ds = E.directionScores(engSt(st));
     var card = el('<div class="card"></div>');
     var meta = el('<div class="row sm dim"><span>' + esc((IX.weapons[st.weapon].aspects.find(function (a) { return a.id === st.aspect; }) || {}).name_ko || '') + '</span>' +
-      '<button class="tagx" data-region>' + st.region + '지역</button>' +
+      '<button class="tagx" data-region>' + regionEff(st) + '지역' + ((st.region || 1) > 1 ? '' : ' · 자동') + '</button>' +
       (st.direction_lock ? '<span class="tagx">🔒 고정</span>' : '') + '</div>');
     meta.querySelector('[data-region]').onclick = function () { openSheet('manage'); };
     card.appendChild(meta);
@@ -530,7 +535,7 @@
       });
       out.innerHTML = '';
       if (!godSel.length) { out.appendChild(el('<div class="empty">문에 뜬 신을 눌러 주세요</div>')); return; }
-      var grows = E.recommendGods(RUN.state, godSel);
+      var grows = E.recommendGods(engSt(RUN.state), godSel);
       // 5-A: 점수 차 2 미만은 같은 군 — 첫 신처럼 변별이 없을 때 1·2·3위 대신 '동급' 칩
       var topTie = grows.filter(function (x) { return x.tie === grows[0].tie; }).length > 1;
       grows.forEach(function (r, i) {
@@ -640,7 +645,7 @@
         trayBox.appendChild(hd);
         if (trayOpen) {
           var box = el('<div class="recs"></div>');
-          var rows = isBoon ? E.recommendBoons(RUN.state, pickSel) : E.recommendHammers(RUN.state, pickSel.map(function (p) { return p.id; }));
+          var rows = isBoon ? E.recommendBoons(engSt(RUN.state), pickSel) : E.recommendHammers(engSt(RUN.state), pickSel.map(function (p) { return p.id; }));
           lastRows = rows;
           var cs = closeSet(rows);
           rows.forEach(function (r, i) { box.appendChild(compactRec(r, i, isBoon, cs[r.id])); });
@@ -650,10 +655,8 @@
       var picks = el('<div class="picks"></div>');
       if (!pickSel.length) picks.appendChild(el('<span class="sm dim">목록에서 2개 이상 고르면 여기에 순위가 나옵니다</span>'));
       pickSel.forEach(function (p, i) {
-        var fixed = p.rarity === 'duo' || p.rarity === 'legendary';
-        var c = el('<span class="pick">' + esc(nm(p.id)) +
-          (fixed ? '' : '<button class="rar">' + RAR_KO[p.rarity] + '</button>') + '<button class="x">✕</button></span>');
-        if (!fixed) c.querySelector('.rar').onclick = function () { p.rarity = RAR[(RAR.indexOf(p.rarity) + 1) % 4]; draw(); };
+        // 7-C: 희귀도 토글 제거 — 12런 189개 제시 전부 '일반'(한 번도 안 씀). rarity 값(일반/융합/전설)은 그대로 로그에 남는다
+        var c = el('<span class="pick">' + esc(nm(p.id)) + '<button class="x">✕</button></span>');
         c.querySelector('.x').onclick = function () { pickSel.splice(i, 1); draw(); };
         picks.appendChild(c);
       });
@@ -723,9 +726,9 @@
       });
       r.appendChild(s); return r;
     }
-    body.appendChild(seg('지역', [[1, '1'], [2, '2'], [3, '3'], [4, '4']], st.region, function (v) { st.region = v; saveRun(); logPush({ t: 'rg', v: v }); render(); }));
+    body.appendChild(seg('지역 (은혜 수로 자동 추정 · 더 크게만 고정)', [[1, '자동'], [2, '2'], [3, '3'], [4, '4']], st.region, function (v) { st.region = v; saveRun(); logPush({ t: 'rg', v: v }); render(); }));
 
-    var k = E.recommendKeepsake(st);
+    var k = E.recommendKeepsake(engSt(st));
     if (k && k.id) {
       var kc = el('<div class="card"><div class="xs dim">다음 지역 기념품 추천</div><div class="row" style="margin-top:4px"><b style="flex:1">' + esc(k.name_ko) + '</b><button class="tagx" data-k>이걸로</button></div><div class="sm dim" style="margin-top:4px">' + esc(k.reason) + '</div></div>');
       kc.querySelector('[data-k]').onclick = function () { pushHistory('기념품 ' + k.name_ko); st.keepsake = k.id; saveRun(); logPush({ t: 'keep', v: k.id }); render(); };
@@ -735,7 +738,7 @@
 
     body.appendChild(el('<h2>방향 고정</h2>'));
     var dl = el('<div class="chips"></div>');
-    E.directionScores(st).forEach(function (d) {
+    E.directionScores(engSt(st)).forEach(function (d) {
       var b = el('<button class="chip" aria-pressed="' + (st.direction_lock === d.id) + '">' + esc(d.name_ko) + '</button>');
       b.onclick = function () { st.direction_lock = st.direction_lock === d.id ? null : d.id; saveRun(); render(); };
       dl.appendChild(b);

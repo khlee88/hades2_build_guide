@@ -136,7 +136,6 @@ button.tagx{min-height:44px; min-width:44px; padding:0 12px; font-size:.82em; bo
 .tray .picks{display:flex; gap:8px; flex-wrap:wrap; min-height:44px; align-items:center}
 .pick{display:flex; align-items:center; gap:6px; background:var(--panel-2); border:1px solid var(--line);
   border-radius:10px; padding:6px 8px; font-size:.82em}
-.pick .rar{border:1px solid var(--line); border-radius:6px; padding:2px 6px; font-size:.7em; color:var(--dim)}
 .pick .x{color:var(--dim); padding:0 4px; font-size:1em}
 
 /* 무기·양상 선택 */

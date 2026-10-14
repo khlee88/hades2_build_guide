@@ -181,6 +181,31 @@ function createEngine(data, W) {
     return out;
   }
 
+  // ── 7-B (2026-10-14): 태그 시너지 — support_boons에 없는 패시브를 보유 은혜·방향 성격으로 자동 채점 ──
+  // 로그 12런: 칸이 다 찬 뒤 은혜 선택 16회 중 9회(56%)가 최고점 5 미만(패시브 3개가 전부 1점). 손으로 쓴 보조 목록 밖은 전부 '무난함'이었다.
+  // 값은 NEUTRAL+CAP(=4)까지 — 수동 보조 4순위와 같다. 수동 목록이 있으면 그쪽이 우선(이 함수는 kind 'neutral'일 때만 호출).
+  const CURSE_KO = { blitz: '암운', scorch: '잔불', froth: '침수', freeze: '동결', gust: '선풍', daze: '실명', weak: '약화', glow: '발열', hitch: '결속', wounds: '상처', charm: '현혹', marked: '표식', hangover: '숙취' };
+  function synergyOf(b, d, dv, state) {
+    const S = W.BOON.SYNERGY; if (!S) return { v: 0, why: [] };
+    const tags = b.tags || []; let v = 0; const why = [];
+    const applied = new Set(), scaled = new Set();
+    for (const id of dv.owned) for (const t of (boonById.get(id) || {}).tags || []) {
+      if (t.startsWith('curse_apply:')) applied.add(t.slice(12));
+      else if (t.startsWith('curse_scale:')) scaled.add(t.slice(12));
+    }
+    for (const t of tags) {
+      const c = t.slice(12);
+      if (t.startsWith('curse_scale:') && applied.has(c)) { v += S.CURSE_SCALE; why.push(`${CURSE_KO[c] || c} 강화`); }
+      else if (t.startsWith('curse_apply:') && scaled.has(c)) { v += S.CURSE_APPLY; why.push(`${CURSE_KO[c] || c} 부여`); }
+    }
+    const core = d.core_slots || [];
+    if (d.omega_dependent && tags.some((t) => t === 'omega' || (t.startsWith('omega_') && core.includes(t.slice(6))))) { v += S.OMEGA; why.push('Ω 발동'); }
+    if (core.includes('cast') && tags.some((t) => ['cast', 'omega_cast', 'cast_size', 'ranged_cast'].includes(t))) { v += S.CAST; why.push('마법 강화'); }
+    if (core.includes('sprint') && tags.includes('sprint_damage')) { v += S.SPRINT; why.push('질주 강화'); }
+    if ((state.region || 1) >= 3 && tags.includes('boss_dmg')) { v += S.BOSS; why.push('보스 피해'); }
+    return { v: Math.min(v, S.CAP), why };
+  }
+
   // ── §3 은혜 후보 점수 ─────────────────────────────────
   function scoreBoonEntry(state, cand, ctx) {
     const { dv, active } = ctx;
@@ -221,7 +246,7 @@ function createEngine(data, W) {
     const targetAll = new Set([...mainT, ...backT]);
     const seenPlus = new Set([...(state.gods_seen || []), b.god]); // 지금 보고 있는 신은 등장한 것으로 취급
     const broken = replacing ? duosBrokenBy(replacing, dv.owned, targetAll, seenPlus) : [];
-    let dirDetail = null;
+    let dirDetail = null, synSum = 0;
     // 2-C §13-5(개정): 이유는 DESIGN §3-4 원문대로 "기여 절댓값이 가장 큰 방향"에서 뽑는다.
     // 중립(neutral)은 역할 있는 방향이 하나도 없을 때만. (역할 우선 규칙은 보험 방향의 회피가
     // 메인 방향의 보조 1순위를 덮어써 1위 후보에 '비추'가 붙는 모순을 만들어 폐기 — S06)
@@ -256,11 +281,16 @@ function createEngine(data, W) {
         const si = (d.support_boons || []).indexOf(b.id);
         if (si >= 0) { fit = rankVal(W.BOON.SUPPORT, si); consider({ d, weight, rank: si, kind: 'support', fit }); }
         else if ((d.avoid_boons || []).includes(b.id)) { fit = W.BOON.AVOID; consider({ d, weight, rank: -1, kind: 'avoid', fit }); }
-        else { fit = W.BOON.NEUTRAL; consider({ d, weight, rank: -1, kind: 'neutral', fit }); }
+        else {
+          const syn = synergyOf(b, d, dv, state);   // 7-B
+          if (syn.v > 0) { fit = W.BOON.NEUTRAL + syn.v; synSum += weight * syn.v; consider({ d, weight, rank: -1, kind: 'synergy', fit, why: syn.why }); }
+          else { fit = W.BOON.NEUTRAL; consider({ d, weight, rank: -1, kind: 'neutral', fit }); }
+        }
       }
       dirScore += weight * fit;
     }
     bd.direction = round(dirScore);
+    if (synSum) bd.synergy = round(synSum);   // 로그용 — direction에 이미 포함된 값의 내역
 
     if (replacing) {
       warnings.push(`${eul(nameOf(replacing))} 버리게 됨`);
@@ -320,7 +350,7 @@ function createEngine(data, W) {
     if (!W.NON_POOL_GODS.includes(b.god)) {
       // 2-C §13-3: 은혜 단계의 신 풀 항은 가중치 0으로 꺼둠 (값이 0이면 배지도 없음)
       if ((state.gods_seen || []).includes(b.god)) { if (W.FLAT.POOL_SEEN) { flat += W.FLAT.POOL_SEEN; bd.pool = W.FLAT.POOL_SEEN; } }
-      else if (dv.poolSize >= W.GOD_POOL_CAP - 1 && W.FLAT.POOL_NEW_PENALTY) { flat += W.FLAT.POOL_NEW_PENALTY; badges.push('새 신'); bd.pool = W.FLAT.POOL_NEW_PENALTY; }
+      else if (dv.poolSize >= W.GOD_POOL_CAP && W.FLAT.POOL_NEW_PENALTY) { flat += W.FLAT.POOL_NEW_PENALTY; badges.push('새 신'); bd.pool = W.FLAT.POOL_NEW_PENALTY; }
     }
     if ((b.tags || []).includes('beginner_safe')) { flat += W.FLAT.BEGINNER_SAFE; bd.beginner = W.FLAT.BEGINNER_SAFE; }
 
@@ -346,6 +376,8 @@ function createEngine(data, W) {
       reason = `${roleWord} '${dirDetail.d.name_ko}' ${SLOT_KO[b.slot]} ${dirDetail.rank + 1}순위`;
     else if (dirDetail && dirDetail.kind === 'support')
       reason = `'${dirDetail.d.name_ko}' 보조 ${dirDetail.rank + 1}순위${dirTag(dirDetail.d)}`;
+    else if (dirDetail && dirDetail.kind === 'synergy')
+      reason = `'${dirDetail.d.name_ko}' 시너지: ${dirDetail.why.join(' · ')}${dirTag(dirDetail.d)}`;
     else if (replacing && dirScore > 0) reason = `${nameOf(replacing)}보다 ${dirDetail.d.name_ko}에 더 맞음`;
     else if (b.occupies_slot && !replacing) reason = `빈 ${SLOT_KO[b.slot]} 채움`;
     else reason = '무난함';
@@ -426,9 +458,12 @@ function createEngine(data, W) {
     const legClose = legTotal > 0 && !legReady && legMet >= legTotal - 1 && legMet >= 1;
     if (legReady) { score += W.GOD.LEG_READY; bd.leg_ready = W.GOD.LEG_READY; }
 
+    // 7-A: 풀 상한 4 = 4번째 신까지 풀 안. 감점은 5번째(기념품으로 부른 신)부터. 종전 `>= CAP-1`은 4번째 신을 매번 '풀 밖'으로 깎았다
+    let lastNew = false;
     if (!W.NON_POOL_GODS.includes(godId)) {
       if ((state.gods_seen || []).includes(godId)) { score += W.GOD.POOL_SEEN; bd.pool = W.GOD.POOL_SEEN; }
-      else if (dv.poolSize >= W.GOD_POOL_CAP - 1) { score += W.GOD.POOL_NEW_PENALTY; badges.push('새 신'); bd.pool = W.GOD.POOL_NEW_PENALTY; }
+      else if (dv.poolSize >= W.GOD_POOL_CAP) { score += W.GOD.POOL_NEW_PENALTY; badges.push('새 신'); bd.pool = W.GOD.POOL_NEW_PENALTY; }
+      else if (dv.poolSize === W.GOD_POOL_CAP - 1) lastNew = true;   // 이 신을 받으면 풀이 닫힌다 — 감점 없이 알리기만
     }
 
     let firstInfo = null;
@@ -478,8 +513,12 @@ function createEngine(data, W) {
     if (hasAlways) roles.push('항상 이득');
     const poolOver = bd.pool === W.GOD.POOL_NEW_PENALTY;
     if (poolOver) roles.push('풀 밖 신');
+    if (lastNew) roles.push('마지막 새 신');
     let tier;
-    if (readyDuos.length || legReady || partnerDuo || (bestFill && bestFill.empty && bestFill.core && bestFill.rank === 1)) tier = 3;
+    const coreFirst = !!(bestFill && bestFill.empty && bestFill.core && bestFill.rank === 1);
+    if (partnerDuo || coreFirst) tier = 3;
+    // 7-A: 대기 융합·전설은 '좋음' — 실측 23%(6/26)라 '필수'("거의 확실")로 읽히면 안 된다. 그래도 후반 문 사이에서는 이 값이 순위를 가른다
+    else if (readyDuos.length || legReady) tier = 2;
     else if (bestFill && bestFill.empty && ((bestFill.core && bestFill.rank <= 3) || bestFill.rank === 1)) tier = 2;
     else if ((bestFill && bestFill.upgrade) || legClose || hasAlways || otherDuo) tier = 2;
     else if ((bestFill && bestFill.empty) || roles.some((x) => x.startsWith('보조')) || (topList.length && topList[0].score >= W.GOD.OK_TOP)) tier = 1;
@@ -488,12 +527,13 @@ function createEngine(data, W) {
     const GRADES = ['pass', 'ok', 'good', 'must'];
     const GRADE_KO = { must: '필수', good: '좋음', ok: '보통', pass: '패스' };
     const grade = GRADES[tier];
+    const oneIn = Math.max(2, Math.round(1 / (W.GOD.DUO_OFFER_RATE || 0.25)));
 
     let reason;
     if (grade === 'pass') reason = (poolOver ? '풀 밖 신인데 채울 칸도 융합도 없음' : '지금 빌드에 맞는 칸이 없음') + ' — 석류·재화 문이 있으면 그쪽. 이 문뿐이면 들어가서 은혜를 보고 정한다';
-    else if (readyDuos.length) reason = `'${readyDuos[0].name_ko}'${readyDuos.length > 1 ? ` 외 ${readyDuos.length - 1}개` : ''} 조건 완성 — 이 문에서 뜰 수 있음`;
-    else if (legReady) reason = `전설 '${legB.name_ko}' 조건 완성 — 이 문에서 뜰 수 있음`;
     else if (partnerDuo) reason = `'${partnerDuo.name_ko}' 마지막 조건을 채울 수 있음`;
+    else if (readyDuos.length && !coreFirst) reason = `'${readyDuos[0].name_ko}'${readyDuos.length > 1 ? ` 외 ${readyDuos.length - 1}개` : ''} 조건 완성 — 이 문에서 뜰 수 있음 (실측 약 1/${oneIn})`;
+    else if (legReady && !coreFirst) reason = `전설 '${legB.name_ko}' 조건 완성 — 이 문에서 뜰 수 있음 (약 1/${oneIn})`;
     else if (legClose && !(bestFill && bestFill.empty && bestFill.core)) reason = `전설 '${legB.name_ko}' ${legMet}/${legTotal} — 이 신 은혜 하나면 사정권`;
     else if (otherDuo && !(bestFill && bestFill.empty && bestFill.core)) reason = `'${otherDuo.name_ko}' 마지막 조건을 채울 수 있음 (목표 외 융합)`;
     else if (topList.length && main) {
@@ -506,6 +546,7 @@ function createEngine(data, W) {
       else reason = t ? `'${t.name_ko}' 등을 기대할 수 있음` : '무난함';
     } else if (firstInfo) reason = `첫 신으로 무난 (${firstInfo.count}개 방향 열림: ${firstInfo.names.join(', ')})`;
     else reason = '무난함';
+    if (lastNew && grade !== 'must') reason += ' · 4번째 신 — 받으면 이후 새 신은 안 뜸';
 
     return { id: godId, score: round(score), reason, warnings, badges, breakdown: bd, grade, grade_ko: GRADE_KO[grade], roles, _replacing: false };
   }
