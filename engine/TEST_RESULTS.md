@@ -1,6 +1,6 @@
 # 테스트 결과 (2-B, 오퍼스)
 
-실행: `node engine/test.js` · 시나리오 32개 · **PASS 32 / FAIL 0**
+실행: `node engine/test.js` · 시나리오 36개 · **PASS 36 / FAIL 0**
 
 > 검사 대상은 순위·배지·경고의 존재. 절대 점수는 검사하지 않는다 (2-C 튜닝으로 바뀜).
 
@@ -425,7 +425,7 @@ A 방향1위=공격 단발 증폭(0.5) / B 방향1위=Ω 공격 회오리 (타�
 | 1 | 데메테르 | 13.5 | 유력 '기술 월광탄' 마법 1순위 '설한 고리' 기대 |  |  |
 | 2 | 헤스티아 | 12.9 | 유력 '기술 월광탄' 기술 1순위 '화염 기예' 기대 |  |  |
 | 3 | 제우스 | 14.4 | 유력 '기술 월광탄' 일반 공격 1순위 '천상 일격' 기대 |  |  |
-| 4 | 헤라 | 12.3 | 첫 신으로 무난 (2개 방향 열림: Ω 순환 난사 (모모스), 기술 월광탄) |  |  |
+| 4 | 헤라 | 12.3 | 첫 신으로 무난 (3개 방향 열림: Ω 순환 난사 (모모스), 기술 월광탄, 장판 끌어모으기 (아누비스)) |  |  |
 | 5 | 아프로디테 | 10.5 | 첫 신으로 무난 (2개 방향 열림: 기술 월광탄, Ω 순환 난사 (모모스)) |  |  |
 | 6 | 아폴론 | 11.8 | 유력 '기술 월광탄' 질주 1순위 '섬광 쇄도' 기대 |  |  |
 | 7 | 포세이돈 | 10.7 | 첫 신으로 무난 (2개 방향 열림: 기술 월광탄, Ω 순환 난사 (모모스)) |  |  |
@@ -521,6 +521,65 @@ demeter:13.5/필수/군0 hestia:12.9/필수/군0 zeus:14.4/좋음/군1 hera:12.3
 | 등급 '패스' | O | 패스 |
 | 이유에 '이 문뿐이면' | O | 지금 빌드에 맞는 칸이 없음 — 석류·재화 문이 있으면 그쪽. 이 문뿐이면 들어가서 은혜를 보고 정한다 |
 
+## S33. 해골 페르세포네 — 폭발 발아 1위, 첫 기념품은 금강석 파편(지정)   ✅ PASS
+
+| 순위 | 은혜/망치 | 점수 | 이유 | 경고 | 배지 |
+|---|---|---|---|---|---|
+| 1 | skull_blast_persephone | 3 | 폭발 발아 (페르세포네) ★1 |  |  |
+| 2 | skull_throw_retrieve | 1 | 투척·회수 루프 ★1 |  |  |
+| 3 | skull_medea_loop | 0.5 | 장전-관통 폭발 (메데이아) ★2 |  |  |
+
+첫 기념품: 금강석 파편
+
+| 검사 | 결과 | 실제 |
+|---|---|---|
+| 1위 = 폭발 발아 (페르세포네) | O | skull_blast_persephone |
+| 숨김(헬) 방향은 안 보임 → 방향 3개 | O | skull_blast_persephone,skull_throw_retrieve,skull_medea_loop |
+| 첫 기념품 = 금강석 파편 (keepsake_override) | O | adamant_shard |
+
+## S34. 외투 — 시바를 고르면 거대 주먹 1위, 멜리노에면 시바 방향이 아예 없음   ✅ PASS
+
+| 순위 | 은혜/망치 | 점수 | 이유 | 경고 | 배지 |
+|---|---|---|---|---|---|
+| 1 | coat_shiva_gigapunch | 2 | 파괴력 거대 주먹 (시바) |  |  |
+| 2 | coat_punch_rocket | 1 | 주먹·로켓 교대 |  |  |
+| 3 | coat_selene_skyfall | 0 | 천상 붕괴 순환 (셀레네) |  |  |
+
+| 검사 | 결과 | 실제 |
+|---|---|---|
+| 시바: 1위 = 파괴력 거대 주먹 | O | coat_shiva_gigapunch |
+| 멜리노에: 시바 방향 없음, 교대가 1위 | O | coat_punch_rocket,coat_selene_skyfall |
+| 셀레네: 첫 기념품 = 달빛보라 (keepsake_override) | O | moon_beam |
+
+## S35. 기존 무기 숨김 양상 — 고르면 전용 방향 1위, 안 고르면 안 보임   ✅ PASS
+
+| 순위 | 은혜/망치 | 점수 | 이유 | 경고 | 배지 |
+|---|---|---|---|---|---|
+| 1 | staff_anubis_zone | 1 | staff_anubis → staff_anubis_zone |  |  |
+| 2 | blades_morrigan_triad | 1 | blades_morrigan → blades_morrigan_triad |  |  |
+| 3 | flames_supay_auto | 1 | flames_supay → flames_supay_auto |  |  |
+| 4 | axe_nergal_berserk | 1 | axe_nergal → axe_nergal_berserk |  |  |
+
+| 검사 | 결과 | 실제 |
+|---|---|---|
+| 4개 모두 전용 방향이 1위 | O | staff_anubis:staff_anubis_zone blades_morrigan:blades_morrigan_triad flames_supay:flames_supay_auto axe_nergal:axe_nergal_berserk |
+| 멜리노에 양상에서는 4개 모두 안 보임 | O | staff_anubis_zone:false blades_morrigan_triad:false flames_supay_auto:false axe_nergal_berserk:false |
+| 지팡이 멜리노에 방향 수는 그대로 3 | O |  |
+
+## S36. 수파이 — % 피해 은혜는 회피, 질주 칸이 핵심   ✅ PASS
+
+| 순위 | 은혜/망치 | 점수 | 이유 | 경고 | 배지 |
+|---|---|---|---|---|---|
+| 1 | 매혹적 마력 | 13.8 | '불같은 열망' 조건 완성 — 다음에 뜰 수 있음 |  | 마력, 융합 임박 |
+| 2 | 열정 쇄도 | 10.2 | '불같은 열망' 조건 완성 — 다음에 뜰 수 있음 |  | 융합 임박 |
+| 3 | 애정 일격 | 1.1 | 비추: 수파이는 기본 위력이 너무 낮아 % 증가가 의미 없음  |  |  |
+
+| 검사 | 결과 | 실제 |
+|---|---|---|
+| 애정 일격 순위 == 3 | O | 실제 3위 |
+| 애정 일격 이유에 '비추' | O | 실제 "비추: 수파이는 기본 위력이 너무 낮아 % 증가가 의미 없음 " |
+| 열정 쇄도(질주, 핵심 칸)가 애정 일격보다 위 | O | aphrodite_glamour_gain>aphrodite_passion_rush>aphrodite_flutter_strike |
+
 ## S16. 결정성   ✅ PASS
 
 전 시나리오 2회 실행 결과 동일 여부: 동일
@@ -529,4 +588,4 @@ demeter:13.5/필수/군0 hestia:12.9/필수/군0 zeus:14.4/좋음/군1 hera:12.3
 
 ## 집계
 
-**PASS 32 / FAIL 0**
+**PASS 36 / FAIL 0**

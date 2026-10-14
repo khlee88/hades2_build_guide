@@ -12,6 +12,7 @@ function createEngine(data, W) {
   const duoById = new Map(duos.map((d) => [d.id, d]));
   const hammerById = new Map(hammers.map((h) => [h.id, h]));
   const weaponById = new Map(weapons.map((w) => [w.id, w]));
+  const hiddenAspects = new Set(weapons.flatMap((w) => (w.aspects || []).filter((a) => a.hidden).map((a) => a.id)));
   const arcanaById = new Map(arcana.map((a) => [a.id, a]));
   const keepsakeById = new Map(keepsakes.map((k) => [k.id, k]));
   const hexById = new Map(hexes.map((h) => [h.id, h]));
@@ -84,6 +85,8 @@ function createEngine(data, W) {
   // ── §2 방향 적합도 F_d ────────────────────────────────
   function directionF(state, dv, d) {
     if (d.requires_hammer && !dv.owned.has(d.requires_hammer)) return -Infinity;
+    // 6-B: 숨김 양상 전용 방향은 그 양상을 골랐을 때만 존재한다 (다른 양상 런의 가중치를 희석하지 않도록)
+    { const asp = d.aspects || []; if (asp.length && asp.every((a) => hiddenAspects.has(a)) && !asp.includes(state.aspect)) return -Infinity; }
     let F = W.F.BASE;
     for (const [slot, prefs] of Object.entries(d.slot_prefs || {})) {
       const filled = dv.slotMap[slot];
@@ -701,7 +704,11 @@ function createEngine(data, W) {
     let firstKeepsake = null;
     if (dirs.length) {
       const top = dirs[0].d;
-      for (const g of mainGodsOf(top)) {
+      // 6-B: 방향이 기념품을 지정하면 그걸로 (셀레네 외투 = 달빛보라, 페르세포네 해골 = 금강석 파편)
+      const ov = top.keepsake_override && keepsakeById.get(top.keepsake_override);
+      if (ov && !(owned && !owned.includes(ov.id))) firstKeepsake = { id: ov.id, name_ko: ov.name_ko, god: ov.god || null, god_ko: ov.god ? nameOf(ov.god) : (ov.giver_ko || ''), effect: ov.effect, giver_ko: ov.giver_ko,
+        reason: `추천 빌드 '${top.name_ko}'가 지정 — ${top.summary.slice(0, 40)}…` };
+      for (const g of (firstKeepsake ? [] : mainGodsOf(top))) {
         const k = keepsakeByGod.get(g.id);
         if (!k || (owned && !owned.includes(k.id))) continue;
         firstKeepsake = { id: k.id, name_ko: k.name_ko, god: g.id, god_ko: g.name_ko, effect: k.effect, giver_ko: k.giver_ko,

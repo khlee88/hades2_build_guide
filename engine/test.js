@@ -458,6 +458,52 @@ sc('S32', '패스 문구 — 문이 하나뿐일 때의 조언 포함', () => {
   ] };
 });
 
+
+// ── 6-B 해골·외투·숨김 양상 (2026-10-14) ────────────────
+sc('S33', '해골 페르세포네 — 폭발 발아 1위, 첫 기념품은 금강석 파편(지정)', () => {
+  const r = E.recommendRunStart('skull', 'skull_persephone', { graspCap: 20 });
+  return { rows: r.directions.map((d, i) => ({ id: d.id, rank: i + 1, score: d.F, reason: d.name_ko + ' ★' + d.difficulty, warnings: [], badges: [] })),
+    extra: `첫 기념품: ${r.first_keepsake && r.first_keepsake.name_ko}`, checks: [
+    check('1위 = 폭발 발아 (페르세포네)', r.directions[0].id === 'skull_blast_persephone', r.directions[0].id),
+    check('숨김(헬) 방향은 안 보임 → 방향 3개', r.directions.length === 3 && !r.directions.some((d) => d.id === 'skull_hel_valkyrie'), r.directions.map((d) => d.id).join(',')),
+    check('첫 기념품 = 금강석 파편 (keepsake_override)', r.first_keepsake && r.first_keepsake.id === 'adamant_shard', String(r.first_keepsake && r.first_keepsake.id)),
+  ] };
+});
+
+sc('S34', '외투 — 시바를 고르면 거대 주먹 1위, 멜리노에면 시바 방향이 아예 없음', () => {
+  const s = E.recommendRunStart('coat', 'coat_shiva', { graspCap: 20 });
+  const m = E.recommendRunStart('coat', 'coat_melinoe', { graspCap: 20 });
+  const sel = E.recommendRunStart('coat', 'coat_selene', { graspCap: 20 });
+  return { rows: s.directions.map((d, i) => ({ id: d.id, rank: i + 1, score: d.F, reason: d.name_ko, warnings: [], badges: [] })), checks: [
+    check('시바: 1위 = 파괴력 거대 주먹', s.directions[0].id === 'coat_shiva_gigapunch', s.directions[0].id),
+    check('멜리노에: 시바 방향 없음, 교대가 1위', !m.directions.some((d) => d.id === 'coat_shiva_gigapunch') && m.directions[0].id === 'coat_punch_rocket', m.directions.map((d) => d.id).join(',')),
+    check('셀레네: 첫 기념품 = 달빛보라 (keepsake_override)', sel.first_keepsake && sel.first_keepsake.id === 'moon_beam', String(sel.first_keepsake && sel.first_keepsake.id)),
+  ] };
+});
+
+sc('S35', '기존 무기 숨김 양상 — 고르면 전용 방향 1위, 안 고르면 안 보임', () => {
+  const pairs = [['staff', 'staff_anubis', 'staff_anubis_zone'], ['blades', 'blades_morrigan', 'blades_morrigan_triad'], ['flames', 'flames_supay', 'flames_supay_auto'], ['axe', 'axe_nergal', 'axe_nergal_berserk']];
+  const res = pairs.map(([w, a, d]) => ({ w, a, d, top: E.recommendRunStart(w, a, { graspCap: 20 }).directions[0].id,
+    leak: E.recommendRunStart(w, w + '_melinoe', { graspCap: 20 }).directions.some((x) => x.id === d) }));
+  return { rows: res.map((x, i) => ({ id: x.d, rank: i + 1, score: x.top === x.d ? 1 : 0, reason: x.a + ' → ' + x.top, warnings: [], badges: [] })), checks: [
+    check('4개 모두 전용 방향이 1위', res.every((x) => x.top === x.d), res.map((x) => x.a + ':' + x.top).join(' ')),
+    check('멜리노에 양상에서는 4개 모두 안 보임', res.every((x) => !x.leak), res.map((x) => x.d + ':' + x.leak).join(' ')),
+    check('지팡이 멜리노에 방향 수는 그대로 3', E.recommendRunStart('staff', 'staff_melinoe', { graspCap: 10 }).directions.length === 3, ''),
+  ] };
+});
+
+sc('S36', '수파이 — % 피해 은혜는 회피, 질주 칸이 핵심', () => {
+  const st = S({ weapon: 'flames', aspect: 'flames_supay', boons: ['hestia_flame_flourish'], gods_seen: ['hestia'] });
+  const rows = E.recommendBoons(st, ['aphrodite_flutter_strike', 'aphrodite_passion_rush', 'aphrodite_glamour_gain']);
+  const a = A(rows);
+  return { rows, checks: [
+    check(...a.rankOf('aphrodite_flutter_strike', 3)),
+    check(...a.reasonHas('aphrodite_flutter_strike', '비추')),
+    // 수파이는 Ω 의존(마력 규칙 +2)이라 빈 마력 칸이 질주보다 먼저 올 수 있다 — 설계대로. 질주가 % 공격보다 위면 된다
+    check('열정 쇄도(질주, 핵심 칸)가 애정 일격보다 위', rows.findIndex((r) => r.id === 'aphrodite_passion_rush') < rows.findIndex((r) => r.id === 'aphrodite_flutter_strike'), rows.map((r) => r.id).join('>')),
+  ] };
+});
+
 // ── 실행 ────────────────────────────────────────────────
 const out = [];
 let pass = 0, fail = 0;
