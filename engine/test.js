@@ -504,6 +504,18 @@ sc('S36', '수파이 — % 피해 은혜는 회피, 질주 칸이 핵심', () =>
   ] };
 });
 
+
+sc('S37', 'avoid_hammers — 모리안 쌍검에서 춤추는 단검은 비추 (ISSUES P3 연결)', () => {
+  const st = S({ weapon: 'blades', aspect: 'blades_morrigan', boons: ['hestia_flame_strike'], gods_seen: ['hestia'] });
+  const rows = E.recommendHammers(st, ['blades_dancing_knives', 'blades_wicked_onslaught', 'blades_melting_sickle']);
+  const a = A(rows);
+  return { rows, checks: [
+    check(...a.rankOf('blades_dancing_knives', 3)),
+    check(...a.reasonHas('blades_dancing_knives', '비추')),
+    check(...a.rankOf('blades_wicked_onslaught', 1)),
+  ] };
+});
+
 // ── 실행 ────────────────────────────────────────────────
 const out = [];
 let pass = 0, fail = 0;

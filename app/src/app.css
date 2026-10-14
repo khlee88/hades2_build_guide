@@ -245,3 +245,8 @@ details.ps[open] summary::before{content:'▾'}
 .psrow.hot{background:rgba(216,179,101,.08); margin:0 -10px; padding-left:10px; padding-right:10px}
 .psrow.hot .lb{color:var(--accent)}
 .psrow.dimmed{opacity:.5}
+
+/* 6-C 양상 배지·접기 */
+.tagx.asp{color:var(--info); border-color:var(--info); margin-left:6px}
+.tagx.asp.only{color:var(--accent); border-color:var(--accent)}
+details.fold>summary{min-height:44px; display:flex; align-items:center; cursor:pointer}

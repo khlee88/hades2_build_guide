@@ -534,8 +534,10 @@ function createEngine(data, W) {
       const blocked = blockReason(h, state, dv, 'hammer');
       if (blocked) return { id: oid, score: -Infinity, reason: blocked, warnings, badges, breakdown: bd };
 
-      let fitSum = 0, detail = null;
+      let fitSum = 0, detail = null, avoidBy = null;
       for (const { d, weight } of active) {
+        // 6-C: 방향의 avoid_hammers — 은혜의 avoid_boons와 같은 취급 (ISSUES P3)
+        if ((d.avoid_hammers || []).includes(h.id)) { fitSum += weight * W.HAMMER.AVOID; if (!avoidBy || weight > avoidBy.weight) avoidBy = { d, weight }; continue; }
         const i = (d.hammers || []).indexOf(h.id);
         const fit = i >= 0 ? rankVal(W.HAMMER.FIT, i) : W.HAMMER.NOT_LISTED;
         fitSum += weight * fit;
@@ -567,7 +569,8 @@ function createEngine(data, W) {
       }
 
       let reason;
-      if (unlock) reason = `'${unlock.name_ko}' 방향을 열어줌`;
+      if (avoidBy && (!detail || avoidBy.weight >= detail.weight)) reason = `비추: ${String(avoidBy.d.avoid_hammer_reason || '').slice(0, 30)}`;
+      else if (unlock) reason = `'${unlock.name_ko}' 방향을 열어줌`;
       else if (detail) reason = `'${detail.d.name_ko}' 망치 ${detail.rank + 1}순위`;
       else if (bp > 0) reason = h.notes ? String(h.notes).slice(0, 34) : '초보에게 무난';
       else reason = '무난함';

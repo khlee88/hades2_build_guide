@@ -96,6 +96,7 @@
       dir: E.directionScores(st).slice(0, 2).map(function (d) { return [d.id, d.weight]; }),
       off: rows.map(function (r) {
         var o = { i: r.id, s: isFinite(r.score) ? r.score : null, k: r.rank || null, b: r.breakdown || {} };
+        if (r.grade) o.g = r.grade;   // 6-C: 등급 정확도 검증용 (ISSUES P3)
         var p = pickSel.find(function (x) { return x.id === r.id; });
         if (p && p.rarity) o.r = p.rarity;
         if (r._replacing) o.rep = 1;
@@ -172,6 +173,8 @@
     blades:     { s: 'M7.5 21 4 6l5 2.5zM16.5 21 20 6l-5 2.5z' },                          // 쌍검
     flames:     { s: 'M12 17.5V22', f: 'M12 2.5c2.2 3.6 5.6 5 5.6 8.6 0 3.2-2.5 5.4-5.6 5.4s-5.6-2.2-5.6-5.4c0-1.7.6-3.1 1.5-4.3.1 1.5.9 2.3 1.8 2.3 1.1 0 1.7-.9 1.7-2.4 0-1.6.3-3 .6-4.2z' },  // 횃불
     axe:        { s: 'M6.5 21 16 6', f: 'M11.5 5.2c4.6-2.4 9.5.4 9.5 4.6 0 2.6-1.8 4.6-4.4 5.2-.3-4-2.2-7.4-5.1-9.8z' },  // 도끼
+    skull:      { f: 'M12 3a7 7 0 0 0-7 7c0 2.6 1.4 4.6 3 5.8V19h8v-3.2c1.6-1.2 3-3.2 3-5.8a7 7 0 0 0-7-7zM9.5 9.5a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2zm5 0a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2z', s: 'M9 19v2.5M12 19v2.5M15 19v2.5' },  // 해골
+    coat:       { f: 'M5 12.5c0-1.2.8-2 2-2h1.2V8.2c0-1 .8-1.7 1.8-1.7s1.7.7 1.7 1.7v2.3h1.2V7.6c0-1 .8-1.7 1.8-1.7s1.7.7 1.7 1.7v2.9h.8c1.2 0 2 .8 2 2V15c0 3-2.4 5.5-5.5 5.5h-3C7.4 20.5 5 18 5 15v-2.5z', s: 'M19 4l2 2M20.5 2.5 22 1M17 6.5l1.5-1.5' },  // 외투 (주먹 + 로켓 불꽃)
   };
   function sym(id, size) {
     var d = SYM[id]; if (!d) return '';
@@ -283,7 +286,7 @@
     root.appendChild(el('<h2>무기</h2>'));
     var wg = el('<div class="wgrid"></div>');
     DATA.weapons.forEach(function (w) {
-      var ready = w.unlock_order <= 4;
+      var ready = (w.aspects || []).length > 0;   // 6-C: 데이터가 갖춰진 무기는 전부 연다 (해골·외투 해금)
       var b = el('<button class="wcard" ' + (ready ? '' : 'disabled') + ' aria-pressed="' + (startSel.weapon === w.id) + '">' +
         '<div class="n"><span class="gi wi">' + sym(w.id, 20) + '</span>' + esc(w.name_ko) + '</div>' +
         '<div class="a">' + esc(ready ? (w.alias_ko || '') : '준비 중') + '</div></button>');
@@ -296,13 +299,15 @@
     root.appendChild(el('<h2>양상</h2>'));
     var ch = el('<div class="chips"></div>');
     wp.aspects.forEach(function (a) {
-      var locked = !!a.hidden;
-      var b = el('<button class="chip" aria-pressed="' + (startSel.aspect === a.id) + '">' + esc(a.name_ko) + (locked ? ' 🔒' : '') + '</button>');
-      b.onclick = locked ? function () { toast('숨겨진 양상 — 해금 후 사용'); } : function () { startSel.aspect = a.id; rerenderStart(root, asSheet); };
+      // 6-C: 숨김 양상도 고를 수 있다 (사용자가 해금함). 표식만 남긴다
+      var b = el('<button class="chip" aria-pressed="' + (startSel.aspect === a.id) + '">' + esc(a.name_ko) + (a.hidden ? ' <span class="xs dim">★숨김</span>' : '') + '</button>');
+      b.onclick = function () { startSel.aspect = a.id; rerenderStart(root, asSheet); };
       ch.appendChild(b);
     });
     root.appendChild(ch);
     root.appendChild(el('<div class="wrap sm dim">' + esc(wp.beginner_note || '') + '</div>'));
+    var curAsp = (wp.aspects || []).find(function (a) { return a.id === startSel.aspect; });
+    if (curAsp && curAsp.effect) root.appendChild(el('<div class="wrap sm" style="margin-top:4px"><span class="tagx">' + esc(curAsp.name_ko) + '</span> ' + esc(curAsp.effect) + '</div>'));
 
     var r = E.recommendRunStart(startSel.weapon, startSel.aspect, { graspCap: PREFS.grasp_cap, ownedKeepsakes: PREFS.owned_keepsakes.length ? PREFS.owned_keepsakes : null });
 
@@ -372,8 +377,19 @@
 
     root.appendChild(el('<h2>추천 빌드</h2>'));
     root.appendChild(el('<div class="wrap sm dim">' + esc(r.note) + '</div>'));
+    // 6-C: 선택한 양상 기준 배지. 전용(aspects가 그 양상 하나) / 추천(포함) / 없음. 배지 없는 방향은 접는다 (전부 없으면 안 접음)
+    var aspBadge = function (d) {
+      var asp = ((DATA.builds.weapons[startSel.weapon] || {}).directions || []).find(function (x) { return x.id === d.id; });
+      var list = (asp && asp.aspects) || [];
+      if (list.length === 1 && list[0] === startSel.aspect) return 'only';
+      return list.indexOf(startSel.aspect) >= 0 ? 'rec' : null;
+    };
+    var anyBadge = r.directions.some(aspBadge);
+    var foldBox = null;
     r.directions.forEach(function (d) {
-      var dc = el('<div class="card"><div class="row"><b>' + esc(d.name_ko) + '</b><span class="xs dim">★' + d.difficulty + '</span></div>' +
+      var badge = aspBadge(d);
+      var bh = badge === 'only' ? '<span class="tagx asp only">이 양상 전용</span>' : badge === 'rec' ? '<span class="tagx asp">이 양상 추천</span>' : '';
+      var dc = el('<div class="card"><div class="row"><b>' + esc(d.name_ko) + '</b>' + bh + '<span class="xs dim">★' + d.difficulty + '</span></div>' +
         '<div class="sm dim" style="margin-top:4px">' + esc(d.summary) + '</div>' +
         '<div class="sm" style="margin-top:6px">주요 신: ' + d.main_gods.map(function (g, i) { return '<span style="color:' + (GC[g.id] || 'inherit') + ';font-weight:' + (i ? 400 : 700) + '">' + esc(g.name_ko) + '</span>'; }).join(' <span class="dim">›</span> ') + '</div>' +
         '<div class="xs dim" style="margin-top:4px">핵심 칸: ' + esc(d.core_slots.join(' · ')) + '</div>' +
@@ -382,7 +398,10 @@
         (d.key_hammers.length ? '<div class="xs dim">망치: ' + esc(d.key_hammers.join(', ')) + '</div>' : '') + '</div>');
       var pb = playstyleBox(d.id, startSel.weapon, null, false);
       if (pb) dc.appendChild(pb);
-      root.appendChild(dc);
+      if (anyBadge && !badge) {
+        if (!foldBox) { foldBox = el('<details class="card tight fold"><summary class="sm dim">다른 방향</summary></details>'); root.appendChild(foldBox); }
+        dc.classList.add('tight'); dc.style.margin = '8px 0 0'; foldBox.appendChild(dc); foldBox.querySelector('summary').textContent = '다른 방향 ' + foldBox.querySelectorAll('.card').length + '개';
+      } else root.appendChild(dc);
     });
 
     var cta = el('<div class="cta"><button>이 무기로 시작</button></div>');

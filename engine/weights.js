@@ -105,6 +105,7 @@ const WEIGHTS = {
     AFFECTS_MATCH: 2,
     BEGINNER_PRIORITY: { 1: 3, 2: 1, 3: 0, 0: -3 },
     BLOCKS_FUTURE: -1,          // 메인 방향 순위에 있는 미보유 망치를 막음
+    AVOID: -8,                  // 6-C: 방향의 avoid_hammers (은혜 AVOID와 같은 크기)
   },
 
   // ── 기타 ─────────────────────────────────────────────
