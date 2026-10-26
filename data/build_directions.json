@@ -607,14 +607,13 @@
        ],
        "support": [
         "demeter_weed_killer",
-        "aphrodite_heart_breaker",
         "athena_righteous_pike"
        ],
        "target_duos": [
         "duo_poseidon_hera"
        ],
        "finisher": null,
-       "note": "마력 수급 후 Ω 난사. Ω마다 균열·파도가 2회 터진다",
+       "note": "마력 수급 후 Ω 난사. Ω마다 균열·파도가 2회 터진다. 4번째 신은 데메테르(잡초 박멸)",
        "sources": [
         "dc51882:헤라+포세이돈 파급 효과 빌드 — 마력 수급 후 Ω 난사",
         "lee:Momus — 마력 회복 먼저"
@@ -638,8 +637,7 @@
        ],
        "support": [
         "demeter_local_climate",
-        "ares_cut_above",
-        "hestia_controlled_burn"
+        "zeus_double_strike"
        ],
        "target_duos": [
         "duo_zeus_apollo",
@@ -760,8 +758,7 @@
         "poseidon_flood_gain"
        ],
        "support": [
-        "demeter_weed_killer",
-        "ares_cut_above"
+        "demeter_weed_killer"
        ],
        "target_duos": [
         "duo_poseidon_aphrodite",
@@ -1035,6 +1032,7 @@
        "must": [
         "hestia_flame_strike",
         "zeus_heaven_flourish",
+        "zeus_ionic_gain",
         "zeus_static_shock"
        ],
        "support": [
@@ -1543,6 +1541,7 @@
        "must": [
         "zeus_heaven_strike",
         "aphrodite_flutter_flourish",
+        "aphrodite_glamour_gain",
         "hera_extended_family"
        ],
        "support": [
@@ -1824,32 +1823,33 @@
       },
       {
        "id": "flames_hold_moros_kings",
-       "name_ko": "모로스 — 서약 일격 + 천상 기예 → 왕의 강권",
-       "trust": "mid",
+       "name_ko": "모로스 — 제우스 집중 → 왕의 강권",
+       "trust": "low",
        "strength": "A",
        "strength_note": "검색 레시피 (모로스 전용)",
        "main_gods": [
-        "hera",
         "zeus",
+        "hera",
         "demeter"
        ],
        "must": [
-        "hera_sworn_strike",
         "zeus_heaven_flourish",
-        "hera_born_gain"
+        "zeus_heaven_strike",
+        "zeus_ionic_gain"
        ],
        "support": [
         "zeus_power_surge",
-        "zeus_arc_flash"
+        "zeus_arc_flash",
+        "zeus_static_shock"
        ],
        "target_duos": [
         "duo_zeus_demeter"
        ],
        "finisher": {
         "duo": "duo_zeus_hera_kings_ransom",
-        "note": "헤라 은혜를 버리고 제우스 은혜 +4Lv — 모로스는 기술 폭발이 주력이라 제우스 쪽을 키운다"
+        "note": "헤라 은혜 전부를 버리고 제우스 은혜마다 +4Lv. 헤라는 재료 — 혼약 고리(마법)·연분 쇄도(질주)처럼 핵심이 아닌 칸에 받아뒀다가 강권으로 바꾼다. 서약 일격·천부적 마력을 핵심으로 쓰면 안 된다(사라짐)"
        },
-       "note": "여왕의 강권과 반대 방향. 모로스에서만",
+       "note": "여왕의 강권과 반대 방향 — 핵심을 전부 제우스로. 출처가 검색 1건뿐이라 신뢰 △",
        "sources": [
         "검색:Moros = Hera Sworn Strike + Zeus Heaven Flourish + King's Ransom"
        ],
@@ -2184,11 +2184,10 @@
         "hestia_pyro_technique"
        ],
        "target_duos": [
-        "duo_hestia_poseidon",
-        "duo_zeus_hestia"
+        "duo_hestia_poseidon"
        ],
        "finisher": null,
-       "note": "% 피해는 무의미. 타격마다 고정 피해 + 시초",
+       "note": "% 피해는 무의미. 타격마다 고정 피해 + 시초. 제우스는 보조(정전기·전기 구이)만 — 공격·기술이 찼으니 불벼락은 안 됨",
        "sources": [
         "lee:Supay — Rush boon core, flat damage soup, Origination mandatory",
         "dc51882:수파이 ★3"
@@ -3152,6 +3151,7 @@
        ],
        "must": [
         "hera_sworn_strike",
+        "hera_sworn_flourish",
         "demeter_arctic_ring",
         "hera_born_gain"
        ],
@@ -3212,6 +3212,7 @@
        ],
        "must": [
         "apollo_nova_strike",
+        "hera_sworn_flourish",
         "apollo_lucid_gain",
         "demeter_weed_killer"
        ],
