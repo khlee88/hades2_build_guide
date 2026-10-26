@@ -124,6 +124,8 @@ button.tagx{min-height:44px; min-width:44px; padding:0 12px; font-size:.82em; bo
 .badge.b-전설{color:var(--accent); border-color:var(--accent)}
 .badge.b-항상{color:var(--good); border-color:var(--good)}
 .badge.b-전환{color:var(--duo); border-color:var(--duo)}
+.badge.b-목표,.badge.b-끝내기{color:var(--accent); border-color:var(--accent); font-weight:700}
+.badge.b-목표보조{color:var(--accent); border-color:var(--accent)}
 .warns{margin-top:8px; border-left:3px solid var(--bad); padding:2px 0 2px 9px}
 .warns div{font-size:.82em; color:#ffb3b3; margin:2px 0}
 .rec .act{display:flex; justify-content:flex-end; margin-top:10px}
@@ -249,3 +251,17 @@ details.ps[open] summary::before{content:'▾'}
 .tagx.asp{color:var(--info); border-color:var(--info); margin-left:6px}
 .tagx.asp.only{color:var(--accent); border-color:var(--accent)}
 details.fold>summary{min-height:44px; display:flex; align-items:center; cursor:pointer}
+
+
+/* 8-D 빌드 카드 · 체크리스트 */
+.vcard{border:1px solid var(--line); border-radius:10px; padding:8px 10px; margin-top:8px; background:var(--panel-2)}
+.vcard.sel{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent) inset}
+.vcard .row{gap:8px}
+.vstr{font-size:.72em; font-weight:800; border-radius:6px; padding:1px 6px; color:#1a1408; background:var(--dim)}
+.vstr.S{background:#7ed491} .vstr.A{background:var(--accent)} .vstr.B{background:#9aa0a6}
+.vcard .vpick{min-height:36px; padding:0 12px; font-size:.85em}
+.chk{margin-top:10px; padding:10px; border:1px solid var(--line); border-radius:12px; background:var(--panel-2)}
+.chkrow{display:flex; align-items:center; gap:8px; min-height:30px; font-size:.95em}
+.chkrow .bx{width:1.2em; color:var(--accent)}
+.chkrow.done{color:var(--dim)} .chkrow.done .ell{text-decoration:line-through}
+.chip .vstr{margin-right:2px}

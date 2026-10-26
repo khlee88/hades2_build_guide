@@ -558,6 +558,77 @@ sc('S40', '태그 시너지는 수동 보조 목록을 넘지 않는다 — 결�
   ] };
 });
 
+
+// ── 8단계 빌드 카드 (2026-10-26) ────────────────────────
+sc('S41', '런 시작 — 횃불 멜리노에 빌드 카드 3장(헤라 집중·제우스 기술·3신 코어), 모로스 왕의 강권은 모로스에서만', () => {
+  const m = E.recommendRunStart('flames', 'flames_melinoe', { graspCap: 27 });
+  const o = E.recommendRunStart('flames', 'flames_moros', { graspCap: 27 });
+  const dm = m.directions.find((d) => d.id === 'flames_omega_attack_spam'), dо = o.directions.find((d) => d.id === 'flames_omega_attack_spam');
+  const hera = dm.variants.find((v) => v.id === 'flames_hold_hera');
+  return { rows: dm.variants.map((v, i) => ({ id: v.id, rank: i + 1, score: 0, reason: v.name_ko + ' [' + v.strength + '/' + v.trust + ']', warnings: [], badges: [] })), checks: [
+    check('멜리노에: 공격 꾹 변형 3개 (모로스 전용 제외)', dm.variants.length === 3 && !dm.variants.some((v) => v.id === 'flames_hold_moros_kings'), dm.variants.map((v) => v.id).join(',')),
+    check('모로스: 변형 4개 (왕의 강권 포함)', dо.variants.length === 4 && dо.variants.some((v) => v.id === 'flames_hold_moros_kings'), dо.variants.map((v) => v.id).join(',')),
+    check('헤라 집중: 주요 신 헤라·제우스·포세이돈, 필수 4개, 끝내기 여왕의 강권(A)', hera.main_gods.map((g) => g.id).join(',') === 'hera,zeus,poseidon' && hera.must.length === 4 && hera.finisher && hera.finisher.id === 'duo_hera_zeus_queens_ransom' && hera.finisher.tier === 'A', JSON.stringify(hera.finisher)),
+    check('필수에 칸 표시 (서약 일격 = 일반 공격)', hera.must[0].slot_ko === '일반 공격' && hera.must[2].slot_ko === '보조', hera.must.map((x) => x.name_ko + ':' + x.slot_ko).join(' ')),
+  ] };
+});
+
+sc('S42', '빌드 고정 — 3신 코어를 고르면 화염 일격이 서약 일격(방향 1순위)을 이기고 배지 "목표"', () => {
+  const base = S({ weapon: 'flames', aspect: 'flames_melinoe', gods_seen: ['hestia'] });
+  const free = E.recommendBoons(base, ['hestia_flame_strike', 'hestia_flame_flourish', 'hestia_heat_rush']);
+  const locked = E.applyChoice(base, { kind: 'variant', id: 'flames_hold_curse_core' });
+  const rows = E.recommendBoons(locked, ['hestia_flame_strike', 'hestia_flame_flourish', 'hestia_heat_rush']);
+  const a = A(rows);
+  // 방향만 보면 서약 일격이 공격 1순위라 화염 일격은 2순위(8) — 고정 후엔 1순위(10)+목표(5)
+  return { rows, extra: '고정 전: ' + free.map((r) => r.id + '=' + r.score).join(' '), checks: [
+    check('direction_lock이 공격 꾹으로 잡힘', locked.direction_lock === 'flames_omega_attack_spam' && locked.variant === 'flames_hold_curse_core', locked.direction_lock + '/' + locked.variant),
+    check(...a.rankOf('hestia_flame_strike', 1)),
+    check(...a.hasBadge('hestia_flame_strike', '목표')),
+    check(...a.reasonHas('hestia_flame_strike', '필수')),
+    check('고정 후 화염 일격 점수가 고정 전보다 5 이상 높음', rows.find((r) => r.id === 'hestia_flame_strike').score - free.find((r) => r.id === 'hestia_flame_strike').score >= 5, rows[0].score + ' vs ' + free.find((r) => r.id === 'hestia_flame_strike').score),
+  ] };
+});
+
+sc('S43', '빌드 고정 — 신 등급: 헤라 집중에서 공격 칸이 비면 헤라 = 필수(목표 · 서약 일격), 아프로디테 = 빌드 밖', () => {
+  const st = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_melinoe', boons: ['zeus_ionic_gain'], gods_seen: ['zeus'] }), { kind: 'variant', id: 'flames_hold_hera' });
+  const rows = E.recommendGods(st, ['hera', 'aphrodite', 'poseidon']);
+  const by = (id) => rows.find((r) => r.id === id);
+  return { rows, checks: [
+    check("헤라 = 필수, 역할 '목표 · 서약 일격'", by('hera').grade === 'must' && by('hera').roles.some((x) => /목표 · 서약 일격/.test(x)), by('hera').grade_ko + ' ' + by('hera').roles.join(',')),
+    check("헤라 이유에 '빌드 목표'", /빌드 목표/.test(by('hera').reason), by('hera').reason),
+    check("포세이돈 역할에 '목표 · 바다 너울'", by('poseidon').roles.some((x) => /목표 · 바다 너울/.test(x)), by('poseidon').roles.join(',')),
+    check('헤라가 아프로디테보다 위', rows.findIndex((r) => r.id === 'hera') < rows.findIndex((r) => r.id === 'aphrodite'), rows.map((r) => r.id + ':' + r.grade_ko).join(' ')),
+  ] };
+});
+
+sc('S44', '체크리스트 + 끝내기 — 서약 일격·천부적 마력·한 핏줄·제우스 보유 → 2/4, 여왕의 강권 제시 시 배지 "끝내기" 1위', () => {
+  const st = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_melinoe', region: 3, boons: ['hera_sworn_strike', 'hera_born_gain', 'hera_fine_line', 'zeus_storm_ring'], gods_seen: ['hera', 'zeus'] }), { kind: 'variant', id: 'flames_hold_hera' });
+  const c = E.buildChecklist(st);
+  const rows = E.recommendBoons(st, ['duo_hera_zeus_queens_ransom', 'hera_engagement_ring', 'hera_nexus_rush']);
+  const a = A(rows);
+  return { rows, extra: JSON.stringify({ must_done: c.must_done, fin: c.finisher && c.finisher.satisfied + '/' + c.finisher.total }), checks: [
+    check('필수 3/4 (바다 너울만 없음)', c.must_done === 3 && c.must.find((m) => m.id === 'poseidon_ocean_swell').owned === false, c.must.map((m) => m.name_ko + (m.owned ? '✓' : '✗')).join(' ')),
+    check('끝내기 여왕의 강권 조건 2/2', c.finisher && c.finisher.satisfied === 2 && c.finisher.total === 2, JSON.stringify(c.finisher)),
+    check('주요 신 포세이돈 미등장 표시', c.main_gods.find((g) => g.id === 'poseidon').seen === false, JSON.stringify(c.main_gods)),
+    check(...a.rankOf('duo_hera_zeus_queens_ransom', 1)),
+    check(...a.hasBadge('duo_hera_zeus_queens_ransom', '끝내기')),
+    check('빌드 없는 상태에서는 체크리스트 null', E.buildChecklist(S({ weapon: 'flames', aspect: 'flames_melinoe' })) === null, ''),
+  ] };
+});
+
+sc('S45', '빌드 해제·검증 — variant를 null로 풀면 direction_lock도 풀리고, 다른 무기 빌드는 validateState가 잡는다', () => {
+  const st = E.applyChoice(S({ weapon: 'axe', aspect: 'axe_melinoe' }), { kind: 'variant', id: 'axe_heavy_pct' });
+  const off = E.applyChoice(st, { kind: 'variant', id: null });
+  const bad = S({ weapon: 'axe', aspect: 'axe_melinoe', variant: 'flames_hold_hera' });
+  const rows = E.recommendBoons(bad, ['aphrodite_flutter_strike', 'hera_sworn_strike']);
+  return { rows, checks: [
+    check('고정: 도끼 단발 방향 lock', st.direction_lock === 'axe_heavy_attack', st.direction_lock),
+    check('해제: variant·direction_lock 둘 다 null', off.variant === null && off.direction_lock === null, off.variant + '/' + off.direction_lock),
+    check("다른 무기 빌드 → validateState 경고 '다른 무기의 빌드'", E.validateState(bad).some((x) => /다른 무기의 빌드/.test(x)), E.validateState(bad).join('|')),
+    check('다른 무기 빌드는 무시되고 추천은 정상 (목표 배지 없음)', rows.every((r) => !r.badges.includes('목표')), rows.map((r) => r.badges.join('/')).join(' ')),
+  ] };
+});
+
 // ── 실행 ────────────────────────────────────────────────
 const out = [];
 let pass = 0, fail = 0;

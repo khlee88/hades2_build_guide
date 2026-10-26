@@ -214,7 +214,106 @@
        "namu:멜리노에 양상 운용법",
        "user:2026-09-17 \"기술로 빠진다\"가 이동기로 읽힘 — 후딜 취소로 문구 정정"
       ]
-     }
+     },
+     "variants": [
+      {
+       "id": "staff_special_scorch_freeze",
+       "name_ko": "잔불 기예 + 동결 마법 (국밥)",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "dc38884 \"초보 국밥\", 이중 월광탄이 고점",
+       "main_gods": [
+        "hestia",
+        "demeter",
+        "zeus"
+       ],
+       "must": [
+        "hestia_flame_flourish",
+        "demeter_arctic_ring",
+        "hestia_cardio_gain"
+       ],
+       "support": [
+        "hestia_controlled_burn",
+        "hestia_pyro_technique",
+        "hestia_highly_flammable",
+        "demeter_arctic_gale"
+       ],
+       "target_duos": [
+        "duo_hestia_demeter",
+        "duo_zeus_hestia"
+       ],
+       "finisher": null,
+       "note": "기술에 잔불을 얹고 마법으로 얼려 냉동 화상 폭발. 4번째 신은 제우스(불벼락)",
+       "sources": [
+        "dc38884:데메테르 마법+헤스티아 화염 기예+냉동 화상 = 초보 국밥",
+        "namu:멜리노에 = Ω 기술 난사 정석"
+       ],
+       "hammers": [
+        "staff_dual_moonshot",
+        "staff_shimmering_moonshot"
+       ]
+      },
+      {
+       "id": "staff_special_aphro_poseidon",
+       "name_ko": "애정 기예 + 물결 마법",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "dc49018 추천 레시피",
+       "main_gods": [
+        "aphrodite",
+        "poseidon",
+        "zeus"
+       ],
+       "must": [
+        "aphrodite_flutter_flourish",
+        "poseidon_tidal_ring",
+        "zeus_ionic_gain"
+       ],
+       "support": [
+        "poseidon_slippery_slope",
+        "zeus_static_shock"
+       ],
+       "target_duos": [
+        "duo_poseidon_aphrodite",
+        "duo_zeus_poseidon"
+       ],
+       "finisher": null,
+       "note": "% 피해 기예 + 물보라로 묶기",
+       "sources": [
+        "dc49018:아프로 기예+포세 마법"
+       ]
+      },
+      {
+       "id": "staff_special_poseidon_hestia",
+       "name_ko": "파도 기예 + 미끄러운 경사 + 염화 마법",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "dc49018 추천 레시피",
+       "main_gods": [
+        "poseidon",
+        "hestia",
+        "zeus"
+       ],
+       "must": [
+        "poseidon_wave_flourish",
+        "hestia_smolder_ring",
+        "zeus_ionic_gain"
+       ],
+       "support": [
+        "poseidon_slippery_slope",
+        "hestia_controlled_burn"
+       ],
+       "target_duos": [
+        "duo_hestia_poseidon",
+        "duo_zeus_hestia"
+       ],
+       "finisher": null,
+       "note": "물보라 침수 + 잔불. 월광탄 타수로 침수 피해를 쌓는다",
+       "sources": [
+        "dc49018:포세 기예+미끄러운 경사+헤스티아 마법"
+       ]
+      }
+     ]
     },
     {
      "id": "staff_cast",
@@ -318,7 +417,75 @@
        "lee:Circe Staff — Always Be Casting, dash while channeling Ω cast, Lucid Gain double",
        "namu:키르케 양상"
       ]
-     }
+     },
+     "variants": [
+      {
+       "id": "staff_cast_demeter_geyser",
+       "name_ko": "동결 마법 + 현지 기후 + 지하수 분출",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "dc49018 ★★★★, namu 키르케 1티어",
+       "main_gods": [
+        "demeter",
+        "poseidon",
+        "apollo"
+       ],
+       "must": [
+        "demeter_arctic_ring",
+        "apollo_lucid_gain",
+        "demeter_local_climate",
+        "poseidon_geyser_spout"
+       ],
+       "support": [
+        "demeter_arctic_gale",
+        "apollo_super_nova",
+        "hermes_winners_circle"
+       ],
+       "target_duos": [
+        "duo_demeter_apollo",
+        "duo_poseidon_demeter"
+       ],
+       "finisher": null,
+       "note": "영롱한 마력으로 마법을 쓸수록 마력이 돈다. 키르케 동물 친구가 마법을 같이 시전",
+       "sources": [
+        "dc49018:데메 마법+현지 기후+지하수 분출 ★★★★",
+        "namu:키르케 = 제우스·데메테르 마법 핵심+아폴론 지원",
+        "lee:Circe — Lucid Gain·Geyser Spout·Local Climate"
+       ]
+      },
+      {
+       "id": "staff_cast_zeus_storm",
+       "name_ko": "폭풍 마법 + 후속 낙뢰 + 청정한 대기",
+       "trust": "high",
+       "strength": "A",
+       "strength_note": "dc49018·dc38884 무기 무관 초보 빌드",
+       "main_gods": [
+        "zeus",
+        "apollo",
+        "demeter"
+       ],
+       "must": [
+        "zeus_storm_ring",
+        "apollo_lucid_gain",
+        "zeus_double_strike",
+        "zeus_air_quality"
+       ],
+       "support": [
+        "hera_fine_line",
+        "demeter_arctic_gale"
+       ],
+       "target_duos": [
+        "duo_zeus_apollo",
+        "duo_zeus_demeter"
+       ],
+       "finisher": null,
+       "note": "마법진이 낙뢰를 반복. 데메테르가 오면 동결로 우박 폭풍",
+       "sources": [
+        "dc49018:제우스 마법+후속 낙뢰+제우스 정기",
+        "dc38884:제우스 마법+청정한 대기 = 무기 무관 초보 빌드"
+       ]
+      }
+     ]
     },
     {
      "id": "staff_omega_attack",
@@ -419,7 +586,72 @@
        "lee:Momus Staff — tower defense, King of Omegas chain, Night arcana",
        "namu:모모스 양상"
       ]
-     }
+     },
+     "variants": [
+      {
+       "id": "staff_omega_hera_poseidon",
+       "name_ko": "헤라+포세 파급 효과 Ω 난사",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "dc51882 빌드 ⑥, lee",
+       "main_gods": [
+        "hera",
+        "poseidon",
+        "zeus"
+       ],
+       "must": [
+        "hera_sworn_strike",
+        "hera_born_gain",
+        "hera_fine_line",
+        "poseidon_ocean_swell"
+       ],
+       "support": [
+        "demeter_weed_killer",
+        "aphrodite_heart_breaker",
+        "athena_righteous_pike"
+       ],
+       "target_duos": [
+        "duo_poseidon_hera"
+       ],
+       "finisher": null,
+       "note": "마력 수급 후 Ω 난사. Ω마다 균열·파도가 2회 터진다",
+       "sources": [
+        "dc51882:헤라+포세이돈 파급 효과 빌드 — 마력 수급 후 Ω 난사",
+        "lee:Momus — 마력 회복 먼저"
+       ]
+      },
+      {
+       "id": "staff_omega_apollo",
+       "name_ko": "아폴론 Ω 순환 (광휘 + 영롱한 마력)",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "dc49018 레시피",
+       "main_gods": [
+        "apollo",
+        "demeter",
+        "zeus"
+       ],
+       "must": [
+        "apollo_nova_strike",
+        "apollo_lucid_gain",
+        "demeter_arctic_ring"
+       ],
+       "support": [
+        "demeter_local_climate",
+        "ares_cut_above",
+        "hestia_controlled_burn"
+       ],
+       "target_duos": [
+        "duo_zeus_apollo",
+        "duo_zeus_demeter"
+       ],
+       "finisher": null,
+       "note": "아폴론 전설(마법 2연발)이 뜨면 완성",
+       "sources": [
+        "dc49018:아폴론 공격+아폴론 마력+데메 마법+아폴론 전설"
+       ]
+      }
+     ]
     },
     {
      "id": "staff_anubis_zone",
@@ -508,6 +740,70 @@
       "lee:Anubis Staff Winning combo·hammers·recipes",
       "namu:3.1.5 아누비스 양상",
       "dc49018:헤라 공격+아프로 기예+포세 마법 ★4.5, 헤스티아 공격+제우스 기예+정전기 ★4"
+     ],
+     "variants": [
+      {
+       "id": "staff_anubis_hera_aphro",
+       "name_ko": "서약 일격 + 애정 기예 + 물결 마법",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "dc49018 ★4.5",
+       "main_gods": [
+        "hera",
+        "aphrodite",
+        "poseidon"
+       ],
+       "must": [
+        "hera_sworn_strike",
+        "aphrodite_flutter_flourish",
+        "poseidon_tidal_ring",
+        "poseidon_flood_gain"
+       ],
+       "support": [
+        "demeter_weed_killer",
+        "ares_cut_above"
+       ],
+       "target_duos": [
+        "duo_poseidon_aphrodite",
+        "duo_poseidon_hera"
+       ],
+       "finisher": null,
+       "note": "헤라면 Ω 공격을 더 쓴다 (lee)",
+       "sources": [
+        "dc49018:헤라 공격+아프로 기예+포세 마법 ★4.5",
+        "lee:Anubis — Hestia/Hera/Poseidon/Zeus attack + Origination"
+       ]
+      },
+      {
+       "id": "staff_anubis_hestia_zeus",
+       "name_ko": "화염 일격 + 천상 기예 + 정전기",
+       "trust": "high",
+       "strength": "A",
+       "strength_note": "dc49018 ★4",
+       "main_gods": [
+        "hestia",
+        "zeus",
+        "demeter"
+       ],
+       "must": [
+        "hestia_flame_strike",
+        "zeus_heaven_flourish",
+        "zeus_static_shock",
+        "hestia_cardio_gain"
+       ],
+       "support": [
+        "hestia_controlled_burn"
+       ],
+       "target_duos": [
+        "duo_zeus_hestia",
+        "duo_hestia_demeter"
+       ],
+       "finisher": null,
+       "note": "장판 안에 모인 적에게 잔불·암운·연쇄 번개",
+       "sources": [
+        "dc49018:헤스티아 공격+제우스 기예+정전기 ★4"
+       ]
+      }
      ]
     }
    ]
@@ -660,7 +956,103 @@
        "lee:Mel Blades — special → dash-strike → attack, Trick Knives, avoid Dancing Knives",
        "namu:멜리노에 양상 — 스킬라·티폰 배후 불가"
       ]
-     }
+     },
+     "variants": [
+      {
+       "id": "blades_backstab_ares",
+       "name_ko": "상해 일격 + 황홀 마법 + 아레스 전설",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "dc49018 ★★★",
+       "main_gods": [
+        "ares",
+        "aphrodite",
+        "zeus"
+       ],
+       "must": [
+        "ares_vicious_strike",
+        "aphrodite_rapture_ring",
+        "aphrodite_glamour_gain"
+       ],
+       "support": [
+        "ares_grievous_blow",
+        "zeus_static_shock",
+        "artemis_lethal_snare"
+       ],
+       "target_duos": [
+        "duo_zeus_ares",
+        "duo_zeus_aphrodite"
+       ],
+       "finisher": null,
+       "note": "4연타로 상처를 쌓고 황홀 고리로 묶는다. 아레스 전설이 뜨면 완성",
+       "sources": [
+        "dc49018:아레스 공격+아프로 마법+아레스 전설 ★★★",
+        "lee:Aphrodite/Apollo/Hera %, Zeus special+Static Shock"
+       ]
+      },
+      {
+       "id": "blades_backstab_aphro_apollo",
+       "name_ko": "애정 일격 + 매혹적 마력 + 아폴론 마법",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "dc49018 레시피",
+       "main_gods": [
+        "aphrodite",
+        "apollo",
+        "zeus"
+       ],
+       "must": [
+        "aphrodite_flutter_strike",
+        "aphrodite_glamour_gain",
+        "apollo_solar_ring"
+       ],
+       "support": [
+        "apollo_back_burner",
+        "apollo_extra_dose",
+        "aphrodite_secret_crush"
+       ],
+       "target_duos": [
+        "duo_apollo_aphrodite",
+        "duo_zeus_aphrodite"
+       ],
+       "finisher": null,
+       "note": "약화+실명으로 배후 공격 극대화",
+       "sources": [
+        "dc49018:아프로 공격+아프로 마력+아폴론 마법"
+       ]
+      },
+      {
+       "id": "blades_backstab_flat",
+       "name_ko": "화염 일격 + 천상 기예 + 정전기 (고정 피해)",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee 레시피",
+       "main_gods": [
+        "hestia",
+        "zeus",
+        "poseidon"
+       ],
+       "must": [
+        "hestia_flame_strike",
+        "zeus_heaven_flourish",
+        "zeus_static_shock"
+       ],
+       "support": [
+        "hestia_pyro_technique",
+        "hestia_slow_cooker",
+        "poseidon_slippery_slope"
+       ],
+       "target_duos": [
+        "duo_zeus_hestia",
+        "duo_hestia_poseidon"
+       ],
+       "finisher": null,
+       "note": "타격 수가 많은 쌍검에 타격마다 고정 피해",
+       "sources": [
+        "lee:Poseidon·Hestia 고정 피해, Zeus special+Static Shock"
+       ]
+      }
+     ]
     },
     {
      "id": "blades_omega_ambush",
@@ -752,7 +1144,73 @@
        "lee:Artemis Blades — parry everything incl. Chronos instakill, 5 Ω attacks during Riposte",
        "namu:아르테미스 양상 — 크로노스 2페이즈 즉사 패턴 무시"
       ]
-     }
+     },
+     "variants": [
+      {
+       "id": "blades_ambush_aphro",
+       "name_ko": "애정 일격 극대화 + 폭발적 암습",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "namu 초보 최고 추천(키르케와 함께)",
+       "main_gods": [
+        "aphrodite",
+        "hera",
+        "demeter"
+       ],
+       "must": [
+        "aphrodite_flutter_strike",
+        "hera_born_gain",
+        "demeter_arctic_ring"
+       ],
+       "support": [
+        "aphrodite_heart_breaker",
+        "aphrodite_secret_crush",
+        "demeter_weed_killer",
+        "artemis_shadow_pounce"
+       ],
+       "target_duos": [],
+       "finisher": null,
+       "note": "융합보다 공격 은혜 희귀도와 망치. 폭발적 암습이면 한 방 2000+",
+       "sources": [
+        "namu:아르테미스 — 아프로디테 공격 최대 강화",
+        "dc49018:아프로 공격+아프로 마력+헤라/데메 마법 ★★☆",
+        "lee:Aphrodite attack + Hera/Zeus/Poseidon magick"
+       ],
+       "hammers": [
+        "blades_sweeping_ambush",
+        "blades_skulking_onslaught"
+       ]
+      },
+      {
+       "id": "blades_ambush_ares",
+       "name_ko": "상해 일격 + 쓰라린 부상",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee 변형",
+       "main_gods": [
+        "ares",
+        "aphrodite",
+        "zeus"
+       ],
+       "must": [
+        "ares_vicious_strike",
+        "ares_grievous_blow",
+        "zeus_ionic_gain"
+       ],
+       "support": [
+        "aphrodite_heart_breaker",
+        "aphrodite_secret_crush"
+       ],
+       "target_duos": [
+        "duo_zeus_ares"
+       ],
+       "finisher": null,
+       "note": "치명타 반격에 상처 피해",
+       "sources": [
+        "lee:Ares attack+Grievous Blow"
+       ]
+      }
+     ]
     },
     {
      "id": "blades_special_knives",
@@ -849,7 +1307,72 @@
        "lee:Pan Blades — sprint in, cast, dash out, charge Ω special; curve knives",
        "namu:판 양상"
       ]
-     }
+     },
+     "variants": [
+      {
+       "id": "blades_knives_poseidon",
+       "name_ko": "파도 기예 + 동결 마법 + 번개 투창",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "dc49018 ★★★★, dc51882 판 = 포세이돈",
+       "main_gods": [
+        "poseidon",
+        "demeter",
+        "zeus"
+       ],
+       "must": [
+        "poseidon_wave_flourish",
+        "demeter_arctic_ring",
+        "poseidon_slippery_slope",
+        "zeus_ionic_gain"
+       ],
+       "support": [
+        "zeus_lightning_lance",
+        "zeus_static_shock"
+       ],
+       "target_duos": [
+        "duo_zeus_poseidon"
+       ],
+       "finisher": null,
+       "note": "단검 타수로 침수를 쌓고 동결로 묶는다. 끊어 쏘기",
+       "sources": [
+        "dc49018:포세 기예+데메 마법+번개 투창 ★★★★",
+        "dc51882:판 = 포세이돈 빌드",
+        "lee:Poseidon special+Slippery Slope"
+       ]
+      },
+      {
+       "id": "blades_knives_hestia",
+       "name_ko": "화염 기예 + 황홀 마법 + 불같은 열망",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "dc49018 ★★★★",
+       "main_gods": [
+        "hestia",
+        "aphrodite",
+        "demeter"
+       ],
+       "must": [
+        "hestia_flame_flourish",
+        "aphrodite_rapture_ring",
+        "demeter_tranquil_gain"
+       ],
+       "support": [
+        "hestia_highly_flammable",
+        "hestia_controlled_burn"
+       ],
+       "target_duos": [
+        "duo_hestia_aphrodite",
+        "duo_hestia_demeter"
+       ],
+       "finisher": null,
+       "note": "단검마다 잔불, 황홀 고리로 묶고 불같은 열망",
+       "sources": [
+        "dc49018:헤스티아 기예+아프로 마법+불같은 열망 ★★★★",
+        "lee:Hestia special+Demeter Freezer Burn"
+       ]
+      }
+     ]
     },
     {
      "id": "blades_morrigan_triad",
@@ -943,7 +1466,98 @@
      "avoid_hammers": [
       "blades_dancing_knives"
      ],
-     "avoid_hammer_reason": "기술이 안 돌아와 삼연혈참 삼각형이 안 닫힌다"
+     "avoid_hammer_reason": "기술이 안 돌아와 삼연혈참 삼각형이 안 닫힌다",
+     "variants": [
+      {
+       "id": "blades_morrigan_hestia",
+       "name_ko": "화염 일격 + 애정 기예 + 물결 마법",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "dc49018 ★5",
+       "main_gods": [
+        "hestia",
+        "aphrodite",
+        "poseidon"
+       ],
+       "must": [
+        "hestia_flame_strike",
+        "aphrodite_flutter_flourish",
+        "poseidon_tidal_ring",
+        "aphrodite_glamour_gain"
+       ],
+       "support": [
+        "hestia_pyro_technique"
+       ],
+       "target_duos": [
+        "duo_hestia_aphrodite",
+        "duo_hestia_poseidon",
+        "duo_poseidon_aphrodite"
+       ],
+       "finisher": null,
+       "note": "삼연혈참은 고정 피해 — 은혜는 그 사이를 메운다",
+       "sources": [
+        "dc49018:헤스티아 공격+아프로 기예+포세 마법 ★5"
+       ]
+      },
+      {
+       "id": "blades_morrigan_apollo",
+       "name_ko": "광휘 일격 + 온화한 바람",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "dc49018 ★5",
+       "main_gods": [
+        "apollo",
+        "hestia",
+        "aphrodite"
+       ],
+       "must": [
+        "apollo_nova_strike",
+        "aphrodite_flutter_flourish",
+        "aphrodite_glamour_gain"
+       ],
+       "support": [
+        "apollo_back_burner",
+        "hestia_pyro_technique"
+       ],
+       "target_duos": [
+        "duo_hestia_apollo",
+        "duo_hestia_aphrodite"
+       ],
+       "finisher": null,
+       "note": "실명 + 잔불",
+       "sources": [
+        "dc49018:아폴론 공격+온화한 바람+아프로 정기 ★5"
+       ]
+      },
+      {
+       "id": "blades_morrigan_zeus",
+       "name_ko": "천상 일격 + 제우스 전설 + 일가친척",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "dc49018 ★4",
+       "main_gods": [
+        "zeus",
+        "hera",
+        "aphrodite"
+       ],
+       "must": [
+        "zeus_heaven_strike",
+        "aphrodite_flutter_flourish",
+        "hera_extended_family"
+       ],
+       "support": [
+        "zeus_static_shock"
+       ],
+       "target_duos": [
+        "duo_zeus_aphrodite"
+       ],
+       "finisher": null,
+       "note": "제우스 전설이 뜨면 완성",
+       "sources": [
+        "dc49018:제우스 공격+전설+일가친척 ★4"
+       ]
+      }
+     ]
     }
    ]
   },
@@ -1049,6 +1663,7 @@
      "avoid_reason": "",
      "target_duos": [
       "duo_poseidon_hera",
+      "duo_hera_zeus_queens_ransom",
       "duo_zeus_aphrodite",
       "duo_zeus_hestia",
       "duo_zeus_demeter",
@@ -1094,7 +1709,145 @@
        "lee:Mel Flames — charge Ω special, hold Attack, dash/cast while holding; Ω special no hitstun",
        "namu:멜리노에 횃불 — 마력 없으면 최악의 딜"
       ]
-     }
+     },
+     "variants": [
+      {
+       "id": "flames_hold_hera",
+       "name_ko": "헤라 집중 — 파급 효과 → 여왕의 강권",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "lee \"천부적 마력 이것뿐\" + dc51882 빌드 ⑥ + 실플레이 첫 클리어(2026-10-01)",
+       "main_gods": [
+        "hera",
+        "zeus",
+        "poseidon"
+       ],
+       "must": [
+        "hera_sworn_strike",
+        "hera_born_gain",
+        "hera_fine_line",
+        "poseidon_ocean_swell"
+       ],
+       "support": [
+        "athena_righteous_pike",
+        "aphrodite_heart_breaker",
+        "zeus_power_surge"
+       ],
+       "target_duos": [
+        "duo_poseidon_hera"
+       ],
+       "finisher": {
+        "duo": "duo_hera_zeus_queens_ransom",
+        "note": "제우스 기술·마법·마력 중 하나를 임시로 받아두면 여왕의 강권이 뜬다 — 제우스 은혜를 버리고 헤라 은혜 전부 +4Lv"
+       },
+       "note": "마력 쓰는 양 = 딜. Ω마다 균열·파도가 터지고 강권으로 서약 일격·천부적 마력·한 핏줄이 4레벨씩 오른다",
+       "sources": [
+        "lee:Mel Flames — Hera Born Gain 최고, Fine Line+Righteous Pike",
+        "dc51882:헤라+포세 Ω 난사",
+        "log:2026-10-01 지하 첫 클리어 — 서약 일격·천부적 마력·한 핏줄·바다 너울·여왕의 강권"
+       ]
+      },
+      {
+       "id": "flames_hold_zeus_special",
+       "name_ko": "헤라 공격 + 제우스 기술",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "lee \"최적 조합\", namu",
+       "main_gods": [
+        "hera",
+        "zeus",
+        "aphrodite"
+       ],
+       "must": [
+        "hera_sworn_strike",
+        "zeus_heaven_flourish",
+        "hera_born_gain"
+       ],
+       "support": [
+        "zeus_power_surge",
+        "zeus_arc_flash",
+        "zeus_static_shock"
+       ],
+       "target_duos": [
+        "duo_zeus_aphrodite",
+        "duo_zeus_hestia"
+       ],
+       "finisher": null,
+       "note": "공격 %와 기술 암운이 따로 논다. 4번째 신이 아프로디테면 짜릿한 접촉, 헤스티아면 불벼락. 강권은 안 한다(기술을 버리게 됨)",
+       "sources": [
+        "lee:Hera attack+Zeus special 최적, Zeus special+Romantic Spark",
+        "namu:멜리노에 횃불"
+       ]
+      },
+      {
+       "id": "flames_hold_curse_core",
+       "name_ko": "잔불·암운·동결 3신 코어",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "dc51882 3신 코어 ① (전 무기 정석)",
+       "main_gods": [
+        "hestia",
+        "zeus",
+        "demeter"
+       ],
+       "must": [
+        "hestia_flame_strike",
+        "zeus_heaven_flourish",
+        "demeter_arctic_ring",
+        "zeus_ionic_gain"
+       ],
+       "support": [
+        "zeus_power_surge",
+        "hestia_slow_cooker",
+        "hestia_pyro_technique"
+       ],
+       "target_duos": [
+        "duo_zeus_hestia",
+        "duo_zeus_demeter",
+        "duo_hestia_demeter"
+       ],
+       "finisher": null,
+       "note": "융합 3개 전부 S. 헤라가 없어 마력은 대전된 마력(방마다 샘)에 의존",
+       "sources": [
+        "dc51882:헤스+제우스+데메 (공격/기술 암운·잔불, 마법 동결)"
+       ]
+      },
+      {
+       "id": "flames_hold_moros_kings",
+       "name_ko": "모로스 — 서약 일격 + 천상 기예 → 왕의 강권",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "검색 레시피 (모로스 전용)",
+       "main_gods": [
+        "hera",
+        "zeus",
+        "demeter"
+       ],
+       "must": [
+        "hera_sworn_strike",
+        "zeus_heaven_flourish",
+        "hera_born_gain"
+       ],
+       "support": [
+        "zeus_power_surge",
+        "zeus_arc_flash"
+       ],
+       "target_duos": [
+        "duo_zeus_demeter"
+       ],
+       "finisher": {
+        "duo": "duo_zeus_hera_kings_ransom",
+        "note": "헤라 은혜를 버리고 제우스 은혜 +4Lv — 모로스는 기술 폭발이 주력이라 제우스 쪽을 키운다"
+       },
+       "note": "여왕의 강권과 반대 방향. 모로스에서만",
+       "sources": [
+        "검색:Moros = Hera Sworn Strike + Zeus Heaven Flourish + King's Ransom"
+       ],
+       "aspects": [
+        "flames_moros"
+       ]
+      }
+     ]
     },
     {
      "id": "flames_omega_special_orbit",
@@ -1200,7 +1953,105 @@
        "lee:Moros Flames — ludicrously powerful at close range; out of magick: dash to ghosts, tap special. Eos — Daybreaker then tap special",
        "namu:모로스·에오스 양상"
       ]
-     }
+     },
+     "variants": [
+      {
+       "id": "flames_orbit_hera_zeus",
+       "name_ko": "천상 기예 + 서약 일격 (모로스 최적)",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "lee \"Hera attack+Zeus special 최적\", dc51882 모로스 ★★★",
+       "main_gods": [
+        "hera",
+        "zeus",
+        "hestia"
+       ],
+       "must": [
+        "zeus_heaven_flourish",
+        "hera_sworn_strike",
+        "hera_born_gain"
+       ],
+       "support": [
+        "hestia_controlled_burn",
+        "zeus_double_strike",
+        "zeus_arc_flash"
+       ],
+       "target_duos": [
+        "duo_zeus_hestia"
+       ],
+       "finisher": null,
+       "note": "공전 불꽃에 암운, 혼령이 닿아 폭발",
+       "sources": [
+        "lee:Moros — Hera attack+Zeus special 최적, Sudden Burst 최고",
+        "dc51882:모로스 ★★★"
+       ],
+       "hammers": [
+        "flames_sudden_burst",
+        "flames_clean_coil"
+       ]
+      },
+      {
+       "id": "flames_orbit_freeze",
+       "name_ko": "화염 기예 + 동결 마법 (냉동 화상)",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "namu 모로스 융합 조합",
+       "main_gods": [
+        "demeter",
+        "hestia",
+        "zeus"
+       ],
+       "must": [
+        "hestia_flame_flourish",
+        "demeter_arctic_ring",
+        "zeus_ionic_gain"
+       ],
+       "support": [
+        "hestia_pyro_technique",
+        "hestia_highly_flammable"
+       ],
+       "target_duos": [
+        "duo_hestia_demeter",
+        "duo_zeus_hestia",
+        "duo_zeus_demeter"
+       ],
+       "finisher": null,
+       "note": "불꽃 궤도에 잔불, 마법으로 얼려 폭발",
+       "sources": [
+        "namu:모로스 — 데메+헤스/데메+제우스/제우스+헤스 융합 조합"
+       ]
+      },
+      {
+       "id": "flames_orbit_eos",
+       "name_ko": "에오스 — 서약 기예 + 아폴론 공격",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee 에오스 레시피",
+       "main_gods": [
+        "hera",
+        "apollo",
+        "zeus"
+       ],
+       "must": [
+        "hera_sworn_flourish",
+        "apollo_nova_strike",
+        "zeus_ionic_gain"
+       ],
+       "support": [
+        "zeus_arc_flash"
+       ],
+       "target_duos": [],
+       "finisher": null,
+       "note": "서광이 기술을 복사. 아폴론 전설 + 밤 아르카나",
+       "sources": [
+        "lee:Eos — Hera special, Apollo attack+legendary",
+        "dc51882:에오스 = 공격 암운·기술 잔불 고정"
+       ],
+       "aspects": [
+        "flames_eos"
+       ]
+      }
+     ]
     },
     {
      "id": "flames_supay_auto",
@@ -1298,6 +2149,70 @@
       "namu:3.3.5 수파이 — 조작 쉬움·회피 집중, 질주 은혜 1티어화, 헤르메스 질주 방어막 궁합",
       "lee:Supay Flames Winning combo·recipes",
       "dc51882:수파이 ★3 (헤스+제우스+데메 / 헤파 폭발 / 헤라+포세 Ω 난사)"
+     ],
+     "variants": [
+      {
+       "id": "flames_supay_flat",
+       "name_ko": "고정 피해 수프 (열기 쇄도 + 잔불 + 파도)",
+       "trust": "high",
+       "strength": "A",
+       "strength_note": "lee Winning combo, dc51882 ★3",
+       "main_gods": [
+        "hestia",
+        "poseidon",
+        "zeus"
+       ],
+       "must": [
+        "hestia_heat_rush",
+        "hestia_flame_flourish",
+        "poseidon_wave_strike",
+        "hestia_cardio_gain"
+       ],
+       "support": [
+        "zeus_static_shock",
+        "poseidon_slippery_slope",
+        "hestia_pyro_technique"
+       ],
+       "target_duos": [
+        "duo_hestia_poseidon",
+        "duo_zeus_hestia"
+       ],
+       "finisher": null,
+       "note": "% 피해는 무의미. 타격마다 고정 피해 + 시초",
+       "sources": [
+        "lee:Supay — Rush boon core, flat damage soup, Origination mandatory",
+        "dc51882:수파이 ★3"
+       ]
+      },
+      {
+       "id": "flames_supay_spark",
+       "name_ko": "천둥 쇄도 + 짜릿한 접촉",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee 변형",
+       "main_gods": [
+        "zeus",
+        "aphrodite",
+        "hestia"
+       ],
+       "must": [
+        "zeus_thunder_rush",
+        "zeus_heaven_flourish",
+        "hestia_cardio_gain"
+       ],
+       "support": [
+        "zeus_static_shock",
+        "zeus_arc_flash"
+       ],
+       "target_duos": [
+        "duo_zeus_aphrodite"
+       ],
+       "finisher": null,
+       "note": "질주만으로 암운이 터진다",
+       "sources": [
+        "lee:Zeus + Aphrodite Romantic Spark"
+       ]
+      }
      ]
     }
    ]
@@ -1455,7 +2370,102 @@
        "lee:Mel Axe — cast to keep things off, dash-strike → attack → attack → special, special cancels anytime, Dashing Heave",
        "namu:멜리노에 양상 — 1타-2타-돌진-막타 콤보"
       ]
-     }
+     },
+     "variants": [
+      {
+       "id": "axe_heavy_pct",
+       "name_ko": "증뎀 공격 + 동결 마법 + 시초",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "dc51882 ④ + namu \"근접엔 아폴론·아프로디테\" + lee",
+       "main_gods": [
+        "aphrodite",
+        "apollo",
+        "demeter"
+       ],
+       "must": [
+        "aphrodite_flutter_strike",
+        "demeter_arctic_ring",
+        "aphrodite_glamour_gain"
+       ],
+       "support": [
+        "apollo_extra_dose",
+        "apollo_back_burner",
+        "artemis_pressure_points"
+       ],
+       "target_duos": [
+        "duo_apollo_aphrodite"
+       ],
+       "finisher": null,
+       "note": "마법으로 얼려 선딜을 보호. 시초 아르카나로 저주 2종",
+       "sources": [
+        "dc51882:증뎀(헤라·아프로·아폴론)+데메 마법 필수+시초",
+        "namu:근접 무기엔 아폴론·아프로디테 궁합 최고",
+        "lee:Mel Axe — Aphrodite/Apollo/Hera attack + Demeter cast"
+       ],
+       "hammers": [
+        "axe_dashing_heave",
+        "axe_rapid_slash"
+       ]
+      },
+      {
+       "id": "axe_heavy_ares",
+       "name_ko": "애정 일격 + 상해 기예 + 쓰라린 부상",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee 변형",
+       "main_gods": [
+        "aphrodite",
+        "ares",
+        "demeter"
+       ],
+       "must": [
+        "aphrodite_flutter_strike",
+        "ares_vicious_flourish",
+        "demeter_arctic_ring"
+       ],
+       "support": [
+        "ares_grievous_blow",
+        "artemis_lethal_snare"
+       ],
+       "target_duos": [],
+       "finisher": null,
+       "note": "큰 한 방에 상처 추가 피해",
+       "sources": [
+        "lee:Ares special+Grievous Blow, Lethal Snare"
+       ]
+      },
+      {
+       "id": "axe_heavy_thanatos_early",
+       "name_ko": "타나토스 초반 — 광휘 일격 평타",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "dc51882 타나토스 ★★★ \"초반엔 평타 위주\"",
+       "main_gods": [
+        "apollo",
+        "hera",
+        "demeter"
+       ],
+       "must": [
+        "apollo_nova_strike",
+        "demeter_arctic_ring",
+        "hera_born_gain"
+       ],
+       "support": [
+        "apollo_back_burner",
+        "apollo_extra_dose"
+       ],
+       "target_duos": [],
+       "finisher": null,
+       "note": "심령 소용돌이가 뜨면 Ω 회오리 방향으로 갈아탄다",
+       "sources": [
+        "dc51882:타나토스 ★★★ 초반엔 평타 위주"
+       ],
+       "aspects": [
+        "axe_thanatos"
+       ]
+      }
+     ]
     },
     {
      "id": "axe_omega_whirlwind",
@@ -1550,7 +2560,110 @@
        "lee:Thanatos Axe — build Mortality then Ω, Psychic Whirlwind best, dash-started spin has no invulnerability",
        "namu:타나토스 양상 — 필멸 스택"
       ]
-     }
+     },
+     "variants": [
+      {
+       "id": "axe_whirl_pct",
+       "name_ko": "증뎀 공격 + 잡초 박멸 + 심령 소용돌이",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "lee + dc51882 \"심령 소용돌이 먹으면 딜 2배\"",
+       "main_gods": [
+        "aphrodite",
+        "apollo",
+        "demeter"
+       ],
+       "must": [
+        "aphrodite_flutter_strike",
+        "demeter_weed_killer",
+        "aphrodite_glamour_gain",
+        "demeter_arctic_ring"
+       ],
+       "support": [
+        "apollo_back_burner",
+        "hermes_success_rate"
+       ],
+       "target_duos": [
+        "duo_apollo_aphrodite"
+       ],
+       "finisher": null,
+       "note": "회오리 11타에 % 피해. 밤 아르카나·순백 사슴뿔",
+       "sources": [
+        "lee:Thanatos — Aphrodite/Apollo/Hera attack + Weed Killer, Psychic Whirlwind 최고",
+        "dc51882:타나토스 증뎀 빌드"
+       ],
+       "hammers": [
+        "axe_psychic_whirlwind"
+       ]
+      },
+      {
+       "id": "axe_whirl_scorch",
+       "name_ko": "화염 일격 + 냉동 화상",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "lee 레시피, 타격마다 은혜가 회오리에서 폭발(namu)",
+       "main_gods": [
+        "hestia",
+        "demeter",
+        "zeus"
+       ],
+       "must": [
+        "hestia_flame_strike",
+        "demeter_arctic_ring",
+        "zeus_ionic_gain"
+       ],
+       "support": [
+        "hestia_pyro_technique",
+        "zeus_static_shock"
+       ],
+       "target_duos": [
+        "duo_hestia_demeter",
+        "duo_zeus_hestia"
+       ],
+       "finisher": null,
+       "note": "회오리 타격마다 잔불",
+       "sources": [
+        "lee:Hestia attack+Demeter cast Freezer Burn",
+        "namu:타격마다 은혜가 도끼인데도 폭발"
+       ],
+       "hammers": [
+        "axe_psychic_whirlwind"
+       ]
+      },
+      {
+       "id": "axe_whirl_zeus",
+       "name_ko": "천상 일격 + 정전기 + 시초",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee 변형",
+       "main_gods": [
+        "zeus",
+        "aphrodite",
+        "demeter"
+       ],
+       "must": [
+        "zeus_heaven_strike",
+        "zeus_static_shock",
+        "zeus_ionic_gain"
+       ],
+       "support": [
+        "zeus_arc_flash",
+        "zeus_double_strike"
+       ],
+       "target_duos": [
+        "duo_zeus_aphrodite",
+        "duo_zeus_demeter"
+       ],
+       "finisher": null,
+       "note": "회오리 타격마다 연쇄 번개",
+       "sources": [
+        "lee:Zeus attack+Origination"
+       ],
+       "hammers": [
+        "axe_psychic_whirlwind"
+       ]
+      }
+     ]
     },
     {
      "id": "axe_omega_cleave",
@@ -1645,7 +2758,73 @@
        "lee:Charon Axe — bind in cast (not Ω cast), Ω special clips cast → castplosion; attack button doesn't exist",
        "namu:카론 양상"
       ]
-     }
+     },
+     "variants": [
+      {
+       "id": "axe_cleave_apollo",
+       "name_ko": "영롱한 마력 + 물결 마법 + 지하수 분출",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "lee + namu \"아폴론 마법 궁합 최고\"",
+       "main_gods": [
+        "apollo",
+        "poseidon",
+        "hera"
+       ],
+       "must": [
+        "apollo_lucid_gain",
+        "poseidon_tidal_ring",
+        "poseidon_geyser_spout",
+        "apollo_nova_flourish"
+       ],
+       "support": [
+        "apollo_prominence_flare",
+        "apollo_super_nova",
+        "demeter_local_climate"
+       ],
+       "target_duos": [
+        "duo_poseidon_apollo"
+       ],
+       "finisher": null,
+       "note": "마법진을 Ω 기술로 즉시 폭발. 폭발마다 마력이 돌아온다",
+       "sources": [
+        "lee:Charon — Apollo Lucid Gain 시작, Poseidon cast→Geyser Spout",
+        "namu:카론 — 아폴론 마법 궁합 최고"
+       ],
+       "hammers": [
+        "axe_giga_cleaver"
+       ]
+      },
+      {
+       "id": "axe_cleave_ares_zeus",
+       "name_ko": "아레스+제우스 (폭풍 마법 + 고기 분쇄)",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "dc51882 카론 ★★ \"양상 자체가 사기\"",
+       "main_gods": [
+        "ares",
+        "zeus",
+        "apollo"
+       ],
+       "must": [
+        "ares_vicious_flourish",
+        "zeus_storm_ring",
+        "apollo_lucid_gain"
+       ],
+       "support": [
+        "ares_meat_grinder",
+        "zeus_lightning_lance"
+       ],
+       "target_duos": [
+        "duo_demeter_ares"
+       ],
+       "finisher": null,
+       "note": "마법진에 낙뢰·상처",
+       "sources": [
+        "dc51882:카론 = 아레스+제우스 빌드 ★★"
+       ]
+      }
+     ]
     },
     {
      "id": "axe_nergal_berserk",
@@ -1732,6 +2911,71 @@
      "sources": [
       "namu:3.4.5 네르갈 — 광포화 흡혈·공속, 돌진 공격→Ω 공격 연계",
       "lee:Nergal Axe Winning combo·hammers·recipes"
+     ],
+     "variants": [
+      {
+       "id": "axe_nergal_apollo",
+       "name_ko": "광휘 일격 + 잡초 박멸 + 천부적 마력",
+       "trust": "high",
+       "strength": "A",
+       "strength_note": "lee Winning combo",
+       "main_gods": [
+        "apollo",
+        "hera",
+        "demeter"
+       ],
+       "must": [
+        "apollo_nova_strike",
+        "hera_born_gain",
+        "demeter_weed_killer"
+       ],
+       "support": [
+        "ares_cut_above",
+        "apollo_back_burner"
+       ],
+       "target_duos": [],
+       "finisher": null,
+       "note": "Ω 공격 회오리가 주력. 광포화 흡혈로 거칠게",
+       "sources": [
+        "lee:Nergal — Apollo/Hera attack + Weed Killer",
+        "namu:3.4.5 네르갈"
+       ],
+       "hammers": [
+        "axe_psychic_whirlwind"
+       ]
+      },
+      {
+       "id": "axe_nergal_demeter_ares",
+       "name_ko": "얼음 일격 + 위험 지대",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee 변형",
+       "main_gods": [
+        "demeter",
+        "ares",
+        "zeus"
+       ],
+       "must": [
+        "demeter_ice_strike",
+        "demeter_arctic_ring",
+        "zeus_ionic_gain"
+       ],
+       "support": [
+        "ares_meat_grinder",
+        "zeus_static_shock"
+       ],
+       "target_duos": [
+        "duo_demeter_ares"
+       ],
+       "finisher": null,
+       "note": "동결 + 마법진 상처",
+       "sources": [
+        "lee:Demeter attack + Ares Hostile Environment + Psychic Whirlwind"
+       ],
+       "hammers": [
+        "axe_psychic_whirlwind"
+       ]
+      }
      ]
     }
    ]
@@ -1877,6 +3121,98 @@
       "namu:3.5 은백색 해골 운용·멜리노에 양상",
       "lee:Mel Skull — Hera/Aphrodite/Apollo/Ares attack, Heph special → legendary, Possessed Array dream build",
       "dc51882:멜리해골 ★1~2 탄환 회수 망치 의존"
+     ],
+     "variants": [
+      {
+       "id": "skull_throw_pct",
+       "name_ko": "서약 일격 + 아폴론 보조 + 동결 마법",
+       "trust": "high",
+       "strength": "A",
+       "strength_note": "lee ①, namu \"망치 잘 타면 1티어급\"",
+       "main_gods": [
+        "hera",
+        "apollo",
+        "demeter"
+       ],
+       "must": [
+        "hera_sworn_strike",
+        "demeter_arctic_ring",
+        "hera_born_gain"
+       ],
+       "support": [
+        "apollo_extra_dose",
+        "apollo_back_burner"
+       ],
+       "target_duos": [],
+       "finisher": null,
+       "note": "마법진으로 묶고 연사 → 기술 회수. 사냥꾼 아르카나",
+       "sources": [
+        "lee:Mel Skull — Hera/Aphrodite/Apollo/Ares attack → Apollo Extra Dose/Back Burner, Demeter cast",
+        "namu:3.5 멜리노에"
+       ],
+       "hammers": [
+        "skull_possessed_array",
+        "skull_wide_grin"
+       ]
+      },
+      {
+       "id": "skull_throw_heph",
+       "name_ko": "화산 기예 → 헤파 전설",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee ②",
+       "main_gods": [
+        "hephaestus",
+        "hera",
+        "demeter"
+       ],
+       "must": [
+        "hephaestus_volcanic_flourish",
+        "hera_sworn_strike",
+        "demeter_arctic_ring"
+       ],
+       "support": [
+        "apollo_extra_dose"
+       ],
+       "target_duos": [
+        "duo_hera_hephaestus"
+       ],
+       "finisher": null,
+       "note": "헤파 전설(포환당 +21)이 목표",
+       "sources": [
+        "lee:Heph special → legendary"
+       ]
+      },
+      {
+       "id": "skull_throw_apollo_dream",
+       "name_ko": "아폴론 꿈 빌드 — 광휘 일격 + 귀신 들린 탄환",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee ③ \"dream build\"",
+       "main_gods": [
+        "apollo",
+        "demeter",
+        "hera"
+       ],
+       "must": [
+        "apollo_nova_strike",
+        "apollo_lucid_gain",
+        "demeter_weed_killer"
+       ],
+       "support": [
+        "apollo_extra_dose",
+        "apollo_back_burner"
+       ],
+       "target_duos": [],
+       "finisher": null,
+       "note": "마력을 많이 쓰고 아폴론 전설",
+       "sources": [
+        "lee:Apollo attack + magick + Weed Killer + Apollo legendary + Possessed Array"
+       ],
+       "hammers": [
+        "skull_possessed_array"
+       ]
+      }
      ]
     },
     {
@@ -1971,7 +3307,103 @@
       "lee:Persephone Skull — Heph attack → blast duos, Hera special best-in-slot, Ares+Heinous Affront 변형",
       "dc51882:페르세포네 ★2~3, 헤파 폭발 ★3"
      ],
-     "keepsake_override": "adamant_shard"
+     "keepsake_override": "adamant_shard",
+     "variants": [
+      {
+       "id": "skull_perse_heph",
+       "name_ko": "화산 일격 → 폭발 융합 + 서약 기예",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "lee ① + namu \"첫 클리어용 무난\"",
+       "main_gods": [
+        "hephaestus",
+        "hera",
+        "hestia"
+       ],
+       "must": [
+        "hephaestus_volcanic_strike",
+        "hera_sworn_flourish",
+        "hestia_cardio_gain"
+       ],
+       "support": [
+        "hephaestus_grand_caldera",
+        "hephaestus_furnace_blast",
+        "hestia_slow_cooker"
+       ],
+       "target_duos": [
+        "duo_hestia_hephaestus",
+        "duo_hera_hephaestus"
+       ],
+       "finisher": null,
+       "note": "폭발로 게이지 → 무적 Ω 기술로 방 정리. 기술엔 % 피해",
+       "sources": [
+        "lee:Persephone — Heph attack → blast duos, Hera special best-in-slot",
+        "namu:3.5.4 페르세포네"
+       ],
+       "hammers": [
+        "skull_twisting_crash"
+       ]
+      },
+      {
+       "id": "skull_perse_flat",
+       "name_ko": "화염 일격 + 천상 기예 + 시초",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee ②",
+       "main_gods": [
+        "hestia",
+        "poseidon",
+        "zeus"
+       ],
+       "must": [
+        "hestia_flame_strike",
+        "zeus_heaven_flourish",
+        "hestia_cardio_gain"
+       ],
+       "support": [
+        "zeus_static_shock",
+        "hestia_slow_cooker"
+       ],
+       "target_duos": [
+        "duo_zeus_hestia",
+        "duo_hestia_poseidon"
+       ],
+       "finisher": null,
+       "note": "타격마다 저주로 게이지",
+       "sources": [
+        "lee:Hestia/Poseidon/Zeus attack + Origination + % special"
+       ]
+      },
+      {
+       "id": "skull_perse_ares",
+       "name_ko": "상해 일격 + 잔학무도 + 빛살 강타",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee ③",
+       "main_gods": [
+        "ares",
+        "zeus",
+        "hera"
+       ],
+       "must": [
+        "ares_vicious_strike",
+        "hera_sworn_flourish",
+        "hera_born_gain"
+       ],
+       "support": [
+        "apollo_light_smite",
+        "ares_grievous_blow"
+       ],
+       "target_duos": [
+        "duo_zeus_ares"
+       ],
+       "finisher": null,
+       "note": "상처가 올림포스 피해로 계산돼 게이지가 찬다",
+       "sources": [
+        "lee:Ares attack + Zeus + Heinous Affront + Light Smite"
+       ]
+      }
+     ]
     },
     {
      "id": "skull_medea_loop",
@@ -2063,6 +3495,99 @@
       "namu:3.5.3 메데이아 — 키르케·수파이 이상 부동의 1위, 피격 리스크",
       "lee:Medea Skull — Zeus special + % attack (Ares best), Hera attack for Wards/Hordes, Heph blast duos",
       "dc51882:메데이아 ★2 (조작 난이도), 헤파 폭발 ★3"
+     ],
+     "variants": [
+      {
+       "id": "skull_medea_zeus_ares",
+       "name_ko": "천상 기예 + 상해 일격 → 잔학무도",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "lee ① + namu \"부동의 1위\"",
+       "main_gods": [
+        "zeus",
+        "ares",
+        "demeter"
+       ],
+       "must": [
+        "ares_vicious_strike",
+        "zeus_heaven_flourish",
+        "zeus_ionic_gain"
+       ],
+       "support": [
+        "ares_grievous_blow",
+        "apollo_light_smite",
+        "zeus_double_strike"
+       ],
+       "target_duos": [
+        "duo_zeus_ares",
+        "duo_zeus_demeter"
+       ],
+       "finisher": null,
+       "note": "장전 → 관통 폭발 → 재장전. 귀신 들린 탄환 = 왕",
+       "sources": [
+        "lee:Medea — Zeus special + % attack (Ares best)",
+        "namu:3.5.3 메데이아"
+       ],
+       "hammers": [
+        "skull_possessed_array"
+       ]
+      },
+      {
+       "id": "skull_medea_hera",
+       "name_ko": "서약 일격 + 헤파 방어",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee ② (수호·물량 맹세)",
+       "main_gods": [
+        "hera",
+        "hephaestus",
+        "demeter"
+       ],
+       "must": [
+        "hera_sworn_strike",
+        "hephaestus_volcanic_flourish",
+        "hera_born_gain"
+       ],
+       "support": [
+        "hephaestus_security_system"
+       ],
+       "target_duos": [],
+       "finisher": null,
+       "note": "피격 리스크를 방어로 메운다",
+       "sources": [
+        "lee:Hera attack for Wards/Hordes, Heph·Demeter defense"
+       ]
+      },
+      {
+       "id": "skull_medea_blast",
+       "name_ko": "화산 기예 + 폭발 융합 + 솥단지 예열",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee ③, dc51882 헤파 폭발 ★3",
+       "main_gods": [
+        "hephaestus",
+        "hestia",
+        "apollo"
+       ],
+       "must": [
+        "hephaestus_volcanic_flourish",
+        "hestia_flame_strike",
+        "hestia_cardio_gain"
+       ],
+       "support": [
+        "hestia_slow_cooker"
+       ],
+       "target_duos": [
+        "duo_hestia_hephaestus",
+        "duo_apollo_hephaestus"
+       ],
+       "finisher": null,
+       "note": "관통 폭발 + 헤파 폭발",
+       "sources": [
+        "lee:Heph special/attack → Hestia·Apollo blast duos + Slow Cooker",
+        "dc51882:헤파 폭발 ★3"
+       ]
+      }
      ]
     },
     {
@@ -2153,6 +3678,95 @@
       "namu:3.5.5 헬 — 엑사그리프 계승, 타수 시너지, 마력·시전 속도 문제",
       "lee:Hel Skull — Poseidon/Zeus attack, Hera special, Demeter freeze; Helheim Charge",
       "dc51882:헬 ★2 타수 goat·사거리 짧음"
+     ],
+     "variants": [
+      {
+       "id": "skull_hel_poseidon",
+       "name_ko": "파도 일격 + 미끄러운 경사 + 서약 기예",
+       "trust": "high",
+       "strength": "S",
+       "strength_note": "lee ① + dc51882 \"타수 goat\"",
+       "main_gods": [
+        "poseidon",
+        "hera",
+        "hestia"
+       ],
+       "must": [
+        "poseidon_wave_strike",
+        "hera_sworn_flourish",
+        "hestia_cardio_gain"
+       ],
+       "support": [
+        "poseidon_slippery_slope"
+       ],
+       "target_duos": [],
+       "finisher": null,
+       "note": "발키리 연사 타격마다 파도. 따스한 마력 베스트",
+       "sources": [
+        "lee:Hel — Poseidon attack + Slippery Slope + Hera special",
+        "dc51882:헬 ★2 타수 goat"
+       ]
+      },
+      {
+       "id": "skull_hel_zeus",
+       "name_ko": "천상 일격 + 정전기 + 후속 낙뢰",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee ② \"후반 강함\"",
+       "main_gods": [
+        "zeus",
+        "hestia",
+        "demeter"
+       ],
+       "must": [
+        "zeus_heaven_strike",
+        "zeus_static_shock",
+        "hestia_cardio_gain"
+       ],
+       "support": [
+        "zeus_double_strike",
+        "zeus_arc_flash"
+       ],
+       "target_duos": [
+        "duo_zeus_hestia",
+        "duo_hestia_demeter"
+       ],
+       "finisher": null,
+       "note": "연사 타격마다 연쇄 번개",
+       "sources": [
+        "lee:Zeus attack (Static Shock·Double Strike)"
+       ]
+      },
+      {
+       "id": "skull_hel_hestia",
+       "name_ko": "화염 일격 + 냉동 화상",
+       "trust": "high",
+       "strength": "A",
+       "strength_note": "namu 헬 추천",
+       "main_gods": [
+        "hestia",
+        "demeter",
+        "zeus"
+       ],
+       "must": [
+        "hestia_flame_strike",
+        "demeter_arctic_ring",
+        "hestia_cardio_gain"
+       ],
+       "support": [
+        "hestia_controlled_burn",
+        "zeus_arc_flash"
+       ],
+       "target_duos": [
+        "duo_hestia_demeter",
+        "duo_zeus_hestia"
+       ],
+       "finisher": null,
+       "note": "연사로 잔불을 쌓고 얼려 폭발",
+       "sources": [
+        "namu:헤스티아 주력 + 데메테르 냉동 화상, 제우스 전기 구이, 따스한 마력 베스트"
+       ]
+      }
      ]
     }
    ]
@@ -2293,6 +3907,133 @@
       "namu:3.6 검은빛 외투 운용·멜리노에·닉스 양상",
       "lee:Mel Coat — Hera/Poseidon/Hestia/Zeus, Exhaust Riser; Nyx — same + Hestia gain, avoid Hera gain",
       "dc51882:닉스 ★2 타수 좋음·조작감"
+     ],
+     "variants": [
+      {
+       "id": "coat_punch_flat",
+       "name_ko": "서약 기예 + 파도 일격 (최고 희귀도 4신)",
+       "trust": "high",
+       "strength": "A",
+       "strength_note": "lee ① + namu",
+       "main_gods": [
+        "hera",
+        "poseidon",
+        "hestia"
+       ],
+       "must": [
+        "hera_sworn_flourish",
+        "poseidon_wave_strike",
+        "hestia_cardio_gain"
+       ],
+       "support": [
+        "zeus_static_shock",
+        "poseidon_slippery_slope",
+        "hestia_slow_cooker"
+       ],
+       "target_duos": [
+        "duo_hestia_poseidon"
+       ],
+       "finisher": null,
+       "note": "돌진 공격 3타 = 타격마다 은혜. 4번째 신은 제우스(정전기)",
+       "sources": [
+        "lee:Mel Coat — Hera/Poseidon/Hestia/Zeus, Exhaust Riser",
+        "namu:3.6 멜리노에"
+       ],
+       "hammers": [
+        "coat_exhaust_riser"
+       ]
+      },
+      {
+       "id": "coat_punch_freeze",
+       "name_ko": "화염 일격 + 서약 기예 + 냉동 화상",
+       "trust": "high",
+       "strength": "A",
+       "strength_note": "lee ②",
+       "main_gods": [
+        "hestia",
+        "demeter",
+        "hera"
+       ],
+       "must": [
+        "hestia_flame_strike",
+        "hera_sworn_flourish",
+        "demeter_arctic_ring"
+       ],
+       "support": [
+        "hestia_slow_cooker"
+       ],
+       "target_duos": [
+        "duo_hestia_demeter"
+       ],
+       "finisher": null,
+       "note": "분출 상승이면 잔불 쌓기 쉬움",
+       "sources": [
+        "lee:Hestia attack + Demeter Freezer Burn (Exhaust Riser)"
+       ],
+       "hammers": [
+        "coat_exhaust_riser"
+       ]
+      },
+      {
+       "id": "coat_punch_zeus",
+       "name_ko": "천상 일격 + 짜릿한 접촉 / 초전도체",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee ③",
+       "main_gods": [
+        "zeus",
+        "aphrodite",
+        "hephaestus"
+       ],
+       "must": [
+        "zeus_heaven_strike",
+        "hephaestus_volcanic_flourish",
+        "zeus_ionic_gain"
+       ],
+       "support": [
+        "zeus_static_shock"
+       ],
+       "target_duos": [
+        "duo_zeus_aphrodite",
+        "duo_zeus_hephaestus"
+       ],
+       "finisher": null,
+       "note": "주먹 타격마다 암운",
+       "sources": [
+        "lee:Zeus attack + Aphrodite Romantic Spark / Heph Superconductor"
+       ]
+      },
+      {
+       "id": "coat_punch_nyx",
+       "name_ko": "닉스 — 화염 일격 + 따스한 마력 + 온화한 바람",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee 닉스 ③, namu \"멜리노에·셀레네보다 좋음\"",
+       "main_gods": [
+        "hestia",
+        "apollo",
+        "hera"
+       ],
+       "must": [
+        "hestia_flame_strike",
+        "hestia_cardio_gain",
+        "hera_sworn_flourish"
+       ],
+       "support": [
+        "aphrodite_wispy_wiles"
+       ],
+       "target_duos": [
+        "duo_hestia_apollo"
+       ],
+       "finisher": null,
+       "note": "헤라 천부적 마력은 Ω 추진에 안 걸린다 — 피한다",
+       "sources": [
+        "lee:Nyx — Hestia Hearth Gain + Apollo Glorious Disaster, avoid Hera gain"
+       ],
+       "aspects": [
+        "coat_nyx"
+       ]
+      }
      ]
     },
     {
@@ -2387,6 +4128,70 @@
       "namu:3.6.5 시바 — 숙련 요구, 마력 회복 필수, 6중첩 1200",
       "lee:Shiva Coat — Apollo/Demeter/Hera/Aphrodite/Ares attack, Weed Killer, Exceptional Talent; Origination 변형",
       "dc51882:시바 ★2 외투 최고"
+     ],
+     "variants": [
+      {
+       "id": "coat_shiva_pct",
+       "name_ko": "광휘 일격 + 천부적 마력 + 잡초 박멸",
+       "trust": "high",
+       "strength": "A",
+       "strength_note": "lee ① + namu \"6중첩 1200\"",
+       "main_gods": [
+        "apollo",
+        "hera",
+        "demeter"
+       ],
+       "must": [
+        "apollo_nova_strike",
+        "hera_born_gain",
+        "demeter_weed_killer"
+       ],
+       "support": [
+        "apollo_extra_dose",
+        "ares_cut_above",
+        "hera_fine_line"
+       ],
+       "target_duos": [],
+       "finisher": null,
+       "note": "마력을 엄청 쓴다. 아폴론 전설(2연타 주먹)",
+       "sources": [
+        "lee:Shiva — Apollo/Demeter/Hera attack, Weed Killer, Exceptional Talent",
+        "namu:3.6.5 시바"
+       ],
+       "hammers": [
+        "coat_counter_supreme",
+        "coat_elephant_rockets"
+       ]
+      },
+      {
+       "id": "coat_shiva_origination",
+       "name_ko": "시초 + 광휘·애정·천상 일격 그냥 주먹",
+       "trust": "mid",
+       "strength": "A",
+       "strength_note": "lee ② 변형",
+       "main_gods": [
+        "apollo",
+        "aphrodite",
+        "zeus"
+       ],
+       "must": [
+        "apollo_nova_strike",
+        "apollo_lucid_gain",
+        "apollo_solar_ring"
+       ],
+       "support": [
+        "zeus_double_strike"
+       ],
+       "target_duos": [
+        "duo_apollo_aphrodite",
+        "duo_zeus_aphrodite"
+       ],
+       "finisher": null,
+       "note": "저주 2종 + 사냥꾼",
+       "sources": [
+        "lee:Origination(+Huntress), Apollo·Aphrodite·Zeus attack"
+       ]
+      }
      ]
     },
     {
@@ -2478,7 +4283,93 @@
       "lee:Selene Coat — Moon Beam first, magick recovery, Ares legendary 변형, Origination+Zeus special 변형",
       "dc51882:셀레네 ★1"
      ],
-     "keepsake_override": "moon_beam"
+     "keepsake_override": "moon_beam",
+     "variants": [
+      {
+       "id": "coat_selene_moonbeam",
+       "name_ko": "달빛보라 + 서약 일격 + 마력 회복 + Ω 비용",
+       "trust": "high",
+       "strength": "B",
+       "strength_note": "lee ① — 단 양상 자체가 외투 최하(namu, dc ★1)",
+       "main_gods": [
+        "hera",
+        "demeter",
+        "hestia"
+       ],
+       "must": [
+        "hera_sworn_strike",
+        "hera_born_gain",
+        "hera_fine_line"
+       ],
+       "support": [
+        "hestia_controlled_burn",
+        "demeter_weed_killer"
+       ],
+       "target_duos": [],
+       "finisher": null,
+       "note": "달빛보라 기념품 전제. Ω 비용 증가 은혜가 비술을 더 빨리 채운다",
+       "sources": [
+        "lee:Selene — Moon Beam first, % attack + magick recovery + Ω cost",
+        "namu:3.6.3 셀레네"
+       ]
+      },
+      {
+       "id": "coat_selene_ares",
+       "name_ko": "살벌한 마력 + 아레스 전설",
+       "trust": "mid",
+       "strength": "B",
+       "strength_note": "lee ②",
+       "main_gods": [
+        "ares",
+        "hera",
+        "zeus"
+       ],
+       "must": [
+        "ares_grisly_gain",
+        "hera_sworn_strike"
+       ],
+       "support": [
+        "ares_grievous_blow"
+       ],
+       "target_duos": [
+        "duo_zeus_ares"
+       ],
+       "finisher": null,
+       "note": "천상 붕괴에 상처",
+       "sources": [
+        "lee:Ares magick + Ares legendary"
+       ]
+      },
+      {
+       "id": "coat_selene_zeus",
+       "name_ko": "시초 + 천상 기예 + 전기 구이",
+       "trust": "mid",
+       "strength": "B",
+       "strength_note": "lee ③",
+       "main_gods": [
+        "zeus",
+        "hera",
+        "aphrodite"
+       ],
+       "must": [
+        "zeus_heaven_flourish",
+        "aphrodite_flutter_strike",
+        "hera_born_gain"
+       ],
+       "support": [
+        "zeus_arc_flash",
+        "zeus_static_shock"
+       ],
+       "target_duos": [
+        "duo_zeus_aphrodite"
+       ],
+       "finisher": null,
+       "note": "Ω 피해가 암운을 즉시 터뜨린다",
+       "sources": [
+        "lee:Origination + Zeus special + Arc Flash"
+       ]
+      }
+     ]
     }
    ]
   }
@@ -2544,5 +4435,6 @@
  ],
  "_patch_5e": "2026-09-16 실플레이 로그 기반 누락 보정 (염화 고리·매혹적 마력·폭풍 고리)",
  "_playstyle": "2026-09-17 방향별 운용 가이드 6줄(loop/key/cast/early/late/avoid). 출처 lee Winning combo + 나무위키 운용법",
- "_6b": "2026-10-14 해골 4·외투 3 방향 + 숨김 양상 4 방향 (페이블). 근거 data/RESEARCH_6A.md. keepsake_override·avoid_hammers는 6-C가 엔진에 연결"
+ "_6b": "2026-10-14 해골 4·외투 3 방향 + 숨김 양상 4 방향 (페이블). 근거 data/RESEARCH_6A.md. keepsake_override·avoid_hammers는 6-C가 엔진에 연결",
+ "_8b": "2026-10-26 빌드 카드(variants) — 커뮤니티 빌드를 합치지 않고 그대로. data/patch_8_variants.py"
 }

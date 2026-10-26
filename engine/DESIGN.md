@@ -370,3 +370,25 @@ value(c) = 핵심 목록(arcana_beginner_set.cards → upgrade_path) i번째 →
 
 ### 15-4. 지역
 진행 중 지역 입력이 12런 131개 pick 전부 1이었다. 엔진은 `state.region`을 그대로 믿으므로 생존(2지역+)·마력(5점) 규칙이 늘 1지역 값으로 돌았다. UI가 은혜·망치 수로 추정한 값(종료 시트 공식)을 넘긴다 — 엔진 계약은 불변.
+
+---
+
+## 16. 빌드 카드 (8단계, 2026-10-26, 페이블)
+
+### 16-1. 왜
+방향(§2)은 커뮤니티 빌드 여러 개를 칸별 순위로 합친 것. 매 선택을 점수로 보면 맞긴 하지만 "지금 어느 빌드를 타고 있나"가 안 보여 사용자 학습이 느리다. 게임 구조(신 풀 4명)상 빌드는 "주요 신 3 + 핵심 은혜 6~8 + 융합 1~2"로 정의되므로, 그 단위를 **그대로** 보여주고 고르게 한다.
+
+### 16-2. 데이터
+`build_directions.json` 방향마다 `variants[]` (SCHEMA.md). must는 칸당 1개 — 그 변형에서 그 칸의 1순위. support·target_duos·finisher(끝내기 융합: 서로를 파괴하는 강권류)·hammers(없으면 방향 것)·aspects(양상 전용)·trust·strength·sources.
+
+### 16-3. 엔진
+- `state.variant` = 변형 id. `derive()`가 그 방향을 `effectiveDirection(d, v)`로 바꿔 끼운다: slot_prefs 맨 앞에 must, support 맨 앞에 변형 support(+칸 미점유 must), target_duos 맨 앞에 변형 융합+끝내기, hammers 교체. **기존 채점 전부가 그대로 "이 빌드 기준"이 된다.**
+- `directionWeights`: lock = direction_lock || 변형의 방향 (0.7/0.3).
+- 은혜: must → 배지 `목표` **+5**(같은 칸 2순위 8+5 > 목표 아닌 1순위 10), support → `목표 보조` **+2**, 끝내기 융합 후보 → `끝내기` +5. 이유 `빌드 '헤라 집중' 필수`.
+- 신: 그 신의 must 은혜가 미보유이고 선택 가능 → 역할 `목표 · 은혜`; 그 칸이 비었으면 '필수', 아니면 '좋음'. main_gods → +2 '빌드 신'.
+- `buildChecklist(state)`: must(보유·지금 그 칸에 뭐가 있나)·support·융합 진행·끝내기·망치·신 등장 여부.
+- `applyChoice({kind:'variant', id|null})`가 direction_lock도 같이 건다/푼다. 다른 무기 변형은 무시 + validateState 경고.
+
+### 16-4. 하지 않은 것
+- 변형별 운용법 — 방향 운용법을 그대로 쓴다. 변형의 note·finisher.note가 차이를 적는다.
+- 변형 점수화 — 강함(S/A/B)은 커뮤니티 평가의 전사이지 엔진 입력이 아니다. 정렬은 데이터 순서(강한 것·실플레이 검증 먼저).

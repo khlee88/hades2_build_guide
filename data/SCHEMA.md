@@ -387,3 +387,19 @@ validate.js가 검사하는 것: 모든 id 존재 · `slot_prefs.X`에는 X 칸 
 11. **상충 통합 검사** — 은혜·융합·망치·아르카나의 `conflicts` id가 존재하고 **양방향 대칭**. `boon_conflicts`·`duo_gateway` 사용 시 오류
 12. 전설 은혜의 `boons.json` prereq == `duo_legendary.json` requires
 13. `build_directions.json` 참조 무결성 (위 스펙 참조)
+
+### `build_directions.json` 방향의 `variants[]` (8단계, 2026-10-26)
+
+| 필드 | 뜻 |
+|---|---|
+| `id`, `name_ko` | 변형 id · 이름(" — " 앞이 짧은 이름, 이유 문구에 쓰임) |
+| `trust` | `high`(◎ 출처 2+ 또는 실플레이) / `mid`(○ 출처 1) / `low`(△ 추론) |
+| `strength`, `strength_note` | S/A/B + 근거 한 줄 (엔진 입력 아님, 표시용) |
+| `main_gods` | 신 id 3개, 순서 = 중요도 |
+| `must` | 은혜 id. 칸 점유 은혜는 칸당 1개 = 그 변형의 칸 1순위. 칸 미점유(한 핏줄 등)도 가능 |
+| `support` | 보조 은혜 id (4번째 신 것도 허용) |
+| `target_duos` | 융합 id |
+| `finisher` | `{duo, note}` 또는 null — 끝내기 융합(강권류: 받으면 한쪽 신 은혜가 사라짐) |
+| `hammers` | 선택. 없으면 방향 것 |
+| `aspects` | 선택. 있으면 그 양상에서만 표시 |
+| `note`, `sources` | 메모 · 출처 태그 |

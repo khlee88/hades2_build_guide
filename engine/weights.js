@@ -38,7 +38,10 @@ const WEIGHTS = {
     AVOID: -8,
     NEUTRAL: 1,                 // 방향과 무관한 칸 미점유 은혜
     // 7-B (2026-10-14): 태그 시너지 — support_boons에 없는 패시브. 로그: 칸이 다 찬 뒤 은혜 선택 16회 중 9회(56%)가 최고점 5 미만(전부 1점)
-    SYNERGY: { CURSE_SCALE: 3, CURSE_APPLY: 1.5, OMEGA: 2, CAST: 2, SPRINT: 1.5, BOSS: 1, CAP: 3 },   // NEUTRAL+CAP = 4 = SUPPORT 4순위. 자동 시너지는 손으로 쓴 보조 목록을 넘지 않는다
+    SYNERGY: { CURSE_SCALE: 3, CURSE_APPLY: 1.5, OMEGA: 2, CAST: 2, SPRINT: 1.5, BOSS: 1, CAP: 3 },
+    // 8-C (2026-10-26): 빌드 카드 고정 시 목표 은혜. must는 이미 그 방향 칸 1순위(10)가 되므로 +5는 "같은 칸 2순위(8)+5 > 1순위 10"을 보장하는 크기 — 목표가 아닌 1순위를 이긴다
+    TARGET_MUST: 5,
+    TARGET_SUPPORT: 2,   // NEUTRAL+CAP = 4 = SUPPORT 4순위. 자동 시너지는 손으로 쓴 보조 목록을 넘지 않는다
   },
 
   // ── §3-3 방향 무관 항 ────────────────────────────────
@@ -77,7 +80,8 @@ const WEIGHTS = {
     DUO_READY: 3,               // 5-G→7-A: 8→3. 실측 — 대기 융합 신의 문에 들어가 바로 다음 3택에 융합이 뜬 비율 6/26 = 23% (12런, 2026-10-14). 기대값 ≈ 0.23×(12+tier)
     DUO_READY_S: 1,             //      그중 S급이면 추가
     LEG_READY: 3,               //      전설 조건 완성 — 표본 0/2라 융합과 같은 값
-    DUO_OFFER_RATE: 0.23,       //      이유 문구 "실측 약 1/4"의 근거. data/runs/analyze.py '대기 융합 문' 항목으로 재측정
+    DUO_OFFER_RATE: 0.23,
+    TARGET_GOD: 2,              // 8-C: 빌드 카드의 주요 신       //      이유 문구 "실측 약 1/4"의 근거. data/runs/analyze.py '대기 융합 문' 항목으로 재측정
     TIE_GAP: 2,                 // 이 차이 미만이면 같은 군 — 첫 신은 상위 4~5신이 2점 이내라 순위에 변별이 없다
     OK_TOP: 3,                  // 채울 칸도 융합도 없을 때, 상위 은혜 평균이 이 이상이면 '보통', 아니면 '패스'
     MAIN_CORE: [4, 3, 2, 1.5],  // 방향별 '주요 신' 집계: 핵심 칸 선호 순위별

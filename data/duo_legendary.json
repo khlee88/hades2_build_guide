@@ -52,7 +52,7 @@
   "name_ko": "여왕의 강권",
   "name_en": "Queen's Ransom",
   "effect": "제우스 은혜 전부 포기, 개당 헤라 은혜 위력 +4Lv",
-  "power_tier": "B",
+  "power_tier": "A",
   "tags": [],
   "requires": {
    "all": [
@@ -82,7 +82,8 @@
   "conflicts": [
    "duo_zeus_hera_kings_ransom"
   ],
-  "conflict_reason": "서로의 은혜를 전부 파괴하는 관계"
+  "conflict_reason": "서로의 은혜를 전부 파괴하는 관계",
+  "tier_note": "B→A (2026-10-26, 8-B): 횃불 공격 꾹 헤라 집중 빌드의 끝내기 — 실플레이 첫 클리어(2026-10-01) + lee Queen's Ransom. 헤라 핵심 은혜 3개가 한 번에 +4Lv"
  },
  {
   "id": "duo_zeus_poseidon",

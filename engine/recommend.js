@@ -24,6 +24,20 @@ function createEngine(data, W) {
   }
   const keepsakeByGod = new Map();
   for (const k of keepsakes) if (k.kind === 'god_favor' && k.god) keepsakeByGod.set(k.god, k);
+  // 8-C: 빌드 카드(variant) 인덱스
+  const variantById = new Map();
+  for (const [wid, wd] of Object.entries(builds.weapons || {})) for (const d of wd.directions || []) for (const v of d.variants || []) variantById.set(v.id, { weapon: wid, d, v });
+  const uniq = (arr) => [...new Set(arr)];
+  // 변형을 고정하면 방향의 칸 순위·보조·융합 맨 앞에 변형의 것을 둔다 — 기존 채점이 그대로 "이 빌드 기준"이 된다
+  const vshort = (name) => String(name || '').split(' — ')[0].slice(0, 16);   // 이유 문구용 짧은 빌드명 ("헤라 집중 — 파급 효과 → …" → "헤라 집중")
+  function effectiveDirection(d, v) {
+    const sp = {};
+    for (const [slot, prefs] of Object.entries(d.slot_prefs || {})) sp[slot] = prefs.slice();
+    for (const id of v.must || []) { const b = boonById.get(id); if (!b || !b.occupies_slot) continue; sp[b.slot] = uniq([id, ...(sp[b.slot] || [])]); }
+    const fin = v.finisher && v.finisher.duo ? [v.finisher.duo] : [];
+    return { ...d, slot_prefs: sp, support_boons: uniq([...(v.support || []), ...(v.must || []).filter((id) => { const b = boonById.get(id); return b && !b.occupies_slot; }), ...(d.support_boons || [])]),
+      target_duos: uniq([...(v.target_duos || []), ...fin, ...(d.target_duos || [])]), hammers: v.hammers && v.hammers.length ? uniq([...v.hammers, ...(d.hammers || [])]) : d.hammers, _variant: v };
+  }
 
   const nameOf = (id) =>
     (boonById.get(id) || duoById.get(id) || hammerById.get(id) ||
@@ -47,12 +61,17 @@ function createEngine(data, W) {
       if (b && b.occupies_slot) slotMap[b.slot] = id; // 중복은 나중 것이 남는다 (validateState가 경고)
     }
     const seen = (state.gods_seen || []).filter((g) => !W.NON_POOL_GODS.includes(g));
+    let dirs = (builds.weapons[state.weapon] || { directions: [], first_god_map: {} });
+    const vr = state.variant && variantById.get(state.variant);
+    const variant = vr && vr.weapon === state.weapon ? vr : null;
+    if (variant) dirs = { ...dirs, directions: (dirs.directions || []).map((d) => (d.id === variant.d.id ? effectiveDirection(d, variant.v) : d)) };
     return {
       owned, slotMap,
       firstGod: (state.gods_seen || [])[0] || null,
       slotBoonCount: CORE.filter((s) => slotMap[s]).length,
       poolSize: new Set(seen).size,
-      dirs: (builds.weapons[state.weapon] || { directions: [], first_god_map: {} }),
+      dirs,
+      variant: variant ? variant.v : null, variantDir: variant ? variant.d.id : null,
     };
   }
 
@@ -118,9 +137,10 @@ function createEngine(data, W) {
     const finite = list.filter((x) => Number.isFinite(x.F));
 
     let active;
-    if (state.direction_lock) {
-      const locked = list.find((x) => x.d.id === state.direction_lock);
-      const backup = finite.find((x) => x.d.id !== state.direction_lock);
+    const lockId = state.direction_lock || dv.variantDir;   // 8-C: 빌드 카드 고정 = 방향 고정
+    if (lockId) {
+      const locked = list.find((x) => x.d.id === lockId);
+      const backup = finite.find((x) => x.d.id !== lockId);
       const out = [];
       if (locked) out.push({ ...locked, weight: W.CONVERGE.LOCK_MAIN });
       if (backup) out.push({ ...backup, weight: W.CONVERGE.LOCK_BACKUP });
@@ -231,7 +251,9 @@ function createEngine(data, W) {
       flat += W.FLAT.DUO_CANDIDATE + tier(D ? D.power_tier : '?');
       badges.push('융합');
       bd.duo_candidate = flat;
-      const out = { id, score: round(flat), reason: `융합 은혜 — 무조건 최우선 (티어 ${D ? D.power_tier : '?'})`, warnings, badges, breakdown: bd };
+      const fin = dv.variant && dv.variant.finisher && dv.variant.finisher.duo === id;   // 8-C
+      if (fin) { badges.push('끝내기'); flat += W.BOON.TARGET_MUST; bd.target = W.BOON.TARGET_MUST; }
+      const out = { id, score: round(flat), reason: fin ? `빌드 끝내기 — ${String(dv.variant.finisher.note || '').slice(0, 40)}` : `융합 은혜 — 무조건 최우선 (티어 ${D ? D.power_tier : '?'})`, warnings, badges, breakdown: bd };
       return out;
     }
     if (rarity === 'legendary' || b.slot === 'legendary') {
@@ -353,6 +375,12 @@ function createEngine(data, W) {
       else if (dv.poolSize >= W.GOD_POOL_CAP && W.FLAT.POOL_NEW_PENALTY) { flat += W.FLAT.POOL_NEW_PENALTY; badges.push('새 신'); bd.pool = W.FLAT.POOL_NEW_PENALTY; }
     }
     if ((b.tags || []).includes('beginner_safe')) { flat += W.FLAT.BEGINNER_SAFE; bd.beginner = W.FLAT.BEGINNER_SAFE; }
+    // 8-C: 빌드 카드 목표
+    let targetKind = null;
+    if (dv.variant) {
+      if ((dv.variant.must || []).includes(b.id)) { targetKind = 'must'; flat += W.BOON.TARGET_MUST; bd.target = W.BOON.TARGET_MUST; badges.unshift('목표'); }
+      else if ((dv.variant.support || []).includes(b.id)) { targetKind = 'support'; flat += W.BOON.TARGET_SUPPORT; bd.target = W.BOON.TARGET_SUPPORT; badges.push('목표 보조'); }
+    }
 
     const score = dirScore + flat;
 
@@ -362,6 +390,7 @@ function createEngine(data, W) {
     const roleWord = dv.slotBoonCount === 0 ? '유력' : (isMain ? '메인' : '보험');
     const dirTag = (d) => (main && d.id === main.id) ? '' : ' (보험 방향)';
     if (bd.legendary) reason = '전설 은혜 — 조건을 이미 채웠음, 최우선';
+    else if (targetKind === 'must') reason = `빌드 '${vshort(dv.variant.name_ko)}' 필수${replacing ? ` — ${eul(nameOf(replacing))} 밀어냄` : ''}`;
     else if (completed.length) reason = `'${completed[0].name_ko}' 조건 완성 — 다음에 뜰 수 있음`;
     else if (bd.always) reason = '칸 안 차지, 조건 없이 이득';
     else if (dirDetail && dirDetail.kind === 'avoid') reason = `비추: ${String(dirDetail.d.avoid_reason || '').slice(0, 30)}`;
@@ -378,6 +407,7 @@ function createEngine(data, W) {
       reason = `'${dirDetail.d.name_ko}' 보조 ${dirDetail.rank + 1}순위${dirTag(dirDetail.d)}`;
     else if (dirDetail && dirDetail.kind === 'synergy')
       reason = `'${dirDetail.d.name_ko}' 시너지: ${dirDetail.why.join(' · ')}${dirTag(dirDetail.d)}`;
+    else if (targetKind === 'support') reason = `빌드 '${vshort(dv.variant.name_ko)}' 보조`;
     else if (replacing && dirScore > 0) reason = `${nameOf(replacing)}보다 ${dirDetail.d.name_ko}에 더 맞음`;
     else if (b.occupies_slot && !replacing) reason = `빈 ${SLOT_KO[b.slot]} 채움`;
     else reason = '무난함';
@@ -480,6 +510,16 @@ function createEngine(data, W) {
       }
     }
     if (state.keepsake) { const k = keepsakeById.get(state.keepsake); if (k && k.god === godId) { score += W.GOD.KEEPSAKE_MATCH; bd.keepsake = W.GOD.KEEPSAKE_MATCH; } }
+    // 8-C: 빌드 카드 — 이 신의 목표 은혜가 아직 없고 채울 수 있으면
+    let targetNeed = null, targetCore = false;
+    if (dv.variant) {
+      for (const id of dv.variant.must || []) {
+        const bb = boonById.get(id); if (!bb || bb.god !== godId || dv.owned.has(id) || blockReason(bb, state, dv, 'boon')) continue;
+        const empty = !bb.occupies_slot || !dv.slotMap[bb.slot];
+        if (!targetNeed || (empty && !targetCore)) { targetNeed = bb; targetCore = empty; }
+      }
+      if ((dv.variant.main_gods || []).includes(godId)) { score += W.GOD.TARGET_GOD; bd.target_god = W.GOD.TARGET_GOD; }
+    }
 
     // ── 5-A: 절대 등급. 실제 결정은 "이 문 하나를 갈지 / 석류·재화를 갈지"라 순위(비교)로는 답이 안 된다.
     // 점수 구간이 아니라 이유로 매긴다 — 사용자가 '패스'를 믿고 문을 버리므로 근거가 읽혀야 한다.
@@ -510,13 +550,16 @@ function createEngine(data, W) {
     else if (otherDuo) roles.unshift(`융합 가능 · ${otherDuo.name_ko}`);
     if (legReady) roles.unshift(`전설 대기 · ${legB.name_ko}`);
     if (readyDuos.length) roles.unshift(`융합 대기 · ${readyDuos[0].name_ko}${readyDuos.length > 1 ? ` 외 ${readyDuos.length - 1}` : ''}`);
+    if (targetNeed) roles.unshift(`목표 · ${targetNeed.name_ko}`);
+    else if (dv.variant && (dv.variant.main_gods || []).includes(godId)) roles.push('빌드 신');
     if (hasAlways) roles.push('항상 이득');
     const poolOver = bd.pool === W.GOD.POOL_NEW_PENALTY;
     if (poolOver) roles.push('풀 밖 신');
     if (lastNew) roles.push('마지막 새 신');
     let tier;
     const coreFirst = !!(bestFill && bestFill.empty && bestFill.core && bestFill.rank === 1);
-    if (partnerDuo || coreFirst) tier = 3;
+    if (partnerDuo || coreFirst || (targetNeed && targetCore)) tier = 3;
+    else if (targetNeed) tier = 2;
     // 7-A: 대기 융합·전설은 '좋음' — 실측 23%(6/26)라 '필수'("거의 확실")로 읽히면 안 된다. 그래도 후반 문 사이에서는 이 값이 순위를 가른다
     else if (readyDuos.length || legReady) tier = 2;
     else if (bestFill && bestFill.empty && ((bestFill.core && bestFill.rank <= 3) || bestFill.rank === 1)) tier = 2;
@@ -531,6 +574,7 @@ function createEngine(data, W) {
 
     let reason;
     if (grade === 'pass') reason = (poolOver ? '풀 밖 신인데 채울 칸도 융합도 없음' : '지금 빌드에 맞는 칸이 없음') + ' — 석류·재화 문이 있으면 그쪽. 이 문뿐이면 들어가서 은혜를 보고 정한다';
+    else if (targetNeed && (targetCore || !partnerDuo)) reason = `빌드 목표 '${targetNeed.name_ko}'이(가) 여기서 나옴${targetCore ? '' : ' (교체)'}`;
     else if (partnerDuo) reason = `'${partnerDuo.name_ko}' 마지막 조건을 채울 수 있음`;
     else if (readyDuos.length && !coreFirst) reason = `'${readyDuos[0].name_ko}'${readyDuos.length > 1 ? ` 외 ${readyDuos.length - 1}개` : ''} 조건 완성 — 이 문에서 뜰 수 있음 (실측 약 1/${oneIn})`;
     else if (legReady && !coreFirst) reason = `전설 '${legB.name_ko}' 조건 완성 — 이 문에서 뜰 수 있음 (약 1/${oneIn})`;
@@ -773,8 +817,43 @@ function createEngine(data, W) {
         first_picks: (x.d.core_slots || []).map((s) => { const p = ((x.d.slot_prefs || {})[s] || [])[0]; return p ? `${SLOT_KO[s]}: ${nameOf(p)}` : null; }).filter(Boolean),
         target_duos: (x.d.target_duos || []).slice(0, 2).map((id) => nameOf(id)),
         key_hammers: (x.d.hammers || []).slice(0, 2).map((id) => nameOf(id)),
+        // 8-C: 커뮤니티 빌드 카드 (양상 전용은 그 양상에서만)
+        variants: (x.d.variants || []).filter((v) => !v.aspects || v.aspects.includes(aspect)).map((v) => variantView(v)),
       })),
       note: '첫 신이 뜨기 전에는 빌드를 고정하지 않습니다. 주요 신의 기념품을 들면 그 빌드가 열립니다.',
+    };
+  }
+
+  // 8-C: 빌드 카드 표시용
+  function variantView(v) {
+    const D = (id) => duoById.get(id);
+    return {
+      id: v.id, name_ko: v.name_ko, trust: v.trust, strength: v.strength, strength_note: v.strength_note, note: v.note, aspects: v.aspects || null, sources: v.sources || [],
+      main_gods: (v.main_gods || []).map((g) => ({ id: g, name_ko: nameOf(g) })),
+      must: (v.must || []).map((id) => { const b = boonById.get(id); return { id, name_ko: nameOf(id), slot: b ? b.slot : null, slot_ko: b && b.occupies_slot ? SLOT_KO[b.slot] : '보조', god: b ? b.god : null }; }),
+      support: (v.support || []).map((id) => ({ id, name_ko: nameOf(id), god: (boonById.get(id) || {}).god || null })),
+      target_duos: (v.target_duos || []).map((id) => ({ id, name_ko: nameOf(id), tier: (D(id) || {}).power_tier || '?' })),
+      finisher: v.finisher && v.finisher.duo ? { id: v.finisher.duo, name_ko: nameOf(v.finisher.duo), tier: (D(v.finisher.duo) || {}).power_tier || '?', note: v.finisher.note || '' } : null,
+      hammers: (v.hammers || []).map((id) => ({ id, name_ko: nameOf(id) })),
+    };
+  }
+  // 8-C: 홈 체크리스트 — 고정한 빌드 기준으로 무엇을 가졌고 무엇이 남았나
+  function buildChecklist(state) {
+    const dv = derive(state);
+    if (!dv.variant) return null;
+    const v = dv.variant, view = variantView(v);
+    const seen = new Set(state.gods_seen || []);
+    const dprog = (id) => { const D = duoById.get(id); if (!D) return null; const total = (D.requires.all || []).length; return { satisfied: total - unmetGroups(D, dv.owned).length, total, owned: dv.owned.has(id) }; };
+    const must = view.must.map((m) => ({ ...m, owned: dv.owned.has(m.id), filled_by: m.slot && dv.slotMap[m.slot] && dv.slotMap[m.slot] !== m.id ? nameOf(dv.slotMap[m.slot]) : null }));
+    return {
+      id: v.id, name_ko: v.name_ko, strength: v.strength, trust: v.trust, direction: dv.variantDir, direction_ko: nameOf(dv.variantDir) === dv.variantDir ? ((dv.dirs.directions || []).find((d) => d.id === dv.variantDir) || {}).name_ko : nameOf(dv.variantDir),
+      main_gods: view.main_gods.map((g) => ({ ...g, seen: seen.has(g.id) })),
+      must, must_done: must.filter((m) => m.owned).length,
+      support: view.support.map((s) => ({ ...s, owned: dv.owned.has(s.id) })),
+      target_duos: view.target_duos.map((d) => ({ ...d, ...(dprog(d.id) || {}) })),
+      finisher: view.finisher ? { ...view.finisher, ...(dprog(view.finisher.id) || {}) } : null,
+      hammers: view.hammers.map((h) => ({ ...h, owned: dv.owned.has(h.id) })),
+      note: v.note,
     };
   }
 
@@ -838,6 +917,11 @@ function createEngine(data, W) {
       if (!next.gods_seen.includes(choice.id)) next.gods_seen.push(choice.id);
     } else if (choice.kind === 'keepsake') next.keepsake = choice.id;
     else if (choice.kind === 'hex') next.hex = choice.id;
+    else if (choice.kind === 'variant') {   // 8-C: 빌드 카드 고정/해제
+      const vr = choice.id && variantById.get(choice.id);
+      next.variant = vr ? choice.id : null;
+      next.direction_lock = vr ? vr.d.id : null;
+    }
     return next;
   }
 
@@ -858,10 +942,11 @@ function createEngine(data, W) {
     }
     if (state.weapon && !weaponById.has(state.weapon)) out.push(`알 수 없는 무기: ${state.weapon}`);
     if (state.aspect && !(weaponById.get(state.weapon) || { aspects: [] }).aspects.some((a) => a.id === state.aspect)) out.push(`무기와 맞지 않는 양상: ${state.aspect}`);
+    if (state.variant) { const vr = variantById.get(state.variant); if (!vr) out.push(`알 수 없는 빌드: ${state.variant}`); else if (vr.weapon !== state.weapon) out.push(`다른 무기의 빌드: ${vr.v.name_ko}`); }
     return out;
   }
 
-  return { recommendRunStart, recommendArcana, recommendGods, recommendBoons, recommendHammers, recommendKeepsake, directionScores, applyChoice, validateState, _internal: { directionWeights, derive } };
+  return { recommendRunStart, recommendArcana, recommendGods, recommendBoons, recommendHammers, recommendKeepsake, directionScores, buildChecklist, applyChoice, validateState, _internal: { directionWeights, derive } };
 }
 
 if (typeof module !== 'undefined' && module.exports) module.exports = { createEngine };
