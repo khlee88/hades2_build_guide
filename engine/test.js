@@ -646,7 +646,7 @@ sc('S46', '융합 조건 표시 — 헤라 공격+제우스 기술 카드: 짜�
 });
 
 
-sc('S47', '4번째 신 택1 — 헤라 공격+제우스 기술: 주요 신 2, 아프로디테→짜릿한 접촉 / 헤스티아→불벼락, 둘 다 "4번째 신 후보"', () => {
+sc('S47', '4번째 신 택1 — 헤라 공격+제우스 기술: 주요 신 2, 아프로디테→짜릿한 접촉 / 헤스티아→불벼락, 둘 다 "3번째 신 후보" (주요 신 2명이므로)', () => {
   const m = E.recommendRunStart('flames', 'flames_melinoe', { graspCap: 27 });
   const v = m.directions.find((d) => d.id === 'flames_omega_attack_spam').variants.find((x) => x.id === 'flames_hold_zeus_special');
   const st = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_melinoe', boons: ['hera_sworn_strike', 'zeus_heaven_flourish'], gods_seen: ['hera', 'zeus'] }), { kind: 'variant', id: 'flames_hold_zeus_special' });
@@ -655,9 +655,9 @@ sc('S47', '4번째 신 택1 — 헤라 공격+제우스 기술: 주요 신 2, �
   const c = E.buildChecklist(st);
   return { rows, checks: [
     check('카드: 주요 신 헤라·제우스, 목표 융합 없음, fourth 2개', v.main_gods.length === 2 && v.target_duos.length === 0 && v.fourth.length === 2 && v.fourth[0].god === 'aphrodite' && v.fourth[1].duos[0].name_ko === '불벼락', JSON.stringify(v.fourth)),
-    check("아프로디테 역할 '4번째 신 후보 · 짜릿한 접촉', 등급 좋음 이상", by('aphrodite').roles.some((x) => /4번째 신 후보 · 짜릿한 접촉/.test(x)) && ['good', 'must'].includes(by('aphrodite').grade), by('aphrodite').grade_ko + ' ' + by('aphrodite').roles.join(',')),
-    check("헤스티아 역할 '4번째 신 후보 · 불벼락'", by('hestia').roles.some((x) => /4번째 신 후보 · 불벼락/.test(x)), by('hestia').roles.join(',')),
-    check('포세이돈은 후보 아님', !by('poseidon').roles.some((x) => /4번째 신 후보/.test(x)), by('poseidon').roles.join(',')),
+    check("아프로디테 역할 '3번째 신 후보 · 짜릿한 접촉', 등급 좋음 이상", by('aphrodite').roles.some((x) => /3번째 신 후보 · 짜릿한 접촉/.test(x)) && ['good', 'must'].includes(by('aphrodite').grade), by('aphrodite').grade_ko + ' ' + by('aphrodite').roles.join(',')),
+    check("헤스티아 역할 '3번째 신 후보 · 불벼락'", by('hestia').roles.some((x) => /3번째 신 후보 · 불벼락/.test(x)), by('hestia').roles.join(',')),
+    check('포세이돈은 후보 아님', !by('poseidon').roles.some((x) => /번째 신 후보/.test(x)), by('poseidon').roles.join(',')),
     check('체크리스트 fourth: 두 신 미등장, 융합 각 1/2', c.fourth.length === 2 && c.fourth.every((f) => !f.seen && f.duos[0].satisfied === 1 && f.duos[0].total === 2), JSON.stringify(c.fourth.map((f) => [f.god, f.seen, f.duos[0].satisfied]))),
   ] };
 });

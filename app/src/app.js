@@ -159,7 +159,7 @@
       '<div class="xs" style="margin-top:3px"><span class="dim">필수</span> ' + v.must.map(function (m) { return esc(m.name_ko) + '<span class="dim">(' + esc(m.slot_ko) + ')</span>'; }).join(' · ') + '</div>' +
       (v.target_duos.length || v.finisher ? '<div class="xs" style="margin-top:3px"><span class="dim">융합</span> ' + v.target_duos.map(function (d) { return esc(d.name_ko) + '(' + d.tier + ')'; }).join(', ') +
         (v.finisher ? (v.target_duos.length ? ' <span class="dim">→</span> ' : '') + '<b>끝내기 ' + esc(v.finisher.name_ko) + '(' + v.finisher.tier + ')</b>' : '') + '</div>' : '') +
-      (v.fourth && v.fourth.length ? '<div class="xs" style="margin-top:3px"><span class="dim">4번째 신 (택1)</span> ' + v.fourth.map(function (f) { return '<span style="color:' + (GC[f.god] || 'inherit') + '">' + esc(f.god_ko) + '</span> → ' + f.duos.map(function (d) { return esc(d.name_ko) + '(' + d.tier + ')'; }).join(', '); }).join(' <span class="dim">/</span> ') + '</div>' : '') +
+      (v.fourth && v.fourth.length ? '<div class="xs" style="margin-top:3px"><span class="dim">' + v.fourth_nth + '번째 신 (택1)</span> ' + v.fourth.map(function (f) { return '<span style="color:' + (GC[f.god] || 'inherit') + '">' + esc(f.god_ko) + '</span> → ' + f.duos.map(function (d) { return esc(d.name_ko) + '(' + d.tier + ')'; }).join(', '); }).join(' <span class="dim">/</span> ') + '</div>' : '') +
       (v.duo_needs && v.duo_needs.length ? '<div class="xs dim" style="margin-top:3px">' + v.duo_needs.map(function (n) {
         return '<div style="margin-top:2px"><b class="dimless">' + esc(n.name_ko) + '</b> = ' + n.groups.map(function (g) { return g.met ? esc(g.have[0]) + ' ✓' : '<span style="color:var(--text)">' + (g.god ? esc(g.god) + ' ' : '') + esc(g.options.join('·')) + (g.more ? ' 외 ' + g.more : '') + '</span>'; }).join(' + ') + '</div>'; }).join('') + '</div>' : '') +
       '<details class="xs dim" style="margin-top:4px"><summary>근거 · 메모</summary><div style="margin-top:4px">' + esc(v.strength_note) + '</div><div style="margin-top:4px">' + esc(v.note) +
@@ -526,7 +526,7 @@
       // 8-G: 4번째 신 택1 — 등장한 쪽이 있으면 그쪽만 진행 바, 아니면 후보 나열
       if (chk.fourth && chk.fourth.length) {
         var seenF = chk.fourth.filter(function (f) { return f.seen; });
-        if (!seenF.length) box.appendChild(el('<div class="xs" style="margin-top:6px"><span class="dim">4번째 신 (택1)</span> ' + chk.fourth.map(function (f) { return '<span style="color:' + (GC[f.god] || 'inherit') + '">' + esc(f.god_ko) + '</span> → ' + f.duos.map(function (d) { return esc(d.name_ko); }).join(', '); }).join(' <span class="dim">/</span> ') + '</div>'));
+        if (!seenF.length) box.appendChild(el('<div class="xs" style="margin-top:6px"><span class="dim">' + chk.fourth_nth + '번째 신 (택1)</span> ' + chk.fourth.map(function (f) { return '<span style="color:' + (GC[f.god] || 'inherit') + '">' + esc(f.god_ko) + '</span> → ' + f.duos.map(function (d) { return esc(d.name_ko); }).join(', '); }).join(' <span class="dim">/</span> ') + '</div>'));
         seenF.forEach(function (f) { f.duos.forEach(function (d) {
           box.appendChild(el('<div class="prog"><span class="xs ell" style="width:112px">' + esc(d.name_ko) + '</span><div class="bar"><i style="width:' + (d.owned ? 100 : Math.round(d.satisfied / d.total * 100)) + '%"></i></div><span class="xs dim">' + (d.owned ? '획득' : d.satisfied + '/' + d.total + (d.satisfied === d.total ? ' 대기' : '')) + '</span></div>'));
           if (!d.owned && d.needs) box.appendChild(needsLine(d.needs));
