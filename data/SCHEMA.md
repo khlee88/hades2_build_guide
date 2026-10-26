@@ -404,5 +404,6 @@ validate.js가 검사하는 것: 모든 id 존재 · `slot_prefs.X`에는 X 칸 
 | `hammers` | 선택. 없으면 방향 것 |
 | `aspects` | 선택. 있으면 그 양상에서만 표시 |
 | `note`, `sources` | 메모 · 출처 태그 |
+| `plan` | **생성됨** (`data/variant_plan.py`) — `groups`[{duo, kind, god?, options, pick}] 필수+빈 칸으로 동시에 성립하는 조건 선택지 / `cond_must` 선택지가 하나뿐인 조건(사실상 필수) / `extra` 배치에 쓰인 조건 은혜 / `support_after` 보조 은혜 선행 / `infeasible` (비어야 함) |
 
 검산: `python data/patch_8_variants.py`(이름→id, 기본 검산) 뒤 `python data/audit_variants.py`(풀·융합 조건·끝내기·선행·상충·핵심 칸·망치·강함) — 둘 다 0건이어야 한다.

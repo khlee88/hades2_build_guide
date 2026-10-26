@@ -8,6 +8,7 @@
 [선행] 필수 패시브의 전제조건이 필수 안에서 안 차고, 채울 은혜가 빈 칸에도 못 들어감
 [상충] 필수끼리 동시 불가 / 방향 avoid_boons에 필수가 있음
 [칸]   필수 칸 점유 은혜가 같은 칸에 2개
+[배치] 필수+빈 칸으로 융합 조건·보조 선행을 동시에 채우는 배치가 없음 (data/variant_plan.py)
 [핵심 칸] 방향의 핵심 칸을 필수가 안 덮음 / [망치] 양상에서 안 뜨는 망치 / [강함] 신뢰 high가 아닌데 S
 """
 import io, json, os, sys
@@ -95,6 +96,11 @@ for w, wd in BD['weapons'].items():
                     if c in mset: issue('상충', v, "필수 '%s' ↔ '%s' 동시 불가" % (B[i]['name_ko'], B[c]['name_ko']))
             for i in must + v['support']:
                 if i in (d.get('avoid_boons') or []): issue('상충', v, "방향 회피 은혜 '%s'가 필수/보조에 있음" % B[i]['name_ko'])
+            # [배치] 필수 + 빈 칸으로 목표·끝내기·후보 융합 조건과 보조 선행을 동시에 채울 수 있나 (variant_plan.py 결과)
+            P = v.get('plan')
+            if not P: issue('배치', v, 'plan 없음 — patch_8_variants.py를 다시 돌릴 것')
+            else:
+                for x in P.get('infeasible', []): issue('배치', v, x)
             # [핵심 칸] 방향의 핵심 칸을 필수가 덮는가
             miss = [SLOT_KO[x] for x in (d.get('core_slots') or []) if x not in used]
             if miss: issue('핵심 칸', v, '방향 핵심 칸 %s 이 필수에 없음' % miss)
@@ -112,6 +118,6 @@ by = {}
 for k, vid, m in issues: by.setdefault(k, []).append((vid, m))
 total = sum(len(x) for x in by.values())
 print('변형 %d개 검사 → 문제 %d건' % (sum(len(d.get('variants', [])) for wd in BD['weapons'].values() for d in wd['directions']), total))
-for k in ['칸', '핵심 칸', '풀', '융합', '끝내기', '선행', '선행·순서', '상충', '망치', '강함', '신']:
+for k in ['칸', '배치', '핵심 칸', '풀', '융합', '끝내기', '선행', '선행·순서', '상충', '망치', '강함', '신']:
     for vid, m in by.get(k, []): print('[%s] %-30s %s' % (k, vid, m))
 sys.exit(1 if total else 0)

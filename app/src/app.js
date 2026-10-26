@@ -149,22 +149,23 @@
   // 8-G: 융합 조건 남은 것 — 마지막 하나만 남았으면 선택지를 전부, 아니면 "필요: 신 + 신 + …" 한 줄
   function needsLine(n) {
     var un = n.groups.filter(function (g) { return !g.met; });
-    if (un.length === 1) { var g = un[0]; return el('<div class="xs dim" style="margin-left:8px">남음: ' + (g.god ? esc(g.god) + ' ' : '') + esc(g.options.join(' 또는 ')) + (g.more ? ' 외 ' + g.more : '') + '</div>'); }
+    if (un.length === 1) { var g = un[0]; return el('<div class="xs dim" style="margin-left:8px">남음: ' + (g.god ? esc(g.god) + ' ' : '') + (g.forced ? '<b>' + esc(g.options[0]) + '</b> (이 빌드에선 유일)' : esc(g.options.join(' 또는 ')) + (g.more ? ' 외 ' + g.more : '')) + '</div>'); }
     return el('<div class="xs dim" style="margin-left:8px">필요: ' + un.map(function (g) { return g.god ? esc(g.god) + ' 은혜' : esc(g.options.map(function (o) { return o.replace(/\(.*\)$/, ''); }).join('/')); }).join(' + ') + '</div>');
   }
   function variantCard(v, selected, onPick) {
     var c = el('<div class="vcard' + (selected ? ' sel' : '') + '">' +
       '<div class="row"><span class="vstr ' + v.strength + '">' + v.strength + '</span><b class="ell" style="flex:1">' + esc(v.name_ko) + '</b><span class="xs dim" title="신뢰도">' + (TRUST[v.trust] || '') + '</span></div>' +
       '<div class="xs" style="margin-top:4px">' + godsHtml(v.main_gods) + '</div>' +
-      '<div class="xs" style="margin-top:3px"><span class="dim">필수</span> ' + v.must.map(function (m) { return esc(m.name_ko) + '<span class="dim">(' + esc(m.slot_ko) + ')</span>'; }).join(' · ') + '</div>' +
+      '<div class="xs" style="margin-top:3px"><span class="dim">필수</span> ' + v.must.map(function (m) { return esc(m.name_ko) + '<span class="dim">(' + esc(m.slot_ko) + ')</span>'; }).join(' · ') +
+        (v.cond_must && v.cond_must.length ? ' <span class="dim">+ 융합 조건</span> ' + v.cond_must.map(function (m) { return '<b>' + esc(m.name_ko) + '</b><span class="dim">(' + esc(m.slot_ko) + (m.for_duo ? ' · ' + esc(m.for_duo) : '') + ')</span>'; }).join(' · ') : '') + '</div>' +
       (v.target_duos.length || v.finisher ? '<div class="xs" style="margin-top:3px"><span class="dim">융합</span> ' + v.target_duos.map(function (d) { return esc(d.name_ko) + '(' + d.tier + ')'; }).join(', ') +
         (v.finisher ? (v.target_duos.length ? ' <span class="dim">→</span> ' : '') + '<b>끝내기 ' + esc(v.finisher.name_ko) + '(' + v.finisher.tier + ')</b>' : '') + '</div>' : '') +
       (v.fourth && v.fourth.length ? '<div class="xs" style="margin-top:3px"><span class="dim">' + v.fourth_nth + '번째 신 (' + (v.fourth_both ? '먼저 뜨는 쪽' : '택1') + ')</span> ' + v.fourth.map(function (f) { return '<span style="color:' + (GC[f.god] || 'inherit') + '">' + esc(f.god_ko) + '</span> → ' + f.duos.map(function (d) { return esc(d.name_ko) + '(' + d.tier + ')'; }).join(', '); }).join(' <span class="dim">/</span> ') + (v.fourth_both ? '<div class="dim">둘 다 가면 ' + (v.fourth_nth + 1) + '번째까지 — ' + esc(v.fourth_both) + '</div>' : '') + '</div>' : '') +
       (v.duo_needs && v.duo_needs.length ? '<div class="xs dim" style="margin-top:3px">' + v.duo_needs.map(function (n) {
-        return '<div style="margin-top:2px"><b class="dimless">' + esc(n.name_ko) + '</b> = ' + n.groups.map(function (g) { return g.met ? esc(g.have[0]) + ' ✓' : '<span style="color:var(--text)">' + (g.god ? esc(g.god) + ' ' : '') + esc(g.options.join('·')) + (g.more ? ' 외 ' + g.more : '') + '</span>'; }).join(' + ') + '</div>'; }).join('') + '</div>' : '') +
+        return '<div style="margin-top:2px"><b class="dimless">' + esc(n.name_ko) + '</b>' + (n.via ? '<span class="dim"> (' + esc(n.via) + ')</span>' : '') + ' = ' + n.groups.map(function (g) { return g.met ? esc(g.have[0]) + ' ✓' : '<span style="color:var(--text)">' + (g.god ? esc(g.god) + ' ' : '') + (g.forced ? '<b>' + esc(g.options[0]) + '</b> 유일' : esc(g.options.join('·')) + (g.more ? ' 외 ' + g.more : '') + (g.planned && g.options.length > 1 ? ' 중 하나' : '')) + '</span>'; }).join(' + ') + '</div>'; }).join('') + '</div>' : '') +
       '<details class="xs dim" style="margin-top:4px"><summary>근거 · 메모</summary><div style="margin-top:4px">' + esc(v.strength_note) + '</div><div style="margin-top:4px">' + esc(v.note) +
         (v.finisher ? '<div style="margin-top:4px">끝내기: ' + esc(v.finisher.note) + '</div>' : '') + '</div>' +
-        (v.support.length ? '<div style="margin-top:4px">보조: ' + esc(v.support.map(function (x) { return x.name_ko; }).join(', ')) + '</div>' : '') +
+        (v.support.length ? '<div style="margin-top:4px">보조: ' + esc(v.support.map(function (x) { var af = v.support_after && v.support_after[x.id]; return x.name_ko + (af ? '(' + af.join('/') + ' 뒤)' : ''); }).join(', ')) + '</div>' : '') +
         (v.hammers.length ? '<div style="margin-top:4px">망치: ' + esc(v.hammers.map(function (x) { return x.name_ko; }).join(', ')) + '</div>' : '') +
         '<div style="margin-top:4px">' + esc((v.sources || []).join(' / ')) + '</div></details>' +
       (onPick ? '<div class="row" style="justify-content:flex-end;margin-top:6px"><button class="tagx vpick">' + (selected ? '✓ 이 빌드로 시작' : '이 빌드로') + '</button></div>' : '') + '</div>');
@@ -509,9 +510,13 @@
     var chk = E.buildChecklist(engSt(st));
     if (chk) {
       var seenSet = {}; st.gods_seen.forEach(function (g) { seenSet[g] = 1; });
-      var box = el('<div class="chk"><div class="row"><span class="vstr ' + chk.strength + '">' + chk.strength + '</span><b class="ell" style="flex:1">' + esc(chk.name_ko) + '</b><span class="xs dim">필수 ' + chk.must_done + '/' + chk.must.length + '</span></div></div>');
+      var condDone = (chk.cond || []).filter(function (m) { return m.owned; }).length;
+      var box = el('<div class="chk"><div class="row"><span class="vstr ' + chk.strength + '">' + chk.strength + '</span><b class="ell" style="flex:1">' + esc(chk.name_ko) + '</b><span class="xs dim">필수 ' + (chk.must_done + condDone) + '/' + (chk.must.length + (chk.cond || []).length) + '</span></div></div>');
       chk.must.forEach(function (m) {
         box.appendChild(el('<div class="chkrow' + (m.owned ? ' done' : '') + '"><span class="bx">' + (m.owned ? '☑' : '☐') + '</span><span class="ell">' + esc(m.name_ko) + '</span><span class="xs dim">' + esc(m.slot_ko) + (m.filled_by && !m.owned ? ' · 지금 ' + esc(m.filled_by) : '') + '</span></div>'));
+      });
+      (chk.cond || []).forEach(function (m) {   // 8-J: 융합 조건 중 이 빌드에서 유일한 은혜
+        box.appendChild(el('<div class="chkrow' + (m.owned ? ' done' : '') + '"><span class="bx">' + (m.owned ? '☑' : '☐') + '</span><span class="ell">' + esc(m.name_ko) + '</span><span class="xs dim">' + esc(m.slot_ko) + (m.for_duo ? ' · ' + esc(m.for_duo) + ' 조건' : '') + (m.filled_by && !m.owned ? ' · 지금 ' + esc(m.filled_by) : '') + '</span></div>'));
       });
       box.appendChild(el('<div class="xs" style="margin-top:6px"><span class="dim">신</span> ' + godsHtml(chk.main_gods, seenSet) + '</div>'));
       chk.target_duos.concat(chk.finisher ? [Object.assign({ fin: true }, chk.finisher)] : []).forEach(function (d) {

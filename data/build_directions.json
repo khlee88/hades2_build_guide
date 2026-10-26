@@ -251,7 +251,27 @@
        "hammers": [
         "staff_dual_moonshot",
         "staff_shimmering_moonshot"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_hestia",
+          "kind": "target",
+          "options": [
+           "zeus_heaven_strike"
+          ],
+          "pick": "zeus_heaven_strike"
+         }
+        ],
+        "cond_must": [
+         "zeus_heaven_strike"
+        ],
+        "extra": [
+         "zeus_heaven_strike"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "staff_special_aphro_poseidon",
@@ -281,7 +301,32 @@
        "note": "% 피해 기예 + 물보라로 묶기",
        "sources": [
         "dc49018:아프로 기예+포세 마법"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_poseidon",
+          "kind": "target",
+          "options": [
+           "zeus_heaven_strike",
+           "zeus_thunder_rush",
+           "zeus_divine_vengeance",
+           "zeus_lightning_lance"
+          ],
+          "pick": "zeus_thunder_rush"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "zeus_thunder_rush"
+        ],
+        "support_after": {
+         "poseidon_slippery_slope": [
+          "poseidon_wave_strike"
+         ]
+        },
+        "infeasible": []
+       }
       },
       {
        "id": "staff_special_poseidon_hestia",
@@ -311,7 +356,37 @@
        "note": "물보라 침수 + 잔불. 월광탄 타수로 침수 피해를 쌓는다",
        "sources": [
         "dc49018:포세 기예+미끄러운 경사+헤스티아 마법"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_hestia_poseidon",
+          "kind": "target",
+          "options": [
+           "poseidon_slippery_slope"
+          ],
+          "pick": "poseidon_slippery_slope"
+         },
+         {
+          "duo": "duo_zeus_hestia",
+          "kind": "target",
+          "options": [
+           "zeus_heaven_strike"
+          ],
+          "pick": "zeus_heaven_strike"
+         }
+        ],
+        "cond_must": [
+         "poseidon_slippery_slope",
+         "zeus_heaven_strike"
+        ],
+        "extra": [
+         "poseidon_slippery_slope",
+         "zeus_heaven_strike"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -451,7 +526,49 @@
         "dc49018:데메 마법+현지 기후+지하수 분출 ★★★★",
         "namu:키르케 = 제우스·데메테르 마법 핵심+아폴론 지원",
         "lee:Circe — Lucid Gain·Geyser Spout·Local Climate"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_demeter_apollo",
+          "kind": "target",
+          "options": [
+           "demeter_frigid_rush",
+           "demeter_arctic_gale"
+          ],
+          "pick": "demeter_frigid_rush"
+         },
+         {
+          "duo": "duo_poseidon_demeter",
+          "kind": "target",
+          "options": [
+           "poseidon_wave_strike",
+           "poseidon_wave_flourish",
+           "poseidon_breaker_rush"
+          ],
+          "pick": "poseidon_wave_strike"
+         },
+         {
+          "duo": "duo_poseidon_demeter",
+          "kind": "target",
+          "options": [
+           "poseidon_buried_treasure",
+           "poseidon_sea_star",
+           "demeter_steady_growth",
+           "demeter_plentiful_forage"
+          ],
+          "pick": "poseidon_buried_treasure"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "demeter_frigid_rush",
+         "poseidon_buried_treasure",
+         "poseidon_wave_strike"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "staff_cast_zeus_storm",
@@ -483,7 +600,37 @@
        "sources": [
         "dc49018:제우스 마법+후속 낙뢰+제우스 정기",
         "dc38884:제우스 마법+청정한 대기 = 무기 무관 초보 빌드"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_apollo",
+          "kind": "target",
+          "options": [
+           "apollo_prominence_flare"
+          ],
+          "pick": "apollo_prominence_flare"
+         },
+         {
+          "duo": "duo_zeus_demeter",
+          "kind": "target",
+          "options": [
+           "demeter_ice_strike",
+           "demeter_ice_flourish"
+          ],
+          "pick": "demeter_ice_strike"
+         }
+        ],
+        "cond_must": [
+         "apollo_prominence_flare"
+        ],
+        "extra": [
+         "apollo_prominence_flare",
+         "demeter_ice_strike"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -617,7 +764,14 @@
        "sources": [
         "dc51882:헤라+포세이돈 파급 효과 빌드 — 마력 수급 후 Ω 난사",
         "lee:Momus — 마력 회복 먼저"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "staff_omega_apollo",
@@ -647,7 +801,46 @@
        "note": "아폴론 전설(마법 2연발)이 뜨면 완성",
        "sources": [
         "dc49018:아폴론 공격+아폴론 마력+데메 마법+아폴론 전설"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_apollo",
+          "kind": "target",
+          "options": [
+           "zeus_heaven_flourish",
+           "zeus_thunder_rush"
+          ],
+          "pick": "zeus_heaven_flourish"
+         },
+         {
+          "duo": "duo_zeus_apollo",
+          "kind": "target",
+          "options": [
+           "apollo_prominence_flare"
+          ],
+          "pick": "apollo_prominence_flare"
+         },
+         {
+          "duo": "duo_zeus_demeter",
+          "kind": "target",
+          "options": [
+           "zeus_heaven_flourish",
+           "zeus_thunder_rush"
+          ],
+          "pick": "zeus_heaven_flourish"
+         }
+        ],
+        "cond_must": [
+         "apollo_prominence_flare"
+        ],
+        "extra": [
+         "apollo_prominence_flare",
+         "zeus_heaven_flourish"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -769,7 +962,26 @@
        "sources": [
         "dc49018:헤라 공격+아프로 기예+포세 마법 ★4.5",
         "lee:Anubis — Hestia/Hera/Poseidon/Zeus attack + Origination"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_poseidon_hera",
+          "kind": "target",
+          "options": [
+           "hera_fine_line",
+           "poseidon_ocean_swell"
+          ],
+          "pick": "hera_fine_line"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "hera_fine_line"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "staff_anubis_hestia_zeus",
@@ -799,7 +1011,27 @@
        "note": "장판 안에 모인 적에게 잔불·암운·연쇄 번개",
        "sources": [
         "dc49018:헤스티아 공격+제우스 기예+정전기 ★4"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_hestia_demeter",
+          "kind": "target",
+          "options": [
+           "demeter_arctic_ring"
+          ],
+          "pick": "demeter_arctic_ring"
+         }
+        ],
+        "cond_must": [
+         "demeter_arctic_ring"
+        ],
+        "extra": [
+         "demeter_arctic_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     }
@@ -985,7 +1217,46 @@
        "sources": [
         "dc49018:아레스 공격+아프로 마법+아레스 전설 ★★★",
         "lee:Aphrodite/Apollo/Hera %, Zeus special+Static Shock"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_ares",
+          "kind": "target",
+          "options": [
+           "zeus_heaven_flourish",
+           "zeus_thunder_rush"
+          ],
+          "pick": "zeus_heaven_flourish"
+         },
+         {
+          "duo": "duo_zeus_ares",
+          "kind": "target",
+          "options": [
+           "ares_visceral_impact",
+           "zeus_divine_vengeance"
+          ],
+          "pick": "ares_visceral_impact"
+         },
+         {
+          "duo": "duo_zeus_aphrodite",
+          "kind": "target",
+          "options": [
+           "zeus_heaven_flourish"
+          ],
+          "pick": "zeus_heaven_flourish"
+         }
+        ],
+        "cond_must": [
+         "zeus_heaven_flourish"
+        ],
+        "extra": [
+         "ares_visceral_impact",
+         "zeus_heaven_flourish"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "blades_backstab_aphro_apollo",
@@ -1016,7 +1287,37 @@
        "note": "약화+실명으로 배후 공격 극대화",
        "sources": [
         "dc49018:아프로 공격+아프로 마력+아폴론 마법"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_apollo_aphrodite",
+          "kind": "target",
+          "options": [
+           "aphrodite_heart_breaker"
+          ],
+          "pick": "aphrodite_heart_breaker"
+         },
+         {
+          "duo": "duo_zeus_aphrodite",
+          "kind": "target",
+          "options": [
+           "zeus_heaven_flourish"
+          ],
+          "pick": "zeus_heaven_flourish"
+         }
+        ],
+        "cond_must": [
+         "aphrodite_heart_breaker",
+         "zeus_heaven_flourish"
+        ],
+        "extra": [
+         "aphrodite_heart_breaker",
+         "zeus_heaven_flourish"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "blades_backstab_flat",
@@ -1037,18 +1338,36 @@
        ],
        "support": [
         "hestia_pyro_technique",
-        "hestia_slow_cooker",
-        "poseidon_slippery_slope"
+        "hestia_slow_cooker"
        ],
        "target_duos": [
         "duo_zeus_hestia",
         "duo_hestia_poseidon"
        ],
        "finisher": null,
-       "note": "타격 수가 많은 쌍검에 타격마다 고정 피해",
+       "note": "타격 수가 많은 쌍검에 타격마다 고정 피해. 포세이돈은 물결 고리(마법)로 — 미끄러운 경사는 파도 일격/기예가 필요한데 공격·기술이 찼다",
        "sources": [
         "lee:Poseidon·Hestia 고정 피해, Zeus special+Static Shock"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_hestia_poseidon",
+          "kind": "target",
+          "options": [
+           "poseidon_tidal_ring",
+           "poseidon_slippery_slope"
+          ],
+          "pick": "poseidon_tidal_ring"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "poseidon_tidal_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -1177,7 +1496,14 @@
        "hammers": [
         "blades_sweeping_ambush",
         "blades_skulking_onslaught"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "blades_ambush_ares",
@@ -1206,7 +1532,26 @@
        "note": "치명타 반격에 상처 피해",
        "sources": [
         "lee:Ares attack+Grievous Blow"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_ares",
+          "kind": "target",
+          "options": [
+           "ares_visceral_impact",
+           "zeus_divine_vengeance"
+          ],
+          "pick": "ares_visceral_impact"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "ares_visceral_impact"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -1337,7 +1682,28 @@
         "dc49018:포세 기예+데메 마법+번개 투창 ★★★★",
         "dc51882:판 = 포세이돈 빌드",
         "lee:Poseidon special+Slippery Slope"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_poseidon",
+          "kind": "target",
+          "options": [
+           "zeus_heaven_strike",
+           "zeus_thunder_rush",
+           "zeus_divine_vengeance",
+           "zeus_lightning_lance"
+          ],
+          "pick": "zeus_heaven_strike"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "zeus_heaven_strike"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "blades_knives_hestia",
@@ -1368,7 +1734,27 @@
        "sources": [
         "dc49018:헤스티아 기예+아프로 마법+불같은 열망 ★★★★",
         "lee:Hestia special+Demeter Freezer Burn"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_hestia_demeter",
+          "kind": "target",
+          "options": [
+           "demeter_ice_strike"
+          ],
+          "pick": "demeter_ice_strike"
+         }
+        ],
+        "cond_must": [
+         "demeter_ice_strike"
+        ],
+        "extra": [
+         "demeter_ice_strike"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -1495,7 +1881,14 @@
        "note": "삼연혈참은 고정 피해 — 은혜는 그 사이를 메운다",
        "sources": [
         "dc49018:헤스티아 공격+아프로 기예+포세 마법 ★5"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "blades_morrigan_apollo",
@@ -1525,7 +1918,47 @@
        "note": "실명 + 잔불",
        "sources": [
         "dc49018:아폴론 공격+온화한 바람+아프로 정기 ★5"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_hestia_apollo",
+          "kind": "target",
+          "options": [
+           "hestia_smolder_ring",
+           "hestia_heat_rush"
+          ],
+          "pick": "hestia_smolder_ring"
+         },
+         {
+          "duo": "duo_hestia_apollo",
+          "kind": "target",
+          "options": [
+           "apollo_blinding_rush",
+           "apollo_light_smite",
+           "apollo_dazzling_display"
+          ],
+          "pick": "apollo_blinding_rush"
+         },
+         {
+          "duo": "duo_hestia_aphrodite",
+          "kind": "target",
+          "options": [
+           "hestia_smolder_ring"
+          ],
+          "pick": "hestia_smolder_ring"
+         }
+        ],
+        "cond_must": [
+         "hestia_smolder_ring"
+        ],
+        "extra": [
+         "apollo_blinding_rush",
+         "hestia_smolder_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "blades_morrigan_zeus",
@@ -1554,7 +1987,14 @@
        "note": "제우스 전설이 뜨면 완성",
        "sources": [
         "dc49018:제우스 공격+전설+일가친척 ★4"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     }
@@ -1744,7 +2184,26 @@
         "lee:Mel Flames — Hera Born Gain 최고, Fine Line+Righteous Pike",
         "dc51882:헤라+포세 Ω 난사",
         "log:2026-10-01 지하 첫 클리어 — 서약 일격·천부적 마력·한 핏줄·바다 너울·여왕의 강권"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_hera_zeus_queens_ransom",
+          "kind": "finisher",
+          "options": [
+           "zeus_storm_ring",
+           "zeus_thunder_rush"
+          ],
+          "pick": "zeus_storm_ring"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "zeus_storm_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "flames_hold_zeus_special",
@@ -1786,7 +2245,34 @@
           "duo_zeus_hestia"
          ]
         }
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_aphrodite",
+          "kind": "fourth",
+          "god": "aphrodite",
+          "options": [
+           "aphrodite_rapture_ring",
+           "aphrodite_passion_rush"
+          ],
+          "pick": "aphrodite_rapture_ring"
+         },
+         {
+          "duo": "duo_zeus_hestia",
+          "kind": "fourth",
+          "god": "hestia",
+          "options": [
+           "hestia_smolder_ring"
+          ],
+          "pick": "hestia_smolder_ring"
+         }
+        ],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "flames_hold_curse_core",
@@ -1819,7 +2305,14 @@
        "note": "융합 3개 전부 S. 헤라가 없어 마력은 대전된 마력(방마다 샘)에 의존",
        "sources": [
         "dc51882:헤스+제우스+데메 (공격/기술 암운·잔불, 마법 동결)"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "flames_hold_moros_kings",
@@ -1855,7 +2348,37 @@
        ],
        "aspects": [
         "flames_moros"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_demeter",
+          "kind": "target",
+          "options": [
+           "demeter_arctic_ring"
+          ],
+          "pick": "demeter_arctic_ring"
+         },
+         {
+          "duo": "duo_zeus_hera_kings_ransom",
+          "kind": "finisher",
+          "options": [
+           "hera_nexus_rush"
+          ],
+          "pick": "hera_nexus_rush"
+         }
+        ],
+        "cond_must": [
+         "demeter_arctic_ring",
+         "hera_nexus_rush"
+        ],
+        "extra": [
+         "hera_nexus_rush",
+         "demeter_arctic_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -1998,7 +2521,27 @@
        "hammers": [
         "flames_sudden_burst",
         "flames_clean_coil"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_hestia",
+          "kind": "target",
+          "options": [
+           "hestia_smolder_ring"
+          ],
+          "pick": "hestia_smolder_ring"
+         }
+        ],
+        "cond_must": [
+         "hestia_smolder_ring"
+        ],
+        "extra": [
+         "hestia_smolder_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "flames_orbit_freeze",
@@ -2029,7 +2572,27 @@
        "note": "불꽃 궤도에 잔불, 마법으로 얼려 폭발",
        "sources": [
         "namu:모로스 — 데메+헤스/데메+제우스/제우스+헤스 융합 조합"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_hestia",
+          "kind": "target",
+          "options": [
+           "zeus_heaven_strike"
+          ],
+          "pick": "zeus_heaven_strike"
+         }
+        ],
+        "cond_must": [
+         "zeus_heaven_strike"
+        ],
+        "extra": [
+         "zeus_heaven_strike"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "flames_orbit_eos",
@@ -2047,19 +2610,24 @@
         "apollo_nova_strike",
         "zeus_ionic_gain"
        ],
-       "support": [
-        "zeus_arc_flash"
-       ],
+       "support": [],
        "target_duos": [],
        "finisher": null,
-       "note": "서광이 기술을 복사. 아폴론 전설 + 밤 아르카나",
+       "note": "서광이 기술을 복사. 아폴론 전설 + 밤 아르카나. 제우스 보조(전기 구이)는 천상 일격/기예가 필요한데 공격·기술이 찼다 — 제우스는 마력(대전된 마력)만",
        "sources": [
         "lee:Eos — Hera special, Apollo attack+legendary",
         "dc51882:에오스 = 공격 암운·기술 잔불 고정"
        ],
        "aspects": [
         "flames_eos"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -2191,7 +2759,26 @@
        "sources": [
         "lee:Supay — Rush boon core, flat damage soup, Origination mandatory",
         "dc51882:수파이 ★3"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_hestia_poseidon",
+          "kind": "target",
+          "options": [
+           "poseidon_tidal_ring",
+           "poseidon_slippery_slope"
+          ],
+          "pick": "poseidon_tidal_ring"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "poseidon_tidal_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "flames_supay_spark",
@@ -2220,7 +2807,26 @@
        "note": "질주만으로 암운이 터진다",
        "sources": [
         "lee:Zeus + Aphrodite Romantic Spark"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_aphrodite",
+          "kind": "target",
+          "options": [
+           "aphrodite_flutter_strike",
+           "aphrodite_rapture_ring"
+          ],
+          "pick": "aphrodite_flutter_strike"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "aphrodite_flutter_strike"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     }
@@ -2415,7 +3021,43 @@
        "hammers": [
         "axe_dashing_heave",
         "axe_rapid_slash"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_apollo_aphrodite",
+          "kind": "target",
+          "options": [
+           "aphrodite_heart_breaker"
+          ],
+          "pick": "aphrodite_heart_breaker"
+         },
+         {
+          "duo": "duo_apollo_aphrodite",
+          "kind": "target",
+          "options": [
+           "apollo_nova_flourish",
+           "apollo_blinding_rush"
+          ],
+          "pick": "apollo_nova_flourish"
+         }
+        ],
+        "cond_must": [
+         "aphrodite_heart_breaker"
+        ],
+        "extra": [
+         "aphrodite_heart_breaker",
+         "apollo_nova_flourish"
+        ],
+        "support_after": {
+         "apollo_back_burner": [
+          "apollo_blinding_rush",
+          "apollo_dazzling_display",
+          "apollo_light_smite"
+         ]
+        },
+        "infeasible": []
+       }
       },
       {
        "id": "axe_heavy_ares",
@@ -2442,7 +3084,14 @@
        "note": "큰 한 방에 상처 추가 피해",
        "sources": [
         "lee:Ares special+Grievous Blow, Lethal Snare"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "axe_heavy_thanatos_early",
@@ -2472,7 +3121,20 @@
        ],
        "aspects": [
         "axe_thanatos"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {
+         "apollo_back_burner": [
+          "apollo_blinding_rush",
+          "apollo_dazzling_display",
+          "apollo_light_smite"
+         ]
+        },
+        "infeasible": []
+       }
       }
      ]
     },
@@ -2603,7 +3265,47 @@
        ],
        "hammers": [
         "axe_psychic_whirlwind"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_apollo_aphrodite",
+          "kind": "target",
+          "options": [
+           "aphrodite_heart_breaker"
+          ],
+          "pick": "aphrodite_heart_breaker"
+         },
+         {
+          "duo": "duo_apollo_aphrodite",
+          "kind": "target",
+          "options": [
+           "apollo_nova_flourish",
+           "apollo_blinding_rush"
+          ],
+          "pick": "apollo_nova_flourish"
+         }
+        ],
+        "cond_must": [
+         "aphrodite_heart_breaker"
+        ],
+        "extra": [
+         "aphrodite_heart_breaker",
+         "apollo_nova_flourish"
+        ],
+        "support_after": {
+         "apollo_back_burner": [
+          "apollo_blinding_rush",
+          "apollo_dazzling_display",
+          "apollo_light_smite"
+         ],
+         "hermes_success_rate": [
+          "apollo_dazzling_display",
+          "apollo_extra_dose"
+         ]
+        },
+        "infeasible": []
+       }
       },
       {
        "id": "axe_whirl_scorch",
@@ -2637,7 +3339,27 @@
        ],
        "hammers": [
         "axe_psychic_whirlwind"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_hestia",
+          "kind": "target",
+          "options": [
+           "zeus_heaven_flourish"
+          ],
+          "pick": "zeus_heaven_flourish"
+         }
+        ],
+        "cond_must": [
+         "zeus_heaven_flourish"
+        ],
+        "extra": [
+         "zeus_heaven_flourish"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "axe_whirl_zeus",
@@ -2670,7 +3392,37 @@
        ],
        "hammers": [
         "axe_psychic_whirlwind"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_aphrodite",
+          "kind": "target",
+          "options": [
+           "aphrodite_flutter_flourish",
+           "aphrodite_rapture_ring",
+           "aphrodite_passion_rush"
+          ],
+          "pick": "aphrodite_rapture_ring"
+         },
+         {
+          "duo": "duo_zeus_demeter",
+          "kind": "target",
+          "options": [
+           "demeter_ice_flourish",
+           "demeter_arctic_ring"
+          ],
+          "pick": "demeter_ice_flourish"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "demeter_ice_flourish",
+         "aphrodite_rapture_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -2802,7 +3554,26 @@
        ],
        "hammers": [
         "axe_giga_cleaver"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_poseidon_apollo",
+          "kind": "target",
+          "options": [
+           "poseidon_breaker_rush",
+           "apollo_blinding_rush"
+          ],
+          "pick": "poseidon_breaker_rush"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "poseidon_breaker_rush"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "axe_cleave_ares_zeus",
@@ -2837,7 +3608,34 @@
           "duo_demeter_ares"
          ]
         }
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_demeter_ares",
+          "kind": "fourth",
+          "god": "demeter",
+          "options": [
+           "demeter_ice_strike",
+           "demeter_frigid_rush"
+          ],
+          "pick": "demeter_ice_strike"
+         },
+         {
+          "duo": "duo_demeter_ares",
+          "kind": "fourth",
+          "god": "demeter",
+          "options": [
+           "ares_meat_grinder"
+          ],
+          "pick": "ares_meat_grinder"
+         }
+        ],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -2957,7 +3755,21 @@
        ],
        "hammers": [
         "axe_psychic_whirlwind"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {
+         "apollo_back_burner": [
+          "apollo_solar_ring",
+          "apollo_blinding_rush",
+          "apollo_dazzling_display",
+          "apollo_light_smite"
+         ]
+        },
+        "infeasible": []
+       }
       },
       {
        "id": "axe_nergal_demeter_ares",
@@ -2989,7 +3801,27 @@
        ],
        "hammers": [
         "axe_psychic_whirlwind"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_demeter_ares",
+          "kind": "target",
+          "options": [
+           "ares_meat_grinder"
+          ],
+          "pick": "ares_meat_grinder"
+         }
+        ],
+        "cond_must": [
+         "ares_meat_grinder"
+        ],
+        "extra": [
+         "ares_meat_grinder"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     }
@@ -3169,7 +4001,20 @@
        "hammers": [
         "skull_possessed_array",
         "skull_wide_grin"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {
+         "apollo_back_burner": [
+          "apollo_blinding_rush",
+          "apollo_dazzling_display",
+          "apollo_light_smite"
+         ]
+        },
+        "infeasible": []
+       }
       },
       {
        "id": "skull_throw_heph",
@@ -3197,7 +4042,44 @@
        "note": "헤파 전설(포환당 +21)이 목표",
        "sources": [
         "lee:Heph special → legendary"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_hera_hephaestus",
+          "kind": "target",
+          "options": [
+           "hera_extended_family",
+           "hera_dying_wish",
+           "hera_hereditary_bane",
+           "hera_rousing_reception",
+           "hera_fine_line"
+          ],
+          "pick": "hera_extended_family"
+         },
+         {
+          "duo": "duo_hera_hephaestus",
+          "kind": "target",
+          "options": [
+           "hephaestus_grand_caldera",
+           "hephaestus_molten_touch",
+           "hephaestus_heavy_metal",
+           "hephaestus_trusty_shield",
+           "hephaestus_security_system",
+           "hephaestus_uncanny_fortitude",
+           "hephaestus_furnace_blast"
+          ],
+          "pick": "hephaestus_grand_caldera"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "hera_extended_family",
+         "hephaestus_grand_caldera"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "skull_throw_apollo_dream",
@@ -3228,7 +4110,21 @@
        ],
        "hammers": [
         "skull_possessed_array"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {
+         "apollo_back_burner": [
+          "apollo_solar_ring",
+          "apollo_blinding_rush",
+          "apollo_dazzling_display",
+          "apollo_light_smite"
+         ]
+        },
+        "infeasible": []
+       }
       }
      ]
     },
@@ -3359,7 +4255,44 @@
        ],
        "hammers": [
         "skull_twisting_crash"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_hera_hephaestus",
+          "kind": "target",
+          "options": [
+           "hera_extended_family",
+           "hera_dying_wish",
+           "hera_hereditary_bane",
+           "hera_rousing_reception",
+           "hera_fine_line"
+          ],
+          "pick": "hera_extended_family"
+         },
+         {
+          "duo": "duo_hera_hephaestus",
+          "kind": "target",
+          "options": [
+           "hephaestus_grand_caldera",
+           "hephaestus_molten_touch",
+           "hephaestus_heavy_metal",
+           "hephaestus_trusty_shield",
+           "hephaestus_security_system",
+           "hephaestus_uncanny_fortitude",
+           "hephaestus_furnace_blast"
+          ],
+          "pick": "hephaestus_grand_caldera"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "hera_extended_family",
+         "hephaestus_grand_caldera"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "skull_perse_flat",
@@ -3389,7 +4322,26 @@
        "note": "타격마다 저주로 게이지",
        "sources": [
         "lee:Hestia/Poseidon/Zeus attack + Origination + % special"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_hestia_poseidon",
+          "kind": "target",
+          "options": [
+           "poseidon_tidal_ring",
+           "poseidon_slippery_slope"
+          ],
+          "pick": "poseidon_tidal_ring"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "poseidon_tidal_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "skull_perse_ares",
@@ -3418,7 +4370,36 @@
        "note": "상처가 올림포스 피해로 계산돼 게이지가 찬다",
        "sources": [
         "lee:Ares attack + Zeus + Heinous Affront + Light Smite"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_ares",
+          "kind": "target",
+          "options": [
+           "zeus_storm_ring",
+           "zeus_thunder_rush"
+          ],
+          "pick": "zeus_storm_ring"
+         },
+         {
+          "duo": "duo_zeus_ares",
+          "kind": "target",
+          "options": [
+           "ares_visceral_impact",
+           "zeus_divine_vengeance"
+          ],
+          "pick": "ares_visceral_impact"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "ares_visceral_impact",
+         "zeus_storm_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -3547,7 +4528,37 @@
        ],
        "hammers": [
         "skull_possessed_array"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_ares",
+          "kind": "target",
+          "options": [
+           "ares_visceral_impact",
+           "zeus_divine_vengeance"
+          ],
+          "pick": "ares_visceral_impact"
+         },
+         {
+          "duo": "duo_zeus_demeter",
+          "kind": "target",
+          "options": [
+           "demeter_arctic_ring"
+          ],
+          "pick": "demeter_arctic_ring"
+         }
+        ],
+        "cond_must": [
+         "demeter_arctic_ring"
+        ],
+        "extra": [
+         "ares_visceral_impact",
+         "demeter_arctic_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "skull_medea_hera",
@@ -3573,7 +4584,14 @@
        "note": "피격 리스크를 방어로 메운다",
        "sources": [
         "lee:Hera attack for Wards/Hordes, Heph·Demeter defense"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "skull_medea_blast",
@@ -3603,7 +4621,28 @@
        "sources": [
         "lee:Heph special/attack → Hestia·Apollo blast duos + Slow Cooker",
         "dc51882:헤파 폭발 ★3"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_apollo_hephaestus",
+          "kind": "target",
+          "options": [
+           "apollo_solar_ring",
+           "apollo_blinding_rush",
+           "apollo_light_smite",
+           "apollo_dazzling_display"
+          ],
+          "pick": "apollo_solar_ring"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "apollo_solar_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -3722,7 +4761,14 @@
        "sources": [
         "lee:Hel — Poseidon attack + Slippery Slope + Hera special",
         "dc51882:헬 ★2 타수 goat"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "skull_hel_zeus",
@@ -3752,7 +4798,45 @@
        "note": "연사 타격마다 연쇄 번개",
        "sources": [
         "lee:Zeus attack (Static Shock·Double Strike)"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_hestia",
+          "kind": "target",
+          "options": [
+           "hestia_flame_flourish",
+           "hestia_smolder_ring"
+          ],
+          "pick": "hestia_flame_flourish"
+         },
+         {
+          "duo": "duo_hestia_demeter",
+          "kind": "target",
+          "options": [
+           "hestia_flame_flourish",
+           "hestia_smolder_ring"
+          ],
+          "pick": "hestia_flame_flourish"
+         },
+         {
+          "duo": "duo_hestia_demeter",
+          "kind": "target",
+          "options": [
+           "demeter_ice_flourish",
+           "demeter_arctic_ring"
+          ],
+          "pick": "demeter_arctic_ring"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "hestia_flame_flourish",
+         "demeter_arctic_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "skull_hel_hestia",
@@ -3782,7 +4866,27 @@
        "note": "연사로 잔불을 쌓고 얼려 폭발",
        "sources": [
         "namu:헤스티아 주력 + 데메테르 냉동 화상, 제우스 전기 구이, 따스한 마력 베스트"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_hestia",
+          "kind": "target",
+          "options": [
+           "zeus_heaven_flourish"
+          ],
+          "pick": "zeus_heaven_flourish"
+         }
+        ],
+        "cond_must": [
+         "zeus_heaven_flourish"
+        ],
+        "extra": [
+         "zeus_heaven_flourish"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     }
@@ -3958,7 +5062,38 @@
        ],
        "hammers": [
         "coat_exhaust_riser"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_hestia_poseidon",
+          "kind": "target",
+          "options": [
+           "hestia_smolder_ring",
+           "hestia_highly_flammable",
+           "hestia_controlled_burn",
+           "hestia_glowing_coal"
+          ],
+          "pick": "hestia_controlled_burn"
+         },
+         {
+          "duo": "duo_hestia_poseidon",
+          "kind": "target",
+          "options": [
+           "poseidon_tidal_ring",
+           "poseidon_slippery_slope"
+          ],
+          "pick": "poseidon_tidal_ring"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "hestia_controlled_burn",
+         "poseidon_tidal_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "coat_punch_freeze",
@@ -3989,7 +5124,14 @@
        ],
        "hammers": [
         "coat_exhaust_riser"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "coat_punch_zeus",
@@ -4018,7 +5160,37 @@
        "note": "주먹 타격마다 암운",
        "sources": [
         "lee:Zeus attack + Aphrodite Romantic Spark / Heph Superconductor"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_aphrodite",
+          "kind": "target",
+          "options": [
+           "aphrodite_rapture_ring",
+           "aphrodite_passion_rush"
+          ],
+          "pick": "aphrodite_rapture_ring"
+         },
+         {
+          "duo": "duo_zeus_hephaestus",
+          "kind": "target",
+          "options": [
+           "zeus_static_shock"
+          ],
+          "pick": "zeus_static_shock"
+         }
+        ],
+        "cond_must": [
+         "zeus_static_shock"
+        ],
+        "extra": [
+         "zeus_static_shock",
+         "aphrodite_rapture_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "coat_punch_nyx",
@@ -4049,7 +5221,28 @@
        ],
        "aspects": [
         "coat_nyx"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_hestia_apollo",
+          "kind": "target",
+          "options": [
+           "apollo_solar_ring",
+           "apollo_blinding_rush",
+           "apollo_light_smite",
+           "apollo_dazzling_display"
+          ],
+          "pick": "apollo_solar_ring"
+         }
+        ],
+        "cond_must": [],
+        "extra": [
+         "apollo_solar_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -4178,7 +5371,14 @@
        "hammers": [
         "coat_counter_supreme",
         "coat_elephant_rockets"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "coat_shiva_origination",
@@ -4207,7 +5407,47 @@
        "note": "저주 2종 + 사냥꾼",
        "sources": [
         "lee:Origination(+Huntress), Apollo·Aphrodite·Zeus attack"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_apollo_aphrodite",
+          "kind": "target",
+          "options": [
+           "aphrodite_heart_breaker"
+          ],
+          "pick": "aphrodite_heart_breaker"
+         },
+         {
+          "duo": "duo_zeus_aphrodite",
+          "kind": "target",
+          "options": [
+           "zeus_heaven_flourish"
+          ],
+          "pick": "zeus_heaven_flourish"
+         },
+         {
+          "duo": "duo_zeus_aphrodite",
+          "kind": "target",
+          "options": [
+           "aphrodite_passion_rush"
+          ],
+          "pick": "aphrodite_passion_rush"
+         }
+        ],
+        "cond_must": [
+         "aphrodite_heart_breaker",
+         "zeus_heaven_flourish",
+         "aphrodite_passion_rush"
+        ],
+        "extra": [
+         "aphrodite_heart_breaker",
+         "aphrodite_passion_rush",
+         "zeus_heaven_flourish"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     },
@@ -4328,7 +5568,14 @@
        "sources": [
         "lee:Selene — Moon Beam first, % attack + magick recovery + Ω cost",
         "namu:3.6.3 셀레네"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "coat_selene_ares",
@@ -4355,7 +5602,47 @@
        "note": "천상 붕괴에 상처",
        "sources": [
         "lee:Ares magick + Ares legendary"
-       ]
+       ],
+       "plan": {
+        "groups": [
+         {
+          "duo": "duo_zeus_ares",
+          "kind": "target",
+          "options": [
+           "ares_vicious_flourish"
+          ],
+          "pick": "ares_vicious_flourish"
+         },
+         {
+          "duo": "duo_zeus_ares",
+          "kind": "target",
+          "options": [
+           "zeus_storm_ring",
+           "zeus_thunder_rush"
+          ],
+          "pick": "zeus_storm_ring"
+         },
+         {
+          "duo": "duo_zeus_ares",
+          "kind": "target",
+          "options": [
+           "ares_visceral_impact",
+           "zeus_divine_vengeance"
+          ],
+          "pick": "ares_visceral_impact"
+         }
+        ],
+        "cond_must": [
+         "ares_vicious_flourish"
+        ],
+        "extra": [
+         "ares_visceral_impact",
+         "ares_vicious_flourish",
+         "zeus_storm_ring"
+        ],
+        "support_after": {},
+        "infeasible": []
+       }
       },
       {
        "id": "coat_selene_zeus",
@@ -4384,7 +5671,14 @@
        "note": "Ω 피해가 암운을 즉시 터뜨린다",
        "sources": [
         "lee:Origination + Zeus special + Arc Flash"
-       ]
+       ],
+       "plan": {
+        "groups": [],
+        "cond_must": [],
+        "extra": [],
+        "support_after": {},
+        "infeasible": []
+       }
       }
      ]
     }

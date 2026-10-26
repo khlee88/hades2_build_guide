@@ -82,8 +82,8 @@ SPEC = {
     gods=['아프로디테', '아폴론', '제우스'], must=['애정 일격', '매혹적 마력', '태양 고리'], support=['빛나는 등판', '추가 처방', '은밀한 호감'],
     duos=['명랑한 기질', '짜릿한 접촉'], finisher=None, note='약화+실명으로 배후 공격 극대화', sources=['dc49018:아프로 공격+아프로 마력+아폴론 마법']),
   V(id='blades_backstab_flat', name_ko='화염 일격 + 천상 기예 + 정전기 (고정 피해)', trust='mid', strength='A', strength_note='lee 레시피',
-    gods=['헤스티아', '제우스', '포세이돈'], must=['화염 일격', '천상 기예', '대전된 마력', '정전기 충격'], support=['완전 연소', '솥단지 예열', '미끄러운 경사'],
-    duos=['불벼락', '뜨거운 증기'], finisher=None, note='타격 수가 많은 쌍검에 타격마다 고정 피해', sources=['lee:Poseidon·Hestia 고정 피해, Zeus special+Static Shock']),
+    gods=['헤스티아', '제우스', '포세이돈'], must=['화염 일격', '천상 기예', '대전된 마력', '정전기 충격'], support=['완전 연소', '솥단지 예열'],
+    duos=['불벼락', '뜨거운 증기'], finisher=None, note='타격 수가 많은 쌍검에 타격마다 고정 피해. 포세이돈은 물결 고리(마법)로 — 미끄러운 경사는 파도 일격/기예가 필요한데 공격·기술이 찼다', sources=['lee:Poseidon·Hestia 고정 피해, Zeus special+Static Shock']),
  ],
  'blades_omega_ambush': [
   V(id='blades_ambush_aphro', name_ko='애정 일격 극대화 + 폭발적 암습', trust='high', strength='S', strength_note='namu 초보 최고 추천(키르케와 함께)',
@@ -137,8 +137,8 @@ SPEC = {
     gods=['데메테르', '헤스티아', '제우스'], must=['화염 기예', '설한 고리', '대전된 마력'], support=['완전 연소', '불쏘시개'],
     duos=['냉동 화상', '불벼락', '우박 폭풍'], finisher=None, note='불꽃 궤도에 잔불, 마법으로 얼려 폭발', sources=['namu:모로스 — 데메+헤스/데메+제우스/제우스+헤스 융합 조합']),
   V(id='flames_orbit_eos', name_ko='에오스 — 서약 기예 + 아폴론 공격', trust='mid', strength='A', strength_note='lee 에오스 레시피',
-    gods=['헤라', '아폴론', '제우스'], must=['서약 기예', '광휘 일격', '대전된 마력'], support=['전기 구이'],
-    duos=[], finisher=None, aspects=['flames_eos'], note='서광이 기술을 복사. 아폴론 전설 + 밤 아르카나', sources=['lee:Eos — Hera special, Apollo attack+legendary', 'dc51882:에오스 = 공격 암운·기술 잔불 고정']),
+    gods=['헤라', '아폴론', '제우스'], must=['서약 기예', '광휘 일격', '대전된 마력'], support=[],
+    duos=[], finisher=None, aspects=['flames_eos'], note='서광이 기술을 복사. 아폴론 전설 + 밤 아르카나. 제우스 보조(전기 구이)는 천상 일격/기예가 필요한데 공격·기술이 찼다 — 제우스는 마력(대전된 마력)만', sources=['lee:Eos — Hera special, Apollo attack+legendary', 'dc51882:에오스 = 공격 암운·기술 잔불 고정']),
  ],
  'flames_supay_auto': [
   V(id='flames_supay_flat', name_ko='고정 피해 수프 (열기 쇄도 + 잔불 + 파도)', trust='high', strength='A', strength_note='lee Winning combo, dc51882 ★3',
@@ -310,6 +310,19 @@ for w, wd in BD['weapons'].items():
             if v.get('aspects'): o['aspects'] = v['aspects']
             out.append(o); total += 1
         d['variants'] = out
+
+# 8-J: 완성 배치 — 필수 + 빈 칸으로 목표 융합 조건을 동시에 채우는 배치를 카드 데이터에 넣는다
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from variant_plan import make as _make_plan
+_plan = _make_plan({b['id']: b for b in boons}, {d['id']: d for d in duos})
+_inf = []
+for w, wd in BD['weapons'].items():
+    for d in wd['directions']:
+        for o in d['variants']:
+            o['plan'] = _plan(o)
+            _inf += ['%s: %s' % (o['id'], x) for x in o['plan']['infeasible']]
+print('완성 배치: 조건 필수 %d개 · 불가 %d건' % (sum(len(o['plan']['cond_must']) for wd in BD['weapons'].values() for d in wd['directions'] for o in d['variants']), len(_inf)))
+for x in _inf: print('  불가:', x)
 
 # 여왕의 강권: B→A + 공격 꾹 방향 목표에 추가
 q = dn['여왕의 강권']

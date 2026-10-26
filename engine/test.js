@@ -663,6 +663,41 @@ sc('S47', '4번째 신 택1 — 헤라 공격+제우스 기술: 주요 신 2, �
   ] };
 });
 
+
+// ── 8-J 완성 배치 (2026-10-26) ──────────────────────────
+sc('S48', '완성 배치 — 모로스 천상 기예+서약 일격: 불벼락의 헤스티아 조건은 염화 고리(마법)뿐, 화력 보강은 조건 아님', () => {
+  const v = E.recommendRunStart('flames', 'flames_moros', { graspCap: 27 }).directions.find((d) => d.id === 'flames_omega_special_orbit').variants.find((x) => x.id === 'flames_orbit_hera_zeus');
+  const fire = v.duo_needs.find((n) => n.id === 'duo_zeus_hestia');
+  const st = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_moros', region: 2, boons: ['zeus_heaven_flourish', 'hera_sworn_strike', 'hera_born_gain'], gods_seen: ['hera', 'zeus'] }), { kind: 'variant', id: 'flames_orbit_hera_zeus' });
+  const rows = E.recommendBoons(st, ['hestia_smolder_ring', 'hestia_flame_flourish', 'hestia_pyro_technique']);
+  const a = A(rows);
+  const god = E.recommendGods(st, ['hestia'])[0];
+  const c = E.buildChecklist(st);
+  return { rows, checks: [
+    check("카드: 조건 필수에 '염화 고리(마법) · 불벼락'", v.cond_must.some((x) => x.id === 'hestia_smolder_ring' && x.for_duo === '불벼락'), JSON.stringify(v.cond_must)),
+    check('카드: 불벼락 헤스티아 쪽 선택지 = 염화 고리 하나(유일)', fire.groups.some((g) => !g.met && g.forced && g.options.length === 1 && /염화 고리/.test(g.options[0])), JSON.stringify(fire.groups)),
+    check(...a.rankOf('hestia_smolder_ring', 1)),
+    check(...a.hasBadge('hestia_smolder_ring', '목표')),
+    check(...a.reasonHas('hestia_smolder_ring', '마법 칸 염화 고리뿐')),
+    check('화염 기예는 천상 기예를 밀어내므로 1위 아님', rows[0].id !== 'hestia_flame_flourish', rows.map((r) => r.id + '=' + r.score).join(' ')),
+    check("헤스티아 문: 필수, 역할 '목표 · 염화 고리'", god.grade === 'must' && god.roles.some((x) => /목표 · 염화 고리/.test(x)), god.grade_ko + ' ' + god.roles.join(',')),
+    check('체크리스트 조건 행 1개 (염화 고리, 미보유)', c.cond.length === 1 && c.cond[0].id === 'hestia_smolder_ring' && !c.cond[0].owned, JSON.stringify(c.cond)),
+  ] };
+});
+
+sc('S49', '완성 배치 — 선택지 여럿이면 "목표 조건(택1)", 이미 채워지면 더 안 민다 (지팡이 애정 기예 카드의 감전 급류)', () => {
+  const st = E.applyChoice(S({ weapon: 'staff', aspect: 'staff_melinoe', region: 2, boons: ['aphrodite_flutter_flourish', 'poseidon_tidal_ring', 'zeus_ionic_gain'], gods_seen: ['aphrodite', 'poseidon', 'zeus'] }), { kind: 'variant', id: 'staff_special_aphro_poseidon' });
+  const rows = E.recommendBoons(st, ['zeus_thunder_rush', 'zeus_power_surge', 'zeus_divine_vengeance']);
+  const a = A(rows);
+  const done = E.applyChoice(st, { kind: 'boon', id: 'zeus_thunder_rush' });
+  const rows2 = E.recommendBoons(done, ['zeus_divine_vengeance', 'zeus_power_surge', 'zeus_double_strike']);
+  return { rows, rows2, checks: [
+    check(...a.hasBadge('zeus_thunder_rush', '목표 조건')),
+    check(...a.reasonHas('zeus_thunder_rush', '택1')),
+    check('조건이 차면 신성한 복수에 목표 조건 배지 없음', !rows2.find((r) => r.id === 'zeus_divine_vengeance').badges.includes('목표 조건'), rows2.map((r) => r.id + ':' + r.badges.join('/')).join(' ')),
+  ] };
+});
+
 // ── 실행 ────────────────────────────────────────────────
 const out = [];
 let pass = 0, fail = 0;
