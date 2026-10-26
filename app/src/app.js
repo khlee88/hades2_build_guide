@@ -153,6 +153,8 @@
       '<div class="xs" style="margin-top:3px"><span class="dim">필수</span> ' + v.must.map(function (m) { return esc(m.name_ko) + '<span class="dim">(' + esc(m.slot_ko) + ')</span>'; }).join(' · ') + '</div>' +
       (v.target_duos.length || v.finisher ? '<div class="xs" style="margin-top:3px"><span class="dim">융합</span> ' + v.target_duos.map(function (d) { return esc(d.name_ko) + '(' + d.tier + ')'; }).join(', ') +
         (v.finisher ? (v.target_duos.length ? ' <span class="dim">→</span> ' : '') + '<b>끝내기 ' + esc(v.finisher.name_ko) + '(' + v.finisher.tier + ')</b>' : '') + '</div>' : '') +
+      (v.duo_needs && v.duo_needs.length ? '<div class="xs dim" style="margin-top:3px">' + v.duo_needs.map(function (n) {
+        return '<div style="margin-top:2px"><b class="dimless">' + esc(n.name_ko) + '</b> = ' + n.groups.map(function (g) { return g.met ? esc(g.have[0]) + ' ✓' : '<span style="color:var(--text)">' + (g.god ? esc(g.god) + ' ' : '') + esc(g.options.join('·')) + (g.more ? ' 외 ' + g.more : '') + '</span>'; }).join(' + ') + '</div>'; }).join('') + '</div>' : '') +
       '<details class="xs dim" style="margin-top:4px"><summary>근거 · 메모</summary><div style="margin-top:4px">' + esc(v.strength_note) + '</div><div style="margin-top:4px">' + esc(v.note) +
         (v.finisher ? '<div style="margin-top:4px">끝내기: ' + esc(v.finisher.note) + '</div>' : '') + '</div>' +
         (v.support.length ? '<div style="margin-top:4px">보조: ' + esc(v.support.map(function (x) { return x.name_ko; }).join(', ')) + '</div>' : '') +
@@ -510,6 +512,11 @@
         box.appendChild(el('<div class="prog"><span class="xs ell" style="width:112px">' + (d.fin ? '끝내기 ' : '') + esc(d.name_ko) + '</span>' +
           '<div class="bar"><i style="width:' + (d.owned ? 100 : Math.round(d.satisfied / d.total * 100)) + '%"></i></div>' +
           '<span class="xs dim">' + (d.owned ? '획득' : d.satisfied + '/' + d.total + (d.satisfied === d.total ? ' 대기' : '')) + '</span></div>'));
+        // 8-F: 남은 조건 — "어느 신의 어떤 은혜를 받아야 열리나"
+        if (!d.owned && d.needs) d.needs.groups.filter(function (g) { return !g.met; }).forEach(function (g) {
+          box.appendChild(el('<div class="xs dim" style="margin-left:8px">남음: ' + (g.god ? esc(g.god) + ' ' : '') + esc(g.options.join(' 또는 ')) + (g.more ? ' 외 ' + g.more : '') + '</div>'));
+        });
+        if (!d.owned && d.satisfied === d.total) box.appendChild(el('<div class="xs dim" style="margin-left:8px">조건 완성 — ' + esc(d.name_ko) + '의 두 신 문에서 뜰 수 있음 (약 1/4)</div>'));
       });
       var sup = chk.support.filter(function (x) { return x.owned; }).length, hm = chk.hammers.filter(function (x) { return x.owned; }).length;
       var det = el('<details class="xs dim" style="margin-top:6px"><summary>보조 ' + sup + '/' + chk.support.length + (chk.hammers.length ? ' · 망치 ' + hm + '/' + chk.hammers.length : '') + ' · 메모</summary></details>');

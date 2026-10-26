@@ -629,6 +629,22 @@ sc('S45', '빌드 해제·검증 — variant를 null로 풀면 direction_lock도
   ] };
 });
 
+
+sc('S46', '융합 조건 표시 — 헤라 공격+제우스 기술 카드: 짜릿한 접촉은 천상 기예로 절반, 아프로디테 은혜가 더 필요', () => {
+  const m = E.recommendRunStart('flames', 'flames_melinoe', { graspCap: 27 });
+  const v = m.directions.find((d) => d.id === 'flames_omega_attack_spam').variants.find((x) => x.id === 'flames_hold_zeus_special');
+  const spark = v.duo_needs.find((n) => n.id === 'duo_zeus_aphrodite');
+  const st = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_melinoe', boons: ['hera_sworn_strike', 'zeus_heaven_flourish', 'hera_born_gain'], gods_seen: ['hera', 'zeus'] }), { kind: 'variant', id: 'flames_hold_zeus_special' });
+  const c = E.buildChecklist(st);
+  const cs = c.target_duos.find((d) => d.id === 'duo_zeus_aphrodite');
+  return { rows: v.duo_needs.map((n, i) => ({ id: n.id, rank: i + 1, score: n.met, reason: n.groups.map((g) => (g.met ? '✓' : '✗') + (g.god || '') + ':' + g.options.join('/')).join(' | '), warnings: [], badges: [] })), checks: [
+    check('카드: 짜릿한 접촉 1/2 (제우스 쪽만 충족)', spark && spark.met === 1 && spark.total === 2, JSON.stringify(spark && spark.groups.map((g) => g.met))),
+    check("미충족 그룹의 신 = 아프로디테, 선택지에 '황홀 고리(마법)'", spark.groups.some((g) => !g.met && g.god === '아프로디테' && g.options.some((o) => /황홀 고리\(마법\)/.test(o))), JSON.stringify(spark.groups.find((g) => !g.met))),
+    check('체크리스트: 보유 기준으로도 1/2, 남은 쪽은 아프로디테', cs.needs.met === 1 && cs.needs.groups.find((g) => !g.met).god === '아프로디테', JSON.stringify(cs.needs)),
+    check('헤라 집중 카드: 파급 효과는 필수만으로 3/3', m.directions.find((d) => d.id === 'flames_omega_attack_spam').variants.find((x) => x.id === 'flames_hold_hera').duo_needs.find((n) => n.id === 'duo_poseidon_hera').met === 3, ''),
+  ] };
+});
+
 // ── 실행 ────────────────────────────────────────────────
 const out = [];
 let pass = 0, fail = 0;

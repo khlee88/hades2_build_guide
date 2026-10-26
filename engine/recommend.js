@@ -824,6 +824,24 @@ function createEngine(data, W) {
     };
   }
 
+  // 8-F: 융합 조건을 "가진 것 / 아직 필요한 것"으로. ownedSet 기준. 선택지는 칸과 함께, 최대 4개
+  function duoNeeds(duoId, ownedSet) {
+    const D = duoById.get(duoId); if (!D) return null;
+    const tokName = (t) => {
+      if (t === 'cat:ring') return '아무 고리(마법)';
+      if (t === 'cat:strike') return '아무 일격(공격)';
+      if (t.startsWith('god:')) return `${nameOf(t.slice(4))} 은혜`;
+      const b = boonById.get(t); return b ? `${b.name_ko}(${b.occupies_slot ? SLOT_KO[b.slot] : '보조'})` : t;
+    };
+    const godOf = (t) => { const b = boonById.get(t); return b ? b.god : (t.startsWith('god:') ? t.slice(4) : null); };
+    const groups = (D.requires.all || []).map((g) => {
+      const any = g.any || [];
+      const have = any.filter((t) => tokenMet(t, ownedSet));
+      const gods = uniq(any.map(godOf).filter(Boolean));
+      return { met: have.length > 0, have: have.map(tokName), god: gods.length === 1 ? nameOf(gods[0]) : null, options: any.slice(0, 4).map(tokName), more: Math.max(0, any.length - 4) };
+    });
+    return { id: duoId, name_ko: D.name_ko, tier: D.power_tier, groups, met: groups.filter((g) => g.met).length, total: groups.length };
+  }
   // 8-C: 빌드 카드 표시용
   function variantView(v) {
     const D = (id) => duoById.get(id);
@@ -835,6 +853,8 @@ function createEngine(data, W) {
       target_duos: (v.target_duos || []).map((id) => ({ id, name_ko: nameOf(id), tier: (D(id) || {}).power_tier || '?' })),
       finisher: v.finisher && v.finisher.duo ? { id: v.finisher.duo, name_ko: nameOf(v.finisher.duo), tier: (D(v.finisher.duo) || {}).power_tier || '?', note: v.finisher.note || '' } : null,
       hammers: (v.hammers || []).map((id) => ({ id, name_ko: nameOf(id) })),
+      // 8-F: must만 가진 상태에서 융합 조건이 어디까지 차는가 — 카드가 "상대 신 은혜가 더 필요함"을 보이게
+      duo_needs: uniq([...(v.target_duos || []), ...(v.finisher && v.finisher.duo ? [v.finisher.duo] : [])]).map((id) => duoNeeds(id, new Set(v.must || []))).filter(Boolean),
     };
   }
   // 8-C: 홈 체크리스트 — 고정한 빌드 기준으로 무엇을 가졌고 무엇이 남았나
@@ -850,8 +870,8 @@ function createEngine(data, W) {
       main_gods: view.main_gods.map((g) => ({ ...g, seen: seen.has(g.id) })),
       must, must_done: must.filter((m) => m.owned).length,
       support: view.support.map((s) => ({ ...s, owned: dv.owned.has(s.id) })),
-      target_duos: view.target_duos.map((d) => ({ ...d, ...(dprog(d.id) || {}) })),
-      finisher: view.finisher ? { ...view.finisher, ...(dprog(view.finisher.id) || {}) } : null,
+      target_duos: view.target_duos.map((d) => ({ ...d, ...(dprog(d.id) || {}), needs: duoNeeds(d.id, dv.owned) })),
+      finisher: view.finisher ? { ...view.finisher, ...(dprog(view.finisher.id) || {}), needs: duoNeeds(view.finisher.id, dv.owned) } : null,
       hammers: view.hammers.map((h) => ({ ...h, owned: dv.owned.has(h.id) })),
       note: v.note,
     };
