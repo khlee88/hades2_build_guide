@@ -579,7 +579,7 @@ function createEngine(data, W) {
     let reason;
     if (grade === 'pass') reason = (poolOver ? '풀 밖 신인데 채울 칸도 융합도 없음' : '지금 빌드에 맞는 칸이 없음') + ' — 석류·재화 문이 있으면 그쪽. 이 문뿐이면 들어가서 은혜를 보고 정한다';
     else if (targetNeed && (targetCore || !partnerDuo)) reason = `빌드 목표 '${targetNeed.name_ko}'이(가) 여기서 나옴${targetCore ? '' : ' (교체)'}`;
-    else if (fourthHit && !partnerDuo) reason = `빌드의 ${(dv.variant.main_gods || []).length + 1}번째 신 후보 — ${(fourthHit.duos || []).map((x) => nameOf(x)).join('/')} 쪽으로 간다 (택1)`;
+    else if (fourthHit && !partnerDuo) reason = `빌드의 ${(dv.variant.main_gods || []).length + 1}번째 신 후보 — ${(fourthHit.duos || []).map((x) => nameOf(x)).join('/')} 쪽으로 간다`;
     else if (partnerDuo) reason = `'${partnerDuo.name_ko}' 마지막 조건을 채울 수 있음`;
     else if (readyDuos.length && !coreFirst) reason = `'${readyDuos[0].name_ko}'${readyDuos.length > 1 ? ` 외 ${readyDuos.length - 1}개` : ''} 조건 완성 — 이 문에서 뜰 수 있음 (실측 약 1/${oneIn})`;
     else if (legReady && !coreFirst) reason = `전설 '${legB.name_ko}' 조건 완성 — 이 문에서 뜰 수 있음 (약 1/${oneIn})`;
@@ -847,6 +847,15 @@ function createEngine(data, W) {
     });
     return { id: duoId, name_ko: D.name_ko, tier: D.power_tier, groups, met: groups.filter((g) => g.met).length, total: groups.length };
   }
+  // 8-H: 주요 신이 2명이고 후보가 2명이면 둘 다 받을 수 있다(풀 4명). must와 칸이 안 겹치는 조합을 하나 찾아 보여준다
+  function fourthBoth(v) {
+    const f = v.fourth || []; if ((v.main_gods || []).length !== 2 || f.length !== 2) return null;
+    const mustSet = new Set(v.must || []); const usedSlots = new Set((v.must || []).map((id) => boonById.get(id)).filter((b) => b && b.occupies_slot).map((b) => b.slot));
+    const opts = (fx) => { const D = duoById.get((fx.duos || [])[0]); if (!D) return []; const un = unmetGroups(D, mustSet); if (un.length !== 1) return []; return (un[0].any || []).map((t) => boonById.get(t)).filter((b) => b && (!b.occupies_slot || !usedSlots.has(b.slot))); };
+    const lab = (b) => `${b.name_ko}(${b.occupies_slot ? SLOT_KO[b.slot] : '보조'})`;
+    for (const a of opts(f[0])) for (const b of opts(f[1])) { if (a.occupies_slot && b.occupies_slot && a.slot === b.slot) continue; return `${lab(a)} + ${lab(b)}`; }
+    return null;
+  }
   // 8-C: 빌드 카드 표시용
   function variantView(v) {
     const D = (id) => duoById.get(id);
@@ -861,6 +870,7 @@ function createEngine(data, W) {
       // 8-F: must만 가진 상태에서 융합 조건이 어디까지 차는가 — 카드가 "상대 신 은혜가 더 필요함"을 보이게
       duo_needs: uniq([...(v.target_duos || []), ...(v.finisher && v.finisher.duo ? [v.finisher.duo] : []), ...fourthDuos(v)]).map((id) => duoNeeds(id, new Set(v.must || []))).filter(Boolean),
       fourth_nth: (v.main_gods || []).length + 1,   // 8-H: 주요 신이 2명이면 3번째, 3명이면 4번째
+      fourth_both: fourthBoth(v),   // 8-H: 둘 다 가능할 때 칸 배치 ("열정 쇄도(질주) + 염화 고리(마법)")
       fourth: (v.fourth || []).map((f) => ({ god: f.god, god_ko: nameOf(f.god), duos: (f.duos || []).map((id) => ({ id, name_ko: nameOf(id), tier: (D(id) || {}).power_tier || '?' })) })),
     };
   }
@@ -879,7 +889,7 @@ function createEngine(data, W) {
       support: view.support.map((s) => ({ ...s, owned: dv.owned.has(s.id) })),
       target_duos: view.target_duos.map((d) => ({ ...d, ...(dprog(d.id) || {}), needs: duoNeeds(d.id, dv.owned) })),
       finisher: view.finisher ? { ...view.finisher, ...(dprog(view.finisher.id) || {}), needs: duoNeeds(view.finisher.id, dv.owned) } : null,
-      fourth_nth: view.fourth_nth,
+      fourth_nth: view.fourth_nth, fourth_both: view.fourth_both,
       fourth: view.fourth.map((f) => ({ ...f, seen: seen.has(f.god), duos: f.duos.map((d) => ({ ...d, ...(dprog(d.id) || {}), needs: duoNeeds(d.id, dv.owned) })) })),
       hammers: view.hammers.map((h) => ({ ...h, owned: dv.owned.has(h.id) })),
       note: v.note,

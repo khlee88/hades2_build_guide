@@ -658,6 +658,7 @@ sc('S47', '4번째 신 택1 — 헤라 공격+제우스 기술: 주요 신 2, �
     check("아프로디테 역할 '3번째 신 후보 · 짜릿한 접촉', 등급 좋음 이상", by('aphrodite').roles.some((x) => /3번째 신 후보 · 짜릿한 접촉/.test(x)) && ['good', 'must'].includes(by('aphrodite').grade), by('aphrodite').grade_ko + ' ' + by('aphrodite').roles.join(',')),
     check("헤스티아 역할 '3번째 신 후보 · 불벼락'", by('hestia').roles.some((x) => /3번째 신 후보 · 불벼락/.test(x)), by('hestia').roles.join(',')),
     check('포세이돈은 후보 아님', !by('poseidon').roles.some((x) => /번째 신 후보/.test(x)), by('poseidon').roles.join(',')),
+    check("둘 다 가능: fourth_both = '열정 쇄도(질주) + 염화 고리(마법)'", v.fourth_both === '열정 쇄도(질주) + 염화 고리(마법)', String(v.fourth_both)),
     check('체크리스트 fourth: 두 신 미등장, 융합 각 1/2', c.fourth.length === 2 && c.fourth.every((f) => !f.seen && f.duos[0].satisfied === 1 && f.duos[0].total === 2), JSON.stringify(c.fourth.map((f) => [f.god, f.seen, f.duos[0].satisfied]))),
   ] };
 });

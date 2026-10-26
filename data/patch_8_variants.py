@@ -120,7 +120,7 @@ SPEC = {
   V(id='flames_hold_zeus_special', name_ko='헤라 공격 + 제우스 기술', trust='high', strength='S', strength_note='lee "최적 조합", namu',
     gods=['헤라', '제우스'], must=['서약 일격', '천상 기예', '천부적 마력'], support=['전압 급증', '전기 구이', '정전기 충격'],
     duos=[], fourth=[('아프로디테', ['짜릿한 접촉']), ('헤스티아', ['불벼락'])], finisher=None,
-    note='공격 %와 기술 암운이 따로 논다. 핵심은 헤라·제우스 둘. 3번째 신은 아프로디테(짜릿한 접촉) 또는 헤스티아(불벼락) 중 먼저 뜨는 쪽 — 둘 다는 못 간다(풀 4명). 강권은 안 한다(기술을 버리게 됨)', sources=['lee:Hera attack+Zeus special 최적, Zeus special+Romantic Spark', 'namu:멜리노에 횃불']),
+    note='공격 %와 기술 암운이 따로 논다. 핵심은 헤라·제우스 둘. 3번째 신은 아프로디테(짜릿한 접촉)·헤스티아(불벼락) 중 먼저 뜨는 쪽. 4번째로 나머지도 받으면 둘 다 가능 — 아프로디테는 질주(열정 쇄도), 헤스티아는 마법(염화 고리). 강권은 안 한다(기술을 버리게 됨)', sources=['lee:Hera attack+Zeus special 최적, Zeus special+Romantic Spark', 'namu:멜리노에 횃불']),
   V(id='flames_hold_curse_core', name_ko='잔불·암운·동결 3신 코어', trust='high', strength='S', strength_note='dc51882 3신 코어 ① (전 무기 정석)',
     gods=['헤스티아', '제우스', '데메테르'], must=['화염 일격', '천상 기예', '설한 고리', '대전된 마력'], support=['전압 급증', '솥단지 예열', '완전 연소'],
     duos=['불벼락', '우박 폭풍', '냉동 화상'], finisher=None, note='융합 3개 전부 S. 헤라가 없어 마력은 대전된 마력(방마다 샘)에 의존', sources=['dc51882:헤스+제우스+데메 (공격/기술 암운·잔불, 마법 동결)']),
