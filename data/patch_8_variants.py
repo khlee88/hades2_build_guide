@@ -6,7 +6,7 @@
 
 변형 필드:
   id, name_ko, trust(high=출처 2개+ 또는 실플레이 / mid=출처 1 / low=추론), strength(S/A/B)+strength_note,
-  main_gods[3], must[은혜 — 순서대로, 칸당 1개가 그 변형의 칸 1순위], support[], target_duos[], finisher{duo, note}|null,
+  main_gods[2~3], fourth[(신, [융합])] (4번째 신 택1 — 주요 신 밖 융합은 여기), must[은혜 — 순서대로, 칸당 1개가 그 변형의 칸 1순위], support[], target_duos[], finisher{duo, note}|null,
   hammers[] (선택, 없으면 방향 것), aspects[] (선택, 특정 양상 전용), note, sources[]
 은혜·융합·망치는 한글명으로 쓰고 스크립트가 id로 바꾼다 — 이름이 틀리면 즉시 실패.
 함께: 여왕의 강권 B→A (첫 클리어 런 2026-10-01 근거), 공격 꾹 방향 target_duos에 추가.
@@ -118,8 +118,9 @@ SPEC = {
     duos=['파급 효과'], finisher={'duo': '여왕의 강권', 'note': '제우스 기술·마법·마력 중 하나를 임시로 받아두면 여왕의 강권이 뜬다 — 제우스 은혜를 버리고 헤라 은혜 전부 +4Lv'},
     note='마력 쓰는 양 = 딜. Ω마다 균열·파도가 터지고 강권으로 서약 일격·천부적 마력·한 핏줄이 4레벨씩 오른다', sources=['lee:Mel Flames — Hera Born Gain 최고, Fine Line+Righteous Pike', 'dc51882:헤라+포세 Ω 난사', 'log:2026-10-01 지하 첫 클리어 — 서약 일격·천부적 마력·한 핏줄·바다 너울·여왕의 강권']),
   V(id='flames_hold_zeus_special', name_ko='헤라 공격 + 제우스 기술', trust='high', strength='S', strength_note='lee "최적 조합", namu',
-    gods=['헤라', '제우스', '아프로디테'], must=['서약 일격', '천상 기예', '천부적 마력'], support=['전압 급증', '전기 구이', '정전기 충격'],
-    duos=['짜릿한 접촉', '불벼락'], finisher=None, note='공격 %와 기술 암운이 따로 논다. 4번째 신이 아프로디테면 짜릿한 접촉, 헤스티아면 불벼락. 강권은 안 한다(기술을 버리게 됨)', sources=['lee:Hera attack+Zeus special 최적, Zeus special+Romantic Spark', 'namu:멜리노에 횃불']),
+    gods=['헤라', '제우스'], must=['서약 일격', '천상 기예', '천부적 마력'], support=['전압 급증', '전기 구이', '정전기 충격'],
+    duos=[], fourth=[('아프로디테', ['짜릿한 접촉']), ('헤스티아', ['불벼락'])], finisher=None,
+    note='공격 %와 기술 암운이 따로 논다. 핵심은 헤라·제우스 둘. 3번째 신은 아프로디테(짜릿한 접촉) 또는 헤스티아(불벼락) 중 먼저 뜨는 쪽 — 둘 다는 못 간다(풀 4명). 강권은 안 한다(기술을 버리게 됨)', sources=['lee:Hera attack+Zeus special 최적, Zeus special+Romantic Spark', 'namu:멜리노에 횃불']),
   V(id='flames_hold_curse_core', name_ko='잔불·암운·동결 3신 코어', trust='high', strength='S', strength_note='dc51882 3신 코어 ① (전 무기 정석)',
     gods=['헤스티아', '제우스', '데메테르'], must=['화염 일격', '천상 기예', '설한 고리', '대전된 마력'], support=['전압 급증', '솥단지 예열', '완전 연소'],
     duos=['불벼락', '우박 폭풍', '냉동 화상'], finisher=None, note='융합 3개 전부 S. 헤라가 없어 마력은 대전된 마력(방마다 샘)에 의존', sources=['dc51882:헤스+제우스+데메 (공격/기술 암운·잔불, 마법 동결)']),
@@ -175,7 +176,7 @@ SPEC = {
     duos=['물 폭탄'], finisher=None, hammers=['강력 쪼개기'], note='마법진을 Ω 기술로 즉시 폭발. 폭발마다 마력이 돌아온다', sources=['lee:Charon — Apollo Lucid Gain 시작, Poseidon cast→Geyser Spout', 'namu:카론 — 아폴론 마법 궁합 최고']),
   V(id='axe_cleave_ares_zeus', name_ko='아레스+제우스 (폭풍 마법 + 고기 분쇄)', trust='mid', strength='A', strength_note='dc51882 카론 ★★ "양상 자체가 사기"',
     gods=['아레스', '제우스', '아폴론'], must=['상해 기예', '폭풍 고리', '영롱한 마력'], support=['고기 분쇄', '번개 투창'],
-    duos=['위험 지대'], finisher=None, note='마법진에 낙뢰·상처', sources=['dc51882:카론 = 아레스+제우스 빌드 ★★']),
+    duos=[], fourth=[('데메테르', ['위험 지대'])], finisher=None, note='마법진에 낙뢰·상처', sources=['dc51882:카론 = 아레스+제우스 빌드 ★★']),
  ],
  'axe_nergal_berserk': [
   V(id='axe_nergal_apollo', name_ko='광휘 일격 + 잡초 박멸 + 천부적 마력', trust='high', strength='A', strength_note='lee Winning combo',
@@ -276,6 +277,11 @@ for w, wd in BD['weapons'].items():
             gods_ids = [god(g) for g in v['gods']]
             must = [boon(n) for n in v['must']]; sup = [boon(n) for n in v['support']]
             tds = [duo(n) for n in v['duos']]
+            # 8-G: 4번째 신 의존 융합 — 주요 신 밖의 신이 필요한 융합은 fourth에 명시 (택1)
+            fourth = [{'god': god(g), 'duos': [duo(n) for n in ds]} for g, ds in v.get('fourth', [])]
+            for t in tds:
+                dg = dn[[k for k, x in dn.items() if x['id'] == t][0]]['gods']
+                assert all(g in gods_ids for g in dg), '%s/%s: 융합 %s의 신 %s가 main_gods 밖 — fourth로 옮길 것' % (d['id'], v['id'], t, dg)
             fin = None
             if v.get('finisher'):
                 fin = {'duo': duo(v['finisher']['duo']), 'note': v['finisher']['note']}
@@ -299,6 +305,7 @@ for w, wd in BD['weapons'].items():
             o = {'id': v['id'], 'name_ko': v['name_ko'], 'trust': v['trust'], 'strength': v['strength'], 'strength_note': v['strength_note'],
                  'main_gods': gods_ids, 'must': must, 'support': sup, 'target_duos': tds, 'finisher': fin,
                  'note': v['note'], 'sources': v['sources']}
+            if fourth: o['fourth'] = fourth
             if v.get('hammers'): o['hammers'] = [ham(n, w) for n in v['hammers']]
             if v.get('aspects'): o['aspects'] = v['aspects']
             out.append(o); total += 1

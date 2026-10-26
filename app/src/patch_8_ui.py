@@ -27,6 +27,12 @@ s = rep(s, "  function playstyleBox(dirId, weapon, phase, open) {",
 """  // 8-D: 빌드 카드. 커뮤니티 빌드를 합치지 않고 그대로 — 강함(S/A/B)·신뢰(◎ 출처 2+ 또는 실플레이 / ○ 출처 1 / △ 추론)
   var TRUST = { high: '◎', mid: '○', low: '△' };
   var godsHtml = function (gs, seenSet) { return gs.map(function (g, i) { return '<span style="color:' + (GC[g.id] || 'inherit') + ';font-weight:' + (i ? 400 : 700) + '">' + esc(g.name_ko) + (seenSet && seenSet[g.id] ? '<span class="xs">✓</span>' : '') + '</span>'; }).join(' <span class="dim">›</span> '); };
+  // 8-G: 융합 조건 남은 것 — 마지막 하나만 남았으면 선택지를 전부, 아니면 "필요: 신 + 신 + …" 한 줄
+  function needsLine(n) {
+    var un = n.groups.filter(function (g) { return !g.met; });
+    if (un.length === 1) { var g = un[0]; return el('<div class="xs dim" style="margin-left:8px">남음: ' + (g.god ? esc(g.god) + ' ' : '') + esc(g.options.join(' 또는 ')) + (g.more ? ' 외 ' + g.more : '') + '</div>'); }
+    return el('<div class="xs dim" style="margin-left:8px">필요: ' + un.map(function (g) { return g.god ? esc(g.god) + ' 은혜' : esc(g.options.map(function (o) { return o.replace(/\\(.*\\)$/, ''); }).join('/')); }).join(' + ') + '</div>');
+  }
   function variantCard(v, selected, onPick) {
     var c = el('<div class="vcard' + (selected ? ' sel' : '') + '">' +
       '<div class="row"><span class="vstr ' + v.strength + '">' + v.strength + '</span><b class="ell" style="flex:1">' + esc(v.name_ko) + '</b><span class="xs dim" title="신뢰도">' + (TRUST[v.trust] || '') + '</span></div>' +

@@ -146,6 +146,12 @@
   // 8-D: 빌드 카드. 커뮤니티 빌드를 합치지 않고 그대로 — 강함(S/A/B)·신뢰(◎ 출처 2+ 또는 실플레이 / ○ 출처 1 / △ 추론)
   var TRUST = { high: '◎', mid: '○', low: '△' };
   var godsHtml = function (gs, seenSet) { return gs.map(function (g, i) { return '<span style="color:' + (GC[g.id] || 'inherit') + ';font-weight:' + (i ? 400 : 700) + '">' + esc(g.name_ko) + (seenSet && seenSet[g.id] ? '<span class="xs">✓</span>' : '') + '</span>'; }).join(' <span class="dim">›</span> '); };
+  // 8-G: 융합 조건 남은 것 — 마지막 하나만 남았으면 선택지를 전부, 아니면 "필요: 신 + 신 + …" 한 줄
+  function needsLine(n) {
+    var un = n.groups.filter(function (g) { return !g.met; });
+    if (un.length === 1) { var g = un[0]; return el('<div class="xs dim" style="margin-left:8px">남음: ' + (g.god ? esc(g.god) + ' ' : '') + esc(g.options.join(' 또는 ')) + (g.more ? ' 외 ' + g.more : '') + '</div>'); }
+    return el('<div class="xs dim" style="margin-left:8px">필요: ' + un.map(function (g) { return g.god ? esc(g.god) + ' 은혜' : esc(g.options.map(function (o) { return o.replace(/\(.*\)$/, ''); }).join('/')); }).join(' + ') + '</div>');
+  }
   function variantCard(v, selected, onPick) {
     var c = el('<div class="vcard' + (selected ? ' sel' : '') + '">' +
       '<div class="row"><span class="vstr ' + v.strength + '">' + v.strength + '</span><b class="ell" style="flex:1">' + esc(v.name_ko) + '</b><span class="xs dim" title="신뢰도">' + (TRUST[v.trust] || '') + '</span></div>' +
@@ -153,6 +159,7 @@
       '<div class="xs" style="margin-top:3px"><span class="dim">필수</span> ' + v.must.map(function (m) { return esc(m.name_ko) + '<span class="dim">(' + esc(m.slot_ko) + ')</span>'; }).join(' · ') + '</div>' +
       (v.target_duos.length || v.finisher ? '<div class="xs" style="margin-top:3px"><span class="dim">융합</span> ' + v.target_duos.map(function (d) { return esc(d.name_ko) + '(' + d.tier + ')'; }).join(', ') +
         (v.finisher ? (v.target_duos.length ? ' <span class="dim">→</span> ' : '') + '<b>끝내기 ' + esc(v.finisher.name_ko) + '(' + v.finisher.tier + ')</b>' : '') + '</div>' : '') +
+      (v.fourth && v.fourth.length ? '<div class="xs" style="margin-top:3px"><span class="dim">4번째 신 (택1)</span> ' + v.fourth.map(function (f) { return '<span style="color:' + (GC[f.god] || 'inherit') + '">' + esc(f.god_ko) + '</span> → ' + f.duos.map(function (d) { return esc(d.name_ko) + '(' + d.tier + ')'; }).join(', '); }).join(' <span class="dim">/</span> ') + '</div>' : '') +
       (v.duo_needs && v.duo_needs.length ? '<div class="xs dim" style="margin-top:3px">' + v.duo_needs.map(function (n) {
         return '<div style="margin-top:2px"><b class="dimless">' + esc(n.name_ko) + '</b> = ' + n.groups.map(function (g) { return g.met ? esc(g.have[0]) + ' ✓' : '<span style="color:var(--text)">' + (g.god ? esc(g.god) + ' ' : '') + esc(g.options.join('·')) + (g.more ? ' 외 ' + g.more : '') + '</span>'; }).join(' + ') + '</div>'; }).join('') + '</div>' : '') +
       '<details class="xs dim" style="margin-top:4px"><summary>근거 · 메모</summary><div style="margin-top:4px">' + esc(v.strength_note) + '</div><div style="margin-top:4px">' + esc(v.note) +
@@ -513,11 +520,18 @@
           '<div class="bar"><i style="width:' + (d.owned ? 100 : Math.round(d.satisfied / d.total * 100)) + '%"></i></div>' +
           '<span class="xs dim">' + (d.owned ? '획득' : d.satisfied + '/' + d.total + (d.satisfied === d.total ? ' 대기' : '')) + '</span></div>'));
         // 8-F: 남은 조건 — "어느 신의 어떤 은혜를 받아야 열리나"
-        if (!d.owned && d.needs) d.needs.groups.filter(function (g) { return !g.met; }).forEach(function (g) {
-          box.appendChild(el('<div class="xs dim" style="margin-left:8px">남음: ' + (g.god ? esc(g.god) + ' ' : '') + esc(g.options.join(' 또는 ')) + (g.more ? ' 외 ' + g.more : '') + '</div>'));
-        });
+        if (!d.owned && d.needs) box.appendChild(needsLine(d.needs));
         if (!d.owned && d.satisfied === d.total) box.appendChild(el('<div class="xs dim" style="margin-left:8px">조건 완성 — ' + esc(d.name_ko) + '의 두 신 문에서 뜰 수 있음 (약 1/4)</div>'));
       });
+      // 8-G: 4번째 신 택1 — 등장한 쪽이 있으면 그쪽만 진행 바, 아니면 후보 나열
+      if (chk.fourth && chk.fourth.length) {
+        var seenF = chk.fourth.filter(function (f) { return f.seen; });
+        if (!seenF.length) box.appendChild(el('<div class="xs" style="margin-top:6px"><span class="dim">4번째 신 (택1)</span> ' + chk.fourth.map(function (f) { return '<span style="color:' + (GC[f.god] || 'inherit') + '">' + esc(f.god_ko) + '</span> → ' + f.duos.map(function (d) { return esc(d.name_ko); }).join(', '); }).join(' <span class="dim">/</span> ') + '</div>'));
+        seenF.forEach(function (f) { f.duos.forEach(function (d) {
+          box.appendChild(el('<div class="prog"><span class="xs ell" style="width:112px">' + esc(d.name_ko) + '</span><div class="bar"><i style="width:' + (d.owned ? 100 : Math.round(d.satisfied / d.total * 100)) + '%"></i></div><span class="xs dim">' + (d.owned ? '획득' : d.satisfied + '/' + d.total + (d.satisfied === d.total ? ' 대기' : '')) + '</span></div>'));
+          if (!d.owned && d.needs) box.appendChild(needsLine(d.needs));
+        }); });
+      }
       var sup = chk.support.filter(function (x) { return x.owned; }).length, hm = chk.hammers.filter(function (x) { return x.owned; }).length;
       var det = el('<details class="xs dim" style="margin-top:6px"><summary>보조 ' + sup + '/' + chk.support.length + (chk.hammers.length ? ' · 망치 ' + hm + '/' + chk.hammers.length : '') + ' · 메모</summary></details>');
       det.appendChild(el('<div style="margin-top:4px">' + chk.support.map(function (x) { return (x.owned ? '☑ ' : '☐ ') + esc(x.name_ko); }).join(' · ') + '</div>'));

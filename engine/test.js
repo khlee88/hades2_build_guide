@@ -636,12 +636,29 @@ sc('S46', '융합 조건 표시 — 헤라 공격+제우스 기술 카드: 짜�
   const spark = v.duo_needs.find((n) => n.id === 'duo_zeus_aphrodite');
   const st = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_melinoe', boons: ['hera_sworn_strike', 'zeus_heaven_flourish', 'hera_born_gain'], gods_seen: ['hera', 'zeus'] }), { kind: 'variant', id: 'flames_hold_zeus_special' });
   const c = E.buildChecklist(st);
-  const cs = c.target_duos.find((d) => d.id === 'duo_zeus_aphrodite');
+  const cs = (c.fourth.find((f) => f.god === 'aphrodite') || { duos: [] }).duos.find((d) => d.id === 'duo_zeus_aphrodite');   // 8-G: 짜릿한 접촉은 4번째 신 택1 쪽
   return { rows: v.duo_needs.map((n, i) => ({ id: n.id, rank: i + 1, score: n.met, reason: n.groups.map((g) => (g.met ? '✓' : '✗') + (g.god || '') + ':' + g.options.join('/')).join(' | '), warnings: [], badges: [] })), checks: [
     check('카드: 짜릿한 접촉 1/2 (제우스 쪽만 충족)', spark && spark.met === 1 && spark.total === 2, JSON.stringify(spark && spark.groups.map((g) => g.met))),
     check("미충족 그룹의 신 = 아프로디테, 선택지에 '황홀 고리(마법)'", spark.groups.some((g) => !g.met && g.god === '아프로디테' && g.options.some((o) => /황홀 고리\(마법\)/.test(o))), JSON.stringify(spark.groups.find((g) => !g.met))),
     check('체크리스트: 보유 기준으로도 1/2, 남은 쪽은 아프로디테', cs.needs.met === 1 && cs.needs.groups.find((g) => !g.met).god === '아프로디테', JSON.stringify(cs.needs)),
     check('헤라 집중 카드: 파급 효과는 필수만으로 3/3', m.directions.find((d) => d.id === 'flames_omega_attack_spam').variants.find((x) => x.id === 'flames_hold_hera').duo_needs.find((n) => n.id === 'duo_poseidon_hera').met === 3, ''),
+  ] };
+});
+
+
+sc('S47', '4번째 신 택1 — 헤라 공격+제우스 기술: 주요 신 2, 아프로디테→짜릿한 접촉 / 헤스티아→불벼락, 둘 다 "4번째 신 후보"', () => {
+  const m = E.recommendRunStart('flames', 'flames_melinoe', { graspCap: 27 });
+  const v = m.directions.find((d) => d.id === 'flames_omega_attack_spam').variants.find((x) => x.id === 'flames_hold_zeus_special');
+  const st = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_melinoe', boons: ['hera_sworn_strike', 'zeus_heaven_flourish'], gods_seen: ['hera', 'zeus'] }), { kind: 'variant', id: 'flames_hold_zeus_special' });
+  const rows = E.recommendGods(st, ['aphrodite', 'hestia', 'poseidon']);
+  const by = (id) => rows.find((r) => r.id === id);
+  const c = E.buildChecklist(st);
+  return { rows, checks: [
+    check('카드: 주요 신 헤라·제우스, 목표 융합 없음, fourth 2개', v.main_gods.length === 2 && v.target_duos.length === 0 && v.fourth.length === 2 && v.fourth[0].god === 'aphrodite' && v.fourth[1].duos[0].name_ko === '불벼락', JSON.stringify(v.fourth)),
+    check("아프로디테 역할 '4번째 신 후보 · 짜릿한 접촉', 등급 좋음 이상", by('aphrodite').roles.some((x) => /4번째 신 후보 · 짜릿한 접촉/.test(x)) && ['good', 'must'].includes(by('aphrodite').grade), by('aphrodite').grade_ko + ' ' + by('aphrodite').roles.join(',')),
+    check("헤스티아 역할 '4번째 신 후보 · 불벼락'", by('hestia').roles.some((x) => /4번째 신 후보 · 불벼락/.test(x)), by('hestia').roles.join(',')),
+    check('포세이돈은 후보 아님', !by('poseidon').roles.some((x) => /4번째 신 후보/.test(x)), by('poseidon').roles.join(',')),
+    check('체크리스트 fourth: 두 신 미등장, 융합 각 1/2', c.fourth.length === 2 && c.fourth.every((f) => !f.seen && f.duos[0].satisfied === 1 && f.duos[0].total === 2), JSON.stringify(c.fourth.map((f) => [f.god, f.seen, f.duos[0].satisfied]))),
   ] };
 });
 

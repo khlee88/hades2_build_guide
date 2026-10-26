@@ -60,7 +60,7 @@ sc('S46', '융합 조건 표시 — 헤라 공격+제우스 기술 카드: 짜�
   const spark = v.duo_needs.find((n) => n.id === 'duo_zeus_aphrodite');
   const st = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_melinoe', boons: ['hera_sworn_strike', 'zeus_heaven_flourish', 'hera_born_gain'], gods_seen: ['hera', 'zeus'] }), { kind: 'variant', id: 'flames_hold_zeus_special' });
   const c = E.buildChecklist(st);
-  const cs = c.target_duos.find((d) => d.id === 'duo_zeus_aphrodite');
+  const cs = (c.fourth.find((f) => f.god === 'aphrodite') || { duos: [] }).duos.find((d) => d.id === 'duo_zeus_aphrodite');   // 8-G: 짜릿한 접촉은 4번째 신 택1 쪽
   return { rows: v.duo_needs.map((n, i) => ({ id: n.id, rank: i + 1, score: n.met, reason: n.groups.map((g) => (g.met ? '✓' : '✗') + (g.god || '') + ':' + g.options.join('/')).join(' | '), warnings: [], badges: [] })), checks: [
     check('카드: 짜릿한 접촉 1/2 (제우스 쪽만 충족)', spark && spark.met === 1 && spark.total === 2, JSON.stringify(spark && spark.groups.map((g) => g.met))),
     check("미충족 그룹의 신 = 아프로디테, 선택지에 '황홀 고리(마법)'", spark.groups.some((g) => !g.met && g.god === '아프로디테' && g.options.some((o) => /황홀 고리\\(마법\\)/.test(o))), JSON.stringify(spark.groups.find((g) => !g.met))),
@@ -87,8 +87,6 @@ if 'duo_needs' not in s:
           '<div class="bar"><i style="width:' + (d.owned ? 100 : Math.round(d.satisfied / d.total * 100)) + '%"></i></div>' +
           '<span class="xs dim">' + (d.owned ? '획득' : d.satisfied + '/' + d.total + (d.satisfied === d.total ? ' 대기' : '')) + '</span></div>'));
         // 8-F: 남은 조건 — "어느 신의 어떤 은혜를 받아야 열리나"
-        if (!d.owned && d.needs) d.needs.groups.filter(function (g) { return !g.met; }).forEach(function (g) {
-          box.appendChild(el('<div class="xs dim" style="margin-left:8px">남음: ' + (g.god ? esc(g.god) + ' ' : '') + esc(g.options.join(' 또는 ')) + (g.more ? ' 외 ' + g.more : '') + '</div>'));
-        });
+        if (!d.owned && d.needs) box.appendChild(needsLine(d.needs));
         if (!d.owned && d.satisfied === d.total) box.appendChild(el('<div class="xs dim" style="margin-left:8px">조건 완성 — ' + esc(d.name_ko) + '의 두 신 문에서 뜰 수 있음 (약 1/4)</div>'));""")
     save(JS, s); print('app.js: 융합 조건 표시')

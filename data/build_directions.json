@@ -1755,8 +1755,7 @@
        "strength_note": "lee \"최적 조합\", namu",
        "main_gods": [
         "hera",
-        "zeus",
-        "aphrodite"
+        "zeus"
        ],
        "must": [
         "hera_sworn_strike",
@@ -1768,15 +1767,26 @@
         "zeus_arc_flash",
         "zeus_static_shock"
        ],
-       "target_duos": [
-        "duo_zeus_aphrodite",
-        "duo_zeus_hestia"
-       ],
+       "target_duos": [],
        "finisher": null,
-       "note": "공격 %와 기술 암운이 따로 논다. 4번째 신이 아프로디테면 짜릿한 접촉, 헤스티아면 불벼락. 강권은 안 한다(기술을 버리게 됨)",
+       "note": "공격 %와 기술 암운이 따로 논다. 핵심은 헤라·제우스 둘. 3번째 신은 아프로디테(짜릿한 접촉) 또는 헤스티아(불벼락) 중 먼저 뜨는 쪽 — 둘 다는 못 간다(풀 4명). 강권은 안 한다(기술을 버리게 됨)",
        "sources": [
         "lee:Hera attack+Zeus special 최적, Zeus special+Romantic Spark",
         "namu:멜리노에 횃불"
+       ],
+       "fourth": [
+        {
+         "god": "aphrodite",
+         "duos": [
+          "duo_zeus_aphrodite"
+         ]
+        },
+        {
+         "god": "hestia",
+         "duos": [
+          "duo_zeus_hestia"
+         ]
+        }
        ]
       },
       {
@@ -2815,13 +2825,19 @@
         "ares_meat_grinder",
         "zeus_lightning_lance"
        ],
-       "target_duos": [
-        "duo_demeter_ares"
-       ],
+       "target_duos": [],
        "finisher": null,
        "note": "마법진에 낙뢰·상처",
        "sources": [
         "dc51882:카론 = 아레스+제우스 빌드 ★★"
+       ],
+       "fourth": [
+        {
+         "god": "demeter",
+         "duos": [
+          "duo_demeter_ares"
+         ]
+        }
        ]
       }
      ]

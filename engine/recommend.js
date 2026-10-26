@@ -29,6 +29,7 @@ function createEngine(data, W) {
   for (const [wid, wd] of Object.entries(builds.weapons || {})) for (const d of wd.directions || []) for (const v of d.variants || []) variantById.set(v.id, { weapon: wid, d, v });
   const uniq = (arr) => [...new Set(arr)];
   // 변형을 고정하면 방향의 칸 순위·보조·융합 맨 앞에 변형의 것을 둔다 — 기존 채점이 그대로 "이 빌드 기준"이 된다
+  const fourthDuos = (v) => (v.fourth || []).flatMap((f) => f.duos || []);   // 8-G: 4번째 신 택1 융합
   const vshort = (name) => String(name || '').split(' — ')[0].slice(0, 16);   // 이유 문구용 짧은 빌드명 ("헤라 집중 — 파급 효과 → …" → "헤라 집중")
   function effectiveDirection(d, v) {
     const sp = {};
@@ -36,7 +37,7 @@ function createEngine(data, W) {
     for (const id of v.must || []) { const b = boonById.get(id); if (!b || !b.occupies_slot) continue; sp[b.slot] = uniq([id, ...(sp[b.slot] || [])]); }
     const fin = v.finisher && v.finisher.duo ? [v.finisher.duo] : [];
     return { ...d, slot_prefs: sp, support_boons: uniq([...(v.support || []), ...(v.must || []).filter((id) => { const b = boonById.get(id); return b && !b.occupies_slot; }), ...(d.support_boons || [])]),
-      target_duos: uniq([...(v.target_duos || []), ...fin, ...(d.target_duos || [])]), hammers: v.hammers && v.hammers.length ? uniq([...v.hammers, ...(d.hammers || [])]) : d.hammers, _variant: v };
+      target_duos: uniq([...(v.target_duos || []), ...fin, ...fourthDuos(v), ...(d.target_duos || [])]), hammers: v.hammers && v.hammers.length ? uniq([...v.hammers, ...(d.hammers || [])]) : d.hammers, _variant: v };
   }
 
   const nameOf = (id) =>
@@ -511,7 +512,7 @@ function createEngine(data, W) {
     }
     if (state.keepsake) { const k = keepsakeById.get(state.keepsake); if (k && k.god === godId) { score += W.GOD.KEEPSAKE_MATCH; bd.keepsake = W.GOD.KEEPSAKE_MATCH; } }
     // 8-C: 빌드 카드 — 이 신의 목표 은혜가 아직 없고 채울 수 있으면
-    let targetNeed = null, targetCore = false;
+    let targetNeed = null, targetCore = false, fourthHit = null;
     if (dv.variant) {
       for (const id of dv.variant.must || []) {
         const bb = boonById.get(id); if (!bb || bb.god !== godId || dv.owned.has(id) || blockReason(bb, state, dv, 'boon')) continue;
@@ -519,6 +520,7 @@ function createEngine(data, W) {
         if (!targetNeed || (empty && !targetCore)) { targetNeed = bb; targetCore = empty; }
       }
       if ((dv.variant.main_gods || []).includes(godId)) { score += W.GOD.TARGET_GOD; bd.target_god = W.GOD.TARGET_GOD; }
+      else { const f = (dv.variant.fourth || []).find((x) => x.god === godId); if (f && !(state.gods_seen || []).includes(godId)) { score += W.GOD.TARGET_GOD; bd.target_god = W.GOD.TARGET_GOD; fourthHit = f; } }
     }
 
     // ── 5-A: 절대 등급. 실제 결정은 "이 문 하나를 갈지 / 석류·재화를 갈지"라 순위(비교)로는 답이 안 된다.
@@ -552,6 +554,7 @@ function createEngine(data, W) {
     if (readyDuos.length) roles.unshift(`융합 대기 · ${readyDuos[0].name_ko}${readyDuos.length > 1 ? ` 외 ${readyDuos.length - 1}` : ''}`);
     if (targetNeed) roles.unshift(`목표 · ${targetNeed.name_ko}`);
     else if (dv.variant && (dv.variant.main_gods || []).includes(godId)) roles.push('빌드 신');
+    if (fourthHit) roles.unshift(`4번째 신 후보 · ${(fourthHit.duos || []).map((x) => nameOf(x)).join('/')}`);
     if (hasAlways) roles.push('항상 이득');
     const poolOver = bd.pool === W.GOD.POOL_NEW_PENALTY;
     if (poolOver) roles.push('풀 밖 신');
@@ -560,6 +563,7 @@ function createEngine(data, W) {
     const coreFirst = !!(bestFill && bestFill.empty && bestFill.core && bestFill.rank === 1);
     if (partnerDuo || coreFirst || (targetNeed && targetCore)) tier = 3;
     else if (targetNeed) tier = 2;
+    else if (fourthHit) tier = Math.max(tier, 2);
     // 7-A: 대기 융합·전설은 '좋음' — 실측 23%(6/26)라 '필수'("거의 확실")로 읽히면 안 된다. 그래도 후반 문 사이에서는 이 값이 순위를 가른다
     else if (readyDuos.length || legReady) tier = 2;
     else if (bestFill && bestFill.empty && ((bestFill.core && bestFill.rank <= 3) || bestFill.rank === 1)) tier = 2;
@@ -575,6 +579,7 @@ function createEngine(data, W) {
     let reason;
     if (grade === 'pass') reason = (poolOver ? '풀 밖 신인데 채울 칸도 융합도 없음' : '지금 빌드에 맞는 칸이 없음') + ' — 석류·재화 문이 있으면 그쪽. 이 문뿐이면 들어가서 은혜를 보고 정한다';
     else if (targetNeed && (targetCore || !partnerDuo)) reason = `빌드 목표 '${targetNeed.name_ko}'이(가) 여기서 나옴${targetCore ? '' : ' (교체)'}`;
+    else if (fourthHit && !partnerDuo) reason = `빌드의 4번째 신 후보 — ${(fourthHit.duos || []).map((x) => nameOf(x)).join('/')} 쪽으로 간다 (택1)`;
     else if (partnerDuo) reason = `'${partnerDuo.name_ko}' 마지막 조건을 채울 수 있음`;
     else if (readyDuos.length && !coreFirst) reason = `'${readyDuos[0].name_ko}'${readyDuos.length > 1 ? ` 외 ${readyDuos.length - 1}개` : ''} 조건 완성 — 이 문에서 뜰 수 있음 (실측 약 1/${oneIn})`;
     else if (legReady && !coreFirst) reason = `전설 '${legB.name_ko}' 조건 완성 — 이 문에서 뜰 수 있음 (약 1/${oneIn})`;
@@ -854,7 +859,8 @@ function createEngine(data, W) {
       finisher: v.finisher && v.finisher.duo ? { id: v.finisher.duo, name_ko: nameOf(v.finisher.duo), tier: (D(v.finisher.duo) || {}).power_tier || '?', note: v.finisher.note || '' } : null,
       hammers: (v.hammers || []).map((id) => ({ id, name_ko: nameOf(id) })),
       // 8-F: must만 가진 상태에서 융합 조건이 어디까지 차는가 — 카드가 "상대 신 은혜가 더 필요함"을 보이게
-      duo_needs: uniq([...(v.target_duos || []), ...(v.finisher && v.finisher.duo ? [v.finisher.duo] : [])]).map((id) => duoNeeds(id, new Set(v.must || []))).filter(Boolean),
+      duo_needs: uniq([...(v.target_duos || []), ...(v.finisher && v.finisher.duo ? [v.finisher.duo] : []), ...fourthDuos(v)]).map((id) => duoNeeds(id, new Set(v.must || []))).filter(Boolean),
+      fourth: (v.fourth || []).map((f) => ({ god: f.god, god_ko: nameOf(f.god), duos: (f.duos || []).map((id) => ({ id, name_ko: nameOf(id), tier: (D(id) || {}).power_tier || '?' })) })),
     };
   }
   // 8-C: 홈 체크리스트 — 고정한 빌드 기준으로 무엇을 가졌고 무엇이 남았나
@@ -872,6 +878,7 @@ function createEngine(data, W) {
       support: view.support.map((s) => ({ ...s, owned: dv.owned.has(s.id) })),
       target_duos: view.target_duos.map((d) => ({ ...d, ...(dprog(d.id) || {}), needs: duoNeeds(d.id, dv.owned) })),
       finisher: view.finisher ? { ...view.finisher, ...(dprog(view.finisher.id) || {}), needs: duoNeeds(view.finisher.id, dv.owned) } : null,
+      fourth: view.fourth.map((f) => ({ ...f, seen: seen.has(f.god), duos: f.duos.map((d) => ({ ...d, ...(dprog(d.id) || {}), needs: duoNeeds(d.id, dv.owned) })) })),
       hammers: view.hammers.map((h) => ({ ...h, owned: dv.owned.has(h.id) })),
       note: v.note,
     };
