@@ -271,6 +271,102 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hestia_flame_flourish": [
           "zeus_heaven_flourish"
@@ -336,6 +432,70 @@
          ]
         },
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 3,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_thunder_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "poseidon_king_tide",
+          "god": "poseidon",
+          "need": 3,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "poseidon_wave_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_geyser_spout"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_hydraulic_might",
+             "poseidon_ocean_swell",
+             "poseidon_slippery_slope",
+             "poseidon_high_surf"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "aphrodite_flutter_flourish": [
           "zeus_heaven_flourish",
@@ -405,11 +565,104 @@
          "zeus_heaven_strike"
         ],
         "extra": [
-         "poseidon_slippery_slope",
-         "zeus_heaven_strike"
+         "zeus_heaven_strike",
+         "poseidon_slippery_slope"
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "poseidon_king_tide",
+          "god": "poseidon",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "poseidon_wave_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_breaker_rush",
+             "poseidon_geyser_spout"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "poseidon_slippery_slope"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_smolder_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "poseidon_wave_flourish": [
           "zeus_heaven_flourish"
@@ -596,12 +849,103 @@
         ],
         "cond_must": [],
         "extra": [
-         "poseidon_buried_treasure",
          "demeter_frigid_rush",
+         "poseidon_buried_treasure",
          "poseidon_wave_strike"
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "poseidon_king_tide",
+          "god": "poseidon",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "poseidon_wave_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "poseidon_geyser_spout"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_hydraulic_might",
+             "poseidon_ocean_swell",
+             "poseidon_slippery_slope",
+             "poseidon_high_surf"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "apollo_nova_flourish"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "apollo_lucid_gain"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_extra_dose",
+             "apollo_super_nova",
+             "apollo_back_burner",
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "demeter_arctic_ring": [
           "apollo_solar_ring",
@@ -674,6 +1018,96 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "apollo_nova_flourish"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "apollo_lucid_gain"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_storm_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "zeus_double_strike"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_ice_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "zeus_storm_ring": [
           "demeter_arctic_ring",
@@ -825,6 +1259,98 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 1,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "poseidon_king_tide",
+          "god": "poseidon",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "poseidon_wave_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_breaker_rush",
+             "poseidon_geyser_spout"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "poseidon_ocean_swell"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 3,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "zeus_heaven_flourish",
+             "zeus_storm_ring",
+             "zeus_thunder_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hera_sworn_strike": [
           "zeus_heaven_strike",
@@ -904,6 +1430,98 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 0,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "apollo_nova_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "apollo_lucid_gain"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "apollo_nova_strike": [
           "zeus_heaven_strike",
@@ -1059,6 +1677,66 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 1,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "aphrodite_nervous_wreck",
+          "god": "aphrodite",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "aphrodite_broken_resolve",
+             "aphrodite_sweet_surrender",
+             "aphrodite_shameless_attitude",
+             "aphrodite_secret_crush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "aphrodite_passion_rush"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_flutter_flourish"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hera_sworn_strike": [
           "poseidon_wave_strike",
@@ -1124,6 +1802,99 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "zeus_static_shock"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hestia_flame_strike": [
           "demeter_ice_strike"
@@ -1359,6 +2130,71 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "ares_sanguinary_savor",
+          "god": "ares",
+          "need": 1,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "ares_vicious_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "ares_visceral_impact"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "ares_meat_grinder",
+             "ares_grievous_blow",
+             "ares_mutual_destruction",
+             "ares_blood_spree",
+             "ares_cut_above"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "ares_vicious_strike": [
           "zeus_heaven_strike"
@@ -1433,6 +2269,70 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "aphrodite_nervous_wreck",
+          "god": "aphrodite",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "aphrodite_broken_resolve",
+             "aphrodite_sweet_surrender",
+             "aphrodite_shameless_attitude",
+             "aphrodite_secret_crush"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_glamour_gain"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_flutter_strike"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "aphrodite_flutter_strike": [
           "apollo_nova_strike",
@@ -1497,6 +2397,68 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "zeus_static_shock"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hestia_flame_strike": [
           "poseidon_wave_strike"
@@ -1643,6 +2605,100 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "aphrodite_nervous_wreck",
+          "god": "aphrodite",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "aphrodite_broken_resolve",
+             "aphrodite_sweet_surrender",
+             "aphrodite_shameless_attitude",
+             "aphrodite_secret_crush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "aphrodite_passion_rush"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_flutter_strike"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 3,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "hera_sworn_flourish",
+             "hera_nexus_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "aphrodite_flutter_strike": [
           "hera_sworn_strike",
@@ -1705,6 +2761,98 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "ares_sanguinary_savor",
+          "god": "ares",
+          "need": 0,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "ares_vicious_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "ares_visceral_impact"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "ares_grievous_blow"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "aphrodite_nervous_wreck",
+          "god": "aphrodite",
+          "need": 3,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "aphrodite_broken_resolve",
+             "aphrodite_sweet_surrender",
+             "aphrodite_shameless_attitude",
+             "aphrodite_secret_crush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "aphrodite_rapture_ring",
+             "aphrodite_passion_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "aphrodite_flutter_flourish"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 3,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_ionic_gain"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "ares_vicious_strike": [
           "aphrodite_flutter_strike",
@@ -1867,6 +3015,99 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "poseidon_king_tide",
+          "god": "poseidon",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "poseidon_wave_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_breaker_rush",
+             "poseidon_geyser_spout"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "poseidon_slippery_slope"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "poseidon_wave_flourish": [
           "zeus_heaven_flourish",
@@ -1932,6 +3173,70 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_ice_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hestia_flame_flourish": [
           "demeter_ice_flourish"
@@ -2079,6 +3384,69 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "aphrodite_nervous_wreck",
+          "god": "aphrodite",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "aphrodite_broken_resolve",
+             "aphrodite_sweet_surrender",
+             "aphrodite_shameless_attitude",
+             "aphrodite_secret_crush"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_glamour_gain"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_flutter_flourish"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hestia_flame_strike": [],
          "aphrodite_flutter_flourish": [],
@@ -2153,11 +3521,104 @@
          "hestia_smolder_ring"
         ],
         "extra": [
-         "hestia_smolder_ring",
-         "apollo_blinding_rush"
+         "apollo_blinding_rush",
+         "hestia_smolder_ring"
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "apollo_nova_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "apollo_blinding_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_extra_dose",
+             "apollo_super_nova",
+             "apollo_back_burner",
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "aphrodite_nervous_wreck",
+          "god": "aphrodite",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "aphrodite_broken_resolve",
+             "aphrodite_sweet_surrender",
+             "aphrodite_shameless_attitude",
+             "aphrodite_secret_crush"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_glamour_gain"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_flutter_flourish"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_smolder_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "apollo_nova_strike": [
           "hestia_flame_strike",
@@ -2208,6 +3669,101 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "aphrodite_nervous_wreck",
+          "god": "aphrodite",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "aphrodite_broken_resolve",
+             "aphrodite_sweet_surrender",
+             "aphrodite_shameless_attitude",
+             "aphrodite_secret_crush"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_glamour_gain"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_flutter_flourish"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 3,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "hera_engagement_ring",
+             "hera_nexus_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "zeus_heaven_strike": [],
          "aphrodite_flutter_flourish": [
@@ -2428,6 +3984,96 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 1,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "poseidon_king_tide",
+          "god": "poseidon",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "poseidon_wave_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_breaker_rush",
+             "poseidon_geyser_spout"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "poseidon_ocean_swell"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 3,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_storm_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hera_sworn_strike": [
           "zeus_heaven_strike",
@@ -2507,6 +4153,101 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 3,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "hestia_smolder_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hera_sworn_strike": [
           "hestia_flame_strike",
@@ -2561,6 +4302,102 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hestia_flame_strike": [],
          "zeus_heaven_flourish": [],
@@ -2636,6 +4473,101 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_nexus_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "zeus_heaven_flourish": [
           "demeter_ice_flourish",
@@ -2814,6 +4746,101 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_smolder_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "zeus_heaven_flourish": [],
          "hera_sworn_strike": [
@@ -2876,6 +4903,102 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hestia_flame_flourish": [
           "zeus_heaven_flourish"
@@ -2921,6 +5044,101 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "apollo_nova_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_solar_ring",
+             "apollo_blinding_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_extra_dose",
+             "apollo_super_nova",
+             "apollo_back_burner",
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 3,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_ionic_gain"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hera_sworn_flourish": [
           "zeus_heaven_flourish",
@@ -3086,6 +5304,69 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "poseidon_king_tide",
+          "god": "poseidon",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "poseidon_wave_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_geyser_spout"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_hydraulic_might",
+             "poseidon_ocean_swell",
+             "poseidon_slippery_slope",
+             "poseidon_high_surf"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hestia_heat_rush": [
           "poseidon_breaker_rush",
@@ -3152,6 +5433,101 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "aphrodite_nervous_wreck",
+          "god": "aphrodite",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "aphrodite_broken_resolve",
+             "aphrodite_sweet_surrender",
+             "aphrodite_shameless_attitude",
+             "aphrodite_secret_crush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "aphrodite_rapture_ring"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_flutter_strike"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 3,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "hestia_smolder_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "zeus_thunder_rush": [
           "hestia_heat_rush",
@@ -3396,6 +5772,99 @@
          ]
         },
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "aphrodite_nervous_wreck",
+          "god": "aphrodite",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "aphrodite_broken_resolve",
+             "aphrodite_sweet_surrender",
+             "aphrodite_shameless_attitude",
+             "aphrodite_secret_crush"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_glamour_gain"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_flutter_strike"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "apollo_nova_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_blinding_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_extra_dose",
+             "apollo_super_nova",
+             "apollo_back_burner",
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "aphrodite_flutter_strike": [
           "apollo_nova_strike",
@@ -3444,6 +5913,103 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "aphrodite_nervous_wreck",
+          "god": "aphrodite",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "aphrodite_broken_resolve",
+             "aphrodite_sweet_surrender",
+             "aphrodite_shameless_attitude",
+             "aphrodite_secret_crush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "aphrodite_passion_rush",
+             "aphrodite_glamour_gain"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_flutter_strike"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "ares_sanguinary_savor",
+          "god": "ares",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "ares_vicious_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "ares_grisly_gain",
+             "ares_visceral_impact",
+             "ares_profuse_bleeding"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "ares_meat_grinder",
+             "ares_grievous_blow",
+             "ares_mutual_destruction",
+             "ares_blood_spree",
+             "ares_cut_above"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "aphrodite_flutter_strike": [
           "demeter_ice_strike",
@@ -3501,6 +6067,100 @@
          ]
         },
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "apollo_nova_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_blinding_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_extra_dose",
+             "apollo_super_nova",
+             "apollo_back_burner",
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 3,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "hera_sworn_flourish",
+             "hera_nexus_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "apollo_nova_strike": [
           "hera_sworn_strike",
@@ -3686,6 +6346,97 @@
          ]
         },
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "aphrodite_nervous_wreck",
+          "god": "aphrodite",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "aphrodite_broken_resolve",
+             "aphrodite_sweet_surrender",
+             "aphrodite_shameless_attitude",
+             "aphrodite_secret_crush"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_glamour_gain"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_flutter_strike"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "demeter_weed_killer"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "apollo_nova_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_blinding_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_extra_dose",
+             "apollo_super_nova",
+             "apollo_back_burner",
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "aphrodite_flutter_strike": [
           "apollo_nova_strike",
@@ -3754,6 +6505,102 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hestia_flame_strike": [
           "zeus_heaven_strike"
@@ -3822,11 +6669,73 @@
         ],
         "cond_must": [],
         "extra": [
-         "aphrodite_rapture_ring",
-         "demeter_ice_flourish"
+         "demeter_ice_flourish",
+         "aphrodite_rapture_ring"
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "zeus_static_shock"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_ice_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "zeus_heaven_strike": [
           "aphrodite_flutter_strike",
@@ -3988,6 +6897,98 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "apollo_nova_flourish"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "apollo_lucid_gain"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_extra_dose",
+             "apollo_super_nova",
+             "apollo_back_burner",
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "poseidon_king_tide",
+          "god": "poseidon",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "poseidon_wave_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "poseidon_breaker_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_hydraulic_might",
+             "poseidon_ocean_swell",
+             "poseidon_slippery_slope",
+             "poseidon_high_surf"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 3,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "hera_sworn_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "apollo_lucid_gain": [
           "hera_born_gain",
@@ -4064,6 +7065,102 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "apollo_nova_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "apollo_lucid_gain"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_extra_dose",
+             "apollo_super_nova",
+             "apollo_back_burner",
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "ares_sanguinary_savor",
+          "god": "ares",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "ares_vicious_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "ares_visceral_impact",
+             "ares_profuse_bleeding"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "ares_meat_grinder",
+             "ares_grievous_blow",
+             "ares_mutual_destruction",
+             "ares_blood_spree",
+             "ares_cut_above"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 3,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_storm_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "ares_vicious_flourish": [
           "apollo_nova_flourish",
@@ -4212,6 +7309,101 @@
          ]
         },
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "apollo_nova_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_solar_ring",
+             "apollo_blinding_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_extra_dose",
+             "apollo_super_nova",
+             "apollo_back_burner",
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "demeter_ice_flourish",
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "demeter_weed_killer"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 3,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "hera_sworn_flourish",
+             "hera_engagement_ring",
+             "hera_nexus_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "apollo_nova_strike": [
           "hera_sworn_strike",
@@ -4274,6 +7466,100 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_ice_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "ares_sanguinary_savor",
+          "god": "ares",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "ares_vicious_flourish",
+             "ares_stabbing_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "ares_visceral_impact",
+             "ares_profuse_bleeding"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "ares_meat_grinder"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 3,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_ionic_gain"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "demeter_ice_strike": [
           "zeus_heaven_strike",
@@ -4481,6 +7767,69 @@
          ]
         },
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hera_sworn_strike": [
           "apollo_nova_strike",
@@ -4564,6 +7913,97 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "hephaestus_premium_service",
+          "god": "hephaestus",
+          "need": 1,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hephaestus_volcanic_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hephaestus_heavy_metal",
+             "hephaestus_trusty_shield"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "hephaestus_grand_caldera"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hephaestus_volcanic_flourish": [
           "hera_sworn_flourish",
@@ -4623,6 +8063,97 @@
          ]
         },
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "apollo_nova_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "apollo_lucid_gain"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_extra_dose",
+             "apollo_super_nova",
+             "apollo_back_burner",
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "demeter_weed_killer"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "apollo_nova_strike": [
           "hera_sworn_strike",
@@ -4805,6 +8336,97 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "hephaestus_premium_service",
+          "god": "hephaestus",
+          "need": 1,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hephaestus_volcanic_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hephaestus_heavy_metal",
+             "hephaestus_trusty_shield"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "hephaestus_grand_caldera"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 3,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "hestia_smolder_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hephaestus_volcanic_strike": [],
          "hera_sworn_flourish": [
@@ -4865,6 +8487,71 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hestia_flame_strike": [
           "poseidon_wave_strike"
@@ -4928,11 +8615,106 @@
         ],
         "cond_must": [],
         "extra": [
-         "ares_visceral_impact",
-         "zeus_storm_ring"
+         "zeus_storm_ring",
+         "ares_visceral_impact"
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "ares_sanguinary_savor",
+          "god": "ares",
+          "need": 1,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "ares_vicious_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "ares_visceral_impact"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "ares_meat_grinder",
+             "ares_grievous_blow",
+             "ares_mutual_destruction",
+             "ares_blood_spree",
+             "ares_cut_above"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_storm_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "ares_vicious_strike": [],
          "hera_sworn_flourish": [
@@ -5103,6 +8885,102 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "ares_sanguinary_savor",
+          "god": "ares",
+          "need": 1,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "ares_vicious_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "ares_visceral_impact"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "ares_meat_grinder",
+             "ares_grievous_blow",
+             "ares_mutual_destruction",
+             "ares_blood_spree",
+             "ares_cut_above"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "ares_vicious_strike": [],
          "zeus_heaven_flourish": [
@@ -5147,6 +9025,99 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "hephaestus_premium_service",
+          "god": "hephaestus",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hephaestus_volcanic_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hephaestus_heavy_metal",
+             "hephaestus_trusty_shield"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hephaestus_grand_caldera",
+             "hephaestus_molten_touch",
+             "hephaestus_furnace_blast"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 3,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hera_sworn_strike": [
           "hephaestus_volcanic_strike",
@@ -5212,6 +9183,69 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "hephaestus_premium_service",
+          "god": "hephaestus",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hephaestus_volcanic_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hephaestus_heavy_metal",
+             "hephaestus_trusty_shield"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hephaestus_grand_caldera",
+             "hephaestus_molten_touch",
+             "hephaestus_furnace_blast"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hephaestus_volcanic_flourish": [],
          "hestia_flame_strike": [
@@ -5349,6 +9383,100 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "poseidon_king_tide",
+          "god": "poseidon",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "poseidon_wave_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_breaker_rush",
+             "poseidon_geyser_spout"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_hydraulic_might",
+             "poseidon_ocean_swell",
+             "poseidon_slippery_slope",
+             "poseidon_high_surf"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 3,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "hestia_smolder_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "poseidon_wave_strike": [
           "hestia_flame_strike",
@@ -5426,11 +9554,104 @@
         ],
         "cond_must": [],
         "extra": [
-         "hestia_flame_flourish",
-         "demeter_arctic_ring"
+         "demeter_arctic_ring",
+         "hestia_flame_flourish"
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "zeus_static_shock"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "zeus_heaven_strike": [
           "hestia_flame_strike",
@@ -5491,6 +9712,102 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hestia_flame_strike": [
           "zeus_heaven_strike"
@@ -5708,6 +10025,69 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "poseidon_king_tide",
+          "god": "poseidon",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "poseidon_wave_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_breaker_rush",
+             "poseidon_geyser_spout"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "poseidon_hydraulic_might",
+             "poseidon_ocean_swell",
+             "poseidon_slippery_slope",
+             "poseidon_high_surf"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hera_sworn_flourish": [
           "poseidon_wave_flourish",
@@ -5760,6 +10140,100 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hestia_flame_strike": [],
          "hera_sworn_flourish": [
@@ -5827,6 +10301,67 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "zeus_static_shock"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hephaestus_premium_service",
+          "god": "hephaestus",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hephaestus_volcanic_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hephaestus_heavy_metal",
+             "hephaestus_trusty_shield"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hephaestus_grand_caldera",
+             "hephaestus_molten_touch",
+             "hephaestus_furnace_blast"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "zeus_heaven_strike": [],
          "hephaestus_volcanic_flourish": [
@@ -5890,6 +10425,69 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hestia_flame_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hestia_flame_strike": [
           "hera_sworn_strike",
@@ -6040,6 +10638,101 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "apollo_nova_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_solar_ring",
+             "apollo_blinding_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_extra_dose",
+             "apollo_super_nova",
+             "apollo_back_burner",
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "demeter_ice_flourish",
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "demeter_weed_killer"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 3,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "hera_sworn_flourish",
+             "hera_engagement_ring",
+             "hera_nexus_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "apollo_nova_strike": [
           "demeter_ice_strike",
@@ -6119,6 +10812,70 @@
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "apollo_exceptional_talent",
+          "god": "apollo",
+          "need": 1,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "apollo_nova_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "apollo_solar_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "apollo_extra_dose",
+             "apollo_super_nova",
+             "apollo_back_burner",
+             "apollo_prominence_flare"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "apollo_nova_strike": [
           "aphrodite_flutter_strike",
@@ -6261,6 +11018,100 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 1,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_strike"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "demeter_winter_harvest",
+          "god": "demeter",
+          "need": 3,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "demeter_ice_flourish",
+             "demeter_arctic_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_plentiful_forage",
+             "demeter_snow_queen",
+             "demeter_steady_growth"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "demeter_weed_killer",
+             "demeter_cold_storage",
+             "demeter_local_climate"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hestia_fire_away",
+          "god": "hestia",
+          "need": 3,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "hestia_smolder_ring",
+             "hestia_flame_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_flash_fry",
+             "hestia_hot_pot",
+             "hestia_pyro_technique",
+             "hestia_highly_flammable"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hestia_glowing_coal",
+             "hestia_controlled_burn"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "hera_sworn_strike": [
           "hestia_flame_strike",
@@ -6332,12 +11183,107 @@
          "ares_vicious_flourish"
         ],
         "extra": [
-         "ares_visceral_impact",
+         "zeus_storm_ring",
          "ares_vicious_flourish",
-         "zeus_storm_ring"
+         "ares_visceral_impact"
         ],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "ares_sanguinary_savor",
+          "god": "ares",
+          "need": 1,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "ares_vicious_flourish"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "ares_grisly_gain"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "ares_meat_grinder",
+             "ares_grievous_blow",
+             "ares_mutual_destruction",
+             "ares_blood_spree",
+             "ares_cut_above"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_storm_ring"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 2,
+          "tier": "A",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "hera_sworn_strike"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "ares_grisly_gain": [
           "hera_born_gain",
@@ -6384,6 +11330,102 @@
         "extra": [],
         "support_after": {},
         "infeasible": [],
+        "legendary": [
+         {
+          "id": "aphrodite_nervous_wreck",
+          "god": "aphrodite",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "aphrodite_broken_resolve",
+             "aphrodite_sweet_surrender",
+             "aphrodite_shameless_attitude",
+             "aphrodite_secret_crush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "aphrodite_rapture_ring",
+             "aphrodite_passion_rush"
+            ]
+           },
+           {
+            "met": true,
+            "have": [
+             "aphrodite_flutter_strike"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "zeus_shocking_loss",
+          "god": "zeus",
+          "need": 2,
+          "tier": "S",
+          "main_dmg": true,
+          "groups": [
+           {
+            "met": true,
+            "have": [
+             "zeus_heaven_flourish"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_static_shock",
+             "zeus_power_surge",
+             "zeus_lightning_lance",
+             "zeus_divine_vengeance"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "zeus_arc_flash",
+             "zeus_double_strike",
+             "zeus_electric_overload"
+            ]
+           }
+          ]
+         },
+         {
+          "id": "hera_all_together",
+          "god": "hera",
+          "need": 3,
+          "tier": "A",
+          "main_dmg": false,
+          "groups": [
+           {
+            "met": false,
+            "options": [
+             "hera_engagement_ring",
+             "hera_nexus_rush"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_bridal_glow",
+             "hera_uncommon_grace",
+             "hera_fine_line"
+            ]
+           },
+           {
+            "met": false,
+            "options": [
+             "hera_hereditary_bane",
+             "hera_rousing_reception"
+            ]
+           }
+          ]
+         }
+        ],
         "fallbacks": {
          "zeus_heaven_flourish": [],
          "aphrodite_flutter_strike": [

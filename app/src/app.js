@@ -152,6 +152,12 @@
     if (un.length === 1) { var g = un[0]; return el('<div class="xs dim" style="margin-left:8px">남음: ' + (g.god ? esc(g.god) + ' ' : '') + (g.forced ? '<b>' + esc(g.options[0]) + '</b> (이 빌드에선 유일)' : esc(g.options.join(' 또는 ')) + (g.more ? ' 외 ' + g.more : '')) + '</div>'); }
     return el('<div class="xs dim" style="margin-left:8px">필요: ' + un.map(function (g) { return g.god ? esc(g.god) + ' 은혜' : esc(g.options.map(function (o) { return o.replace(/\(.*\)$/, ''); }).join('/')); }).join(' + ') + '</div>');
   }
+  // 8-N: 전설 한 줄 — "전설(선택) 청천벽력(S) 제우스 — 2개 더: 정전기 충격·전압 급증… + 전기 구이·후속 낙뢰…"
+  function legLine(L, head, prog) {
+    var left = L.groups.filter(function (g) { return !g.met; });
+    return (head ? '<span class="dim">전설(선택)</span> ' : '') + '<b class="dimless">' + esc(L.name_ko) + '</b>(' + esc(L.tier) + ')' + (prog ? ' ' + L.met + '/' + L.total : '') + ' ' + esc(L.god_ko) + (L.main_dmg ? ' · 메인 딜 신' : '') +
+      (L.owned ? ' — 획득' : left.length ? ' — ' + left.length + '개 더: ' + left.map(function (g) { return esc(g.options.slice(0, 3).join('·')) + (g.options.length > 3 ? '…' : ''); }).join(' + ') : ' — 조건 완성, ' + esc(L.god_ko) + ' 문에서 뜰 수 있음');
+  }
   function variantCard(v, selected, onPick) {
     var c = el('<div class="vcard' + (selected ? ' sel' : '') + '">' +
       '<div class="row"><span class="vstr ' + v.strength + '">' + v.strength + '</span><b class="ell" style="flex:1">' + esc(v.name_ko) + '</b><span class="xs dim" title="신뢰도">' + (TRUST[v.trust] || '') + '</span></div>' +
@@ -168,10 +174,13 @@
       (v.fourth && v.fourth.length ? '<div class="xs" style="margin-top:3px"><span class="dim">' + v.fourth_nth + '번째 신 (' + (v.fourth_both ? '먼저 뜨는 쪽' : '택1') + ')</span> ' + v.fourth.map(function (f) { return '<span style="color:' + (GC[f.god] || 'inherit') + '">' + esc(f.god_ko) + '</span> → ' + f.duos.map(function (d) { return esc(d.name_ko) + '(' + d.tier + ')'; }).join(', '); }).join(' <span class="dim">/</span> ') + (v.fourth_both ? '<div class="dim">둘 다 가면 ' + (v.fourth_nth + 1) + '번째까지 — ' + esc(v.fourth_both) + '</div>' : '') + '</div>' : '') +
       (v.duo_needs && v.duo_needs.length ? '<div class="xs dim" style="margin-top:3px">' + v.duo_needs.map(function (n) {
         return '<div style="margin-top:2px"><b class="dimless">' + esc(n.name_ko) + '</b>' + (n.via ? '<span class="dim"> (' + esc(n.via) + ')</span>' : '') + ' = ' + n.groups.map(function (g) { return g.met ? esc(g.have[0]) + ' ✓' : '<span style="color:var(--text)">' + (g.god ? esc(g.god) + ' ' : '') + (g.forced ? '<b>' + esc(g.options[0]) + '</b> 유일' : esc(g.options.join('·')) + (g.more ? ' 외 ' + g.more : '') + (g.planned && g.options.length > 1 ? ' 중 하나' : '')) + '</span>'; }).join(' + ') + '</div>'; }).join('') + '</div>' : '') +
+      // 8-N: 전설 경로 (선택) — 맨 위 1개만, 나머지는 근거·메모 안
+      (v.legendary && v.legendary.length ? '<div class="xs dim" style="margin-top:3px">' + legLine(v.legendary[0], true) + '</div>' : '') +
       '<details class="xs dim" style="margin-top:4px"><summary>근거 · 메모</summary><div style="margin-top:4px">' + esc(v.strength_note) + '</div><div style="margin-top:4px">' + esc(v.note) +
         (v.finisher ? '<div style="margin-top:4px">끝내기: ' + esc(v.finisher.note) + '</div>' : '') + '</div>' +
         (v.support.length ? '<div style="margin-top:4px">보조: ' + esc(v.support.map(function (x) { var af = v.support_after && v.support_after[x.id]; return x.name_ko + (af ? '(' + af.join('/') + ' 뒤)' : ''); }).join(', ')) + '</div>' : '') +
         (v.hammers.length ? '<div style="margin-top:4px">망치: ' + esc(v.hammers.map(function (x) { return x.name_ko; }).join(', ')) + '</div>' : '') +
+        (v.legendary && v.legendary.length > 1 ? '<div style="margin-top:4px">' + v.legendary.slice(1).map(function (L) { return legLine(L, false); }).join('<br>') + '</div>' : '') +
         '<div style="margin-top:4px">' + esc((v.sources || []).join(' / ')) + '</div></details>' +
       (onPick ? '<div class="row" style="justify-content:flex-end;margin-top:6px"><button class="tagx vpick">' + (selected ? '✓ 이 빌드로 시작' : '이 빌드로') + '</button></div>' : '') + '</div>');
     if (onPick) c.querySelector('.vpick').onclick = function () { onPick(v.id); };
@@ -541,6 +550,10 @@
           box.appendChild(el('<div class="prog"><span class="xs ell" style="width:112px">' + esc(d.name_ko) + '</span><div class="bar"><i style="width:' + (d.owned ? 100 : Math.round(d.satisfied / d.total * 100)) + '%"></i></div><span class="xs dim">' + (d.owned ? '획득' : d.satisfied + '/' + d.total + (d.satisfied === d.total ? ' 대기' : '')) + '</span></div>'));
           if (!d.owned && d.needs) box.appendChild(needsLine(d.needs));
         }); });
+      }
+      if (chk.legendary && chk.legendary.length) {   // 8-N: 전설 경로 (선택) — 진행이 가장 많은 것 1줄
+        var lsort = chk.legendary.slice().sort(function (a, b) { return (b.owned - a.owned) || (b.met - a.met); });
+        box.appendChild(el('<div class="xs dim" style="margin-top:6px">' + legLine(lsort[0], true, true) + '</div>'));
       }
       var sup = chk.support.filter(function (x) { return x.owned; }).length, hm = chk.hammers.filter(function (x) { return x.owned; }).length;
       var det = el('<details class="xs dim" style="margin-top:6px"><summary>보조 ' + sup + '/' + chk.support.length + (chk.hammers.length ? ' · 망치 ' + hm + '/' + chk.hammers.length : '') + ' · 메모</summary></details>');

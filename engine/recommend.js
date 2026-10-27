@@ -401,6 +401,10 @@ function createEngine(data, W) {
       else if (condG && (P.cond_must || []).includes(b.id)) { targetKind = 'cond'; condDuo = condG; flat += W.BOON.TARGET_MUST; bd.target = W.BOON.TARGET_MUST; badges.unshift('목표'); }
       else if (condG) { targetKind = 'cond_opt'; condDuo = condG; flat += W.BOON.TARGET_SUPPORT; bd.target = W.BOON.TARGET_SUPPORT; badges.push('목표 조건'); }
       else if ((dv.variant.support || []).includes(b.id)) { targetKind = 'support'; flat += W.BOON.TARGET_SUPPORT; bd.target = W.BOON.TARGET_SUPPORT; badges.push('목표 보조'); }
+      else {   // 8-N: 전설 경로 (선택) — 미충족 그룹을 채울 때만
+        const L = legView(dv.variant, dv.owned).find((x) => !x.owned && x.groups.some((g) => !g.met && (g.ids || []).includes(b.id)));
+        if (L) { targetKind = 'leg'; condDuo = L; flat += W.BOON.TARGET_LEG; bd.target = W.BOON.TARGET_LEG; badges.push('전설 경로'); }
+      }
     }
 
     if (breaksMust) { flat += W.BOON.BREAK_MUST; bd.break_must = W.BOON.BREAK_MUST; }
@@ -416,6 +420,7 @@ function createEngine(data, W) {
     else if (targetKind === 'must') reason = `빌드 '${vshort(dv.variant.name_ko)}' 필수${replacing ? ` — ${eul(nameOf(replacing))} 밀어냄` : ''}`;
     else if (targetKind === 'cond') reason = `'${nameOf(condDuo.duo)}' 조건 — 이 빌드에선 ${b.occupies_slot ? SLOT_KO[b.slot] + ' 칸 ' : ''}${b.name_ko}뿐`;
     else if (targetKind === 'cond_opt') reason = `'${nameOf(condDuo.duo)}' 조건 (택1: ${(condDuo.options || []).map((x) => nameOf(x)).join('·')})`;
+    else if (targetKind === 'leg') reason = `전설 '${condDuo.name_ko}'(${condDuo.tier}) 조건 — 선택, ${condDuo.met}/${condDuo.total}`;   // 8-N: 카드 고정 시 방향 보조 문구보다 전설 경로가 더 구체적
     else if (completed.length) reason = `'${completed[0].name_ko}' 조건 완성 — 다음에 뜰 수 있음`;
     else if (bd.always) reason = '칸 안 차지, 조건 없이 이득';
     else if (dirDetail && dirDetail.kind === 'avoid') reason = `비추: ${String(dirDetail.d.avoid_reason || '').slice(0, 30)}`;
@@ -978,6 +983,19 @@ function createEngine(data, W) {
     return { need: mainLeft.length + fourthLeft, free: W.GOD_POOL_CAP - dv.poolSize, waiting: [...mainLeft, ...(fourthLeft ? [fg.map((g) => nameOf(g)).join('/')] : [])].map((g) => (godById.get(g) ? nameOf(g) : g)),
       cardGods: new Set([...(v.main_gods || []), ...fg]) };
   }
+  // 8-N: 전설 경로 — ownedSet 기준 진행도와 남은 선택지 (선택지는 plan이 계산한, 이 카드에서 가능한 것만)
+  function legView(v, ownedSet) {
+    return ((v.plan && v.plan.legendary) || []).map((L) => {
+      const lb = boonById.get(L.id); const grps = (lb && lb.prereq && lb.prereq.all) || [];
+      const groups = grps.map((grp, i) => {
+        const have = (grp.any || []).filter((t) => tokenMet(t, ownedSet));
+        const pg = (L.groups || [])[i] || {};
+        return have.length ? { met: true, have: have.slice(0, 1).map((t) => nameOf(t)) } : { met: false, options: (pg.options || []).filter((x) => !ownedSet.has(x)).map((x) => nameOf(x)), ids: (pg.options || []).filter((x) => !ownedSet.has(x)) };
+      });
+      const met = groups.filter((g) => g.met).length;
+      return { id: L.id, name_ko: nameOf(L.id), effect: lb ? lb.effect : '', tier: L.tier, god: L.god, god_ko: nameOf(L.god), main_dmg: !!L.main_dmg, need: L.need, groups, met, total: groups.length, owned: ownedSet.has(L.id) };
+    });
+  }
   const dirOfVariant = (vid) => { const vr = variantById.get(vid); return vr ? vr.d : null; };
   // 8-C: 빌드 카드 표시용
   function variantView(v) {
@@ -997,6 +1015,7 @@ function createEngine(data, W) {
         ...(v.fourth || []).flatMap((f) => (f.duos || []).map((id) => { const n = duoNeeds(id, new Set([...(v.must || []), ...((v.plan && v.plan.extra) || [])]), planMap(v, id, 'fourth', f.god)); return n ? { ...n, via: nameOf(f.god) } : null; })),
       ].filter(Boolean),
       god_roles: godRolesOf(v), fallbacks: fallbacksOf(v, dirOfVariant(v.id)),   // 8-K
+      legendary: legView(v, new Set([...(v.must || []), ...((v.plan && v.plan.extra) || [])])),   // 8-N: 전설 경로 (선택)
       // 8-J: 융합 조건 중 이 카드에서 유일한 은혜 = 사실상 필수
       cond_must: ((v.plan && v.plan.cond_must) || []).map((id) => { const b = boonById.get(id); const du = condDuoOf(v, id); return { id, name_ko: nameOf(id), slot_ko: b && b.occupies_slot ? SLOT_KO[b.slot] : '보조', god: b ? b.god : null, for_duo: du ? nameOf(du) : null }; }),
       support_after: Object.fromEntries(Object.entries((v.plan && v.plan.support_after) || {}).map(([k, ids]) => [k, ids.map((x) => nameOf(x))])),
@@ -1019,6 +1038,7 @@ function createEngine(data, W) {
       must, must_done: must.filter((m) => m.owned).length,
       cond: view.cond_must.map((c) => ({ ...c, owned: dv.owned.has(c.id), filled_by: (() => { const b = boonById.get(c.id); return b && b.occupies_slot && dv.slotMap[b.slot] && dv.slotMap[b.slot] !== c.id ? nameOf(dv.slotMap[b.slot]) : null; })() })),
       support_after: view.support_after,
+      legendary: legView(v, dv.owned),   // 8-N
       support: view.support.map((s) => ({ ...s, owned: dv.owned.has(s.id) })),
       target_duos: view.target_duos.map((d) => ({ ...d, ...(dprog(d.id) || {}), needs: duoNeeds(d.id, dv.owned, planMap(v, d.id, 'target')) })),
       finisher: view.finisher ? { ...view.finisher, ...(dprog(view.finisher.id) || {}), needs: duoNeeds(view.finisher.id, dv.owned, planMap(v, view.finisher.id, 'finisher')) } : null,

@@ -777,6 +777,24 @@ sc('S54', '신 풀 자리 — 모로스 카드: 헤라·제우스 뒤 데메테�
   ] };
 });
 
+
+sc('S55', '전설 경로(선택) — 모로스 카드: 청천벽력(S) 맨 위, 정전기 충격에 "전설 경로" 배지, 필수를 밀어내는 건 무효', () => {
+  const v = E.recommendRunStart('flames', 'flames_moros', { graspCap: 27 }).directions.find((d) => d.id === 'flames_omega_special_orbit').variants.find((x) => x.id === 'flames_orbit_hera_zeus');
+  const L = v.legendary[0];
+  const st = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_moros', region: 2, boons: ['zeus_heaven_flourish', 'hera_sworn_strike', 'hera_born_gain'], gods_seen: ['hera', 'zeus'] }), { kind: 'variant', id: 'flames_orbit_hera_zeus' });
+  const rows = E.recommendBoons(st, ['zeus_static_shock', 'zeus_divine_vengeance', 'zeus_lightning_lance']);
+  const a = A(rows);
+  const c = E.buildChecklist(st);
+  return { rows, checks: [
+    check('카드 전설 1위 = 청천벽력(S), 제우스, 메인 딜 신', L && L.id === 'zeus_bolt_from_the_blue' || (L && L.name_ko === '청천벽력' && L.tier === 'S' && L.main_dmg), JSON.stringify(L && { n: L.name_ko, t: L.tier, m: L.main_dmg, need: L.need })),
+    check('청천벽력 1/3 (천상 기예 ✓)', L.met === 1 && L.total === 3, L.met + '/' + L.total),
+    check(...a.hasBadge('zeus_static_shock', '전설 경로')),
+    check(...a.reasonHas('zeus_static_shock', '청천벽력')),
+    check('체크리스트에 전설 경로', c.legendary.length >= 1 && c.legendary[0].name_ko === '청천벽력', JSON.stringify(c.legendary.map((x) => x.name_ko + ' ' + x.met + '/' + x.total))),
+    check('전설 경로 가산은 목표 보조(+2)보다 작다', W.BOON.TARGET_LEG < W.BOON.TARGET_SUPPORT, ''),
+  ] };
+});
+
 // ── 실행 ────────────────────────────────────────────────
 const out = [];
 let pass = 0, fail = 0;

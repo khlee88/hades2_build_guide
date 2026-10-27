@@ -134,6 +134,30 @@ def make(B, U):
                 opts = [i for t in g['any'] for i in tok_opts(t) if (B[i]['god'] in allowed or B[i]['god'] in NONPOOL) and (not B[i].get('occupies_slot') or B[i]['slot'] not in used_all)]
                 out['support_after'][s] = list(dict.fromkeys(opts))[:4]
                 if not opts: out['infeasible'].append('보조 %s 의 전제조건을 채울 신·칸이 없음 (필수+조건 배치가 칸을 다 씀)' % B[s]['name_ko'])
+        # 5) 전설 경로 (선택) — 주요·후보 신의 전설 중, 필수+융합 배치를 건드리지 않고 남은 칸·보조로 조건을 채울 수 있는 것
+        out['legendary'] = []
+        fixed = set(must) | base_all
+        used_fixed = {B[i]['slot'] for i in fixed if B[i].get('occupies_slot')}
+        dmg_gods = {B[i]['god'] for i in must if B[i].get('occupies_slot') and B[i]['slot'] in ('attack', 'special')}
+        for g in list(dict.fromkeys(list(main) + [f['god'] for f in v.get('fourth', [])])):
+            leg = next((b for b in B.values() if b['god'] == g and b['slot'] == 'legendary'), None)
+            if not leg or not leg.get('prereq'): continue
+            gods_ok = set(main) | {g}
+            lreqs = [({'leg': leg['id']}, grp) for grp in leg['prereq']['all'] if not grp_met(grp, fixed)]
+            lr = solve(list(fixed), gods_ok, lreqs)
+            if lr is None: continue
+            groups = []
+            for grp in leg['prereq']['all']:
+                have = [i for t in grp['any'] for i in tok_opts(t) if i in fixed]
+                if have: groups.append({'met': True, 'have': have[:1]}); continue
+                opts = [i for t in grp['any'] for i in tok_opts(t)
+                        if (B[i]['god'] in gods_ok or B[i]['god'] in NONPOOL) and (not B[i].get('occupies_slot') or B[i]['slot'] not in used_fixed)]
+                opts = [o for o in dict.fromkeys(opts) if solve(list(fixed) + [o], gods_ok, lreqs) is not None]
+                groups.append({'met': False, 'options': opts})
+            tier = (U.get('leg_' + g) or {}).get('power_tier') or '?'
+            out['legendary'].append({'id': leg['id'], 'god': g, 'need': len(lr[1] - fixed), 'tier': tier, 'main_dmg': g in dmg_gods, 'groups': groups})
+        out['legendary'].sort(key=lambda x: (x['need'], {'S': 0, 'A': 1, 'B': 2}.get(x['tier'], 3), not x['main_dmg']))
+        out['legendary'] = out['legendary'][:3]
         # 4) 필수 대안 — 그 필수가 끝내 안 뜰 때. 같은 칸의 다른 은혜(주요·후보 신, 방향 칸 순위 먼저)로 바꿔도 목표·끝내기 배치가 성립하는 것만
         out['fallbacks'] = {}
         prefs_all = (v.get('_dir_slot_prefs') or {})
