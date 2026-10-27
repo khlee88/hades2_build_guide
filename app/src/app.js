@@ -155,9 +155,14 @@
   function variantCard(v, selected, onPick) {
     var c = el('<div class="vcard' + (selected ? ' sel' : '') + '">' +
       '<div class="row"><span class="vstr ' + v.strength + '">' + v.strength + '</span><b class="ell" style="flex:1">' + esc(v.name_ko) + '</b><span class="xs dim" title="신뢰도">' + (TRUST[v.trust] || '') + '</span></div>' +
-      '<div class="xs" style="margin-top:4px">' + godsHtml(v.main_gods) + '</div>' +
+      // 8-K: 신별 역할 — "헤라는 왜?"가 읽히게
+      '<div class="xs" style="margin-top:4px">' + (v.god_roles || []).map(function (g) {
+        return '<div style="margin-top:2px"><span style="color:' + (GC[g.god] || 'inherit') + ';font-weight:700">' + esc(g.god_ko) + '</span>' + (g.candidate ? '<span class="dim">(후보)</span>' : '') +
+          (g.boons.length ? ' ' + g.boons.map(function (b) { return esc(b.name_ko); }).join('·') : '') + (g.roles.length ? ' <span class="dim">— ' + esc(g.roles.join(' · ')) + '</span>' : '') + '</div>'; }).join('') + '</div>' +
       '<div class="xs" style="margin-top:3px"><span class="dim">필수</span> ' + v.must.map(function (m) { return esc(m.name_ko) + '<span class="dim">(' + esc(m.slot_ko) + ')</span>'; }).join(' · ') +
         (v.cond_must && v.cond_must.length ? ' <span class="dim">+ 융합 조건</span> ' + v.cond_must.map(function (m) { return '<b>' + esc(m.name_ko) + '</b><span class="dim">(' + esc(m.slot_ko) + (m.for_duo ? ' · ' + esc(m.for_duo) : '') + ')</span>'; }).join(' · ') : '') + '</div>' +
+      // 8-K: 필수가 안 뜰 때
+      (v.fallbacks && Object.keys(v.fallbacks).length ? '<div class="xs dim" style="margin-top:3px">안 뜨면 ' + v.must.filter(function (m) { return v.fallbacks[m.id]; }).map(function (m) { var al = v.fallbacks[m.id]; return esc(m.name_ko) + ' → ' + (al.length ? al.map(function (x) { return esc(x.name_ko) + '(' + esc(x.god_ko) + ')'; }).join('·') : '<span style="color:var(--text)">대안 없음 — 꼭 받는다</span>'); }).join(' / ') + '</div>' : '') +
       (v.target_duos.length || v.finisher ? '<div class="xs" style="margin-top:3px"><span class="dim">융합</span> ' + v.target_duos.map(function (d) { return esc(d.name_ko) + '(' + d.tier + ')'; }).join(', ') +
         (v.finisher ? (v.target_duos.length ? ' <span class="dim">→</span> ' : '') + '<b>끝내기 ' + esc(v.finisher.name_ko) + '(' + v.finisher.tier + ')</b>' : '') + '</div>' : '') +
       (v.fourth && v.fourth.length ? '<div class="xs" style="margin-top:3px"><span class="dim">' + v.fourth_nth + '번째 신 (' + (v.fourth_both ? '먼저 뜨는 쪽' : '택1') + ')</span> ' + v.fourth.map(function (f) { return '<span style="color:' + (GC[f.god] || 'inherit') + '">' + esc(f.god_ko) + '</span> → ' + f.duos.map(function (d) { return esc(d.name_ko) + '(' + d.tier + ')'; }).join(', '); }).join(' <span class="dim">/</span> ') + (v.fourth_both ? '<div class="dim">둘 다 가면 ' + (v.fourth_nth + 1) + '번째까지 — ' + esc(v.fourth_both) + '</div>' : '') + '</div>' : '') +
@@ -343,7 +348,7 @@
     var curAsp = (wp.aspects || []).find(function (a) { return a.id === startSel.aspect; });
     if (curAsp && curAsp.effect) root.appendChild(el('<div class="wrap sm" style="margin-top:4px"><span class="tagx">' + esc(curAsp.name_ko) + '</span> ' + esc(curAsp.effect) + '</div>'));
 
-    var r = E.recommendRunStart(startSel.weapon, startSel.aspect, { graspCap: PREFS.grasp_cap, ownedKeepsakes: PREFS.owned_keepsakes.length ? PREFS.owned_keepsakes : null });
+    var r = E.recommendRunStart(startSel.weapon, startSel.aspect, { graspCap: PREFS.grasp_cap, ownedKeepsakes: PREFS.owned_keepsakes.length ? PREFS.owned_keepsakes : null, variant: startSel.variant });   // 8-K: 카드 기준 첫 기념품
 
     var A = r.arcana;
     root.appendChild(el('<h2>아르카나 (사용 ' + A.grasp_used + ' / 상한 ' + A.grasp_cap +

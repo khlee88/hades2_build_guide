@@ -134,6 +134,25 @@ def make(B, U):
                 opts = [i for t in g['any'] for i in tok_opts(t) if (B[i]['god'] in allowed or B[i]['god'] in NONPOOL) and (not B[i].get('occupies_slot') or B[i]['slot'] not in used_all)]
                 out['support_after'][s] = list(dict.fromkeys(opts))[:4]
                 if not opts: out['infeasible'].append('보조 %s 의 전제조건을 채울 신·칸이 없음 (필수+조건 배치가 칸을 다 씀)' % B[s]['name_ko'])
+        # 4) 필수 대안 — 그 필수가 끝내 안 뜰 때. 같은 칸의 다른 은혜(주요·후보 신, 방향 칸 순위 먼저)로 바꿔도 목표·끝내기 배치가 성립하는 것만
+        out['fallbacks'] = {}
+        prefs_all = (v.get('_dir_slot_prefs') or {})
+        avoid = set(v.get('_dir_avoid') or [])
+        for m in must:
+            bm = B[m]
+            if not bm.get('occupies_slot'): continue
+            pool = list(dict.fromkeys((prefs_all.get(bm['slot']) or []) + [b['id'] for b in B.values() if b['slot'] == bm['slot'] and b.get('occupies_slot')]))
+            alts = []
+            for a in pool:
+                if a == m or a in avoid or B[a]['god'] not in allowed: continue
+                must2 = [x for x in must if x != m] + [a]
+                reqs2 = []
+                for t in v.get('target_duos', []): reqs2 += add_groups(t, 'target', main, set(must2))
+                if fin: reqs2 += add_groups(fin, 'finisher', main, set(must2))
+                if solve(must2, main, reqs2) is None: continue
+                alts.append(a)
+                if len(alts) == 2: break
+            out['fallbacks'][m] = alts
         return out
 
     return plan_for

@@ -130,9 +130,9 @@ SPEC = {
     note='여왕의 강권과 반대 방향 — 핵심을 전부 제우스로. 출처가 검색 1건뿐이라 신뢰 △', sources=["검색:Moros = Hera Sworn Strike + Zeus Heaven Flourish + King's Ransom"]),
  ],
  'flames_omega_special_orbit': [
-  V(id='flames_orbit_hera_zeus', name_ko='천상 기예 + 서약 일격 (모로스 최적)', trust='high', strength='S', strength_note='lee "Hera attack+Zeus special 최적", dc51882 모로스 ★★★',
+  V(id='flames_orbit_hera_zeus', name_ko='천상 기예 + 서약 일격 (모로스 최적)', trust='high', strength='S', strength_note='lee "Hera attack+Zeus special 최적", dc51882 모로스 ★★★ + 실플레이 티폰 클리어(2026-10-26)',
     gods=['헤라', '제우스', '헤스티아'], must=['천상 기예', '서약 일격', '천부적 마력'], support=['화력 보강', '후속 낙뢰', '전기 구이'],
-    duos=['불벼락'], finisher=None, hammers=['급속 연발', '간결한 궤도'], note='공전 불꽃에 암운, 혼령이 닿아 폭발', sources=['lee:Moros — Hera attack+Zeus special 최적, Sudden Burst 최고', 'dc51882:모로스 ★★★']),
+    duos=['불벼락'], finisher=None, hammers=['급속 연발', '간결한 궤도'], note='공전 불꽃에 암운, 혼령이 닿아 폭발', sources=['lee:Moros — Hera attack+Zeus special 최적, Sudden Burst 최고', 'dc51882:모로스 ★★★', 'user:2026-10-26 티폰 첫 클리어 — 천부적 마력 미획득, 따스한 마력(헤스티아)으로 대체해 완주 (로그 없음)']),
   V(id='flames_orbit_freeze', name_ko='화염 기예 + 동결 마법 (냉동 화상)', trust='high', strength='S', strength_note='namu 모로스 융합 조합',
     gods=['데메테르', '헤스티아', '제우스'], must=['화염 기예', '설한 고리', '대전된 마력'], support=['완전 연소', '불쏘시개'],
     duos=['냉동 화상', '불벼락', '우박 폭풍'], finisher=None, note='불꽃 궤도에 잔불, 마법으로 얼려 폭발', sources=['namu:모로스 — 데메+헤스/데메+제우스/제우스+헤스 융합 조합']),
@@ -319,7 +319,7 @@ _inf = []
 for w, wd in BD['weapons'].items():
     for d in wd['directions']:
         for o in d['variants']:
-            o['plan'] = _plan(o)
+            o['plan'] = _plan({**o, '_dir_slot_prefs': d.get('slot_prefs') or {}, '_dir_avoid': d.get('avoid_boons') or []})
             _inf += ['%s: %s' % (o['id'], x) for x in o['plan']['infeasible']]
 print('완성 배치: 조건 필수 %d개 · 불가 %d건' % (sum(len(o['plan']['cond_must']) for wd in BD['weapons'].values() for d in wd['directions'] for o in d['variants']), len(_inf)))
 for x in _inf: print('  불가:', x)

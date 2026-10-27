@@ -698,6 +698,68 @@ sc('S49', '완성 배치 — 선택지 여럿이면 "목표 조건(택1)", 이�
   ] };
 });
 
+
+// ── 8-K 신 역할 · 대안 · 카드 기준 기념품 (2026-10-27) ──
+sc('S50', '모로스 천상 기예+서약 일격 카드 — 헤라 = 마력 공급·기본 딜, 헤스티아 = 불벼락 조건, 천부적 마력 대안, 첫 기념품 헤라', () => {
+  const r = E.recommendRunStart('flames', 'flames_moros', { graspCap: 27, variant: 'flames_orbit_hera_zeus' });
+  const v = r.directions.find((d) => d.id === 'flames_omega_special_orbit').variants.find((x) => x.id === 'flames_orbit_hera_zeus');
+  const role = (g) => v.god_roles.find((x) => x.god === g);
+  const fb = v.fallbacks['hera_born_gain'] || [];
+  return { rows: v.god_roles.map((g, i) => ({ id: g.god, rank: i + 1, score: 0, reason: g.boons.map((b) => b.name_ko).join('·') + ' / ' + g.roles.join('·'), warnings: [], badges: [] })), extra: r.first_keepsake && r.first_keepsake.reason, checks: [
+    check("헤라 역할 = 마력 공급·기본 딜", role('hera').roles.includes('마력 공급') && role('hera').roles.includes('기본 딜'), role('hera').roles.join(',')),
+    check("제우스 역할에 '불벼락 한쪽'", role('zeus').roles.includes('불벼락 한쪽'), role('zeus').roles.join(',')),
+    check("헤스티아 = 염화 고리(조건) · '불벼락 조건'", role('hestia').boons.some((b) => b.id === 'hestia_smolder_ring' && b.cond) && role('hestia').roles.includes('불벼락 조건'), JSON.stringify(role('hestia'))),
+    check('천부적 마력 대안 = 대전된 마력(제우스) → 따스한 마력(헤스티아)', fb.map((x) => x.id).join(',') === 'zeus_ionic_gain,hestia_cardio_gain', fb.map((x) => x.name_ko).join(',')),
+    check('천상 기예 대안 없음 (바꾸면 불벼락의 제우스 쪽이 사라짐)', Array.isArray(v.fallbacks['zeus_heaven_flourish']) && v.fallbacks['zeus_heaven_flourish'].length === 0, JSON.stringify(v.fallbacks['zeus_heaven_flourish'])),
+    check("기념품 이유의 카드명이 잘리지 않음 ('천상 기예 + 서약 일격')", /'천상 기예 \+ 서약 일격'/.test(r.first_keepsake.reason), r.first_keepsake.reason),
+    check('첫 기념품 = 헤라(천부적 마력 먼저), 문구에 등장 확정 없음', r.first_keepsake && r.first_keepsake.god === 'hera' && /천부적 마력/.test(r.first_keepsake.reason) && !/확정/.test(r.first_keepsake.reason), r.first_keepsake && r.first_keepsake.reason),
+  ] };
+});
+
+sc('S51', '다음 지역 기념품 — 카드 고정, 헤라·제우스만 나왔으면 헤스티아(염화 고리 · 불벼락 조건)', () => {
+  const st = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_moros', region: 2, boons: ['zeus_heaven_flourish', 'hera_sworn_strike', 'hera_born_gain'], gods_seen: ['hera', 'zeus'] }), { kind: 'variant', id: 'flames_orbit_hera_zeus' });
+  const k = E.recommendKeepsake(st);
+  const st2 = E.applyChoice(st, { kind: 'god', id: 'hestia' });
+  const k2 = E.recommendKeepsake(st2);
+  return { rows: [{ id: k.id, rank: 1, score: 0, reason: k.reason, warnings: [], badges: [] }], checks: [
+    check('헤스티아 기념품(영원한 불씨)', k.id === 'everlasting_ember' || /헤스티아|불씨/.test(k.name_ko), k.name_ko + ' / ' + k.reason),
+    check("이유에 '염화 고리' · '불벼락 조건' · '아직 안 나옴'", /염화 고리/.test(k.reason) && /불벼락 조건/.test(k.reason) && /아직 안 나옴/.test(k.reason), k.reason),
+    check('헤스티아가 나왔으면 헤스티아 기념품을 더 권하지 않음', !/아직 안 나옴/.test(k2.reason || ''), (k2.name_ko || '') + ' / ' + (k2.reason || '')),
+  ] };
+});
+
+
+sc('S52', '카드 보호 — 모로스 천상 기예+서약 일격: 강권류는 빌드 파괴, 필수를 밀어내는 화염 일격은 비추', () => {
+  const core = ['zeus_heaven_flourish', 'hera_sworn_strike', 'hera_born_gain'];
+  const st = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_moros', region: 2, boons: core, gods_seen: ['hera', 'zeus'] }), { kind: 'variant', id: 'flames_orbit_hera_zeus' });
+  const gods = E.recommendGods(st, ['hestia', 'zeus', 'hera']);
+  const by = (id) => gods.find((r) => r.id === id);
+  const inHestia = E.recommendBoons(E.applyChoice(st, { kind: 'god', id: 'hestia' }), ['hestia_flame_strike', 'hestia_flame_flourish', 'hestia_pyro_technique']);
+  const duoRows = E.recommendBoons(st, ['duo_zeus_hera_kings_ransom', 'duo_hera_zeus_queens_ransom', 'zeus_power_surge']);
+  const a = A(duoRows), h = A(inHestia);
+  return { rows: gods, rows2: inHestia, checks: [
+    check('헤스티아 문이 1위 (목표 · 염화 고리)', gods[0].id === 'hestia', gods.map((r) => r.id + ':' + r.grade_ko).join(' ')),
+    check("제우스·헤라 역할에 강권류 없음", !['zeus', 'hera'].some((g) => by(g).roles.some((x) => /강권/.test(x))), by('zeus').roles.join(',') + ' / ' + by('hera').roles.join(',')),
+    check(...a.hasBadge('duo_zeus_hera_kings_ransom', '빌드 파괴')),
+    check(...a.hasBadge('duo_hera_zeus_queens_ransom', '빌드 파괴')),
+    check(...a.rankOf('zeus_power_surge', 1)),
+    check(...h.warnHas('hestia_flame_strike', '빌드 필수')),
+    check(...h.reasonHas('hestia_flame_strike', '비추')),
+    check('화염 일격 점수 < 0', inHestia.find((r) => r.id === 'hestia_flame_strike').score < 0, String(inHestia.find((r) => r.id === 'hestia_flame_strike').score)),
+  ] };
+});
+
+sc('S53', '카드 보호 — 헤라 집중 카드의 끝내기(여왕의 강권)는 파괴가 아니다', () => {
+  const st = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_melinoe', region: 3, boons: ['hera_sworn_strike', 'hera_born_gain', 'hera_fine_line', 'zeus_storm_ring'], gods_seen: ['hera', 'zeus'] }), { kind: 'variant', id: 'flames_hold_hera' });
+  const rows = E.recommendBoons(st, ['duo_hera_zeus_queens_ransom', 'duo_zeus_hera_kings_ransom']);
+  const a = A(rows);
+  return { rows, checks: [
+    check(...a.rankOf('duo_hera_zeus_queens_ransom', 1)),
+    check(...a.hasBadge('duo_hera_zeus_queens_ransom', '끝내기')),
+    check(...a.hasBadge('duo_zeus_hera_kings_ransom', '빌드 파괴')),
+  ] };
+});
+
 // ── 실행 ────────────────────────────────────────────────
 const out = [];
 let pass = 0, fail = 0;

@@ -30,7 +30,7 @@ function createEngine(data, W) {
   const uniq = (arr) => [...new Set(arr)];
   // 변형을 고정하면 방향의 칸 순위·보조·융합 맨 앞에 변형의 것을 둔다 — 기존 채점이 그대로 "이 빌드 기준"이 된다
   const fourthDuos = (v) => (v.fourth || []).flatMap((f) => f.duos || []);   // 8-G: 4번째 신 택1 융합
-  const vshort = (name) => String(name || '').split(' — ')[0].slice(0, 16);   // 이유 문구용 짧은 빌드명 ("헤라 집중 — 파급 효과 → …" → "헤라 집중")
+  const vshort = (name) => String(name || '').split(' — ')[0].split(' (')[0].slice(0, 18);   // 이유 문구용 짧은 빌드명 ("헤라 집중 — 파급 효과 → …" → "헤라 집중")
   function effectiveDirection(d, v) {
     const sp = {};
     for (const [slot, prefs] of Object.entries(d.slot_prefs || {})) sp[slot] = prefs.slice();
@@ -250,6 +250,11 @@ function createEngine(data, W) {
     const rarity = cand.rarity || (b && b.slot === 'legendary' ? 'legendary' : 'common');
     if (duoEnt || rarity === 'duo') {
       const D = duoEnt || null;
+      const brk = dv.variant && destroysCard(D, dv.variant);   // 8-L
+      if (brk) {
+        bd.break_must = W.BOON.BREAK_MUST;
+        return { id, score: round(W.BOON.BREAK_MUST), reason: `비추: 빌드를 부숨 — ${nameOf(brk.god)} 은혜(${brk.lost.map((x) => nameOf(x)).join('·')})가 사라짐`, warnings: [`${brk.lost.map((x) => nameOf(x)).join('·')} 사라짐`], badges: ['빌드 파괴'], breakdown: bd };
+      }
       flat += W.FLAT.DUO_CANDIDATE + tier(D ? D.power_tier : '?');
       badges.push('융합');
       bd.duo_candidate = flat;
@@ -316,6 +321,8 @@ function createEngine(data, W) {
     bd.direction = round(dirScore);
     if (synSum) bd.synergy = round(synSum);   // 로그용 — direction에 이미 포함된 값의 내역
 
+    const breaksMust = !!(replacing && dv.variant && cardKeep(dv.variant).includes(replacing) && !cardKeep(dv.variant).includes(b.id));   // 8-L
+    if (breaksMust) warnings.push(`빌드 필수 ${eul(nameOf(replacing))} 버림`);
     if (replacing) {
       warnings.push(`${eul(nameOf(replacing))} 버리게 됨`);
       // 목표 융합을 앞으로 정렬하고 최대 2건만 이름을 보인다 (폰 화면 가독성)
@@ -352,6 +359,7 @@ function createEngine(data, W) {
     let prog = 0, comp = 0; const completed = [];
     for (const D of openDuos(dv.owned)) {
       if (!reachable(D, targetAll, seenPlus)) continue;
+      if (dv.variant && destroysCard(D, dv.variant)) continue;   // 8-L
       const beforeUnmet = unmetGroups(D, before);
       if (!beforeUnmet.length) continue;
       const afterUnmet = unmetGroups(D, after);
@@ -389,6 +397,7 @@ function createEngine(data, W) {
       else if ((dv.variant.support || []).includes(b.id)) { targetKind = 'support'; flat += W.BOON.TARGET_SUPPORT; bd.target = W.BOON.TARGET_SUPPORT; badges.push('목표 보조'); }
     }
 
+    if (breaksMust) { flat += W.BOON.BREAK_MUST; bd.break_must = W.BOON.BREAK_MUST; }
     const score = dirScore + flat;
 
     // ── 이유 템플릿 (DESIGN.md §3-4 우선순위)
@@ -397,6 +406,7 @@ function createEngine(data, W) {
     const roleWord = dv.slotBoonCount === 0 ? '유력' : (isMain ? '메인' : '보험');
     const dirTag = (d) => (main && d.id === main.id) ? '' : ' (보험 방향)';
     if (bd.legendary) reason = '전설 은혜 — 조건을 이미 채웠음, 최우선';
+    else if (breaksMust) reason = `비추: 빌드 필수 ${eul(nameOf(replacing))} 밀어냄`;
     else if (targetKind === 'must') reason = `빌드 '${vshort(dv.variant.name_ko)}' 필수${replacing ? ` — ${eul(nameOf(replacing))} 밀어냄` : ''}`;
     else if (targetKind === 'cond') reason = `'${nameOf(condDuo.duo)}' 조건 — 이 빌드에선 ${b.occupies_slot ? SLOT_KO[b.slot] + ' 칸 ' : ''}${b.name_ko}뿐`;
     else if (targetKind === 'cond_opt') reason = `'${nameOf(condDuo.duo)}' 조건 (택1: ${(condDuo.options || []).map((x) => nameOf(x)).join('·')})`;
@@ -466,9 +476,11 @@ function createEngine(data, W) {
 
     // 융합 마지막 조건 파트너
     let partner = 0; let partnerDuo = null; let otherDuo = null; const readyDuos = [];
-    const targets = new Set([...((main && main.target_duos) || []), ...((backup && backup.target_duos) || [])]);
+    // 8-L: 카드 고정 시 목표 융합 = 카드의 것만 (보험 방향 목표가 새면 여왕의 강권처럼 카드를 부수는 융합이 '필수'가 된다)
+    const targets = dv.variant ? cardDuoSet(dv.variant) : new Set([...((main && main.target_duos) || []), ...((backup && backup.target_duos) || [])]);
     // 목표 융합이면 점수+등급 '필수'. 목표가 아니어도 상대 신이 이미 풀에 있어 완성 가능한 융합이면 등급 '좋음'까지 (점수는 그대로)
     for (const D of openDuos(dv.owned)) {
+      if (dv.variant && destroysCard(D, dv.variant)) continue;   // 8-L
       const unmet = unmetGroups(D, dv.owned);
       // 5-G E: 조건이 다 찼는데 아직 안 뜬 융합은 그 두 신의 문에서만 나온다. 런6에서 제우스 문에 S·A급이 대기 중인데 '보통'이었다
       if (unmet.length === 0) { if ((D.gods || []).includes(godId)) readyDuos.push(D); continue; }
@@ -809,11 +821,23 @@ function createEngine(data, W) {
       const ov = top.keepsake_override && keepsakeById.get(top.keepsake_override);
       if (ov && !(owned && !owned.includes(ov.id))) firstKeepsake = { id: ov.id, name_ko: ov.name_ko, god: ov.god || null, god_ko: ov.god ? nameOf(ov.god) : (ov.giver_ko || ''), effect: ov.effect, giver_ko: ov.giver_ko,
         reason: `추천 빌드 '${top.name_ko}'가 지정 — ${top.summary.slice(0, 40)}…` };
+      // 8-K: 빌드 카드를 골랐으면 그 카드 기준 — Ω 의존 방향이면 마력 필수의 신(1지역 1순위), 아니면 주요 신 1위
+      const vr = o.variant && variantById.get(o.variant);
+      if (!firstKeepsake && vr && vr.weapon === weapon) {
+        const v = vr.v, vd = vr.d;
+        const ovv = vd.keepsake_override && keepsakeById.get(vd.keepsake_override);
+        const magickMust = (v.must || []).map((id) => boonById.get(id)).find((b) => b && b.slot === 'magick');
+        const pickB = vd.omega_dependent && magickMust ? magickMust : boonById.get((v.must || [])[0]);
+        const g = ovv ? null : (pickB && (v.main_gods || []).includes(pickB.god) ? pickB.god : (v.main_gods || [])[0]);
+        const k = ovv || (g && keepsakeByGod.get(g));
+        if (k && !(owned && !owned.includes(k.id))) firstKeepsake = { id: k.id, name_ko: k.name_ko, god: k.god || null, god_ko: k.god ? nameOf(k.god) : (k.giver_ko || ''), effect: k.effect, giver_ko: k.giver_ko,
+          reason: ovv ? `빌드 '${vshort(v.name_ko)}'가 지정` : `빌드 '${vshort(v.name_ko)}'의 ${nameOf(g)} — ${pickB ? `${pickB.name_ko}(${SLOT_KO[pickB.slot] || '보조'}) 먼저` : '주요 신'} · ${k.effect}` };
+      }
       for (const g of (firstKeepsake ? [] : mainGodsOf(top))) {
         const k = keepsakeByGod.get(g.id);
         if (!k || (owned && !owned.includes(k.id))) continue;
         firstKeepsake = { id: k.id, name_ko: k.name_ko, god: g.id, god_ko: g.name_ko, effect: k.effect, giver_ko: k.giver_ko,
-          reason: `추천 빌드 '${top.name_ko}'의 주요 신 ${g.name_ko} — 1지역부터 등장 확정` };
+          reason: `추천 빌드 '${top.name_ko}'의 주요 신 ${g.name_ko} · ${k.effect}` };
         break;
       }
     }
@@ -880,6 +904,54 @@ function createEngine(data, W) {
     for (const a of opts(f[0])) for (const b of opts(f[1])) { if (a.occupies_slot && b.occupies_slot && a.slot === b.slot) continue; return `${lab(a)} + ${lab(b)}`; }
     return null;
   }
+  // 8-K: 신별 역할 — 그 신에게서 받을 필수·조건 은혜와, 칸·융합으로 본 역할
+  const ROLE_OF_SLOT = { magick: '마력 공급', attack: '기본 딜', special: '기술 딜', cast: '마법', sprint: '질주' };
+  function godRolesOf(v) {
+    const cond = (v.plan && v.plan.cond_must) || [];
+    const duoIds = uniq([...(v.target_duos || []), ...(v.finisher && v.finisher.duo ? [v.finisher.duo] : [])]);
+    const gods = uniq([...(v.main_gods || []), ...(v.fourth || []).map((f) => f.god)]);
+    return gods.map((g) => {
+      const fourth = (v.fourth || []).find((f) => f.god === g);
+      const mine = [...(v.must || []), ...cond].filter((id) => (boonById.get(id) || {}).god === g);
+      const roles = [];
+      for (const id of mine) { const b = boonById.get(id); const w = b.occupies_slot ? ROLE_OF_SLOT[b.slot] : '보조 핵심'; if (cond.includes(id)) continue; if (!roles.includes(w)) roles.push(w); }
+      for (const did of [...duoIds, ...(fourth ? fourth.duos : [])]) {
+        const D = duoById.get(did); if (!D || !(D.gods || []).includes(g)) continue;
+        const byCore = mine.some((id) => !cond.includes(id) && (D.requires.all || []).some((grp) => groupMet(grp, new Set([id]))));
+        roles.push(`${D.name_ko} ${byCore ? '한쪽' : '조건'}`);
+      }
+      return { god: g, god_ko: nameOf(g), candidate: !!fourth,
+        boons: mine.map((id) => { const b = boonById.get(id); return { id, name_ko: b.name_ko, slot_ko: b.occupies_slot ? SLOT_KO[b.slot] : '보조', cond: cond.includes(id) }; }), roles };
+    });
+  }
+  // 8-K: 필수 칸 은혜가 안 뜰 때의 대안 — 방향 칸 순위 중 이 카드 신의 것, 그다음 이 카드 신의 같은 칸 은혜
+  function fallbacksOf(v, d) {
+    // 8-K: 데이터(plan.fallbacks)가 있으면 그것 — 융합 배치가 성립하는 대안만 계산돼 있다
+    if (v.plan && v.plan.fallbacks) { const out = {}; for (const [m, alts] of Object.entries(v.plan.fallbacks)) if (alts.length) out[m] = alts.map((x) => ({ id: x, name_ko: nameOf(x), god_ko: nameOf(boonById.get(x).god) })); else out[m] = []; return out; }
+    const gods = new Set([...(v.main_gods || []), ...(v.fourth || []).map((f) => f.god)]);
+    const out = {};
+    for (const id of v.must || []) {
+      const b = boonById.get(id); if (!b || !b.occupies_slot) continue;
+      const prefs = ((d && d.slot_prefs) || {})[b.slot] || [];
+      const avoid = new Set((d && d.avoid_boons) || []);
+      const cand = uniq([...prefs, ...boons.filter((x) => x.slot === b.slot && x.occupies_slot).map((x) => x.id)])
+        .filter((x) => x !== id && !avoid.has(x) && gods.has((boonById.get(x) || {}).god));
+      if (cand.length) out[id] = cand.slice(0, 2).map((x) => ({ id: x, name_ko: nameOf(x), god_ko: nameOf(boonById.get(x).god) }));
+    }
+    return out;
+  }
+  // 8-L: 강권류 — 효과 문구 "X 은혜 전부 포기"의 X. 카드의 필수·조건 은혜가 X의 것이면 그 융합은 카드를 부순다 (끝내기면 예외)
+  const loseGodOf = (D) => { const eff = (D && D.effect) || ''; for (const g of gods) if (eff.startsWith(`${g.name_ko} 은혜 전부 포기`)) return g.id; return null; };
+  const cardKeep = (v) => [...(v.must || []), ...((v.plan && v.plan.cond_must) || [])];
+  function destroysCard(D, v) {
+    if (!v || !D) return null;
+    if (v.finisher && v.finisher.duo === D.id) return null;
+    const lg = loseGodOf(D); if (!lg) return null;
+    const lost = cardKeep(v).filter((id) => (boonById.get(id) || {}).god === lg);
+    return lost.length ? { god: lg, lost } : null;
+  }
+  const cardDuoSet = (v) => new Set([...(v.target_duos || []), ...(v.finisher && v.finisher.duo ? [v.finisher.duo] : []), ...(v.fourth || []).flatMap((f) => f.duos || [])]);
+  const dirOfVariant = (vid) => { const vr = variantById.get(vid); return vr ? vr.d : null; };
   // 8-C: 빌드 카드 표시용
   function variantView(v) {
     const D = (id) => duoById.get(id);
@@ -897,6 +969,7 @@ function createEngine(data, W) {
         ...(v.finisher && v.finisher.duo ? [duoNeeds(v.finisher.duo, new Set(v.must || []), planMap(v, v.finisher.duo, 'finisher'))] : []),
         ...(v.fourth || []).flatMap((f) => (f.duos || []).map((id) => { const n = duoNeeds(id, new Set([...(v.must || []), ...((v.plan && v.plan.extra) || [])]), planMap(v, id, 'fourth', f.god)); return n ? { ...n, via: nameOf(f.god) } : null; })),
       ].filter(Boolean),
+      god_roles: godRolesOf(v), fallbacks: fallbacksOf(v, dirOfVariant(v.id)),   // 8-K
       // 8-J: 융합 조건 중 이 카드에서 유일한 은혜 = 사실상 필수
       cond_must: ((v.plan && v.plan.cond_must) || []).map((id) => { const b = boonById.get(id); const du = condDuoOf(v, id); return { id, name_ko: nameOf(id), slot_ko: b && b.occupies_slot ? SLOT_KO[b.slot] : '보조', god: b ? b.god : null, for_duo: du ? nameOf(du) : null }; }),
       support_after: Object.fromEntries(Object.entries((v.plan && v.plan.support_after) || {}).map(([k, ids]) => [k, ids.map((x) => nameOf(x))])),
@@ -933,6 +1006,17 @@ function createEngine(data, W) {
     const ctx = directionWeights(state);
     const { dv, active } = ctx;
     const main = mainOf(active);
+    // 8-K: 빌드 카드 — 아직 안 나온 신의 조건(유일)·필수 은혜를 먼저. "2지역에 헤스티아가 안 보이면 영원한 불씨"
+    if (dv.variant) {
+      const v = dv.variant, seen = new Set(state.gods_seen || []);
+      const cond = (v.plan && v.plan.cond_must) || [];
+      for (const id of [...cond, ...(v.must || [])]) {
+        const b = boonById.get(id); if (!b || dv.owned.has(id) || seen.has(b.god)) continue;
+        const k = keepsakeByGod.get(b.god); if (!k) continue;
+        const du = cond.includes(id) ? condDuoOf(v, id) : null;
+        return { id: k.id, name_ko: k.name_ko, reason: `빌드 '${vshort(v.name_ko)}'의 ${b.name_ko}(${b.occupies_slot ? SLOT_KO[b.slot] : '보조'}${du ? ' · ' + nameOf(du) + ' 조건' : ''}) — ${nameOf(b.god)}이(가) 아직 안 나옴` };
+      }
+    }
     if (main) {
       for (const did of main.target_duos || []) {
         const D = duoById.get(did); if (!D || dv.owned.has(did)) continue;

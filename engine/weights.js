@@ -41,7 +41,8 @@ const WEIGHTS = {
     SYNERGY: { CURSE_SCALE: 3, CURSE_APPLY: 1.5, OMEGA: 2, CAST: 2, SPRINT: 1.5, BOSS: 1, CAP: 3 },
     // 8-C (2026-10-26): 빌드 카드 고정 시 목표 은혜. must는 이미 그 방향 칸 1순위(10)가 되므로 +5는 "같은 칸 2순위(8)+5 > 1순위 10"을 보장하는 크기 — 목표가 아닌 1순위를 이긴다
     TARGET_MUST: 5,
-    TARGET_SUPPORT: 2,   // NEUTRAL+CAP = 4 = SUPPORT 4순위. 자동 시너지는 손으로 쓴 보조 목록을 넘지 않는다
+    TARGET_SUPPORT: 2,
+    BREAK_MUST: -8,             // 8-L: 카드 고정 시 필수·조건 은혜를 밀어내는 교체 / 필수를 지우는 강권 융합   // NEUTRAL+CAP = 4 = SUPPORT 4순위. 자동 시너지는 손으로 쓴 보조 목록을 넘지 않는다
   },
 
   // ── §3-3 방향 무관 항 ────────────────────────────────

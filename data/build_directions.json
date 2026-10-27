@@ -270,7 +270,17 @@
          "zeus_heaven_strike"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hestia_flame_flourish": [
+          "zeus_heaven_flourish"
+         ],
+         "demeter_arctic_ring": [],
+         "hestia_cardio_gain": [
+          "zeus_ionic_gain",
+          "demeter_tranquil_gain"
+         ]
+        }
        }
       },
       {
@@ -325,7 +335,21 @@
           "poseidon_wave_strike"
          ]
         },
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "aphrodite_flutter_flourish": [
+          "zeus_heaven_flourish",
+          "poseidon_wave_flourish"
+         ],
+         "poseidon_tidal_ring": [
+          "aphrodite_rapture_ring",
+          "zeus_storm_ring"
+         ],
+         "zeus_ionic_gain": [
+          "poseidon_flood_gain",
+          "aphrodite_glamour_gain"
+         ]
+        }
        }
       },
       {
@@ -385,7 +409,17 @@
          "zeus_heaven_strike"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "poseidon_wave_flourish": [
+          "zeus_heaven_flourish"
+         ],
+         "hestia_smolder_ring": [],
+         "zeus_ionic_gain": [
+          "hestia_cardio_gain",
+          "poseidon_flood_gain"
+         ]
+        }
        }
       }
      ]
@@ -562,12 +596,22 @@
         ],
         "cond_must": [],
         "extra": [
-         "demeter_frigid_rush",
          "poseidon_buried_treasure",
+         "demeter_frigid_rush",
          "poseidon_wave_strike"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "demeter_arctic_ring": [
+          "apollo_solar_ring",
+          "poseidon_tidal_ring"
+         ],
+         "apollo_lucid_gain": [
+          "demeter_tranquil_gain",
+          "poseidon_flood_gain"
+         ]
+        }
        }
       },
       {
@@ -625,11 +669,21 @@
          "apollo_prominence_flare"
         ],
         "extra": [
-         "apollo_prominence_flare",
-         "demeter_ice_strike"
+         "demeter_ice_strike",
+         "apollo_prominence_flare"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "zeus_storm_ring": [
+          "demeter_arctic_ring",
+          "apollo_solar_ring"
+         ],
+         "apollo_lucid_gain": [
+          "demeter_tranquil_gain",
+          "zeus_ionic_gain"
+         ]
+        }
        }
       }
      ]
@@ -770,7 +824,17 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hera_sworn_strike": [
+          "zeus_heaven_strike",
+          "poseidon_wave_strike"
+         ],
+         "hera_born_gain": [
+          "poseidon_flood_gain",
+          "zeus_ionic_gain"
+         ]
+        }
        }
       },
       {
@@ -839,7 +903,21 @@
          "zeus_heaven_flourish"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "apollo_nova_strike": [
+          "zeus_heaven_strike",
+          "demeter_ice_strike"
+         ],
+         "apollo_lucid_gain": [
+          "zeus_ionic_gain",
+          "demeter_tranquil_gain"
+         ],
+         "demeter_arctic_ring": [
+          "zeus_storm_ring",
+          "apollo_solar_ring"
+         ]
+        }
        }
       }
      ]
@@ -980,7 +1058,22 @@
          "hera_fine_line"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hera_sworn_strike": [
+          "poseidon_wave_strike",
+          "aphrodite_flutter_strike"
+         ],
+         "aphrodite_flutter_flourish": [],
+         "poseidon_tidal_ring": [
+          "aphrodite_rapture_ring",
+          "hera_engagement_ring"
+         ],
+         "poseidon_flood_gain": [
+          "hera_born_gain",
+          "aphrodite_glamour_gain"
+         ]
+        }
        }
       },
       {
@@ -1030,7 +1123,17 @@
          "demeter_arctic_ring"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hestia_flame_strike": [
+          "demeter_ice_strike"
+         ],
+         "zeus_heaven_flourish": [],
+         "hestia_cardio_gain": [
+          "zeus_ionic_gain",
+          "demeter_tranquil_gain"
+         ]
+        }
        }
       }
      ]
@@ -1251,11 +1354,24 @@
          "zeus_heaven_flourish"
         ],
         "extra": [
-         "ares_visceral_impact",
-         "zeus_heaven_flourish"
+         "zeus_heaven_flourish",
+         "ares_visceral_impact"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "ares_vicious_strike": [
+          "zeus_heaven_strike"
+         ],
+         "aphrodite_rapture_ring": [
+          "zeus_storm_ring",
+          "ares_sword_ring"
+         ],
+         "aphrodite_glamour_gain": [
+          "zeus_ionic_gain",
+          "ares_grisly_gain"
+         ]
+        }
        }
       },
       {
@@ -1316,7 +1432,21 @@
          "zeus_heaven_flourish"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "aphrodite_flutter_strike": [
+          "apollo_nova_strike",
+          "zeus_heaven_strike"
+         ],
+         "aphrodite_glamour_gain": [
+          "zeus_ionic_gain",
+          "apollo_lucid_gain"
+         ],
+         "apollo_solar_ring": [
+          "aphrodite_rapture_ring",
+          "zeus_storm_ring"
+         ]
+        }
        }
       },
       {
@@ -1366,7 +1496,17 @@
          "poseidon_tidal_ring"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hestia_flame_strike": [
+          "poseidon_wave_strike"
+         ],
+         "zeus_heaven_flourish": [],
+         "zeus_ionic_gain": [
+          "hestia_cardio_gain",
+          "poseidon_flood_gain"
+         ]
+        }
        }
       }
      ]
@@ -1502,7 +1642,21 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "aphrodite_flutter_strike": [
+          "hera_sworn_strike",
+          "demeter_ice_strike"
+         ],
+         "hera_born_gain": [
+          "aphrodite_glamour_gain",
+          "demeter_tranquil_gain"
+         ],
+         "demeter_arctic_ring": [
+          "hera_engagement_ring",
+          "aphrodite_rapture_ring"
+         ]
+        }
        }
       },
       {
@@ -1550,7 +1704,17 @@
          "ares_visceral_impact"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "ares_vicious_strike": [
+          "aphrodite_flutter_strike",
+          "zeus_heaven_strike"
+         ],
+         "zeus_ionic_gain": [
+          "aphrodite_glamour_gain",
+          "ares_grisly_gain"
+         ]
+        }
        }
       }
      ]
@@ -1702,7 +1866,21 @@
          "zeus_heaven_strike"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "poseidon_wave_flourish": [
+          "zeus_heaven_flourish",
+          "demeter_ice_flourish"
+         ],
+         "demeter_arctic_ring": [
+          "zeus_storm_ring",
+          "poseidon_tidal_ring"
+         ],
+         "zeus_ionic_gain": [
+          "demeter_tranquil_gain",
+          "poseidon_flood_gain"
+         ]
+        }
        }
       },
       {
@@ -1753,7 +1931,20 @@
          "demeter_ice_strike"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hestia_flame_flourish": [
+          "demeter_ice_flourish"
+         ],
+         "aphrodite_rapture_ring": [
+          "demeter_arctic_ring",
+          "hestia_smolder_ring"
+         ],
+         "demeter_tranquil_gain": [
+          "hestia_cardio_gain",
+          "aphrodite_glamour_gain"
+         ]
+        }
        }
       }
      ]
@@ -1887,7 +2078,16 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hestia_flame_strike": [],
+         "aphrodite_flutter_flourish": [],
+         "poseidon_tidal_ring": [],
+         "aphrodite_glamour_gain": [
+          "hestia_cardio_gain",
+          "poseidon_flood_gain"
+         ]
+        }
        }
       },
       {
@@ -1953,11 +2153,25 @@
          "hestia_smolder_ring"
         ],
         "extra": [
-         "apollo_blinding_rush",
-         "hestia_smolder_ring"
+         "hestia_smolder_ring",
+         "apollo_blinding_rush"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "apollo_nova_strike": [
+          "hestia_flame_strike",
+          "aphrodite_flutter_strike"
+         ],
+         "aphrodite_flutter_flourish": [
+          "hestia_flame_flourish",
+          "apollo_nova_flourish"
+         ],
+         "aphrodite_glamour_gain": [
+          "hestia_cardio_gain",
+          "apollo_lucid_gain"
+         ]
+        }
        }
       },
       {
@@ -1993,7 +2207,18 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "zeus_heaven_strike": [],
+         "aphrodite_flutter_flourish": [
+          "zeus_heaven_flourish",
+          "hera_sworn_flourish"
+         ],
+         "aphrodite_glamour_gain": [
+          "zeus_ionic_gain",
+          "hera_born_gain"
+         ]
+        }
        }
       }
      ]
@@ -2202,7 +2427,17 @@
          "zeus_storm_ring"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hera_sworn_strike": [
+          "zeus_heaven_strike",
+          "poseidon_wave_strike"
+         ],
+         "hera_born_gain": [
+          "zeus_ionic_gain",
+          "poseidon_flood_gain"
+         ]
+        }
        }
       },
       {
@@ -2271,7 +2506,21 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hera_sworn_strike": [
+          "hestia_flame_strike",
+          "aphrodite_flutter_strike"
+         ],
+         "zeus_heaven_flourish": [
+          "hestia_flame_flourish",
+          "aphrodite_flutter_flourish"
+         ],
+         "hera_born_gain": [
+          "zeus_ionic_gain",
+          "hestia_cardio_gain"
+         ]
+        }
        }
       },
       {
@@ -2311,7 +2560,16 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hestia_flame_strike": [],
+         "zeus_heaven_flourish": [],
+         "demeter_arctic_ring": [],
+         "zeus_ionic_gain": [
+          "hestia_cardio_gain",
+          "demeter_tranquil_gain"
+         ]
+        }
        }
       },
       {
@@ -2377,7 +2635,21 @@
          "demeter_arctic_ring"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "zeus_heaven_flourish": [
+          "demeter_ice_flourish",
+          "hera_sworn_flourish"
+         ],
+         "zeus_heaven_strike": [
+          "hera_sworn_strike",
+          "demeter_ice_strike"
+         ],
+         "zeus_ionic_gain": [
+          "hera_born_gain",
+          "demeter_tranquil_gain"
+         ]
+        }
        }
       }
      ]
@@ -2493,7 +2765,7 @@
        "name_ko": "천상 기예 + 서약 일격 (모로스 최적)",
        "trust": "high",
        "strength": "S",
-       "strength_note": "lee \"Hera attack+Zeus special 최적\", dc51882 모로스 ★★★",
+       "strength_note": "lee \"Hera attack+Zeus special 최적\", dc51882 모로스 ★★★ + 실플레이 티폰 클리어(2026-10-26)",
        "main_gods": [
         "hera",
         "zeus",
@@ -2516,7 +2788,8 @@
        "note": "공전 불꽃에 암운, 혼령이 닿아 폭발",
        "sources": [
         "lee:Moros — Hera attack+Zeus special 최적, Sudden Burst 최고",
-        "dc51882:모로스 ★★★"
+        "dc51882:모로스 ★★★",
+        "user:2026-10-26 티폰 첫 클리어 — 천부적 마력 미획득, 따스한 마력(헤스티아)으로 대체해 완주 (로그 없음)"
        ],
        "hammers": [
         "flames_sudden_burst",
@@ -2540,7 +2813,18 @@
          "hestia_smolder_ring"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "zeus_heaven_flourish": [],
+         "hera_sworn_strike": [
+          "hestia_flame_strike",
+          "zeus_heaven_strike"
+         ],
+         "hera_born_gain": [
+          "zeus_ionic_gain",
+          "hestia_cardio_gain"
+         ]
+        }
        }
       },
       {
@@ -2591,7 +2875,17 @@
          "zeus_heaven_strike"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hestia_flame_flourish": [
+          "zeus_heaven_flourish"
+         ],
+         "demeter_arctic_ring": [],
+         "zeus_ionic_gain": [
+          "demeter_tranquil_gain",
+          "hestia_cardio_gain"
+         ]
+        }
        }
       },
       {
@@ -2626,7 +2920,21 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hera_sworn_flourish": [
+          "zeus_heaven_flourish",
+          "apollo_nova_flourish"
+         ],
+         "apollo_nova_strike": [
+          "hera_sworn_strike",
+          "zeus_heaven_strike"
+         ],
+         "zeus_ionic_gain": [
+          "hera_born_gain",
+          "apollo_lucid_gain"
+         ]
+        }
        }
       }
      ]
@@ -2777,7 +3085,25 @@
          "poseidon_tidal_ring"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hestia_heat_rush": [
+          "poseidon_breaker_rush",
+          "zeus_thunder_rush"
+         ],
+         "hestia_flame_flourish": [
+          "poseidon_wave_flourish",
+          "zeus_heaven_flourish"
+         ],
+         "poseidon_wave_strike": [
+          "hestia_flame_strike",
+          "zeus_heaven_strike"
+         ],
+         "hestia_cardio_gain": [
+          "poseidon_flood_gain",
+          "zeus_ionic_gain"
+         ]
+        }
        }
       },
       {
@@ -2825,7 +3151,20 @@
          "aphrodite_flutter_strike"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "zeus_thunder_rush": [
+          "hestia_heat_rush",
+          "aphrodite_passion_rush"
+         ],
+         "zeus_heaven_flourish": [
+          "hestia_flame_flourish"
+         ],
+         "hestia_cardio_gain": [
+          "zeus_ionic_gain",
+          "aphrodite_glamour_gain"
+         ]
+        }
        }
       }
      ]
@@ -3056,7 +3395,21 @@
           "apollo_light_smite"
          ]
         },
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "aphrodite_flutter_strike": [
+          "apollo_nova_strike",
+          "demeter_ice_strike"
+         ],
+         "demeter_arctic_ring": [
+          "aphrodite_rapture_ring",
+          "apollo_solar_ring"
+         ],
+         "aphrodite_glamour_gain": [
+          "demeter_tranquil_gain",
+          "apollo_lucid_gain"
+         ]
+        }
        }
       },
       {
@@ -3090,7 +3443,21 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "aphrodite_flutter_strike": [
+          "demeter_ice_strike",
+          "ares_vicious_strike"
+         ],
+         "ares_vicious_flourish": [
+          "demeter_ice_flourish",
+          "aphrodite_flutter_flourish"
+         ],
+         "demeter_arctic_ring": [
+          "aphrodite_rapture_ring",
+          "ares_sword_ring"
+         ]
+        }
        }
       },
       {
@@ -3133,7 +3500,21 @@
           "apollo_light_smite"
          ]
         },
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "apollo_nova_strike": [
+          "hera_sworn_strike",
+          "demeter_ice_strike"
+         ],
+         "demeter_arctic_ring": [
+          "hera_engagement_ring",
+          "apollo_solar_ring"
+         ],
+         "hera_born_gain": [
+          "demeter_tranquil_gain",
+          "apollo_lucid_gain"
+         ]
+        }
        }
       }
      ]
@@ -3304,7 +3685,21 @@
           "apollo_extra_dose"
          ]
         },
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "aphrodite_flutter_strike": [
+          "apollo_nova_strike",
+          "demeter_ice_strike"
+         ],
+         "aphrodite_glamour_gain": [
+          "demeter_tranquil_gain",
+          "apollo_lucid_gain"
+         ],
+         "demeter_arctic_ring": [
+          "apollo_solar_ring",
+          "aphrodite_rapture_ring"
+         ]
+        }
        }
       },
       {
@@ -3358,7 +3753,17 @@
          "zeus_heaven_flourish"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hestia_flame_strike": [
+          "zeus_heaven_strike"
+         ],
+         "demeter_arctic_ring": [],
+         "zeus_ionic_gain": [
+          "hestia_cardio_gain",
+          "demeter_tranquil_gain"
+         ]
+        }
        }
       },
       {
@@ -3417,11 +3822,21 @@
         ],
         "cond_must": [],
         "extra": [
-         "demeter_ice_flourish",
-         "aphrodite_rapture_ring"
+         "aphrodite_rapture_ring",
+         "demeter_ice_flourish"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "zeus_heaven_strike": [
+          "aphrodite_flutter_strike",
+          "demeter_ice_strike"
+         ],
+         "zeus_ionic_gain": [
+          "aphrodite_glamour_gain",
+          "demeter_tranquil_gain"
+         ]
+        }
        }
       }
      ]
@@ -3572,7 +3987,21 @@
          "poseidon_breaker_rush"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "apollo_lucid_gain": [
+          "hera_born_gain",
+          "poseidon_flood_gain"
+         ],
+         "poseidon_tidal_ring": [
+          "apollo_solar_ring",
+          "hera_engagement_ring"
+         ],
+         "apollo_nova_flourish": [
+          "hera_sworn_flourish",
+          "poseidon_wave_flourish"
+         ]
+        }
        }
       },
       {
@@ -3634,7 +4063,21 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "ares_vicious_flourish": [
+          "apollo_nova_flourish",
+          "zeus_heaven_flourish"
+         ],
+         "zeus_storm_ring": [
+          "apollo_solar_ring",
+          "demeter_arctic_ring"
+         ],
+         "apollo_lucid_gain": [
+          "zeus_ionic_gain",
+          "demeter_tranquil_gain"
+         ]
+        }
        }
       }
      ]
@@ -3768,7 +4211,17 @@
           "apollo_light_smite"
          ]
         },
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "apollo_nova_strike": [
+          "hera_sworn_strike",
+          "demeter_ice_strike"
+         ],
+         "hera_born_gain": [
+          "apollo_lucid_gain",
+          "demeter_tranquil_gain"
+         ]
+        }
        }
       },
       {
@@ -3820,7 +4273,21 @@
          "ares_meat_grinder"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "demeter_ice_strike": [
+          "zeus_heaven_strike",
+          "ares_vicious_strike"
+         ],
+         "demeter_arctic_ring": [
+          "ares_sword_ring",
+          "zeus_storm_ring"
+         ],
+         "zeus_ionic_gain": [
+          "demeter_tranquil_gain",
+          "ares_grisly_gain"
+         ]
+        }
        }
       }
      ]
@@ -4013,7 +4480,25 @@
           "apollo_light_smite"
          ]
         },
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hera_sworn_strike": [
+          "apollo_nova_strike",
+          "demeter_ice_strike"
+         ],
+         "hera_sworn_flourish": [
+          "apollo_nova_flourish",
+          "demeter_ice_flourish"
+         ],
+         "demeter_arctic_ring": [
+          "apollo_solar_ring",
+          "hera_engagement_ring"
+         ],
+         "hera_born_gain": [
+          "apollo_lucid_gain",
+          "demeter_tranquil_gain"
+         ]
+        }
        }
       },
       {
@@ -4078,7 +4563,21 @@
          "hephaestus_grand_caldera"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hephaestus_volcanic_flourish": [
+          "hera_sworn_flourish",
+          "demeter_ice_flourish"
+         ],
+         "hera_sworn_strike": [
+          "hephaestus_volcanic_strike",
+          "demeter_ice_strike"
+         ],
+         "demeter_arctic_ring": [
+          "hephaestus_anvil_ring",
+          "hera_engagement_ring"
+         ]
+        }
        }
       },
       {
@@ -4123,7 +4622,21 @@
           "apollo_light_smite"
          ]
         },
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "apollo_nova_strike": [
+          "hera_sworn_strike",
+          "demeter_ice_strike"
+         ],
+         "hera_sworn_flourish": [
+          "apollo_nova_flourish",
+          "demeter_ice_flourish"
+         ],
+         "apollo_lucid_gain": [
+          "hera_born_gain",
+          "demeter_tranquil_gain"
+         ]
+        }
        }
       }
      ]
@@ -4291,7 +4804,18 @@
          "hephaestus_grand_caldera"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hephaestus_volcanic_strike": [],
+         "hera_sworn_flourish": [
+          "hestia_flame_flourish",
+          "hephaestus_volcanic_flourish"
+         ],
+         "hestia_cardio_gain": [
+          "hera_born_gain",
+          "hephaestus_tough_gain"
+         ]
+        }
        }
       },
       {
@@ -4340,7 +4864,17 @@
          "poseidon_tidal_ring"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hestia_flame_strike": [
+          "poseidon_wave_strike"
+         ],
+         "zeus_heaven_flourish": [],
+         "hestia_cardio_gain": [
+          "poseidon_flood_gain",
+          "zeus_ionic_gain"
+         ]
+        }
        }
       },
       {
@@ -4398,7 +4932,18 @@
          "zeus_storm_ring"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "ares_vicious_strike": [],
+         "hera_sworn_flourish": [
+          "zeus_heaven_flourish",
+          "ares_vicious_flourish"
+         ],
+         "hera_born_gain": [
+          "zeus_ionic_gain",
+          "ares_grisly_gain"
+         ]
+        }
        }
       }
      ]
@@ -4553,11 +5098,22 @@
          "demeter_arctic_ring"
         ],
         "extra": [
-         "ares_visceral_impact",
-         "demeter_arctic_ring"
+         "demeter_arctic_ring",
+         "ares_visceral_impact"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "ares_vicious_strike": [],
+         "zeus_heaven_flourish": [
+          "demeter_ice_flourish",
+          "ares_vicious_flourish"
+         ],
+         "zeus_ionic_gain": [
+          "demeter_tranquil_gain",
+          "ares_grisly_gain"
+         ]
+        }
        }
       },
       {
@@ -4590,7 +5146,21 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hera_sworn_strike": [
+          "hephaestus_volcanic_strike",
+          "demeter_ice_strike"
+         ],
+         "hephaestus_volcanic_flourish": [
+          "hera_sworn_flourish",
+          "demeter_ice_flourish"
+         ],
+         "hera_born_gain": [
+          "demeter_tranquil_gain",
+          "hephaestus_tough_gain"
+         ]
+        }
        }
       },
       {
@@ -4641,7 +5211,18 @@
          "apollo_solar_ring"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hephaestus_volcanic_flourish": [],
+         "hestia_flame_strike": [
+          "apollo_nova_strike",
+          "hephaestus_volcanic_strike"
+         ],
+         "hestia_cardio_gain": [
+          "apollo_lucid_gain",
+          "hephaestus_tough_gain"
+         ]
+        }
        }
       }
      ]
@@ -4767,7 +5348,21 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "poseidon_wave_strike": [
+          "hestia_flame_strike",
+          "hera_sworn_strike"
+         ],
+         "hera_sworn_flourish": [
+          "hestia_flame_flourish",
+          "poseidon_wave_flourish"
+         ],
+         "hestia_cardio_gain": [
+          "hera_born_gain",
+          "poseidon_flood_gain"
+         ]
+        }
        }
       },
       {
@@ -4835,7 +5430,17 @@
          "demeter_arctic_ring"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "zeus_heaven_strike": [
+          "hestia_flame_strike",
+          "demeter_ice_strike"
+         ],
+         "hestia_cardio_gain": [
+          "zeus_ionic_gain",
+          "demeter_tranquil_gain"
+         ]
+        }
        }
       },
       {
@@ -4885,7 +5490,17 @@
          "zeus_heaven_flourish"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hestia_flame_strike": [
+          "zeus_heaven_strike"
+         ],
+         "demeter_arctic_ring": [],
+         "hestia_cardio_gain": [
+          "zeus_ionic_gain",
+          "demeter_tranquil_gain"
+         ]
+        }
        }
       }
      ]
@@ -5092,7 +5707,21 @@
          "poseidon_tidal_ring"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hera_sworn_flourish": [
+          "poseidon_wave_flourish",
+          "hestia_flame_flourish"
+         ],
+         "poseidon_wave_strike": [
+          "hestia_flame_strike",
+          "hera_sworn_strike"
+         ],
+         "hestia_cardio_gain": [
+          "poseidon_flood_gain",
+          "hera_born_gain"
+         ]
+        }
        }
       },
       {
@@ -5130,7 +5759,15 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hestia_flame_strike": [],
+         "hera_sworn_flourish": [
+          "hestia_flame_flourish",
+          "demeter_ice_flourish"
+         ],
+         "demeter_arctic_ring": []
+        }
        }
       },
       {
@@ -5185,11 +5822,22 @@
          "zeus_static_shock"
         ],
         "extra": [
-         "zeus_static_shock",
-         "aphrodite_rapture_ring"
+         "aphrodite_rapture_ring",
+         "zeus_static_shock"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "zeus_heaven_strike": [],
+         "hephaestus_volcanic_flourish": [
+          "zeus_heaven_flourish",
+          "aphrodite_flutter_flourish"
+         ],
+         "zeus_ionic_gain": [
+          "aphrodite_glamour_gain",
+          "hephaestus_tough_gain"
+         ]
+        }
        }
       },
       {
@@ -5241,7 +5889,21 @@
          "apollo_solar_ring"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hestia_flame_strike": [
+          "hera_sworn_strike",
+          "apollo_nova_strike"
+         ],
+         "hestia_cardio_gain": [
+          "apollo_lucid_gain",
+          "hera_born_gain"
+         ],
+         "hera_sworn_flourish": [
+          "hestia_flame_flourish",
+          "apollo_nova_flourish"
+         ]
+        }
        }
       }
      ]
@@ -5377,7 +6039,17 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "apollo_nova_strike": [
+          "demeter_ice_strike",
+          "hera_sworn_strike"
+         ],
+         "hera_born_gain": [
+          "apollo_lucid_gain",
+          "demeter_tranquil_gain"
+         ]
+        }
        }
       },
       {
@@ -5446,7 +6118,21 @@
          "zeus_heaven_flourish"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "apollo_nova_strike": [
+          "aphrodite_flutter_strike",
+          "zeus_heaven_strike"
+         ],
+         "apollo_lucid_gain": [
+          "zeus_ionic_gain",
+          "aphrodite_glamour_gain"
+         ],
+         "apollo_solar_ring": [
+          "aphrodite_rapture_ring",
+          "zeus_storm_ring"
+         ]
+        }
        }
       }
      ]
@@ -5574,7 +6260,17 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "hera_sworn_strike": [
+          "hestia_flame_strike",
+          "demeter_ice_strike"
+         ],
+         "hera_born_gain": [
+          "demeter_tranquil_gain",
+          "hestia_cardio_gain"
+         ]
+        }
        }
       },
       {
@@ -5641,7 +6337,17 @@
          "zeus_storm_ring"
         ],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "ares_grisly_gain": [
+          "hera_born_gain",
+          "zeus_ionic_gain"
+         ],
+         "hera_sworn_strike": [
+          "ares_vicious_strike",
+          "zeus_heaven_strike"
+         ]
+        }
        }
       },
       {
@@ -5677,7 +6383,18 @@
         "cond_must": [],
         "extra": [],
         "support_after": {},
-        "infeasible": []
+        "infeasible": [],
+        "fallbacks": {
+         "zeus_heaven_flourish": [],
+         "aphrodite_flutter_strike": [
+          "hera_sworn_strike",
+          "zeus_heaven_strike"
+         ],
+         "hera_born_gain": [
+          "zeus_ionic_gain",
+          "aphrodite_glamour_gain"
+         ]
+        }
        }
       }
      ]
