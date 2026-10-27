@@ -760,6 +760,23 @@ sc('S53', '카드 보호 — 헤라 집중 카드의 끝내기(여왕의 강권)
   ] };
 });
 
+
+sc('S54', '신 풀 자리 — 모로스 카드: 헤라·제우스 뒤 데메테르는 "남은 자리는 헤스티아용", 그 뒤 아폴론은 빌드 막힘(패스)', () => {
+  const st3 = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_moros', region: 2, boons: ['zeus_heaven_flourish', 'hera_sworn_strike'], gods_seen: ['hera', 'zeus'] }), { kind: 'variant', id: 'flames_orbit_hera_zeus' });
+  const d3 = E.recommendGods(st3, ['demeter'])[0];
+  const st4 = E.applyChoice(S({ weapon: 'flames', aspect: 'flames_moros', region: 2, boons: ['zeus_heaven_flourish', 'hera_sworn_strike', 'demeter_arctic_ring'], gods_seen: ['hera', 'zeus', 'demeter'] }), { kind: 'variant', id: 'flames_orbit_hera_zeus' });
+  const r4 = E.recommendGods(st4, ['apollo', 'hestia']);
+  const ap = r4.find((r) => r.id === 'apollo'), he = r4.find((r) => r.id === 'hestia');
+  const boons3 = E.recommendBoons(E.applyChoice(st3, { kind: 'god', id: 'demeter' }), ['demeter_arctic_ring', 'demeter_frigid_rush']);
+  return { rows: r4, checks: [
+    check("데메테르(3번째): 역할 '남은 자리는 헤스티아용'", d3.roles.some((x) => /남은 자리는 헤스티아용/.test(x)), d3.grade_ko + ' ' + d3.roles.join(',')),
+    check("아폴론(4번째): 패스 + '빌드 막힘'", ap.grade === 'pass' && ap.roles.includes('빌드 막힘'), ap.grade_ko + ' ' + ap.roles.join(',')),
+    check("아폴론 이유에 '헤스티아가 더 안 나옴'", /헤스티아가 더 안 나옴/.test(ap.reason), ap.reason),
+    check('헤스티아가 1위', r4[0].id === 'hestia', r4.map((r) => r.id + ':' + r.grade_ko).join(' ')),
+    check("데메테르 설한 고리에 '마법 칸은 염화 고리 자리' 경고", boons3.find((r) => r.id === 'demeter_arctic_ring').warnings.some((w) => /마법 칸은 염화 고리 자리/.test(w)), JSON.stringify(boons3.find((r) => r.id === 'demeter_arctic_ring').warnings)),
+  ] };
+});
+
 // ── 실행 ────────────────────────────────────────────────
 const out = [];
 let pass = 0, fail = 0;

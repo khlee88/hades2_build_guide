@@ -323,6 +323,12 @@ function createEngine(data, W) {
 
     const breaksMust = !!(replacing && dv.variant && cardKeep(dv.variant).includes(replacing) && !cardKeep(dv.variant).includes(b.id));   // 8-L
     if (breaksMust) warnings.push(`빌드 필수 ${eul(nameOf(replacing))} 버림`);
+    // 8-M: 카드 배치가 조건 은혜용으로 비워 둔 칸을 다른 은혜가 먼저 차지 — 막지는 않고 알린다 (나중에 교체 가능)
+    if (dv.variant && b.occupies_slot && !replacing && !cardKeep(dv.variant).includes(b.id)) {
+      const P = dv.variant.plan || {};
+      const res = [...(P.cond_must || []), ...(P.extra || [])].map((x) => boonById.get(x)).find((x) => x && x.occupies_slot && x.slot === b.slot && !dv.owned.has(x.id));
+      if (res && !(P.groups || []).some((g) => (g.options || []).includes(b.id))) warnings.push(`${SLOT_KO[b.slot]} 칸은 ${res.name_ko} 자리 — 나중에 교체`);
+    }
     if (replacing) {
       warnings.push(`${eul(nameOf(replacing))} 버리게 됨`);
       // 목표 융합을 앞으로 정렬하고 최대 2건만 이름을 보인다 (폰 화면 가독성)
@@ -579,6 +585,15 @@ function createEngine(data, W) {
     const poolOver = bd.pool === W.GOD.POOL_NEW_PENALTY;
     if (poolOver) roles.push('풀 밖 신');
     if (lastNew) roles.push('마지막 새 신');
+    // 8-M: 카드 밖 새 신이 빌드 신 자리를 빼앗는가
+    let seatBlock = null, seatLast = null;
+    if (dv.variant && !W.NON_POOL_GODS.includes(godId) && !(state.gods_seen || []).includes(godId)) {
+      const si = seatInfo(dv.variant, state, dv);
+      if (!si.cardGods.has(godId) && si.need > 0) {
+        if (si.free - 1 < si.need) { seatBlock = si; roles.unshift('빌드 막힘'); }
+        else if (si.free - 1 === si.need) { seatLast = si; roles.push(`남은 자리는 ${si.waiting.join('·')}용`); }
+      }
+    }
     let tier;
     const coreFirst = !!(bestFill && bestFill.empty && bestFill.core && bestFill.rank === 1);
     if (partnerDuo || coreFirst || (targetNeed && targetCore)) tier = 3;
@@ -590,7 +605,8 @@ function createEngine(data, W) {
     else if ((bestFill && bestFill.upgrade) || legClose || hasAlways || otherDuo) tier = 2;
     else if ((bestFill && bestFill.empty) || roles.some((x) => x.startsWith('보조')) || (topList.length && topList[0].score >= W.GOD.OK_TOP)) tier = 1;
     else tier = 0;
-    if (poolOver && !partnerDuo && !readyDuos.length && !legReady) tier = Math.max(0, tier - 1);   // 3신 베이스 + 기념품 4번째가 정석(dc51882). 풀 밖 신은 한 단계 내린다
+    if (poolOver && !partnerDuo && !readyDuos.length && !legReady) tier = Math.max(0, tier - 1);
+    if (seatBlock) tier = 0;   // 8-M   // 3신 베이스 + 기념품 4번째가 정석(dc51882). 풀 밖 신은 한 단계 내린다
     const GRADES = ['pass', 'ok', 'good', 'must'];
     const GRADE_KO = { must: '필수', good: '좋음', ok: '보통', pass: '패스' };
     const grade = GRADES[tier];
@@ -615,7 +631,9 @@ function createEngine(data, W) {
       else reason = t ? `'${t.name_ko}' 등을 기대할 수 있음` : '무난함';
     } else if (firstInfo) reason = `첫 신으로 무난 (${firstInfo.count}개 방향 열림: ${firstInfo.names.join(', ')})`;
     else reason = '무난함';
-    if (lastNew && grade !== 'must') reason += ' · 4번째 신 — 받으면 이후 새 신은 안 뜸';
+    if (seatBlock) { const dd = [...cardDuoSet(dv.variant)].map((x) => nameOf(x)).slice(0, 2).join('·'); reason = `받으면 풀이 차서 ${josa(seatBlock.waiting.join('·'), '이', '가')} 더 안 나옴${dd ? ` — ${dd} 불가` : ''}. 석류·재화 문으로`; }
+    else if (seatLast) reason += ` · 남은 자리는 ${seatLast.waiting.join('·')} — 다음 새 신은 받지 않는다`;
+    else if (lastNew && grade !== 'must') reason += ' · 4번째 신 — 받으면 이후 새 신은 안 뜸';
 
     return { id: godId, score: round(score), reason, warnings, badges, breakdown: bd, grade, grade_ko: GRADE_KO[grade], roles, _replacing: false };
   }
@@ -951,6 +969,15 @@ function createEngine(data, W) {
     return lost.length ? { god: lg, lost } : null;
   }
   const cardDuoSet = (v) => new Set([...(v.target_duos || []), ...(v.finisher && v.finisher.duo ? [v.finisher.duo] : []), ...(v.fourth || []).flatMap((f) => f.duos || [])]);
+  // 8-M: 신 풀 자리 — 카드 신이 들어올 자리가 남았나
+  function seatInfo(v, state, dv) {
+    const seen = new Set(state.gods_seen || []);
+    const mainLeft = (v.main_gods || []).filter((g) => !seen.has(g) && !W.NON_POOL_GODS.includes(g));
+    const fg = (v.fourth || []).map((f) => f.god);
+    const fourthLeft = fg.length && !fg.some((g) => seen.has(g)) ? 1 : 0;
+    return { need: mainLeft.length + fourthLeft, free: W.GOD_POOL_CAP - dv.poolSize, waiting: [...mainLeft, ...(fourthLeft ? [fg.map((g) => nameOf(g)).join('/')] : [])].map((g) => (godById.get(g) ? nameOf(g) : g)),
+      cardGods: new Set([...(v.main_gods || []), ...fg]) };
+  }
   const dirOfVariant = (vid) => { const vr = variantById.get(vid); return vr ? vr.d : null; };
   // 8-C: 빌드 카드 표시용
   function variantView(v) {
@@ -1014,7 +1041,7 @@ function createEngine(data, W) {
         const b = boonById.get(id); if (!b || dv.owned.has(id) || seen.has(b.god)) continue;
         const k = keepsakeByGod.get(b.god); if (!k) continue;
         const du = cond.includes(id) ? condDuoOf(v, id) : null;
-        return { id: k.id, name_ko: k.name_ko, reason: `빌드 '${vshort(v.name_ko)}'의 ${b.name_ko}(${b.occupies_slot ? SLOT_KO[b.slot] : '보조'}${du ? ' · ' + nameOf(du) + ' 조건' : ''}) — ${nameOf(b.god)}이(가) 아직 안 나옴` };
+        return { id: k.id, name_ko: k.name_ko, reason: `빌드 '${vshort(v.name_ko)}'의 ${b.name_ko}(${b.occupies_slot ? SLOT_KO[b.slot] : '보조'}${du ? ' · ' + nameOf(du) + ' 조건' : ''}) — ${josa(nameOf(b.god), '이', '가')} 아직 안 나옴` };
       }
     }
     if (main) {
