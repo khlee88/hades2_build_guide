@@ -45,7 +45,7 @@
     } catch (e) { saveFail = true; return v === undefined ? null : false; }
   }
   var PREFS = ls('h2.prefs.v1') || {};
-  PREFS = Object.assign({ owned_keepsakes: [], grasp_cap: 10, left_hand: false, show_score: true, font_scale: 1, last_weapon: 'staff', last_aspect: 'staff_melinoe' }, PREFS);
+  PREFS = Object.assign({ testaments: {}, owned_keepsakes: [], grasp_cap: 10, left_hand: false, show_score: true, font_scale: 1, last_weapon: 'staff', last_aspect: 'staff_melinoe' }, PREFS);
   var UI = ls('h2.ui.v1') || { screen: null, god_tab: null };
   var RUN = ls('h2.run.v1');
   var savePrefs = function () { ls('h2.prefs.v1', PREFS); };
@@ -157,6 +157,30 @@
     var left = L.groups.filter(function (g) { return !g.met; });
     return (head ? '<span class="dim">전설(선택)</span> ' : '') + '<b class="dimless">' + esc(L.name_ko) + '</b>(' + esc(L.tier) + ')' + (prog ? ' ' + L.met + '/' + L.total : '') + ' ' + esc(L.god_ko) + (L.main_dmg ? ' · 메인 딜 신' : '') +
       (L.owned ? ' — 획득' : left.length ? ' — ' + left.length + '개 더: ' + left.map(function (g) { return esc(g.options.slice(0, 3).join('·')) + (g.options.length > 3 ? '…' : ''); }).join(' + ') : ' — 조건 완성, ' + esc(L.god_ko) + ' 문에서 뜰 수 있음');
+  }
+  // 9-B: 밤의 언약 카드
+  function testamentCard(weapon, aspect, dirId, rerender) {
+    var done = (PREFS.testaments || {})[weapon] || 0;
+    var t = E.recommendTestament(weapon, aspect, done, dirId);
+    if (!t) return null;
+    var c = el('<div class="card tight tcard"></div>');
+    c.appendChild(el('<div class="row"><b style="flex:1">' + esc(nm(weapon)) + '</b><span class="xs dim">' + t.done + '/' + t.total + ' 완료 · 악몽 ' + t.earned + '/' + t.max_nightmare + '</span></div>'));
+    if (t.finished) c.appendChild(el('<div class="sm" style="margin-top:6px">이 무기의 언약 8개를 모두 깼습니다</div>'));
+    else {
+      var nx = t.next;
+      c.appendChild(el('<div class="sm" style="margin-top:6px"><span class="dim">다음 ' + nx.k + '번째</span> <b>공포 ' + nx.fear + '</b> · ' + esc(nx.guardian_ko) + ' <span class="dim">(' + esc(nx.route_ko) + ' ' + nx.region + '지역)</span> · 악몽 ' + nx.nightmare +
+        (nx.easy ? ' <span class="tagx asp only">쉬움 — 1지역 수호자</span>' : '') + '</div>'));
+      c.appendChild(el('<div class="xs" style="margin-top:4px"><span class="dim">맹세</span> ' + t.vows.map(function (v) { return '<b>' + esc(v.name_ko) + ' ' + v.rank + '</b><span class="dim">(' + esc(v.effect) + ')</span>'; }).join(' · ') + ' <span class="dim">= 공포 ' + t.sum + '</span></div>'));
+      c.appendChild(el('<div class="xs dim" style="margin-top:3px">' + esc(t.style_ko) + (t.direction_ko ? ' (' + esc(t.direction_ko) + ')' : '') + ' 기준' + (t.hubris_ok ? ' · Ω를 안 쓰면 자만을 방호·소요 대신 넣어도 됨' : '') + '</div>'));
+    }
+    c.appendChild(el('<div class="xs dim" style="margin-top:3px">피할 것: ' + esc(t.avoid.join(' · ')) + '</div>'));
+    c.appendChild(el('<div class="xs dim" style="margin-top:3px">밤의 언약 = 이 무기로, 공포 이상으로, 그 수호자를 잡으면 달성 · 악몽은 양상 강화(일반 5 · 숨김 9)</div>'));
+    var row = el('<div class="row" style="justify-content:flex-end;gap:8px;margin-top:8px"><button class="tagx tbtn" data-m>−</button>' + (t.finished ? '' : '<button class="tagx tbtn primary" data-p>깼다 ✓</button>') + '</div>');
+    var setN = function (v) { PREFS.testaments = PREFS.testaments || {}; PREFS.testaments[weapon] = Math.max(0, Math.min(8, v)); savePrefs(); logPush({ t: 'testament', w: weapon, v: PREFS.testaments[weapon] }); rerender(); };
+    row.querySelector('[data-m]').onclick = function () { if (done > 0) setN(done - 1); };
+    if (!t.finished) row.querySelector('[data-p]').onclick = function () { setN(done + 1); };
+    c.appendChild(row);
+    return c;
   }
   function variantCard(v, selected, onPick) {
     var c = el('<div class="vcard' + (selected ? ' sel' : '') + '">' +
@@ -423,6 +447,11 @@
     });
     root.appendChild(kc);
 
+    // 9-B: 밤의 언약 — 이 무기의 다음 언약과 맹세 조합. 빌드를 골랐으면 그 빌드의 방향, 아니면 1위 방향 기준
+    var tDir = (r.directions[0] || {}).id;
+    r.directions.forEach(function (d) { (d.variants || []).forEach(function (v) { if (v.id === startSel.variant) tDir = d.id; }); });
+    var tc = testamentCard(startSel.weapon, startSel.aspect, tDir, function () { rerenderStart(root, asSheet); });
+    if (tc) { root.appendChild(el('<h2>밤의 언약</h2>')); root.appendChild(tc); }
     root.appendChild(el('<h2>추천 빌드</h2>'));
     root.appendChild(el('<div class="wrap sm dim">' + esc(r.note) + '</div>'));
     // 6-C: 선택한 양상 기준 배지. 전용(aspects가 그 양상 하나) / 추천(포함) / 없음. 배지 없는 방향은 접는다 (전부 없으면 안 접음)

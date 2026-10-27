@@ -1,0 +1,71 @@
+{
+ "_doc": "9-B (2026-10-27): 밤그림자 서약·밤의 언약. 근거 data/RESEARCH_9A.md (나무위키 Hades II §5.5, Hades Wiki Oath_of_the_Unseen·Nightmare)",
+ "guardians": {
+  "hecate": {"name_ko": "헤카테", "route": "under", "region": 1},
+  "scylla": {"name_ko": "스킬라", "route": "under", "region": 2},
+  "cerberus": {"name_ko": "케르베로스", "route": "under", "region": 3},
+  "chronos": {"name_ko": "크로노스", "route": "under", "region": 4},
+  "polyphemus": {"name_ko": "폴리페모스", "route": "surface", "region": 1},
+  "eris": {"name_ko": "에리스", "route": "surface", "region": 2},
+  "prometheus": {"name_ko": "프로메테우스", "route": "surface", "region": 3},
+  "typhon": {"name_ko": "티폰", "route": "surface", "region": 4}
+ },
+ "fears": [1, 2, 4, 8, 10, 12, 16, 20],
+ "nightmare_by_fear": {"1": 1, "2": 1, "4": 1, "8": 1, "10": 2, "12": 2, "16": 3, "20": 3},
+ "order": {
+  "staff":  ["hecate", "scylla", "polyphemus", "eris", "cerberus", "prometheus", "chronos", "typhon"],
+  "blades": ["scylla", "polyphemus", "eris", "cerberus", "prometheus", "hecate", "typhon", "chronos"],
+  "flames": ["eris", "cerberus", "prometheus", "hecate", "scylla", "polyphemus", "typhon", "chronos"],
+  "axe":    ["polyphemus", "eris", "cerberus", "prometheus", "hecate", "scylla", "chronos", "typhon"],
+  "skull":  ["cerberus", "prometheus", "hecate", "scylla", "polyphemus", "eris", "chronos", "typhon"],
+  "coat":   ["prometheus", "hecate", "scylla", "polyphemus", "eris", "cerberus", "typhon", "chronos"]
+ },
+ "vows": {
+  "time":   {"name_ko": "시간", "fear": [1, 3, 6], "effect": ["지역당 9분", "지역당 7분", "지역당 5분"]},
+  "menace": {"name_ko": "고투", "fear": [1, 3], "effect": ["적 10%가 다음 지역 출신", "적 25%가 다음 지역 출신"]},
+  "debt":   {"name_ko": "빈곤", "fear": [1, 2], "effect": ["상품 +40%", "상품 +80%"]},
+  "return": {"name_ko": "소생", "fear": [1, 2], "effect": ["처치 시 25% 원혼", "처치 시 50% 원혼"]},
+  "fangs":  {"name_ko": "엄니", "fear": [2, 5], "effect": ["방어도 적 특성 1개", "방어도 적 특성 2개"]},
+  "shadow": {"name_ko": "암영", "fear": [2], "effect": ["파수꾼 교전에 그림자 종복"]},
+  "hordes": {"name_ko": "소요", "fear": [1, 2, 3], "effect": ["적 +20%", "적 +40%", "적 +60%"]},
+  "wards":  {"name_ko": "방호", "fear": [1, 2], "effect": ["적 방패 1개", "적 방패 2개"]},
+  "scars":  {"name_ko": "상흔", "fear": [1, 2, 4], "effect": ["회복 75%", "회복 50%", "회복 0%"]},
+  "hubris": {"name_ko": "자만", "fear": [1, 2], "effect": ["은혜 희귀도마다 마력 3 집중", "은혜 희귀도마다 마력 6 집중"]}
+ },
+ "_ladder_doc": "공포 → [맹세, 등급]. 나무위키 평가: 시간·고투 최대가 대세, 빈곤 자주 / 32 목표면 엄니·암영·소요, 방호 자주 / 고통 1 초과·광란 비선호 / 박탈·공허 마지막 / 적수 최대한 피함. 스타일: multi = 연사·다타(방패를 빨리 벗김), aoe = 광역(적이 많아도 쓸어 담음), heavy = 한 방이 큼(방호 비추, 시간 여유).",
+ "ladder": {
+  "common": {
+   "1":  [["time", 1]],
+   "2":  [["time", 1], ["debt", 1]],
+   "4":  [["time", 2], ["debt", 1]],
+   "8":  [["time", 2], ["menace", 2], ["debt", 2]],
+   "10": [["time", 2], ["menace", 2], ["debt", 2], ["return", 2]]
+  },
+  "multi": {
+   "12": [["time", 3], ["menace", 2], ["debt", 2], ["return", 1]],
+   "16": [["time", 3], ["menace", 2], ["debt", 2], ["return", 1], ["fangs", 1], ["shadow", 1]],
+   "20": [["time", 3], ["menace", 2], ["debt", 2], ["return", 2], ["fangs", 1], ["shadow", 1], ["wards", 2], ["hordes", 1]]
+  },
+  "aoe": {
+   "12": [["time", 3], ["menace", 2], ["debt", 2], ["return", 1]],
+   "16": [["time", 3], ["menace", 2], ["debt", 2], ["return", 1], ["fangs", 1], ["shadow", 1]],
+   "20": [["time", 3], ["menace", 2], ["debt", 2], ["return", 2], ["fangs", 1], ["shadow", 1], ["hordes", 2], ["wards", 1]]
+  },
+  "heavy": {
+   "12": [["time", 2], ["menace", 2], ["debt", 2], ["return", 2], ["fangs", 1]],
+   "16": [["time", 2], ["menace", 2], ["debt", 2], ["return", 2], ["fangs", 1], ["shadow", 1], ["hordes", 2]],
+   "20": [["time", 3], ["menace", 2], ["debt", 2], ["return", 2], ["fangs", 1], ["shadow", 1], ["hordes", 2], ["scars", 1]]
+  }
+ },
+ "style_by_direction": {
+  "staff_special": "multi", "staff_cast": "aoe", "staff_omega_attack": "aoe", "staff_anubis_zone": "aoe",
+  "blades_backstab_attack": "multi", "blades_omega_ambush": "multi", "blades_special_knives": "multi", "blades_morrigan_triad": "multi",
+  "flames_omega_attack_spam": "multi", "flames_omega_special_orbit": "aoe", "flames_supay_auto": "multi",
+  "axe_heavy_attack": "heavy", "axe_omega_whirlwind": "aoe", "axe_omega_cleave": "aoe", "axe_nergal_berserk": "aoe",
+  "skull_throw_retrieve": "multi", "skull_blast_persephone": "aoe", "skull_medea_loop": "heavy", "skull_hel_valkyrie": "multi",
+  "coat_punch_rocket": "multi", "coat_shiva_gigapunch": "heavy", "coat_selene_skyfall": "aoe"
+ },
+ "void_sensitive_aspects": ["skull_hel", "blades_morrigan", "flames_supay", "staff_momus"],
+ "avoid_always": ["고통 2단계 이상", "광란", "박탈", "공허", "적수"],
+ "aspect_cost": {"normal": 5, "hidden": 9, "coat_shiva_unlock": 4}
+}

@@ -265,3 +265,7 @@ details.fold>summary{min-height:44px; display:flex; align-items:center; cursor:p
 .chkrow .bx{width:1.2em; color:var(--accent)}
 .chkrow.done{color:var(--dim)} .chkrow.done .ell{text-decoration:line-through}
 .chip .vstr{margin-right:2px}
+
+/* 9-B 밤의 언약 */
+.tcard .tbtn{min-height:44px; min-width:44px; padding:0 14px; font-size:.9em}
+.tcard .tbtn.primary{color:var(--accent); border-color:var(--accent)}

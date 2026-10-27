@@ -10,7 +10,7 @@ const load = (n) => JSON.parse(fs.readFileSync(path.join(D, n), 'utf8'));
 const data = {
   boons: load('boons.json'), duos: load('duo_legendary.json'), hammers: load('hammers.json'),
   weapons: load('weapons.json'), arcana: load('arcana.json'), keepsakes: load('keepsakes.json'),
-  hexes: load('hexes.json'), builds: load('build_directions.json'), gods: load('gods.json'),
+  hexes: load('hexes.json'), builds: load('build_directions.json'), gods: load('gods.json'), testaments: load('testaments.json'),
 };
 const E = createEngine(data, W);
 const nameOf = (id) => {
@@ -792,6 +792,28 @@ sc('S55', '전설 경로(선택) — 모로스 카드: 청천벽력(S) 맨 위, 
     check(...a.reasonHas('zeus_static_shock', '청천벽력')),
     check('체크리스트에 전설 경로', c.legendary.length >= 1 && c.legendary[0].name_ko === '청천벽력', JSON.stringify(c.legendary.map((x) => x.name_ko + ' ' + x.met + '/' + x.total))),
     check('전설 경로 가산은 목표 보조(+2)보다 작다', W.BOON.TARGET_LEG < W.BOON.TARGET_SUPPORT, ''),
+  ] };
+});
+
+
+// ── 9-B 밤의 언약 (2026-10-27) ──────────────────────────
+sc('S56', '밤의 언약 — 모든 무기·스타일·공포에서 맹세 합 = 요구 공포, 횃불 4번째 = 공포 8 헤카테(쉬움), 피할 맹세', () => {
+  const bad = [];
+  for (const w of ['staff', 'blades', 'flames', 'axe', 'skull', 'coat']) for (const d of data.builds.weapons[w].directions) for (let k = 0; k < 8; k++) {
+    const t = E.recommendTestament(w, (d.aspects || [])[0], k, d.id);
+    if (t.sum !== t.next.fear) bad.push(`${d.id} #${k + 1}: ${t.sum}≠${t.next.fear}`);
+  }
+  const fl = E.recommendTestament('flames', 'flames_moros', 3, 'flames_omega_special_orbit');
+  const done = E.recommendTestament('flames', 'flames_moros', 8, 'flames_omega_special_orbit');
+  const axe = E.recommendTestament('axe', 'axe_melinoe', 7, 'axe_heavy_attack');
+  const sup = E.recommendTestament('flames', 'flames_supay', 0, 'flames_supay_auto');
+  return { rows: fl.vows.map((v, i) => ({ id: v.id, rank: i + 1, score: v.fear, reason: v.name_ko + ' ' + v.rank + ' — ' + v.effect, warnings: [], badges: [] })), checks: [
+    check('22방향 × 8언약 전부 맹세 합 = 공포', bad.length === 0, bad.slice(0, 5).join(' / ')),
+    check('횃불 4번째 = 공포 8 · 헤카테 · 지하 1지역 · 쉬움 · 악몽 1', fl.next.k === 4 && fl.next.fear === 8 && fl.next.guardian === 'hecate' && fl.next.easy && fl.next.nightmare === 1, JSON.stringify(fl.next)),
+    check('모로스 회전 불꽃 = 광역 빌드, 자만 피함(Ω 의존)', fl.style === 'aoe' && fl.avoid.some((x) => /^자만/.test(x)), fl.style + ' ' + fl.avoid.join(',')),
+    check('8/8 완료 → 악몽 14/14', done.finished && done.earned === 14 && done.max_nightmare === 14, JSON.stringify({ e: done.earned, m: done.max_nightmare })),
+    check('도끼 단발 = 한 방 빌드, 방호 피함, 자만 가능', axe.style === 'heavy' && axe.avoid.some((x) => /^방호/.test(x)) && axe.hubris_ok, axe.avoid.join(',')),
+    check('수파이 = 공허 피함(아르카나 의존)', sup.avoid.some((x) => /^공허 — 이 양상/.test(x)), sup.avoid.join(',')),
   ] };
 });
 

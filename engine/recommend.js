@@ -1049,6 +1049,32 @@ function createEngine(data, W) {
     };
   }
 
+  // 9-B: 밤의 언약 — 다음 언약과 그 공포에 맞는 맹세 조합. done = 이 무기에서 깬 언약 수(0~8)
+  const ROUTE_KO = { under: '지하', surface: '지상' };
+  const STYLE_KO = { multi: '연사·다타 빌드', aoe: '광역 빌드', heavy: '한 방 빌드' };
+  function recommendTestament(weapon, aspect, done, dirId) {
+    const T = data.testaments; if (!T || !T.order[weapon]) return null;
+    const n = Math.max(0, Math.min(8, done | 0));
+    const fears = T.fears;
+    const earned = fears.slice(0, n).reduce((a, f) => a + (T.nightmare_by_fear[String(f)] || 0), 0);
+    const maxN = fears.reduce((a, f) => a + (T.nightmare_by_fear[String(f)] || 0), 0);
+    const d = (builds.weapons[weapon] || { directions: [] }).directions.find((x) => x.id === dirId) || null;
+    const style = (d && T.style_by_direction[d.id]) || 'multi';
+    const avoid = [];
+    if (d && d.omega_dependent) avoid.push('자만 — 마력을 많이 쓰는 빌드');
+    if (style === 'heavy') avoid.push('방호 — 한 방이 통째로 막힘');
+    if ((T.void_sensitive_aspects || []).includes(aspect)) avoid.push('공허 — 이 양상은 아르카나 의존');
+    for (const x of T.avoid_always || []) if (!avoid.some((y) => y.startsWith(x))) avoid.push(x);
+    const out = { weapon, done: n, total: fears.length, earned, max_nightmare: maxN, finished: n >= fears.length, style, style_ko: STYLE_KO[style], hubris_ok: !!(d && !d.omega_dependent), avoid, direction_ko: d ? d.name_ko : null };
+    if (out.finished) return out;
+    const fear = fears[n];
+    const gid = T.order[weapon][n], g = T.guardians[gid];
+    const steps = (T.ladder.common[String(fear)] || T.ladder[style][String(fear)] || []);
+    const vows = steps.map(([id, rank]) => { const v = T.vows[id]; return { id, name_ko: v.name_ko, rank, fear: v.fear[rank - 1], effect: v.effect[rank - 1] }; });
+    return { ...out, next: { k: n + 1, fear, guardian: gid, guardian_ko: g.name_ko, route: g.route, route_ko: ROUTE_KO[g.route], region: g.region, nightmare: T.nightmare_by_fear[String(fear)] || 0, easy: g.region === 1 && fear >= 8 },
+      vows, sum: vows.reduce((a, v) => a + v.fear, 0) };
+  }
+
   function recommendKeepsake(state) {
     const ctx = directionWeights(state);
     const { dv, active } = ctx;
@@ -1149,7 +1175,7 @@ function createEngine(data, W) {
     return out;
   }
 
-  return { recommendRunStart, recommendArcana, recommendGods, recommendBoons, recommendHammers, recommendKeepsake, directionScores, buildChecklist, applyChoice, validateState, _internal: { directionWeights, derive } };
+  return { recommendRunStart, recommendArcana, recommendGods, recommendBoons, recommendHammers, recommendKeepsake, recommendTestament, directionScores, buildChecklist, applyChoice, validateState, _internal: { directionWeights, derive } };
 }
 
 if (typeof module !== 'undefined' && module.exports) module.exports = { createEngine };

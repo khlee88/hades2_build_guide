@@ -10,7 +10,7 @@ const rd = (...p) => fs.readFileSync(path.join(ROOT, ...p), 'utf8');
 const DATA_FILES = {
   boons: 'boons.json', duos: 'duo_legendary.json', hammers: 'hammers.json',
   weapons: 'weapons.json', arcana: 'arcana.json', keepsakes: 'keepsakes.json',
-  hexes: 'hexes.json', builds: 'build_directions.json', gods: 'gods.json',
+  hexes: 'hexes.json', builds: 'build_directions.json', gods: 'gods.json', testaments: 'testaments.json',
 };
 const data = {};
 for (const [k, f] of Object.entries(DATA_FILES)) data[k] = JSON.parse(rd('data', f));
